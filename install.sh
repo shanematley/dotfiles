@@ -2,7 +2,7 @@
 #
 # Installation script creates links in the user's home directory
 
-FILES=("vimrc" "vim" "tmux" "tmux.conf")
+FILES=("vimrc" "vim" "tmux" "tmux.conf" "inputrc")
 cat <<EOF
 This script will create soft links to the following files in the user's home
 directory:
@@ -28,7 +28,11 @@ function create_link {
     local SRC="$SCRIPTPATH/$1"
     [[ -e "$DEST" && ! -L "$DEST" ]] && { echo "ERROR: $DEST already exists. Skipping."; return 1; }
     echo "Linking $DEST -> $SRC"
-    ln -sf "$SRC" "$DEST"
+    if [[ $(uname -s) == "Darwin" ]]; then
+        ln -shf "$SRC" "$DEST"
+    else
+        ln -sf "$SRC" "$DEST"
+    fi
 }
 
 for f in "${FILES[@]}"; do
