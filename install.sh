@@ -31,7 +31,7 @@ function create_link {
     if [[ $(uname -s) == "Darwin" ]]; then
         ln -shf "$SRC" "$DEST"
     else
-        ln -sf "$SRC" "$DEST"
+        ln -snf "$SRC" "$DEST"
     fi
 }
 
