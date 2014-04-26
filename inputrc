@@ -1,0 +1,18 @@
+# Note: if updating this file, prcess Ctrl-X then Ctrl-R from bash prompt
+# to reload the file.
+
+# If bash completion cannot unambiguously determine the complete path,
+# update the current path to the longest unique string and show the
+# remaining options at the same time - i.e. without a second tab press.
+set show-all-if-ambiguous off
+
+# Make completion case-insensitive.
+set completion-ignore-case on
+
+# Make completion insensitive between hyphens and underscores.
+set completion-map-case on
+
+# Type the first letter(s) and use arrows to search for commands with the
+# same start.
+"\e[A": history-search-backward
+"\e[B": history-search-forward
