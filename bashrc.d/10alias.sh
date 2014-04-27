@@ -9,6 +9,40 @@
 alias path='echo -e ${PATH//:/\\n}'
 alias libpath='echo -e ${LD_LIBRARY_PATH//:/\\n}'
 
+function make_unique_temp() {
+    if [[ $Apple == true ]]; then
+        mktemp -t "temp"
+    else
+        mktemp
+    fi
+}
+function yesno {
+    local QUESTION="$1"
+    while true; do
+        read -p "$QUESTION [y/n] " answer
+        case $answer in
+            [yY]*) return 0;;
+            [nN]*) return 1;;
+        esac
+    done
+}
+function editpath {
+    TEMP_FILE=$(make_unique_temp)
+    echo "Created temp file: $TEMP_FILE"
+    path > "$TEMP_FILE"
+    vim "$TEMP_FILE"
+    NEW_PATH=$(cat "$TEMP_FILE" | tr '\n' ':' | sed 's/:$//')
+    echo "$NEW_PATH"
+    echo "    Original: $PATH"
+    echo "    New:      $NEW_PATH"
+    echo
+    echo "Diff:"
+    diff <(echo -e "${PATH//:/\\n}") <(echo -e "${NEW_PATH//:/\\n}")
+    echo
+    yesno "Did you want to change your path?" && export PATH="$NEW_PATH"
+    rm "$TEMP_FILE"
+}
+
 # -----------------------------------------------------------------------------
 # du and df
 alias du='du -kh'
