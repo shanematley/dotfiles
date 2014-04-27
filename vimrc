@@ -31,7 +31,7 @@ Bundle 'gmarik/vundle'
 if !has ("win32")
     "Bundle 'Valloric/YouCompleteMe'
 endif
-Bundle 'vim-scripts/scratch'
+Bundle 'kana/vim-scratch'
 " Use tab for insert completion
 Bundle 'ervandew/supertab'
 Bundle 'vim-scripts/genutils'

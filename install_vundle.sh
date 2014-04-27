@@ -7,4 +7,6 @@ if [[ ! -d ./vim/bundle/Vundle.vim ]]; then
 else
     echo "Skipping cloning of Vundle. Already present and will upgrade itself."
 fi
+echo "Installing vundle bundles"
 vim +PluginInstall +qall
+echo "All done!"

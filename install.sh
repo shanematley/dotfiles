@@ -11,13 +11,18 @@ directory:
 
 EOF
 
-while true; do
-    read -p "Would you like to continue [Y/N]? " answer
-    case $answer in
-        [yY]*) echo ""; break;;
-        [nN]*) echo "Aborting"; exit;;
-    esac
-done
+function yesno {
+    local QUESTION="$1"
+    while true; do
+        read -p "$QUESTION [y/n] " answer
+        case $answer in
+            [yY]*) return 0;;
+            [nN]*) return 1;;
+        esac
+    done
+}
+
+yesno "Would you like to continue?" || { echo "Aborting"; exit; }
 
 pushd `dirname $0` > /dev/null
 SCRIPTPATH=`pwd`
@@ -40,4 +45,10 @@ for f in "${FILES[@]}"; do
 done
 
 echo
-echo "Vim and Tmux configuration now in place. To setup Vundle run: ./install_vundle.sh"
+echo "Vim and Tmux configuration now in place."
+if yesno "Would you like to install vim vundle and its bundles?"; then
+    ./install_vundle.sh
+else
+    echo "Ok. If you want to later run: ./install_vundle.sh"
+fi
+
