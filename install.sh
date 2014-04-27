@@ -2,7 +2,7 @@
 #
 # Installation script creates links in the user's home directory
 
-FILES=("vimrc" "vim" "tmux" "tmux.conf" "inputrc")
+FILES=("vimrc" "vim" "tmux" "tmux.conf" "inputrc" "bashrc.d")
 cat <<EOF
 This script will create soft links to the following files in the user's home
 directory:
@@ -24,6 +24,7 @@ function yesno {
 
 yesno "Would you like to continue?" || { echo "Aborting"; exit; }
 
+# Determine where we are in a reasonably cross-platform manner
 pushd `dirname $0` > /dev/null
 SCRIPTPATH=`pwd`
 popd > /dev/null
@@ -40,10 +41,26 @@ function create_link {
     fi
 }
 
+function append_bashrc() {
+    echo "Updating .bashrc to include .bashrc.d processing"
+    cat "$SCRIPTPATH/bashrc" >> $HOME/.bashrc
+}
+
+# Append .bashrc offloading
+if [[ -f $HOME/.bashrc ]]; then
+    if ! grep 'Offload to individual files' $HOME/.bashrc > /dev/null ; then
+        append_bashrc
+    fi
+else
+    append_bashrc
+fi
+
+# Create softlinks
 for f in "${FILES[@]}"; do
     create_link "$f"
 done
 
+# Offer to install VIM bundles
 echo
 echo "Vim and Tmux configuration now in place."
 if yesno "Would you like to install vim vundle and its bundles?"; then
