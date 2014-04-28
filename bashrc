@@ -1,3 +1,4 @@
 
 # Offload to individual files
-[ -d ~/.bashrc.d ] && for f in ~/.bashrc.d/*; do . "$f"; done
+[ -d ~/.shrc.d ] && for f in ~/.shrc.d/*.{sh,bash}; do . "$f"; done
+

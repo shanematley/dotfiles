@@ -1,0 +1,12 @@
+#!/bin/zsh
+
+read -r -d '' PROMPT <<EOF
+$PR_SET_CHARSET$PR_STITLE${(e)PR_TITLEBAR}\
+[\
+$PR_GREEN%n@%m$PR_NO_COLOUR:\
+$PR_CYAN%~$PR_GREEN$PR_BLUE\
+]%(!.$PR_RED.$PR_NO_COLOUR)%#
+EOF
+PROMPT="${PROMPT} "
+
+export PROMPT

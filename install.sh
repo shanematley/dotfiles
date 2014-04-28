@@ -2,7 +2,7 @@
 #
 # Installation script creates links in the user's home directory
 
-FILES=("vimrc" "vim" "tmux" "tmux.conf" "inputrc" "bashrc.d")
+FILES=("vimrc" "vim" "tmux" "tmux.conf" "inputrc" "shrc.d")
 cat <<EOF
 This script will create soft links to the following files in the user's home
 directory:
@@ -41,19 +41,24 @@ function create_link {
     fi
 }
 
-function append_bashrc() {
-    echo "Updating .bashrc to include .bashrc.d processing"
-    cat "$SCRIPTPATH/bashrc" >> $HOME/.bashrc
+function append_shrc() {
+    echo "Updating .$1 to include .shrc.d processing"
+    cat "$SCRIPTPATH/$1" >> $HOME/.$1
 }
 
-# Append .bashrc offloading
-if [[ -f $HOME/.bashrc ]]; then
-    if ! grep 'Offload to individual files' $HOME/.bashrc > /dev/null ; then
-        append_bashrc
+function check_shrc() {
+    # Append .{bash,zsh}rc offloading
+    if [[ -f $HOME/.$1 ]]; then
+        if ! grep 'Offload to individual files' $HOME/.$1 > /dev/null ; then
+            append_shrc "$1"
+        fi
+    else
+        append_shrc "$1"
     fi
-else
-    append_bashrc
-fi
+}
+
+check_shrc zshrc
+check_shrc bashrc
 
 # Create softlinks
 for f in "${FILES[@]}"; do
