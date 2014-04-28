@@ -1,3 +1,14 @@
+" Extensibility points
+" There are two files specifically looked for in b:local_vim_files:
+" * vundle.vimrc -- Add any required Vundle bundles in here
+" * ycmconf.py      -- Configuration for YouCompleteMe. (Also requires the
+"                      YouCompleteMe plugin to be added in the first place
+"                      by adding the bundle to vundle.vimrc)
+"
+" Additionally ~/.vimrc.local is loaded at some point for local config.
+
+let b:local_vim_files = "~/.vim/local/"
+
 " General ---------------------------------------------------------------------- {{{
 set history=1000
 set nocompatible
@@ -28,8 +39,9 @@ set rtp+=~/.vim/bundle/vundle/
 call vundle#begin()
 
 Bundle 'gmarik/vundle'
-if !has ("win32")
-    "Bundle 'Valloric/YouCompleteMe'
+if filereadable(glob(b:local_vim_files . "vundle.vimrc"))
+    " Put "Bundle 'Valloric/YouCompleteMe'" in the following if desired:
+    execute 'source' b:local_vim_files . "vundle.vimrc"
 endif
 Bundle 'kana/vim-scratch'
 " Use tab for insert completion
@@ -62,7 +74,9 @@ filetype plugin indent on
 "}}}
 
 " YouCompleteMe ---------------------------------------------------------------- {{{
-let g:ycm_global_ycm_extra_conf = '~/.vim/scripts/ycmconf.py'
+if filereadable(glob(b:local_vim_files . "ycmconf.py"))
+    let g:ycm_global_ycm_extra_conf = b:local_vim_files . 'ycmconf.py'
+endif
 let s:uname = system('uname')
 if s:uname == "SunOs\n" || v:version < 703 || (v:version == 703 && !has('patch584'))
     set runtimepath-=~/.vim/bundle/YouCompleteMe
@@ -113,7 +127,7 @@ set visualbell      " don't beep
 set noerrorbells    " don't beep
 set splitbelow
 set splitright
-set scrolloff=5
+set scrolloff=1
 set wildignore+=*.o,*.obj,*.git,*.bzr,*.pyc,*~
 set wildignore+=venv/**,tmp/**
 
@@ -249,7 +263,9 @@ nnoremap <C-l> <C-w>l
 " Quick navigation of tabs
 nnoremap th  :tabfirst<CR>
 nnoremap tj  :tabnext<CR>
+nnoremap tJ  :tabmove +1<CR>
 nnoremap tk  :tabprev<CR>
+nnoremap tK  :tabmove -1<CR>
 nnoremap tl  :tablast<CR>
 nnoremap tt  :tabedit<Space>
 nnoremap tn  :tabnext<Space>
@@ -260,7 +276,7 @@ nnoremap tO  :tabonly<cr>
 nnoremap <silent><Leader><C-]> <C-w><C-]><C-w>T
 
 " Open up a scratch buffer quickly
-nnoremap <leader><tab> :Scratch<cr>
+nnoremap <leader><tab> :ScratchOpen<cr>
 
 " Show yankring
 nnoremap <silent> <F2> :YRShow<cr>
@@ -315,7 +331,7 @@ map <leader>s :A<CR>
 nnoremap <leader>S <C-w>v<C-w>l:A<CR>
 
 " <C-W>! -> Close buffer without closing window {{{
-nmap <C-W>! <Plug>Kwbd
+nmap <C-W>! :Bdelete<CR>
 "}}}
 
 " leader key is set to \ by default, to change: letmapleader = ","
@@ -377,6 +393,46 @@ call togglebg#map("<F5>")
 hi MatchParen ctermbg=blue guibg=lightblue
 "}}}
 
+" Tab Line settings ------------------------------------------------------ {{{
+if exists("+showtabline")
+  function! MyTabLine()
+    let s = ''
+    for i in range(tabpagenr('$'))
+      " set up some oft-used variables
+      let tab = i + 1 " range() starts at 0
+      let winnr = tabpagewinnr(tab) " gets current window of current tab
+      let buflist = tabpagebuflist(tab) " list of buffers associated with the windows in the current tab
+      let bufnr = buflist[winnr - 1] " current buffer number
+      let bufname = bufname(bufnr) " gets the name of the current buffer in the current window of the current tab
+
+      let s .= '%' . tab . 'T' " start a tab
+      let s .= (tab == tabpagenr() ? '%#TabLineSel#' : '%#TabLine#') " if this tab is the current tab...set the right highlighting
+      let s .= ' ' . tab .':' " current tab number
+      let n = tabpagewinnr(tab,'$') " get the number of windows in the current tab
+      let bufmodified = getbufvar(bufnr, "&mod")
+      if bufmodified
+        let s .= ' +'
+      endif
+      if bufname != ''
+        let s .= ' [' . pathshorten(bufname) . ']' " outputs the one-letter-path shorthand & filename
+      else
+        let s .= ' [No Name]'
+      endif
+      if n > 1
+        let s .= '(' . n . ')' " if there's more than one, add a colon and display the count
+      endif
+      "let s .= ' '
+    endfor
+    let s .= '%#TabLineFill#' " blank highlighting between the tabs and the righthand close 'X'
+    let s .= '%T' " resets tab page number?
+    let s .= '%=' " seperate left-aligned from right-aligned
+    let s .= '%#TabLine#' " set highlight for the 'X' below
+    let s .= '%999XX' " places an 'X' at the far-right
+    return s
+  endfunction
+  set tabline=%!MyTabLine()
+endif
+"}}}
 
 " Load any local .vim.local files
 if filereadable(glob("~/.vimrc.local"))
@@ -484,8 +540,32 @@ function! FileSize()
     endif
 endfunction
 
-nnoremap <leader>h :call cppguards#InsertCppHeaderData()<cr>
-nnoremap <leader>H :call cppguards#InsertCppSourceData()<cr>
+" A command to insert a series of spaces up to line designated by the repeat
+" count
+function! SpacesToColumn(count)
+    exe "norm! 100A\<Space>\<Esc>d" . a:count . "\<Bar>"
+endfunction
+"com! -nargs=1 SpacesToColumn exe "norm! 100A<Space><Esc>d<args><Bar>"
+nnoremap <leader>f<space> :<C-U>call SpacesToColumn(v:count)<CR>
+
+" Wrap word in const-ref
+nnoremap <leader>cr viwbviconst<space><esc>ea&<esc>
+nnoremap <leader>ncr viwbvdbf&x
+
+" Expand public/private/protected
+iabbrev pub: public:
+iabbrev pri: private:
+iabbrev pro: protected:
+iabbrev stdos std::ostream
+iabbrev stdoss std::ostringstream
+
+" Toggles a charater at the end, used below for <leader>; to toggle end semi-colon
+function! ToggleEndChar(charToMatch)
+    exec "norm! m`"
+    s/\v(.)$/\=submatch(1)==a:charToMatch ? '' : submatch(1).a:charToMatch
+    exec "norm! ``"
+endfunction
+nnoremap <leader>; :call ToggleEndChar(';')<CR>
 
 let g:ctags_statusline=1
 
