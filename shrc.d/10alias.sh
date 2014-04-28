@@ -18,9 +18,15 @@ function make_unique_temp() {
 }
 function yesno {
     local QUESTION="$1"
+    local ANSWER=""
     while true; do
-        read -p "$QUESTION [y/n] " answer
-        case $answer in
+        if [[ -n $ZSH_NAME ]]; then
+            read -q "ANSWER?$QUESTION [y/n]"
+        else
+            read -n 1 -p "$QUESTION [y/n] " ANSWER
+            echo
+        fi
+        case $ANSWER in
             [yY]*) return 0;;
             [nN]*) return 1;;
         esac
@@ -29,7 +35,11 @@ function yesno {
 function editpath {
     TEMP_FILE=$(make_unique_temp)
     echo "Created temp file: $TEMP_FILE"
-    path > "$TEMP_FILE"
+    if [[ -n $ZSH_NAME ]]; then
+        path >! "$TEMP_FILE"
+    else
+        path > "$TEMP_FILE"
+    fi
     vim "$TEMP_FILE"
     NEW_PATH=$(cat "$TEMP_FILE" | tr '\n' ':' | sed 's/:$//')
     echo "$NEW_PATH"

@@ -36,4 +36,6 @@ _killall()
     return 0
 }
 
-complete -F _killall killall killps
+if [[ -n $BASH ]]; then
+    complete -F _killall killall killps
+fi
