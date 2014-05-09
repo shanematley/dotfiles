@@ -90,3 +90,7 @@ if [[ -x /usr/bin/dircolors || $Apple == true ]]; then
     alias egrep='egrep --color=auto'
 fi
 
+alias json="python -m json.tool"
+alias xml="xmllint --format -"
+alias html="tidy -i --indent-spaces 4"
+
