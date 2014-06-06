@@ -273,7 +273,19 @@ nnoremap tm  :tabm<Space>
 nnoremap td  :tabclose<CR>
 nnoremap tc  :tabnew<cr>
 nnoremap tO  :tabonly<cr>
+nnoremap <leader>1 1gt
+nnoremap <leader>2 2gt
+nnoremap <leader>3 3gt
+nnoremap <leader>4 4gt
+nnoremap <leader>5 5gt
+nnoremap <leader>6 6gt
+nnoremap <leader>7 7gt
+nnoremap <leader>8 8gt
+nnoremap <leader>9 9gt
 nnoremap <silent><Leader><C-]> <C-w><C-]><C-w>T
+let g:lasttab = 1
+nmap t; :exe "tabn ".g:lasttab<CR>
+au TabLeave * let g:lasttab = tabpagenr()
 
 " Open up a scratch buffer quickly
 nnoremap <leader><tab> :ScratchOpen<cr>
