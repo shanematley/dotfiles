@@ -380,12 +380,6 @@ endif
 if has ("folding")
     set foldenable
 endif
-
-if has("unix")
-    set guifont=Inconsolata\ 12
-else
-    set guifont=Consolas:h11
-endif
 "}}}
 
 " Colours and Fonts ------------------------------------------------------------ {{{
