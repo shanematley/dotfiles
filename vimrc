@@ -12,8 +12,9 @@ let b:local_vim_files = "~/.vim/local/"
 " General ---------------------------------------------------------------------- {{{
 set history=1000
 set nocompatible
+" Enable mouse mode. Use SGR 1006 mouse mode if the functionality is present
+" in this version of VIM. This was added in 7.3.632 and must be compiled in.
 set mouse=a
-" For putty
 if has("mouse_sgr")
     set ttymouse=sgr
 else
@@ -458,7 +459,6 @@ nnoremap <F6> :cp<cr>
 "nnoremap [28~ :cp<cr>
 "nnoremap <F4> :cr<cr>
 " for putty
-set ttymouse=xterm2
 
 if exists("g:btm_rainbow_color") && g:btm_rainbow_color
    call rainbow_parenthsis#LoadSquare ()
