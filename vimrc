@@ -22,6 +22,22 @@ else
 endif
 "}}}
 
+" Searching -------------------------------------------------------------------- {{{
+
+" Turn off default regex handling and use normal regexes, i.e. use 'very
+" magic' regexes.
+nnoremap / /\v
+vnoremap / /\v
+
+set incsearch       " show search matches as you type
+set showmatch       " set show matching parenthesis
+set hlsearch        " highlight search terms
+
+" Clear the search highlighting by pressing \/
+nnoremap <leader><space> :nohlsearch<cr>
+
+"}}}
+
 " Pathogen --------------------------------------------------------------------- {{{
 let g:pathogen_disabled = []        " Disabled pathogen plugins
 if has('gui_running')
@@ -117,9 +133,6 @@ endfunc
 "}}}
 
 " VIM User Interface ----------------------------------------------------------- {{{
-set incsearch       " show search matches as you type
-set showmatch       " set show matching parenthesis
-set hlsearch        " highlight search terms
 set hidden
 set backspace=indent,eol,start " allow backspacing over everything in insert mode
 set number          " always show line numbers
@@ -226,9 +239,6 @@ nnoremap <leader><c-l> viwu
 " Select word with space
 nnoremap <space> viw
 
-" Clear the search highlighting by pressing \/
-nnoremap <leader><space> :nohlsearch<cr>
-
 " Use movement by screen line as opposed to file line
 nnoremap j gj
 nnoremap k gk
@@ -297,6 +307,10 @@ inoremap <silent> <F2> <ESC>:YRShow<cr>
 
 " Gundo toggle
 nnoremap <F10> :GundoToggle<CR>
+
+" Move to matched bracket pairs using tab instead of %.
+nnoremap <tab> %
+vnoremap <tab> %
 
 " Move a line of text using ALT+[jk] or Command+[jk] on mac
 nmap <M-j> mz:m+<cr>$z
