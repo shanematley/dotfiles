@@ -226,6 +226,17 @@ let mapleader = ","
 
 nnoremap <leader>b :CtrlPBuffer<cr>
 
+" A command to execute an external command without requiring the user
+" to press Enter to dismiss a prompt.
+command! -nargs=1 Silent
+            \ | execute ':silent !'.<q-args>
+            \ | execute ':redraw!'
+
+" Use <leader>o to open in external viewer on Mac.
+if has("mac") || has("macunix")
+    nnoremap <leader>o :exe "Silent open " . shellescape(expand("%"))<cr>
+endif
+
 " Move line down
 nnoremap - ddp
 " Move line up
