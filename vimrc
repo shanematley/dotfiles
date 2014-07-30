@@ -248,8 +248,6 @@ inoremap <leader><c-d> <esc>ddi
 nnoremap <leader><c-u> viwU
 " Lowercase current word
 nnoremap <leader><c-l> viwu
-" Select word with space
-nnoremap <space> viw
 
 " Use movement by screen line as opposed to file line
 nnoremap j gj
