@@ -192,7 +192,7 @@ augroup END
 
 augroup filetype_GNUmakefile
     autocmd!
-    autocmd filetype GNUmakefile setlocal expandtab
+    autocmd BufRead,BufNewFile GNUmakefile setlocal expandtab
 augroup END
 
 augroup filetype_vim
