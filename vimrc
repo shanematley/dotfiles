@@ -465,6 +465,15 @@ if exists("+showtabline")
 endif
 "}}}
 
+if exists(":Tabularize")
+    " Note if reusing this in a straight command, remove the second '\' before
+    " the pipe.
+    "nnoremap <Leader>ac :Tabularize /\("[^"]*"\\|[^",]*\),\zs/l0l1<CR>
+    nnoremap <Leader>ac :Tabularize /\v("[^"]*"\|[^",]*),\zs/l0l1<CR>
+    vnoremap <Leader>ac :Tabularize /\("[^"]*"\\|[^",]*\),\zs/l0l1<CR>
+endif
+"s/"\([^"]\+\)"/\=substitute(submatch(0), ',', '__;__', 'g')/g | gv | Tabular /,\zs
+
 " Load any local .vim.local files
 if filereadable(glob("~/.vimrc.local"))
     source ~/.vimrc.local
