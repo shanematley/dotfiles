@@ -38,54 +38,42 @@ nnoremap <leader><space> :nohlsearch<cr>
 
 "}}}
 
-" Pathogen --------------------------------------------------------------------- {{{
-let g:pathogen_disabled = []        " Disabled pathogen plugins
-if has('gui_running')
-    call add(g:pathogen_disabled, 'taglist')
-endif
-filetype off
-execute pathogen#infect()
-" To update help from bundled plugins: :Helptags
-syntax on
-filetype plugin indent on
-"}}}
-
 " Vundle ----------------------------------------------------------------------- {{{
 filetype off
-set rtp+=~/.vim/bundle/vundle/
+set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
-Bundle 'gmarik/vundle'
+Plugin 'gmarik/Vundle.vim'
 if filereadable(glob(b:local_vim_files . "vundle.vimrc"))
     " Put "Bundle 'Valloric/YouCompleteMe'" in the following if desired:
     execute 'source' b:local_vim_files . "vundle.vimrc"
 endif
-Bundle 'kana/vim-scratch'
+Plugin 'kana/vim-scratch'
 " Use tab for insert completion
-Bundle 'ervandew/supertab'
-Bundle 'vim-scripts/genutils'
+Plugin 'ervandew/supertab'
+Plugin 'vim-scripts/genutils'
 " F3 displays open buffers + deletion capability
-Bundle 'vim-scripts/SelectBuf'
+Plugin 'vim-scripts/SelectBuf'
 " Switch header/source with :A and <leader>-s/S
-Bundle 'vim-scripts/a.vim'
-Bundle 'altercation/vim-colors-solarized'
-Bundle 'godlygeek/csapprox'
-Bundle 'godlygeek/tabular'
-Bundle 'kien/ctrlp.vim'
-Bundle 'mileszs/ack.vim'
-Bundle 'moll/vim-bbye.git'
-Bundle 'rking/ag.vim'
-Bundle 'scrooloose/nerdcommenter'
-Bundle 'scrooloose/nerdtree'
-Bundle 'tpope/vim-characterize'
-Bundle 'tpope/vim-repeat'
-Bundle 'tpope/vim-surround'
-Bundle 'tpope/vim-unimpaired'
+Plugin 'vim-scripts/a.vim'
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'godlygeek/csapprox'
+Plugin 'godlygeek/tabular'
+Plugin 'kien/ctrlp.vim'
+Plugin 'mileszs/ack.vim'
+Plugin 'moll/vim-bbye.git'
+Plugin 'rking/ag.vim'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'scrooloose/nerdtree'
+Plugin 'tpope/vim-characterize'
+Plugin 'tpope/vim-repeat'
+Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-unimpaired'
 " Close previous tag with C--
-Bundle 'vim-scripts/closetag.vim'
-Bundle 'yegappan/grep'
-Bundle 'sjl/gundo.vim'
-Bundle 'https://shanematley@bitbucket.org/shanematley/cppguards.git'
+Plugin 'vim-scripts/closetag.vim'
+Plugin 'yegappan/grep'
+Plugin 'sjl/gundo.vim'
+Plugin 'https://shanematley@bitbucket.org/shanematley/cppguards.git'
 
 call vundle#end()
 filetype plugin indent on
