@@ -513,6 +513,7 @@ augroup filetype_markdown
     autocmd BufNewFile,BufRead *.md set filetype=markdown
     autocmd BufEnter *.md setlocal foldexpr=MarkdownLevel()
     autocmd BufEnter *.md setlocal foldmethod=expr
+    autocmd BufNewFile,BufRead *.md *.markdown set ai formatoptions=tcroqn2 comments=n:> tw=80
 augroup END
 
 " First tab completes as much as possible; second provides a list; third
