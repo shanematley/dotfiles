@@ -44,8 +44,8 @@ if has('gui_running')
     call add(g:pathogen_disabled, 'taglist')
 endif
 filetype off
-call pathogen#infect()
-Helptags
+execute pathogen#infect()
+" To update help from bundled plugins: :Helptags
 syntax on
 filetype plugin indent on
 "}}}
