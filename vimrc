@@ -254,8 +254,9 @@ nnoremap <leader>sv :source $MYVIMRC<cr>
 
 " Use jj to exit back to normal mode without hitting ESC
 inoremap jj <ESC>
+inoremap JJ <ESC>
 inoremap jk <ESC>
-inoremap kj <ESC>
+inoremap JK <ESC>
 
 " Switch PWD to the directory of the open buffer
 map <leader>cd :cd %:p:h<cr>:pwd<cr>
