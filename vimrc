@@ -462,6 +462,8 @@ if exists(":Tabularize")
     vnoremap <Leader>ac :Tabularize /\("[^"]*"\\|[^",]*\),\zs/l0l1<CR>
     nnoremap <Leader>am :Tabularize /\<_/l1l0<CR>
     vnoremap <Leader>am :Tabularize /\<_/l1l0<CR>
+    nnoremap <Leader>ap :Tabularize /\(^[^(]*(\zs.*$\\|^\s*\zs[^(]*$\)/l0l0<CR>
+    vnoremap <Leader>ap :Tabularize /\(^[^(]*(\zs.*$\\|^\s*\zs[^(]*$\)/l0l0<CR>
 endif
 "s/"\([^"]\+\)"/\=substitute(submatch(0), ',', '__;__', 'g')/g | gv | Tabular /,\zs
 
