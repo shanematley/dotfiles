@@ -492,33 +492,9 @@ if exists("g:btm_rainbow_color") && g:btm_rainbow_color
    call rainbow_parenthsis#Activate ()
 endif
 
-function! MarkdownLevel()
-    if getline(v:lnum) =~ '^# .*$'
-        return ">1"
-    endif
-    if getline(v:lnum) =~ '^## .*$'
-        return ">2"
-    endif
-    if getline(v:lnum) =~ '^### .*$'
-        return ">3"
-    endif
-    if getline(v:lnum) =~ '^#### .*$'
-        return ">4"
-    endif
-    if getline(v:lnum) =~ '^##### .*$'
-        return ">5"
-    endif
-    if getline(v:lnum) =~ '^###### .*$'
-        return ">6"
-    endif
-    return "="
-endfunction
 augroup filetype_markdown
     autocmd!
     autocmd BufNewFile,BufRead *.md set filetype=markdown
-    autocmd BufEnter *.md setlocal foldexpr=MarkdownLevel()
-    autocmd BufEnter *.md setlocal foldmethod=expr
-    autocmd BufNewFile,BufRead *.md *.markdown set ai formatoptions=tcroqn2 comments=n:> tw=80
 augroup END
 
 " First tab completes as much as possible; second provides a list; third
