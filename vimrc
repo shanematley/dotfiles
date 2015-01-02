@@ -40,8 +40,15 @@ nnoremap <leader><space> :nohlsearch<cr>
 
 " Vundle ----------------------------------------------------------------------- {{{
 filetype off
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+
+if has("gui_win32") || has("gui_win32s")
+    let s:sm_bundle_path=escape(expand('<sfile>:p:h'), '\,').'/vim/bundle'
+    let &runtimepath.=','.s:sm_bundle_path.'/Vundle.vim/'
+    call vundle#begin(s:sm_bundle_path)
+else
+    set rtp+=~/.vim/bundle/Vundle.vim
+    call vundle#begin()
+endif
 
 Plugin 'gmarik/Vundle.vim'
 if filereadable(glob(b:local_vim_files . "vundle.vimrc"))
