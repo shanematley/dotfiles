@@ -1,6 +1,5 @@
 *pyc
 .DS_Store
-vim/bundle/*
 vim/doc/tabs
 vim/local/*
 tags
