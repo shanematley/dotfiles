@@ -427,8 +427,9 @@ else
 endif
 
 try
-    colorscheme solarized
+    " Must set background to dark first
     set background=dark
+    colorscheme solarized
 catch /^Vim\%((\a\+)\)\=:E185/
     " Unable to load solarized. Haven't run Vundle? Use desert in the
     " meantime.
