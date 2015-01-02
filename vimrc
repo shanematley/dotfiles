@@ -106,6 +106,10 @@ let g:ctrlp_max_files=0
 "      \ }
 ""            \ 'fallback': 'find %s -type f'
 "endif
+let g:ctrlp_custom_ignore = {
+            \ 'dir': '\v[\/](\.(git|hg|svn)|venv|tmp)$',
+            \ 'file': '\v\.(exe|so|dll|pyc)$'
+            \ }
 
 " The following permits deletion of buffers
 let g:ctrlp_buffer_func = { 'enter': 'MyCtrlPMappings' }
