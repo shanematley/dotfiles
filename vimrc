@@ -42,9 +42,16 @@ nnoremap <leader><space> :nohlsearch<cr>
 filetype off
 
 if has("gui_win32") || has("gui_win32s")
-    let s:sm_bundle_path=escape(expand('<sfile>:p:h'), '\,').'/vim/bundle'
-    let &runtimepath.=','.s:sm_bundle_path.'/Vundle.vim/'
-    call vundle#begin(s:sm_bundle_path)
+    " Add path for VIM files under dotfiles, e.g. ftplugin
+    let s:dotfiles_path=escape(expand('<sfile>:p:h'), '\,').'/vim'
+    let &runtimepath.=','.s:dotfiles_path
+    " Add a separate path for Vundle as it must go under
+    " %USERPROFILE%/vimfiles/bundle. I'm not 100% sure why, but every attempt
+    " to get it working under the dotfiles directory resulted in this git repo
+    " being overwritten.
+    set runtimepath+=~/vimfiles/bundle/Vundle.vim/
+    let path='~/vimfiles/bundle'
+    call vundle#begin(path)
 else
     set rtp+=~/.vim/bundle/Vundle.vim
     call vundle#begin()

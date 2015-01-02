@@ -18,6 +18,18 @@ The installation process will create soft-links to the files in this repository,
 but will not overwrite files if they already exist. (Soft-links on the other
 hand will be replaced.)
 
+Vim on Windows
+=======================
+
+Vundle files will be installed to %USERPROFILE%\vimfiles\bundle. To accomplish
+this add the following to %USERPROFILE%/_vimrc (or appropriate location):
+
+	source %USERPROFILE%\dotfiles\vimrc
+	
+Then run:
+
+	install_vundle.cmd
+
 Troubleshooting
 ===============
 
