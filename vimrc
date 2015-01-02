@@ -218,6 +218,7 @@ set noswapfile
 " Shortcut Keys, Mappings ------------------------------------------------------ {{{
 let mapleader = ","
 
+nnoremap ZX :qa<CR>
 nnoremap <leader>b :CtrlPBuffer<cr>
 
 " A command to execute an external command without requiring the user
@@ -469,6 +470,9 @@ if exists(":Tabularize")
     vnoremap <Leader>am :Tabularize /\<_/l1l0<CR>
     nnoremap <Leader>ap :Tabularize /\(^[^(]*(\zs.*$\\|^\s*\zs[^(]*$\)/l0l0<CR>
     vnoremap <Leader>ap :Tabularize /\(^[^(]*(\zs.*$\\|^\s*\zs[^(]*$\)/l0l0<CR>
+    " /^ *\zs/l0l0
+    vnoremap <Leader>at :Tabularize /.\{-}\zs[^ ]*$/l1l0<CR>
+    nnoremap <Leader>at :Tabularize /.\{-}\zs[^ ]*$/l1l0<CR>
 endif
 "s/"\([^"]\+\)"/\=substitute(submatch(0), ',', '__;__', 'g')/g | gv | Tabular /,\zs
 
