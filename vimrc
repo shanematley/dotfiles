@@ -426,8 +426,14 @@ else
     let g:solarized_termcolors=256
 endif
 
-set background=dark
-colorscheme solarized
+try
+    colorscheme solarized
+    set background=dark
+catch /^Vim\%((\a\+)\)\=:E185/
+    " Unable to load solarized. Haven't run Vundle? Use desert in the
+    " meantime.
+    colorscheme desert
+endtry
 
 call togglebg#map("<F5>")
 hi MatchParen ctermbg=blue guibg=lightblue
