@@ -47,10 +47,13 @@ function append_shrc() {
 }
 
 function check_shrc() {
-    # Append .{bash,zsh}rc offloading
+    # Append or replace .{bash,zsh}rc offloading
     if [[ -f $HOME/.$1 ]]; then
-        if ! grep 'Offload to individual files' $HOME/.$1 > /dev/null ; then
+        if ! grep 'SM: -- Begin offload' $HOME/.$1 > /dev/null ; then
             append_shrc "$1"
+        else
+            echo "Replacing .$1 to update .shrc.d processing. Backup at .$1.old"
+            sed -i.old '/SM: -- Begin offload/,/SM: -- End offload/ {//!d}; /SM: -- Begin offload/r'$1 $HOME/.$1
         fi
     else
         append_shrc "$1"
