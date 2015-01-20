@@ -94,3 +94,5 @@ alias json="python -m json.tool"
 alias xml="xmllint --format -"
 alias html="tidy -i --indent-spaces 4"
 
+hash ack-grep 2>/dev/null && alias ack=ack-grep
+
