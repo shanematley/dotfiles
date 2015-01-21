@@ -71,6 +71,7 @@ else
     alias ls='ls -F'
 fi
 [[ $Apple == true ]] && alias ls='ls -FG'
+alias lh='ls -lh'
 alias la='ls -Al'               # show hidden files
 alias lx='ls -lXB'              # sort by extension
 alias lk='ls -lSr'              # sort by size, biggest last
