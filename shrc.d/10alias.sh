@@ -56,7 +56,7 @@ function editpath {
 # -----------------------------------------------------------------------------
 # du and df
 alias du='du -kh'
-[[ $Linux == true ]] && alias df='df -lTh'
+[[ $Linux == true ]] && alias df='df -Th'
 [[ $Apple == true ]] && alias df='df -h'
 
 # -----------------------------------------------------------------------------
