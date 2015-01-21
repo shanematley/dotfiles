@@ -481,6 +481,10 @@ if exists("+showtabline")
 endif
 "}}}
 
+" Diff settings ---------------------------------------------------------- {{{
+set diffopt+=iwhite
+"}}}
+
 if exists(":Tabularize")
     " Note if reusing this in a straight command, remove the second '\' before
     " the pipe.
