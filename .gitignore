@@ -2,5 +2,6 @@
 .DS_Store
 vim/doc/tabs
 vim/local/*
+vim/.netrwhist
 tags
 shrc.d/local/*
