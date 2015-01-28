@@ -271,7 +271,8 @@ xnoremap <s-k> 5gk
 nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
 
 " Reselect the text that was just pasted
-nnoremap <leader>v V`]
+nnoremap <leader>v `V`]
+
 
 " Quickly open and source ~/.vimrc in a vertically split window
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
