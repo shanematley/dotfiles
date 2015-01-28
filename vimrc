@@ -485,6 +485,24 @@ endif
 set diffopt+=iwhite
 "}}}
 
+" Custom functions ------------------------------------------------------- {{{
+" Output long VIM commands in a more raedable format. E.g.
+" :Bufferize digraphs or :Bufferize maps or :Bufferize let g:
+command! -nargs=* -complete=command Bufferize call s:Bufferize(<q-args>)
+function! s:Bufferize(cmd)
+    let cmd = a:cmd
+    redir => output
+    silent exe cmd
+    redir END
+
+    new
+    setlocal nonumber
+    call setline(1, split(output, "\n"))
+    set nomodified
+endfunction
+
+"}}}
+
 if exists(":Tabularize")
     " Note if reusing this in a straight command, remove the second '\' before
     " the pipe.
