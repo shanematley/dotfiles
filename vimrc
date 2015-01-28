@@ -261,11 +261,6 @@ nnoremap <leader><c-l> viwu
 nnoremap j gj
 nnoremap k gk
 
-nnoremap <s-j> 5gj
-nnoremap <s-k> 5gk
-xnoremap <s-j> 5gj
-xnoremap <s-k> 5gk
-
 " Strip all training whitespace in the current file. the let part of the
 " command seems to empty the last search register
 nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
