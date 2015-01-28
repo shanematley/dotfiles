@@ -522,6 +522,15 @@ function! s:Bufferize(cmd)
     set nomodified
 endfunction
 
+" Insert digraphs by typing the letters then C-n rather than the normal
+" way of entering diagraph mode with C-k and typing the two keys.
+inoremap <C-n> <esc>:call <SID>Digraph()<cr>a
+function! s:Digraph()
+    let col = col('.')
+    let chars = getline('.')[col - 2 : col - 1]
+    exe "normal! s\<esc>s\<c-k>".chars
+endfunction
+
 "}}}
 
 if exists(":Tabularize")
