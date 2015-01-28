@@ -358,6 +358,48 @@ inoremap <leader>ds <C-R>=strftime("%Y-%m-%d %T")<CR>
 inoremap <leader>ymd <C-R>=strftime("%Y-%m-%d")<CR>
 inoremap <leader>hms <C-R>=strftime("%T")<CR>
 
+" Shortcut to perform substitution
+nnoremap gs :%s//g<Left><Left>
+
+"}}}
+
+"{{{ Custom diff commands
+
+" diff current file from last written
+
+if executable('colordiff')
+    nnoremap <leader>diff :write !diff -du % - \| colordiff<CR>
+else
+    nnoremap <leader>diff :write !diff -du % -<CR>
+endif
+
+function! s:DiffWithSaved()
+    let filetype=&ft
+    diffthis
+    vnew | r # | normal! 1Gdd
+    diffthis
+    exe "setlocal bt=nofile bh=wipe nobl noswf ro ft=" . filetype
+endfunction
+com! DiffSaved call s:DiffWithSaved()
+
+function! s:DiffWithGITCheckedOut()
+    let filetype=&ft
+    diffthis
+    vnew | exe "%!git diff " . expand("#:p") . "| patch -p 1 -Rs -o /dev/stdout"
+    exe "setlocal bt=nofile bh=wipe nobl noswf ro ft=" . filetype
+    diffthis
+endfunction
+com! DiffGit call s:DiffWithGITCheckedOut()
+
+function! s:DiffWithPerforceCheckedOut()
+    let filetype=&ft
+    diffthis
+    vnew | exe "%!p4 diff -du " . expand("#:p") . "...| patch -p0 -Rs -o /dev/stdout"
+    exe "setlocal bt=nofile bh=wipe nobl noswf ro ft=" . filetype
+    diffthis
+endfunction
+com! DiffPerforce call s:DiffWithPerforceCheckedOut()
+
 "}}}
 
 "{{{ show whitespace except in html and xml files
