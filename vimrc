@@ -357,6 +357,12 @@ if has("mac") || has("macunix")
   vmap <D-j> <M-j>
   vmap <D-k> <M-k>
 endif
+
+" date/time insertion
+inoremap <leader>ds <C-R>=strftime("%Y-%m-%d %T")<CR>
+inoremap <leader>ymd <C-R>=strftime("%Y-%m-%d")<CR>
+inoremap <leader>hms <C-R>=strftime("%T")<CR>
+
 "}}}
 
 "{{{ show whitespace except in html and xml files
