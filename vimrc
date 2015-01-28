@@ -261,6 +261,11 @@ nnoremap <leader><c-l> viwu
 nnoremap j gj
 nnoremap k gk
 
+nnoremap <s-j> 5gj
+nnoremap <s-k> 5gk
+xnoremap <s-j> 5gj
+xnoremap <s-k> 5gk
+
 " Strip all training whitespace in the current file. the let part of the
 " command seems to empty the last search register
 nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
@@ -486,6 +491,7 @@ set diffopt+=iwhite
 "}}}
 
 " Custom functions ------------------------------------------------------- {{{
+
 " Output long VIM commands in a more raedable format. E.g.
 " :Bufferize digraphs or :Bufferize maps or :Bufferize let g:
 command! -nargs=* -complete=command Bufferize call s:Bufferize(<q-args>)
