@@ -273,6 +273,12 @@ nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
 " Reselect the text that was just pasted
 nnoremap <leader>v `V`]
 
+" Use arrows to increment/decrement value under the cursor
+nnoremap <up> <nop>
+nnoremap <down> <nop>
+nmap <up> <C-a>
+nmap <down> <C-x>
+
 
 " Quickly open and source ~/.vimrc in a vertically split window
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
