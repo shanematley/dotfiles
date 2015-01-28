@@ -279,6 +279,8 @@ nnoremap <down> <nop>
 nmap <up> <C-a>
 nmap <down> <C-x>
 
+" Make Y consistent with C and D by copying to the end of the line
+nnoremap Y y$
 
 " Quickly open and source ~/.vimrc in a vertically split window
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
