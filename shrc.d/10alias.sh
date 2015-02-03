@@ -97,3 +97,20 @@ alias html="tidy -i --indent-spaces 4"
 
 hash ack-grep 2>/dev/null && alias ack=ack-grep
 
+if [[ $Apple == true ]]; then
+    memcpu() { echo "*** Top 10 cpu eating processes ***"; ps aux | sort -nr -k 3 | head -10;
+        echo "*** Top 10 memory eating processes ***"; ps aux | sort -nr -k 4 | head -n10;
+    }
+else
+    memcpu() { echo "*** Top 10 cpu eating processes ***"; ps auxf | sort -nr -k 3 | head -10;
+        echo "*** Top 10 memory eating processes ***"; ps auxf | sort -nr -k 4 | head -n10;
+    }
+fi
+
+if [[ $Linux == true ]]; then
+    alias chown='chown --preserve-root'
+    alias chmod='chmod --preserve-root'
+    alias chgrp='chgrp --preserve-root'
+    alias rm='rm --preserve-root'
+fi
+
