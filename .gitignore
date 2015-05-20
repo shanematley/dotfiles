@@ -3,5 +3,6 @@
 vim/doc/tabs
 vim/local/*
 vim/.netrwhist
+vim/spell
 tags
 shrc.d/local/*
