@@ -268,12 +268,6 @@ nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
 " Reselect the text that was just pasted
 nnoremap <leader>v `V`]
 
-" Use arrows to increment/decrement value under the cursor
-nnoremap <up> <nop>
-nnoremap <down> <nop>
-nmap <up> <C-a>
-nmap <down> <C-x>
-
 " Make Y consistent with C and D by copying to the end of the line
 nnoremap Y y$
 
@@ -574,17 +568,28 @@ if exists(":Tabularize")
     " Note if reusing this in a straight command, remove the second '\' before
     " the pipe.
     "nnoremap <Leader>ac :Tabularize /\("[^"]*"\\|[^",]*\),\zs/l0l1<CR>
+    " Line up on arguments
     nnoremap <Leader>ac :Tabularize /\v("[^"]*"\|[^",]*),\zs/l0l1<CR>
     vnoremap <Leader>ac :Tabularize /\("[^"]*"\\|[^",]*\),\zs/l0l1<CR>
-    nnoremap <Leader>am :Tabularize /\<_/l1l0<CR>
-    vnoremap <Leader>am :Tabularize /\<_/l1l0<CR>
+    " Line up on method variables (underscores at beginning)
+    nnoremap <Leader>am :Tabularize /\<_\ze.*/l1l0<CR>
+    vnoremap <Leader>am :Tabularize /\<_\ze.*/l1l0<CR>
+    " Line up on ...???
     nnoremap <Leader>ap :Tabularize /\(^[^(]*(\zs.*$\\|^\s*\zs[^(]*$\)/l0l0<CR>
     vnoremap <Leader>ap :Tabularize /\(^[^(]*(\zs.*$\\|^\s*\zs[^(]*$\)/l0l0<CR>
-    " /^ *\zs/l0l0
+    " Line up typedefs
     vnoremap <Leader>at :Tabularize /.\{-}\zs[^ ]*$/l1l0<CR>
     nnoremap <Leader>at :Tabularize /.\{-}\zs[^ ]*$/l1l0<CR>
+    " Line up on variable name and =
+    " Note: \h\w+ is any valid c++ identifier
+    vnoremap <Leader>av :Tabularize /\v(\=\|\h\w+\ze\s*\=)/<CR>
+    nnoremap <Leader>av :Tabularize /\v(\=\|\h\w+\ze\s*\=)/<CR>
 endif
 "s/"\([^"]\+\)"/\=substitute(submatch(0), ',', '__;__', 'g')/g | gv | Tabular /,\zs
+
+" Format arguments with apace after comma
+nnoremap <Leader>f, :s/,\ze[^ ]/, /g<CR>
+vnoremap <Leader>f, :s/,\ze[^ ]/, /g<CR>
 
 " Load any local .vim.local files
 if filereadable(glob("~/.vimrc.local"))
