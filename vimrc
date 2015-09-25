@@ -564,6 +564,7 @@ endfunction
 
 "}}}
 
+" Tabularize ------------------------------------------------------------- {{{
 if exists(":Tabularize")
     " Note if reusing this in a straight command, remove the second '\' before
     " the pipe.
@@ -590,6 +591,16 @@ endif
 " Format arguments with apace after comma
 nnoremap <Leader>f, :s/,\ze[^ ]/, /g<CR>
 vnoremap <Leader>f, :s/,\ze[^ ]/, /g<CR>
+
+"}}}
+
+" Clang Format ----------------------------------------------------------- {{{
+" Assume clang-format.py lives in ~/bin
+
+noremap <leader>cf :pyf $HOME/bin/clang-format.py<cr>
+inoremap <leader>cf <c-o>:pyf $HOME/bin/clang-format.py<cr>
+
+"}}}
 
 " Load any local .vim.local files
 if filereadable(glob("~/.vimrc.local"))
