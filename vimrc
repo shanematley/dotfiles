@@ -168,7 +168,7 @@ if has('gui_running')
     endif
 
     if has("gui_mac") || has("gui_macvim")
-        set guifont=Andale\ Mono:h13
+        set guifont=Hack:h13,Andale\ Mono:h13
         set transparency=7
     endif
 
