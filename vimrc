@@ -138,6 +138,10 @@ func! s:DeleteBuffer()
     exec "bd" bufid
     exec "norm \<F5>"
 endfunc
+
+" If using Silver Searcher (ag)
+" let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
+
 "}}}
 
 " VIM User Interface ----------------------------------------------------------- {{{
@@ -602,6 +606,10 @@ vnoremap <Leader>f, :s/,\ze[^ ]/, /g<CR>
 noremap <leader>cf :pyf $HOME/bin/clang-format.py<cr>
 inoremap <leader>cf <c-o>:pyf $HOME/bin/clang-format.py<cr>
 
+"}}}
+
+" The Silver Searcher ---------------------------------------------------- {{{
+nnoremap <leader>a :Ag 
 "}}}
 
 " Load any local .vim.local files
