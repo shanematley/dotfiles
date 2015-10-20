@@ -156,6 +156,7 @@ set splitright
 set scrolloff=1
 set wildignore+=*.o,*.obj,*.git,*.bzr,*.pyc,*~
 set wildignore+=venv/**,tmp/**
+set lazyredraw      " redraw only when needed
 
 set encoding=utf-8
 
@@ -276,7 +277,9 @@ nnoremap <leader>v `V`]
 " Make Y consistent with C and D by copying to the end of the line
 nnoremap Y y$
 
-" Quickly open and source ~/.vimrc in a vertically split window
+" Quickly open vimrc, bashrc and zshrc in a vsplit, and source ~/.vimrc
+nnoremap <leader>ez :vsplit ~/.zshrc<cr>
+nnoremap <leader>eb :vsplit ~/.bashrc<cr>
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 nnoremap <leader>sv :source $MYVIMRC<cr>
 
@@ -333,7 +336,7 @@ nnoremap <silent> <F2> :YRShow<cr>
 inoremap <silent> <F2> <ESC>:YRShow<cr>
 
 " Gundo toggle
-nnoremap <F10> :GundoToggle<CR>
+nnoremap <leader>u :GundoToggle<CR>
 
 " Move to matched bracket pairs using tab instead of %.
 nnoremap <tab> %
