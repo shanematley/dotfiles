@@ -79,6 +79,7 @@ Plugin 'moll/vim-bbye.git'
 Plugin 'rking/ag.vim'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'scrooloose/nerdtree'
+Plugin 'sjl/badwolf'
 Plugin 'tpope/vim-characterize'
 Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-surround'
@@ -473,19 +474,20 @@ syntax enable
 if has("gui_running")
     set t_Co=256
     set guitablabel=%M\ %t
-else
-    let g:solarized_termcolors=256
+"else
+    "let g:solarized_termcolors=256
 endif
 
-try
-    " Must set background to dark first
-    set background=dark
-    colorscheme solarized
-catch /^Vim\%((\a\+)\)\=:E185/
-    " Unable to load solarized. Haven't run Vundle? Use desert in the
-    " meantime.
-    colorscheme desert
-endtry
+colorscheme badwolf
+"try
+    "" Must set background to dark first
+    "set background=dark
+    "colorscheme solarized
+"catch /^Vim\%((\a\+)\)\=:E185/
+    "" Unable to load solarized. Haven't run Vundle? Use desert in the
+    "" meantime.
+    "colorscheme desert
+"endtry
 
 call togglebg#map("<F5>")
 hi MatchParen ctermbg=blue guibg=lightblue
