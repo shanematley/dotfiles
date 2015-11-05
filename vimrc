@@ -648,12 +648,15 @@ if filereadable(glob("~/.vimrc.local"))
     source ~/.vimrc.local
 endif
 
+" NERDTree --------------------------------------------------------------- {{{
+nnoremap <leader>n :NERDTreeToggle<cr>
+let NERDTreeIgnore=['\.pyc$', '\~$']
+"}}}
+
 " Note: nnoremap => n (Works in normal mode) nore (non-recursive, vs re for recursive) map
 "nnoremap <silent> <F5> :Bgrep<CR>
 nnoremap <F9> :vertical wincmd f<CR>
-nnoremap <F7> :NERDTreeToggle<CR>
 " F8 is tag list
-nnoremap <leader>n :NERDTreeToggle<cr>
 "nnoremap <F5> :cn<cr>
 nnoremap <F6> :cp<cr>
 "The following maps to Shift-F5 when using putty in Xterm R6 mode. Used C-V to
