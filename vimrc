@@ -84,6 +84,7 @@ Plugin 'tpope/vim-characterize'
 Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-unimpaired'
+Plugin 'tpope/vim-fugitive'
 " Close previous tag with C--
 Plugin 'vim-scripts/closetag.vim'
 Plugin 'yegappan/grep'
