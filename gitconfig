@@ -1,0 +1,83 @@
+[color]
+    ui = auto
+
+[core]
+    editor = vim
+    abbrev = 12
+    excludesfile = /Users/shane/.gitignore_global
+
+[push]
+    default = upstream
+
+[alias]
+    ls = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate
+    ll = log --oneline --decorate -20
+    la = log --pretty=la --decorate --date=short -20
+
+    # Git log with a tree based structure
+    lg = log --graph --pretty=format:\"%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset\" --abbrev-commit --date=relative
+    graph = log --decorate --pretty=format:\"%C(yellow)%h%Creset%x09%C(bold blue)%an%C(reset)%x09%ad%x09%C(auto)%d%C(reset) %<(75,trunc)%s\" --all --graph
+    # See what happened in a git pull
+    news = log -p HEAD@{1}..HEAD@{0}
+
+    # Show modified files in last commit
+    dl = !git log --oneline --decorate -1
+    # Diff of last commit
+    dlc = diff --cached HEAD^
+
+    # Show content (full diff) of a commit given a revision
+    dr  = "!f() { git diff "$1"^.."$1"; }; f"
+    lc = "!f() { local r a f; r=`git rev-parse --revs-only \"$@\"` && r=${r:-HEAD} && a=`git rev-parse --sq --no-revs --flags \"$@\"` && f=`git rev-parse --sq --no-revs --no-flags \"$@\"` && cd ./$GIT_PREFIX && eval \"git ll $a $r^..$r -- $f\"; }; f"
+    diffr  = "!f() { git diff "$1"^.."$1"; }; f"
+
+    # find a file path in codebase
+    f = !git ls-files -c -o --exclude-standard | grep --color=auto -i
+
+    # Grep codebase for a string
+    grep = grep -Ii
+    gr = grep -Ii
+    # Grep from root folder
+    gra = "!f() { A=$(pwd) && TOPLEVEL=$(git rev-parse --show-toplevel) && cd $TOPLEVEL && git grep --full-name -In $1 | xargs -I{} echo $TOPLEVEL/{} && cd $A; }; f"
+
+    # Show the last tag
+    lasttag = describe --tags --abbrev=0
+    lt = describe --tags --abbrev=0
+
+    # Merge aliases
+    ours = "!f() { git co --ours $@ && git add $@; }; f"
+    theirs = "!f() { git co --theirs $@ && git add $@; }; f"
+
+    ls-files-ignored = !sh -c 'git ls-files --others -i --exclude-standard'
+    lanc = log --pretty=la-nc --decorate --date=short -20
+    logc = "!f() { local r a f; r=`git rev-parse --revs-only \"$@\"` && r=${r:-HEAD} && a=`git rev-parse --sq --no-revs --flags \"$@\"` && f=`git rev-parse --sq --no-revs --no-flags \"$@\"` && cd ./$GIT_PREFIX && eval \"git log $a $r^..$r -- $f\"; }; f"
+    diffc = "!f() { local r a f; r=`git rev-parse --revs-only \"$@\"` && r=${r:-HEAD} && a=`git rev-parse --sq --no-revs --flags \"$@\"` && f=`git rev-parse --sq --no-revs --no-flags \"$@\"` && cd ./$GIT_PREFIX && eval \"git diff $a $r^..$r -- $f\"; }; f"
+    loginc = "!f() { local r a f; r=`git rev-parse --revs-only \"$@\"` && r=${r:-'@{u}'} && a=`git rev-parse --sq --no-revs --flags \"$@\"` && f=`git rev-parse --sq --no-revs --no-flags \"$@\"` && cd ./$GIT_PREFIX && eval \"git log $a ..$r -- $f\"; }; f"
+    linc = "!f() { local r a f; r=`git rev-parse --revs-only \"$@\"` && r=${r:-'@{u}'} && a=`git rev-parse --sq --no-revs --flags \"$@\"` && f=`git rev-parse --sq --no-revs --no-flags \"$@\"` && cd ./$GIT_PREFIX && eval \"git ll $a ..$r -- $f\"; }; f"
+    logout = "!f() { local r a f; r=`git rev-parse --revs-only \"$@\"` && r=${r:-'@{u}'} && a=`git rev-parse --sq --no-revs --flags \"$@\"` && f=`git rev-parse --sq --no-revs --no-flags \"$@\"` && cd ./$GIT_PREFIX && eval \"git log $a $r.. -- $f\"; }; f"
+    lout = "!f() { local r a f; r=`git rev-parse --revs-only \"$@\"` && r=${r:-'@{u}'} && a=`git rev-parse --sq --no-revs --flags \"$@\"` && f=`git rev-parse --sq --no-revs --no-flags \"$@\"` && cd ./$GIT_PREFIX && eval \"git ll $a $r.. -- $f\"; }; f"
+    diffinc = "!f() { local r a f; r=`git rev-parse --revs-only \"$@\"` && r=${r:-'@{u}'} && a=`git rev-parse --sq --no-revs --flags \"$@\"` && f=`git rev-parse --sq --no-revs --no-flags \"$@\"` && cd ./$GIT_PREFIX && eval \"git diff $a ...$r -- $f\"; }; f"
+    diffout = "!f() { local r a f; r=`git rev-parse --revs-only \"$@\"` && r=${r:-'@{u}'} && a=`git rev-parse --sq --no-revs --flags \"$@\"` && f=`git rev-parse --sq --no-revs --no-flags \"$@\"` && cd ./$GIT_PREFIX && eval \"git diff $a $r... -- $f\"; }; f"
+    unstage = reset HEAD --
+    remerge = checkout -m --conflict=diff3 --
+    st = status -sb
+    ci = commit
+    co = checkout
+    ix = diff --cached
+    fixup = commit --amend -C HEAD
+    rup = remote -v update
+    aliases = !git config -l | grep ^alias\\. | cut -c 7-
+    info = for-each-ref --format=\"%(refname:short)  <=  %(upstream:short)\" refs/heads
+    jira = "!f() { local r=${1:-HEAD}; git log -1 --pretty=\"tformat:Id:      $(git describe --abbrev=12 --long $r)%nDate:    %ci%nAuthor:  %an <%ae>%w(70,4,4)%n%n%-s%n%n%-b\" $r; }; f"
+
+[pretty]
+    la = tformat:%C(yellow)%h%Creset%C(bold red)%d%Creset %s %C(bold blue)<%an>%Creset %C(green)%ad%Creset
+    la-nc = tformat:%h%d %s <%an> %ad
+
+[pager]
+    ll = false
+    la = false
+    lanc = false
+    jira = false
+
+[include]
+    path = ~/.gitconfig.local
