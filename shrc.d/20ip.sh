@@ -35,3 +35,8 @@ function ii()   # Get current host related info.
     $NETSTAT_PREFIX netstat -pan --inet;
     echo
 }
+
+function my_public_ip()
+{
+    dig +short myip.opendns.com @resolver1.opendns.com
+}
