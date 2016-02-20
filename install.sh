@@ -2,7 +2,7 @@
 #
 # Installation script creates links in the user's home directory
 
-FILES=("vimrc" "vim" "tmux" "tmux.conf" "inputrc" "shrc.d")
+FILES=("vimrc" "vim" "tmux" "tmux.conf" "inputrc" "shrc.d" "gitconfig")
 cat <<EOF
 This script will create soft links to the following files in the user's home
 directory:
