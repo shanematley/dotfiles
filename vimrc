@@ -231,7 +231,7 @@ try
 catch
 endtry
 
-set modelines=0     " commands in a file on how VIM is to display the file
+set modelines=1     " commands in a file on how VIM is to display the file
 set nobackup
 set noswapfile
 "}}}
