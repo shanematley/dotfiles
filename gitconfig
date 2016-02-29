@@ -1,10 +1,13 @@
+# vim: set ft=gitconfig:
 [color]
     ui = auto
 
 [core]
     editor = vim
     abbrev = 12
-    excludesfile = /Users/shane/.gitignore_global
+    # Changing the -r to a -R seems to help with keeping track of the screen. Also
+    # use -S to chop lines as this seems to make sense in most git commands
+    pager = less -iwFRXS
 
 [push]
     default = upstream
@@ -72,6 +75,7 @@
 [pretty]
     la = tformat:%C(yellow)%h%Creset%C(bold red)%d%Creset %s %C(bold blue)<%an>%Creset %C(green)%ad%Creset
     la-nc = tformat:%h%d %s <%an> %ad
+    graph = format:%C(yellow)%h%Creset%x09%C(bold blue)%an%C(reset)%x09%ad%x09%C(auto)%d%C(reset) %<(75,trunc)%s
 
 [pager]
     ll = false
@@ -79,5 +83,10 @@
     lanc = false
     jira = false
 
-[include]
-    path = ~/.gitconfig.local
+[difftool "sourcetree"]
+    cmd = /usr/local/bin/bcomp \"$LOCAL\" \"$REMOTE\"
+    path = -ro
+
+[mergetool "sourcetree"]
+    cmd = 
+    trustExitCode = true
