@@ -1,0 +1,20 @@
+.\" Manpage for git-stats
+.TH man 1 "September 2012" "1.0" "git stats man page"
+.SH NAME
+git stats \- Show repository statistics
+.SH SYNOPSIS
+git stats [--gc]
+.SH DESCRIPTION
+Show basic statistics about the current repository. This command will list the
+number of commits, files, objects, refs (heads and tags), contributors, the age of the
+repository and the approximate size of the repository on disk.
+
+This command expects to be exectued in a non-bare repository.
+.SH OPTIONS
+.TP
+.I --gc
+Run aggressive gc to get a more accurate object count.
+.SH BUGS
+No known bugs.
+.SH AUTHOR
+Stefan Saasen <stefan@saasen.me>
