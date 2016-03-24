@@ -16,14 +16,8 @@ set -u
 # Return the name of the current branch
 CURRENT_BRANCH=`git rev-parse --abbrev-ref HEAD`
 
-function tracking_branch {
-  branch_name=$1
-  git for-each-ref --format='%(refname:short) %(upstream:short)' refs/heads | grep -e "${branch_name}\$" | awk '{print $2}'
-}
-
-
 # Are we tracking a remote branch?
-TRACKING=$(tracking_branch ${CURRENT_BRANCH})
+TRACKING=$(git for-each-ref --format='%(upstream:short)' "$(git symbolic-ref -q HEAD)" )
 
 if [ -z "${TRACKING//[[:space:]]/}" ]; then
     echo "The current branch '${CURRENT_BRANCH}' does not track an upstream branch"
