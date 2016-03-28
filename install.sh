@@ -110,7 +110,7 @@ section "Linking dotfiles"
 
 # Create softlinks
 for f in "${FILES[@]}"; do
-    create_link "$SCRIPTPATH/$f" "$HOME/$f"
+    create_link "$SCRIPTPATH/$f" "$HOME/.$f"
 done
 
 section "Adding git common commands"
