@@ -70,6 +70,7 @@ Plugin 'vim-scripts/genutils'
 Plugin 'vim-scripts/SelectBuf'
 " Switch header/source with :A and <leader>-s/S
 Plugin 'vim-scripts/a.vim'
+Plugin 'powerline/powerline', {'rtp' : 'powerline/bindings/vim/'}
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'godlygeek/csapprox'
 Plugin 'godlygeek/tabular'
