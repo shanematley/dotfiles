@@ -13,7 +13,7 @@ for i, a in enumerate(args):
     if not a.startswith('-'):
         revision = i
 
-if not revision:
+if revision is None:
     print 'Requires a commit'
     sys.exit(1)
 
