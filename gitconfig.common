@@ -84,9 +84,9 @@
     jira = false
 
 [difftool "sourcetree"]
-    cmd = /usr/local/bin/bcomp \"$LOCAL\" \"$REMOTE\"
+    cmd = /usr/local/bin/bcomp $LOCAL $REMOTE
     path = -ro
 
 [mergetool "sourcetree"]
-    cmd = 
+	cmd = /usr/local/bin/bcomp $LOCAL $REMOTE $BASE $MERGED
     trustExitCode = true
