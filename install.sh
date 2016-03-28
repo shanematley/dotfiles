@@ -2,6 +2,34 @@
 #
 # Installation script creates links in the user's home directory
 
+set -euo pipefail
+
+section() {
+    printf "\n## $1\n\n"
+}
+
+info () {
+  printf "\r  [ \033[00;34m..\033[0m ] $1\n"
+}
+
+user () {
+  printf "\r  [ \033[0;33m??\033[0m ] $1\n"
+}
+
+success () {
+  printf "\r\033[2K  [ \033[00;32mOK\033[0m ] $1\n"
+}
+
+fail () {
+  printf "\r\033[2K  [\033[0;31mFAIL\033[0m] $1\n"
+  echo ''
+  exit
+}
+
+softfail () {
+  printf "\r\033[2K  [\033[0;31mFAIL\033[0m] $1\n"
+}
+
 FILES=("vimrc" "vim" "tmux" "tmux.conf" "inputrc" "shrc.d" "gitconfig.common")
 cat <<EOF
 This script will create soft links to the following files in the user's home
@@ -22,7 +50,7 @@ function yesno {
     done
 }
 
-yesno "Would you like to continue?" || { echo "Aborting"; exit; }
+yesno "Would you like to continue?" || fail "Aborting" 
 
 # Determine where we are in a reasonably cross-platform manner
 pushd `dirname $0` > /dev/null
@@ -32,68 +60,77 @@ popd > /dev/null
 function create_link {
     local SRC="$1"
     local DEST="$2"
-    [[ -e "$DEST" && ! -L "$DEST" ]] && { echo "ERROR: $DEST already exists. Skipping."; return 1; }
-    [[ -L "$DEST" && $(readlink "$DEST") -ef "$SRC" ]] && { echo "SKIPPING: $DEST already points to correct file."; return 0; }
-    echo "INFO: Linking $DEST -> $SRC"
+    [[ -e "$DEST" && ! -L "$DEST" ]]                   && { softfail "ERROR: $DEST already exists. Skipping."; return 1; }
+    [[ -L "$DEST" && $(readlink "$DEST") -ef "$SRC" ]] && { info "Skipping: $DEST already points to correct file."; return 0; }
     if [[ $(uname -s) == "Darwin" ]]; then
         ln -shf "$SRC" "$DEST"
     else
         ln -snf "$SRC" "$DEST"
     fi
-}
 
-function append_shrc() {
-    echo "INFO: Updating .$1 to include .shrc.d processing"
-
-    echo "# SM: -- Begin offload" >> $HOME/.$1
-    cat "$SCRIPTPATH/$1" >> $HOME/.$1
-    echo "# SM: -- End offload" >> $HOME/.$1
-}
-
-function check_shrc() {
-    # Append or replace .{bash,zsh}rc offloading
-    if [[ -f $HOME/.$1 ]]; then
-        if ! grep 'SM: -- Begin offload' $HOME/.$1 > /dev/null ; then
-            append_shrc "$1"
-        else
-            echo "INFO: Replacing .$1 to update .shrc.d processing. Backup at .$1.old"
-            sed -i.old '/SM: -- Begin offload/,/SM: -- End offload/ {//!d;}; /SM: -- Begin offload/r'$1 $HOME/.$1
-        fi
+    if [[ -L $DEST && $(readlink "$DEST") -ef $SRC ]]; then
+        success "Linked $DEST -> $SRC"
     else
-        append_shrc "$1"
+        softfail "Unable to link $DEST to $SRC"
     fi
 }
 
-echo -e "\n## Offloading zshrc/bashrc\n"
+function shrc_correct() { diff -q <(sed '/SM: -- Begin offload/,/SM: -- End offload/!d; /^#/d' $HOME/.$1 2>/dev/null) $SCRIPTPATH/$1 >/dev/null; }
+
+function check_shrc() {
+    if shrc_correct "$1"; then
+        info "Skipping: $1 set correctly"
+        return
+    elif [[ ! -f $HOME/.$1 ]]; then
+        info "Creating ~/.$1 and offloading to $SCRIPTPATH/$1"
+
+        cat <<-EOF >> $HOME/.$1
+			# SM: -- Begin offload
+			$(<$SCRIPTPATH/$1)
+			# SM: -- End offload
+			EOF
+    else
+        info "Replacing .$1 to update .shrc.d processing. Backup at .$1.old"
+        sed -i.old '/SM: -- Begin offload/,/SM: -- End offload/ {//!d;}; /SM: -- Begin offload/r'$1 $HOME/.$1
+    fi
+
+    if shrc_correct "$1"; then
+        success "INFO: $1 successfully offloaded"
+    else
+        fail "Failed to update $1 correctly"
+    fi
+}
+
+section "Offloading zshrc/bashrc"
 
 check_shrc zshrc
 check_shrc bashrc
 
-echo -e "\n## Linking dotfiles\n"
+section "Linking dotfiles"
 
 # Create softlinks
 for f in "${FILES[@]}"; do
     create_link "$SCRIPTPATH/$f" "$HOME/$f"
 done
 
-echo -e "\n## Adding git common commands\n"
+section "Adding git common commands"
 
 # Setup git
 if git config --get-all include.path|grep -q "$HOME/.gitconfig.common"; then
-    echo "SKIPPING: Git already set up"
+    info "Skipping: Git already set up"
 else
     git config --global --add include.path "$HOME/.gitconfig.common"
-    echo "INFO: Added ~/.gitconfig.common to git global include path"
+    success "Added ~/.gitconfig.common to git global include path"
 fi
 
-echo -e "\n## Linking bin files\n"
+section "Linking bin files"
 
 # Setup bin files
 for f in "$SCRIPTPATH/bin/"*; do
     create_link "$f" "$HOME/bin/$(basename $f)"
 done
 
-echo -e "\n## Linking man files\n"
+section "Linking man files"
 
 # Setup man files
 create_link "$SCRIPTPATH/man" "$HOME/man"
