@@ -365,6 +365,9 @@ inoremap <leader>hms <C-R>=strftime("%T")<CR>
 " Shortcut to perform substitution
 nnoremap gs :%s//g<Left><Left>
 
+" Find current file in NERDTree
+nnoremap <leader>r :NERDTreeFind<cr>
+
 "}}}
 
 "{{{ Custom diff commands
@@ -596,6 +599,9 @@ if exists(":Tabularize")
     " Note: \h\w+ is any valid c++ identifier
     vnoremap <Leader>av :Tabularize /\v(\=\|\h\w+\ze\s*\=)/<CR>
     nnoremap <Leader>av :Tabularize /\v(\=\|\h\w+\ze\s*\=)/<CR>
+    " Line up on open brace '{'
+    vnoremap <Leader>a[ :Tabularize /{.*/<CR>
+    nnoremap <Leader>a[ :Tabularize /{.*/<CR>
 endif
 "s/"\([^"]\+\)"/\=substitute(submatch(0), ',', '__;__', 'g')/g | gv | Tabular /,\zs
 
