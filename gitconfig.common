@@ -17,6 +17,9 @@
     ll = log --oneline --decorate -20
     la = log --pretty=la --decorate --date=short -20
 
+    mine = "!git log --author \"$(git config --get user.name)\""
+    ma = "!git log --author \"$(git config --get user.name)\" --pretty=la --decorate --date=short"
+
     # Git log with a tree based structure
     lg = log --graph --pretty=format:\"%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset\" --abbrev-commit --date=relative
     graph = log --decorate --pretty=format:\"%C(yellow)%h%Creset%x09%C(bold blue)%an%C(reset)%x09%ad%x09%C(auto)%d%C(reset) %<(75,trunc)%s\" --all --graph
