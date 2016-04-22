@@ -1,5 +1,5 @@
 if [[ $(uname -s) == Darwin ]]; then
-    [ -d ~/.shrc.d/ ] && for f in $(find -E ~/.shrc.d/ -type f -regex '.*\.(sh|zshrc)'); do source "$f"; done
+    [ -d ~/.shrc.d/ ] && for f in $(find -E ~/.shrc.d/ -type f -regex '.*\.(sh|zsh)'); do source "$f"; done
 else
-    [ -d ~/.shrc.d/ ] && for f in $(find ~/.shrc.d/ -type f -regex '.*\.\(sh\|zshrc\)'); do source "$f"; done
+    [ -d ~/.shrc.d/ ] && for f in $(find ~/.shrc.d/ -type f -regex '.*\.\(sh\|zsh\)'); do source "$f"; done
 fi
