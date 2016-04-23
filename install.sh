@@ -37,6 +37,8 @@ directory:
 
     ${FILES[@]}
 
+This script will also setup powerline config.
+
 EOF
 
 function yesno {
@@ -112,6 +114,10 @@ section "Linking dotfiles"
 for f in "${FILES[@]}"; do
     create_link "$SCRIPTPATH/$f" "$HOME/.$f"
 done
+
+section "Linking powerline configuration"
+
+create_link "$SCRIPTPATH/powerline" "$HOME/.config/powerline"
 
 section "Adding git common commands"
 
