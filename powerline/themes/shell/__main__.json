@@ -1,0 +1,9 @@
+{
+    "segment_data": {
+        "cwd": {
+            "args": {
+                "use_path_separator" : true
+            }
+        }
+    }
+}
