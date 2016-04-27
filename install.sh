@@ -155,3 +155,11 @@ else
     echo "Ok. If you want to later run: ./install_vundle.sh"
 fi
 
+echo
+if yesno "Would you like to install powerline?"; then
+    if [[ $(uname -s) == Darwin ]]; then
+        echo "Not setup yet"
+    else
+        pip install --user powerline-status
+    fi
+fi
