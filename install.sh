@@ -78,6 +78,13 @@ function create_link {
 }
 
 function shrc_correct() { diff -q <(sed '/SM: -- Begin offload/,/SM: -- End offload/!d; /^#/d' $HOME/.$1 2>/dev/null) $SCRIPTPATH/$1 >/dev/null; }
+function shrc_append() {
+    cat <<-EOF >> $HOME/.$1
+		# SM: -- Begin offload
+		$(<$SCRIPTPATH/$1)
+		# SM: -- End offload
+		EOF
+}
 
 function check_shrc() {
     if shrc_correct "$1"; then
@@ -85,12 +92,10 @@ function check_shrc() {
         return
     elif [[ ! -f $HOME/.$1 ]]; then
         info "Creating ~/.$1 and offloading to $SCRIPTPATH/$1"
-
-        cat <<-EOF >> $HOME/.$1
-			# SM: -- Begin offload
-			$(<$SCRIPTPATH/$1)
-			# SM: -- End offload
-			EOF
+        shrc_append "$1"
+    elif ! grep -q 'SM: -- Begin offload' "$HOME/.$1"; then
+        info "Editing ~/.$1 with offloading to $SCRIPTPATH/$1"
+        shrc_append "$1"
     else
         info "Replacing .$1 to update .shrc.d processing. Backup at .$1.old"
         sed -i.old '/SM: -- Begin offload/,/SM: -- End offload/ {//!d;}; /SM: -- Begin offload/r'$1 $HOME/.$1
