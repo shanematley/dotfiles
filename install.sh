@@ -77,31 +77,51 @@ function create_link {
     fi
 }
 
-function shrc_correct() { diff -q <(sed '/SM: -- Begin offload/,/SM: -- End offload/!d; /^#/d' $HOME/.$1 2>/dev/null) $SCRIPTPATH/$1 >/dev/null; }
+# Select a appropriate script file. E.g. echo zshrc.darwin if present, otherwise zshrc.default
+function select_file() {
+    local os=$(uname -s|tr '[:upper:]' '[:lower:]')
+    local file="$SCRIPTPATH/$1.default"
+    [[ -f $SCRIPTPATH/$1.${os} ]] && file="$SCRIPTPATH/$1.${os}"
+    echo "$file"
+}
+
+function shrc_correct() {
+    local type_name="$1"
+    local dest_path="$2"
+    local source_path="$3"
+    diff -q <(sed '/SM: -- Begin offload -- '"$type_name"'/,/SM: -- End offload -- '"$type_name"'/!d; /^#/d' "$dest_path" 2>/dev/null) "$source_path" >/dev/null
+}
+
 function shrc_append() {
-    cat <<-EOF >> $HOME/.$1
-		# SM: -- Begin offload
-		$(<$SCRIPTPATH/$1)
-		# SM: -- End offload
+    local type_name="$1"
+    local dest_path="$2"
+    local source_path="$3"
+    cat <<-EOF >> $dest_path
+		# SM: -- Begin offload -- $type_name
+		$(<$source_path)
+		# SM: -- End offload -- $type_name
 		EOF
 }
 
 function check_shrc() {
-    if shrc_correct "$1"; then
+    local source_path=$(select_file "$1")
+    local source_file=$(basename "$source_path")
+    local dest_path="$HOME/.$1"
+    if shrc_correct "$1" "$dest_path" "$source_path"; then
         info "Skipping: $1 set correctly"
         return
-    elif [[ ! -f $HOME/.$1 ]]; then
-        info "Creating ~/.$1 and offloading to $SCRIPTPATH/$1"
-        shrc_append "$1"
-    elif ! grep -q 'SM: -- Begin offload' "$HOME/.$1"; then
-        info "Editing ~/.$1 with offloading to $SCRIPTPATH/$1"
-        shrc_append "$1"
+    elif [[ ! -f $dest_path ]]; then
+        info "Creating ~/.$1 and offloading to $source_file"
+        shrc_append "$1" "$dest_path" "$source_path"
+    elif ! grep -q 'SM: -- Begin offload' "$dest_path"; then
+        info "Editing ~/.$1 with offloading to $source_file"
+        shrc_append "$1" "$dest_path" "$source_path"
     else
-        info "Replacing .$1 to update .shrc.d processing. Backup at .$1.old"
-        sed -i.old '/SM: -- Begin offload/,/SM: -- End offload/ {//!d;}; /SM: -- Begin offload/r'$1 $HOME/.$1
+        info "Replacing .$1 to update .shrc.d processing with $source_file. Backup at .$1.old"
+        sed -i.old '/SM: -- Begin offload -- '$1'/,/SM: -- End offload -- '$1'/ {//!d;}; /SM: -- Begin offload/r'"$source_path" "$dest_path"
     fi
 
-    if shrc_correct "$1"; then
+    if shrc_correct "$1" "$dest_path" "$source_path"; then
         success "INFO: $1 successfully offloaded"
     else
         fail "Failed to update $1 correctly"
