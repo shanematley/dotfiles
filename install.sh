@@ -113,7 +113,7 @@ function check_shrc() {
     elif [[ ! -f $dest_path ]]; then
         info "Creating ~/.$1 and offloading to $source_file"
         shrc_append "$1" "$dest_path" "$source_path"
-    elif ! grep -q 'SM: -- Begin offload' "$dest_path"; then
+    elif ! grep -q 'SM: -- Begin offload -- '"$1" "$dest_path"; then
         info "Editing ~/.$1 with offloading to $source_file"
         shrc_append "$1" "$dest_path" "$source_path"
     else
