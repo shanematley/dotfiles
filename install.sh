@@ -30,7 +30,7 @@ softfail () {
   printf "\r\033[2K  [\033[0;31mFAIL\033[0m] $1\n"
 }
 
-FILES=("vimrc" "vim" "tmux" "tmux.conf" "inputrc" "shrc.d" "gitconfig.common")
+FILES=("vimrc" "vim" "tmux" "tmux.conf" "tmux.conf.darwin" "inputrc" "shrc.d" "gitconfig.common" "tmux.conf.pre2.2")
 cat <<EOF
 This script will create soft links to the following files in the user's home
 directory:
