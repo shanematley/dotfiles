@@ -2,62 +2,66 @@
 #
 # Installation script creates links in the user's home directory
 
-set -euo pipefail
+set -uo pipefail
 
-section() {
-    printf "\n## $1\n\n"
-}
+section()   { printf "\n## $1\n\n"; }
+info ()     { printf "\r  [ \033[00;34m..\033[0m ] $1\n"; }
+user ()     { printf "\r  [ \033[0;33m??\033[0m ] $1\n"; }
+success ()  { printf "\r\033[2K  [ \033[00;32mOK\033[0m ] $1\n"; }
+fail ()     { printf "\r\033[2K  [\033[0;31mFAIL\033[0m] $1\n"; echo ''; exit; }
+softfail () { printf "\r\033[2K  [\033[0;31mFAIL\033[0m] $1\n"; }
 
-info () {
-  printf "\r  [ \033[00;34m..\033[0m ] $1\n"
-}
-
-user () {
-  printf "\r  [ \033[0;33m??\033[0m ] $1\n"
-}
-
-success () {
-  printf "\r\033[2K  [ \033[00;32mOK\033[0m ] $1\n"
-}
-
-fail () {
-  printf "\r\033[2K  [\033[0;31mFAIL\033[0m] $1\n"
-  echo ''
-  exit
-}
-
-softfail () {
-  printf "\r\033[2K  [\033[0;31mFAIL\033[0m] $1\n"
-}
-
-FILES=("vimrc" "vim" "tmux" "tmux.conf" "tmux.conf.darwin" "inputrc" "shrc.d" "gitconfig.common" "tmux.conf.pre2.2")
-cat <<EOF
-This script will create soft links to the following files in the user's home
-directory:
-
-    ${FILES[@]}
-
-This script will also setup powerline config.
-
-EOF
+SCRIPTPATH=$(cd $(dirname $0); pwd;)
+FILES=("vimrc" "vim" "tmux" "tmux.conf" "tmux.conf.darwin" "inputrc" "shrc.d" "gitconfig.common" "tmux.conf.pre2.2" "powerline:$HOME/.config/powerline" "man:$HOME/man")
 
 function yesno {
-    local QUESTION="$1"
     while true; do
-        read -p "$QUESTION [y/n] " answer
-        case $answer in
-            [yY]*) return 0;;
-            [nN]*) return 1;;
+        read -p "$1 [y/n] " -n 1 -r; echo
+        case $REPLY in
+            [yY]) return 0;;
+            [nN]) return 1;;
         esac
     done
 }
 
-yesno "Would you like to continue?" || fail "Aborting" 
+read -r -d '' USAGE_MSG <<EOF
+USAGE
 
-# Determine where we are in a reasonably cross-platform manner
-pushd `dirname $0` > /dev/null
-SCRIPTPATH=`pwd`
-popd > /dev/null
+    $(basename $0) [-hvp]
+
+OPTIONS
+
+    -h  Show this help message
+    -v  Install VIM vundle and bundles
+    -p  Install powerline
+
+EOF
+
+while getopts ":vph" opt; do
+    case $opt in
+        v) INSTALL_OPTION_VIM=1;;
+        p) INSTALL_OPTION_POWERLINE=1;;
+        h) echo "$USAGE_MSG"; exit 0;;
+        \?) fail "Invalid option: $OPTARG";;
+    esac
+done
+
+: ${INSTALL_OPTION_VIM:=}
+: ${INSTALL_OPTION_POWERLINE:=}
+
+cat <<EOF
+Actions to be taken:
+
+ * Create soft links to the following files in the user's home directory:
+
+EOF
+for f in "${FILES[@]}"; do echo "    $f"; done
+
+[[ $INSTALL_OPTION_VIM ]] && echo -e "\n * VIM vundle and bundles will be installed."; 
+[[ $INSTALL_OPTION_POWERLINE ]] && echo -e "\n * Powerline will be installed."; 
+echo
+
+yesno "Would you like to continue?" || fail "Aborting" 
 
 function create_link {
     local SRC="$1"
@@ -135,14 +139,12 @@ check_shrc bashrc
 
 section "Linking dotfiles"
 
-# Create softlinks
 for f in "${FILES[@]}"; do
-    create_link "$SCRIPTPATH/$f" "$HOME/.$f"
+    [[ $f =~ ([^:]+):?(.*)? ]] || fail "Bad file specified in FILES. Adjust script. File: '$f'"
+    DEST="${BASH_REMATCH[1]}"
+    LINK="${BASH_REMATCH[2]:-${HOME}/.${DEST}}"
+    create_link "$SCRIPTPATH/$DEST" "$LINK"
 done
-
-section "Linking powerline configuration"
-
-create_link "$SCRIPTPATH/powerline" "$HOME/.config/powerline"
 
 section "Adding git common commands"
 
@@ -161,22 +163,27 @@ for f in "$SCRIPTPATH/bin/"*; do
     create_link "$f" "$HOME/bin/$(basename $f)"
 done
 
-section "Linking man files"
-
-# Setup man files
-create_link "$SCRIPTPATH/man" "$HOME/man"
-
 # Offer to install VIM bundles
-echo
-echo "Vim and Tmux configuration now in place."
-if yesno "Would you like to install vim vundle and its bundles?"; then
-    ./install_vundle.sh
-else
-    echo "Ok. If you want to later run: ./install_vundle.sh"
+if [[ $INSTALL_OPTION_VIM ]]; then
+    section "Installing Vundle for VIM"
+
+    [[ ! -d ~/.vim ]] && fail "./vim does not exist. Aborting"
+    [[ ! -d ~/.vim/bundle ]] && mkdir ~/.vim/bundle
+    if [[ ! -d ~/.vim/bundle/Vundle.vim ]]; then
+        git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim && success "Vundle installed"
+    else
+        info "Skipping cloning of Vundle. Already present and will upgrade itself."
+    fi
+    section "Installing Vundle bundles"
+    if vim +PluginInstall +qall; then
+        success "Vundble bundles installed/upgraded"
+    else
+        fail "An error occurred while installing Vundle bundles"
+    fi
 fi
 
-echo
-if yesno "Would you like to install powerline?"; then
+if [[ $INSTALL_OPTION_POWERLINE ]]; then
+    section "Installing powerline"
     if [[ $(uname -s) == Darwin ]]; then
         echo "Not setup yet"
     else
