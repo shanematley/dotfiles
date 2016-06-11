@@ -7,7 +7,7 @@
     abbrev = 12
     # Changing the -r to a -R seems to help with keeping track of the screen. Also
     # use -S to chop lines as this seems to make sense in most git commands
-    pager = less -iwFRXS
+    pager = less -iwRS
 
 [push]
     default = upstream
