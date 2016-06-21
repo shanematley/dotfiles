@@ -651,12 +651,6 @@ nmap <leader>cc :call ClangCheck()<CR><CR>
 nnoremap <leader>a :Ag 
 "}}}
 
-" Copy/paste/clipboard/pasteboard ---------------------------------------- {{{
-if has("mac") || has("macunix")
-    set clipboard=unnamed
-endif
-"}}}
-
 " Load any local .vim.local files
 if filereadable(glob("~/.vimrc.local"))
     source ~/.vimrc.local
