@@ -198,6 +198,7 @@ set softtabstop=4
 set shiftround      " use multiple of shiftwidth when indenting with '<' and '>'
 set nowrap          " don't wrap lines
 set cursorline      " highlight the current row
+set showbreak=↪
 
 " tabs to two spaces in html/xml files
 augroup filetype_html
