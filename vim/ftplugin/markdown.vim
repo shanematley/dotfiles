@@ -28,5 +28,4 @@ setlocal foldmethod=expr
 setlocal ai
 setlocal formatoptions=tcroqn2
 setlocal comments=n:>
-setlocal textwidth=80
 
