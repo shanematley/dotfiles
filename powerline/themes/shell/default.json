@@ -26,6 +26,10 @@
 			{
 				"function": "powerline.segments.shell.jobnum",
 				"priority": 20
+			},
+			{
+				"function": "termtitle.set_panetitle_to_gitrepo",
+				"priority": 10
 			}
 		],
 		"right": [
@@ -36,10 +40,10 @@
 			{
 				"function": "powerline.segments.common.vcs.branch",
 				"priority": 40,
-                "args": {
-                    "status_colors": true,
-                    "ignore_statuses": ["U"]
-                }
+				"args": {
+					"status_colors": true,
+					"ignore_statuses": ["U"]
+				}
 			}
 		]
 	}
