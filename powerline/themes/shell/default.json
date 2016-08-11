@@ -28,7 +28,7 @@
 				"priority": 20
 			},
 			{
-				"function": "termtitle.set_panetitle_to_gitrepo",
+				"function": "termtitle.gitpanetitle",
 				"priority": 10
 			}
 		],
