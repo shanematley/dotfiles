@@ -164,7 +164,6 @@ set lazyredraw      " redraw only when needed
 set encoding=utf-8
 
 if has('gui_running')
-    set lines=37 columns=135
     " remove the menu bar and toolbar
     set guioptions-=m
     set guioptions-=T
