@@ -91,6 +91,7 @@ Plugin 'vim-scripts/closetag.vim'
 Plugin 'yegappan/grep'
 Plugin 'sjl/gundo.vim'
 Plugin 'https://shanematley@bitbucket.org/shanematley/cppguards.git'
+Plugin 'Glench/Vim-Jinja2-Syntax'
 
 call vundle#end()
 filetype plugin indent on
