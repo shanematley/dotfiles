@@ -3,6 +3,8 @@
 [[ $OSTYPE =~ darwin* ]] && Apple=true
 [[ $OSTYPE =~ linux* ]] && Linux=true
 
+alias cd-="cd $(pwd)"
+
 # -----------------------------------------------------------------------------
 # Handy aliases to view PATH and LD_LIBRARY_PATH
 
