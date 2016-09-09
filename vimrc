@@ -238,11 +238,24 @@ set nobackup
 set noswapfile
 "}}}
 
+" Project Specific Settings ---------------------------------------------------- {{{
+
+function! s:LoadProjectSpecificSettings()
+    if filereadable("./.vimrc.project")
+        source ./.vimrc.project
+        echom "Loaded local project settings from .vimrc.project"
+    endif
+endfunction
+com! LoadLocalProjectSpecificSettings call s:LoadProjectSpecificSettings()
+
+"}}}
+
 " Shortcut Keys, Mappings ------------------------------------------------------ {{{
 let mapleader = ","
 
 nnoremap ZX :qa<CR>
 nnoremap <leader>b :CtrlPBuffer<cr>
+nnoremap <leader>ps :LoadLocalProjectSpecificSettings<cr>
 
 " A command to execute an external command without requiring the user
 " to press Enter to dismiss a prompt.
@@ -656,6 +669,7 @@ nnoremap <leader>a :Ag
 if filereadable(glob("~/.vimrc.local"))
     source ~/.vimrc.local
 endif
+call s:LoadProjectSpecificSettings()
 
 " NERDTree --------------------------------------------------------------- {{{
 nnoremap <leader>n :NERDTreeToggle<cr>
