@@ -125,7 +125,7 @@ let g:ctrlp_max_files=0
 "endif
 let g:ctrlp_custom_ignore = {
             \ 'dir': '\v[\/](\.(git|hg|svn)|venv|tmp)$',
-            \ 'file': '\v\.(exe|so|dll|pyc)$'
+            \ 'file': '\v\.(exe|so|dll|pyc|class|jar|java|xdc|tar.gz)$'
             \ }
 
 " The following permits deletion of buffers
