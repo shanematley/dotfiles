@@ -782,4 +782,26 @@ let g:ctags_statusline=1
 
 nnoremap <leader>f_ /_[^_]\+_<cr>
 
+function! s:get_visual_selection()
+  " Why is this not a built-in Vim script function?!
+  let [lnum1, col1] = getpos("'<")[1:2]
+  let [lnum2, col2] = getpos("'>")[1:2]
+  let lines = getline(lnum1, lnum2)
+  let lines[-1] = lines[-1][: col2 - (&selection == 'inclusive' ? 1 : 2)]
+  let lines[0] = lines[0][col1 - 1:]
+  return join(lines, "\n")
+endfunction
+
+function! NsToString(ns)
+    let m = matchlist(a:ns, '\v(\d+)(\d{9})')
+    if empty(m)
+        throw "No nanosecond timestamp in ".a:ns
+    endif
+    return strftime("%Y-%m-%d %H:%M:%S", str2nr(m[1])).'.'.m[2]
+endfunction
+
+nnoremap <leader>l yiwciw<C-r>=NsToString('<C-r>"')<cr><esc>
+nnoremap <leader>L yiwea (<C-r>=NsToString('<C-r>"')<cr>)<esc>
+
+
 " vim:fdm=marker
