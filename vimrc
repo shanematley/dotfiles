@@ -283,6 +283,10 @@ nnoremap <leader><c-l> viwu
 nnoremap j gj
 nnoremap k gk
 
+" Navigate vimgrep/grep/anything in copen results
+noremap <Space>n :cnext<C-m>
+noremap <Space>p :cprev<C-m>
+
 " Strip all training whitespace in the current file. the let part of the
 " command seems to empty the last search register
 nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
