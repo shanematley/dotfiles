@@ -39,3 +39,12 @@ If for whatever reason git has issues retrieving a remote repository (e.g. Vundl
 is failing to install things. Ensure the following is not set in .gitconfig:
 
     transfer.fsckObjects = true
+
+Troubleshooting Tmux
+====================
+
+If tmux is exiting immediately on masOS with "[Exited]", it may be that
+reattach-to-user-namespace is not installed. Install this using:
+
+    brew install reattach-to-user-namespace
+
