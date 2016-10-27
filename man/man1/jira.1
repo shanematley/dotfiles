@@ -1,0 +1,56 @@
+.\"Manpage for jassigned
+.TH "Jira Scripts" 1 "Oct 2016" "1.0" "Manual page for Jira Scripts"
+.SH NAME
+.B jassigned
+\- Show unresolved tickets
+.br
+.B jira
+\- Get information for a single ticket
+.SH SYNOPSIS
+.B jassigned
+[-h] [--update-password]
+.br
+.B jira
+.I ticket
+[-h] [--update-password]
+.SH DESCRIPTION
+.PP
+.B jassigned
+shows unresolved tickets that are assigned to the current user.
+.PP
+.B jira
+shows the key, summary, status and description fields of the selected
+Jira ticket, and provides a URL to view the ticket in full.
+.SH OPTIONS
+.PP
+.B \-h, \-\-help
+.RS 4
+Display help
+.RE
+.PP
+.B \-\-update\-password
+.RS 4
+Force an update of the password stored in the keychain
+.RE
+.SH CONFIGURATION
+.PP
+Configuration is found in ~/.jira.config and is in "INI" format. The
+configuration should contain a section named '[jira]' and the following keys:
+.PP
+.RS 4
+.B server
+.RS 4
+the Jira server location, e.g. http://jira
+.RE
+.RE
+.br
+.RS 4
+.B username
+.RS 4
+the username used to log into Jira
+.RE
+.RE
+.PP
+The password of the user will be stored in the system keychain.
+.SH AUTHOR
+Shane Matley <shane@matley.com.au>
