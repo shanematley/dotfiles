@@ -1,4 +1,11 @@
 # vim: set ft=gitconfig:
+
+[status]
+    submoduleSummary = true
+
+[diff]
+    submodule = log
+
 [color]
     ui = auto
 
@@ -78,13 +85,4 @@
 [pager]
     ll = false
     la = false
-    lanc = false
-    jira = false
 
-[difftool "sourcetree"]
-    cmd = /usr/local/bin/bcomp $LOCAL $REMOTE
-    path = -ro
-
-[mergetool "sourcetree"]
-	cmd = /usr/local/bin/bcomp $LOCAL $REMOTE $BASE $MERGED
-    trustExitCode = true
