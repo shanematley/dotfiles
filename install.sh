@@ -163,6 +163,17 @@ for f in "$SCRIPTPATH/bin/"*; do
     create_link "$f" "$HOME/bin/$(basename $f)"
 done
 
+section "Generating awk files"
+
+for f in "$SCRIPTPATH/bin/"*"awk"; do
+    fbase=$(basename "$f")
+    fdest=${fbase%.*}
+    "$SCRIPTPATH/bin/shb" "$f" awk -f > "$HOME/bin/$fdest"
+    chmod +x "$HOME/bin/$fdest"
+    success "Generated $fdest from $fbase"
+done
+
+
 # Offer to install VIM bundles
 if [[ $INSTALL_OPTION_VIM ]]; then
     section "Installing Vundle for VIM"

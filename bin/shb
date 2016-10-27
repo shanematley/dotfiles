@@ -1,0 +1,28 @@
+#!/bin/sh
+# Use PATH to build a shebang for a script given on stdin
+self=shb
+
+# Need at least two arguments
+if [ "$#" -lt 2 ] ; then
+    printf >&2 '%s: Need input file and command\n' "$self"
+    exit 1
+fi
+
+# First argument is the script (might be - for stdin), second argument is the
+# name of the interpreter
+scr=$1 intn=$2
+shift 2
+
+# Try and find the path to the interpreter command, bail out if we can't
+if ! intp=$(command -pv "$intn" 2>/dev/null) ; then
+    printf >&2 '%s: %s: command not found\n' "$self" "$intn"
+    exit 1
+fi
+
+# Set the positional parameters to the path and any remaining arguments, and
+# squash them together for the shebang line
+set -- "$intp" "$@"
+printf '#!%s\n' "$*"
+
+# Emit the rest of the input
+cat -- "$scr"
