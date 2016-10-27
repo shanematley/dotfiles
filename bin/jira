@@ -1,0 +1,25 @@
+#!/usr/bin/env python
+
+import jiracred, argparse, urlparse
+
+parser = argparse.ArgumentParser()
+parser.add_argument('--update-password', action='store_true',
+        help='Update the password for the configured user')
+parser.add_argument('key')
+args = parser.parse_args()
+
+ticket = args.key
+j = jiracred.Jira(args.update_password)
+d = j.get('issue/' + ticket)
+
+print """{key} {fields[summary]}
+
+Status: {fields[status][name]}
+
+DESCRIPTION
+{fields[description]}
+
+Link: {url}
+
+""".format(url=urlparse.urljoin(j.jira_server, '/browse/' + d['key']), **d)
+

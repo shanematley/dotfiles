@@ -1,0 +1,17 @@
+#!/usr/bin/env python
+import jiracred
+import argparse, tabulate, urlparse
+
+parser = argparse.ArgumentParser(epilog=jiracred.CONFIG_DESC,
+        formatter_class=argparse.RawTextHelpFormatter)
+parser.add_argument('--update-password', action='store_true',
+        help='Update the password for the configured user')
+args = parser.parse_args()
+
+j = jiracred.Jira(args.update_password)
+d = j.search('assignee="{}"+AND+resolution=unresolved+order+by+updatedDate+DESC'.format(j.username))
+
+table = [[t['key'], t['fields']['status']['name'], t['fields']['summary'], urlparse.urljoin(j.jira_server, '/browse/' + t['key'])] for t in d['issues']]
+
+print tabulate.tabulate(table, headers=['key', 'status', 'summary', 'url'])
+
