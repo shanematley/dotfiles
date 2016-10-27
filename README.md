@@ -12,11 +12,13 @@ Installation
 
 To install:
 
-    ./install.sh
+    ./install.sh [-v] [-p] [-h]
 
 The installation process will create soft-links to the files in this repository,
 but will not overwrite files if they already exist. (Soft-links on the other
 hand will be replaced.)
+
+Use -v to install VIM vundle and bundles and -p to install powerline
 
 Vim on Windows
 =======================
