@@ -24,6 +24,10 @@
     ll = log --oneline --decorate -20
     la = log --pretty=la --decorate --date=short -20
 
+    # Common pull variations
+    puff = pull --ff-only
+    pure = pull --rebase
+
     branches = branch -a
     tags = tag
     stashes = stash list
