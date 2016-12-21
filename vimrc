@@ -665,6 +665,10 @@ nmap <leader>cc :call ClangCheck()<CR><CR>
 nnoremap <leader>a :Ag 
 "}}}
 
+" Gundo ------------------------------------------------------------------ {{{
+let g:gundo_preview_bottom=1
+"}}}
+
 " Load any local .vim.local files
 if filereadable(glob("~/.vimrc.local"))
     source ~/.vimrc.local
