@@ -173,6 +173,15 @@ for f in "$SCRIPTPATH/bin/"*"awk"; do
     success "Generated $fdest from $fbase"
 done
 
+section "Prerequisites"
+
+# Check for tmux-mem-cpu-load presence
+if ! command -v tmux-mem-cpu-load >/dev/null 2>&1; then
+    softfail "tmux-mem-cpu-load missing. Install via brew install tmux-mem-cpu-load or equivalent"
+else
+    info "tmux-mem-cpu-load present"
+fi
+
 
 # Offer to install VIM bundles
 if [[ $INSTALL_OPTION_VIM ]]; then
