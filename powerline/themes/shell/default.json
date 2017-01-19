@@ -26,10 +26,6 @@
 			{
 				"function": "powerline.segments.shell.jobnum",
 				"priority": 20
-			},
-			{
-				"function": "termtitle.gitpanetitle",
-				"priority": 10
 			}
 		],
 		"right": [
