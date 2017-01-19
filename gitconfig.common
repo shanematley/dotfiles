@@ -28,6 +28,8 @@
     puff = pull --ff-only
     pure = pull --rebase
 
+    who = blame
+
     branches = branch -a
     tags = tag
     stashes = stash list
