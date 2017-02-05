@@ -257,11 +257,15 @@ nnoremap ZX :qa<CR>
 nnoremap <leader>b :CtrlPBuffer<cr>
 nnoremap <leader>ps :LoadLocalProjectSpecificSettings<cr>
 
+nnoremap <leader>m :silent make\|redraw!\|cc<CR>
+
 " A command to execute an external command without requiring the user
 " to press Enter to dismiss a prompt.
 command! -nargs=1 Silent
             \ | execute ':silent !'.<q-args>
             \ | execute ':redraw!'
+
+command -nargs=* -bar Silent2 make <args> <bar> cwindow
 
 " Use <leader>o to open in external viewer on Mac.
 if has("mac") || has("macunix")
