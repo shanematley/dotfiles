@@ -82,6 +82,7 @@ Plugin 'scrooloose/nerdcommenter'
 Plugin 'scrooloose/nerdtree'
 Plugin 'sjl/badwolf'
 Plugin 'tpope/vim-characterize'
+Plugin 'tpope/vim-dispatch'
 Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-unimpaired'
@@ -257,7 +258,7 @@ nnoremap ZX :qa<CR>
 nnoremap <leader>b :CtrlPBuffer<cr>
 nnoremap <leader>ps :LoadLocalProjectSpecificSettings<cr>
 
-nnoremap <leader>m :silent make\|redraw!\|cc<CR>
+nnoremap <leader>m :silent Make<cr>
 
 " A command to execute an external command without requiring the user
 " to press Enter to dismiss a prompt.
@@ -265,7 +266,7 @@ command! -nargs=1 Silent
             \ | execute ':silent !'.<q-args>
             \ | execute ':redraw!'
 
-command -nargs=* -bar Silent2 make <args> <bar> cwindow
+command! -nargs=* -bar Silent2 make <args> <bar> cwindow
 
 " Use <leader>o to open in external viewer on Mac.
 if has("mac") || has("macunix")
