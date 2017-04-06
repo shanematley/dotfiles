@@ -229,7 +229,7 @@ vnoremap <silent> # :call VisualSelection('b')<CR>
 " When displaying a target buffer switch to the relevant tab or open in a new
 " tab. Affects such commands as quickfix open and buffering switching commands.
 try
-    set switchbuf=usetab,newtab
+    "set switchbuf=usetab,newtab
     set stal=2
 catch
 endtry
