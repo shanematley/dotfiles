@@ -26,3 +26,16 @@ typeset -A ZSH_HIGHLIGHT_STYLES
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern)
 ZSH_HIGHLIGHT_MAXLENGTH=300
 
+WORDCHARS="${WORDCHARS/\//}" # Remove '/' to make C-W stop on path separators
+
+# no c-s/c-q output freezing
+setopt noflowcontrol
+
+# not just at the end
+setopt completeinword
+
+# use zsh style word splitting
+setopt noshwordsplit
+
+# allow use of comments in interactive code
+setopt interactivecomments
