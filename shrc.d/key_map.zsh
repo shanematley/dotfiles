@@ -8,13 +8,13 @@ bindkey '^x^e' edit-command-line
 autoload -U select-word-style
 select-word-style bash
 
-if [[ $ZSH_VERSION[1] -ge 5 ]] ; then
-    bindkey -M isearch '^R' history-incremental-pattern-search-backward
-    bindkey -M isearch '^S' history-incremental-pattern-search-forward
-fi
+#if [[ $ZSH_VERSION[1] -ge 5 ]] ; then
+    #bindkey -M isearch '^R' history-incremental-pattern-search-backward
+    #bindkey -M isearch '^S' history-incremental-pattern-search-forward
+#fi
 
-bindkey -M vicmd '^R' history-incremental-pattern-search-backward
-bindkey -M vicmd '^S' history-incremental-pattern-search-forward
+#bindkey -M vicmd '^R' history-incremental-pattern-search-backward
+#bindkey -M vicmd '^S' history-incremental-pattern-search-forward
 
 # context help.
 autoload -Uz run-help

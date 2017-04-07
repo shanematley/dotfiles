@@ -2,6 +2,8 @@
 
 bindkey '^R' zaw-history
 bindkey '^X\t' zaw-cdr
+bindkey '^X\t' zaw-cdr
+bindkey '^X;' zaw
 bindkey '^Xa' zaw-searcher
 bindkey '\ec' zaw-cdr
 bindkey '\ea' zaw-searcher
