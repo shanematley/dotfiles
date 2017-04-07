@@ -24,23 +24,23 @@
 				"priority": 10
 			},
 			{
-				"function": "powerline.segments.shell.jobnum",
-				"priority": 20
-			}
-		],
-		"right": [
-			{
-				"function": "powerline.segments.shell.last_pipe_status",
-				"priority": 10
-			},
-			{
 				"function": "powerline.segments.common.vcs.branch",
 				"priority": 40,
 				"args": {
 					"status_colors": true,
 					"ignore_statuses": ["U"]
 				}
+			},
+			{
+				"function": "powerline.segments.shell.jobnum",
+				"priority": 20
+			},
+			{
+				"function": "powerline.segments.shell.last_pipe_status",
+				"priority": 10
 			}
+		],
+		"right": [
 		]
 	}
 }
