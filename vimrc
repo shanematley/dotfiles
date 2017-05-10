@@ -72,6 +72,7 @@ Plugin 'vim-scripts/SelectBuf'
 Plugin 'vim-scripts/a.vim'
 "Plugin 'powerline/powerline', {'rtp' : 'powerline/bindings/vim/'}
 Plugin 'altercation/vim-colors-solarized'
+Plugin 'benmills/vimux'
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'godlygeek/csapprox'
 Plugin 'godlygeek/tabular'
@@ -388,6 +389,12 @@ nnoremap gs :%s//g<Left><Left>
 
 " Find current file in NERDTree
 nnoremap <leader>r :NERDTreeFind<cr>
+
+" Vimux shortcuts
+map <Leader>vl :VimuxRunLastCommand<CR>
+map <Leader>vp :VimuxPromptCommand<CR>
+map <Leader>vi :VimuxInspectRunner<CR>
+map <Leader>vz :VimuxZoomRunner<CR>
 
 "}}}
 
