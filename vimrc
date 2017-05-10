@@ -72,6 +72,7 @@ Plugin 'vim-scripts/SelectBuf'
 Plugin 'vim-scripts/a.vim'
 "Plugin 'powerline/powerline', {'rtp' : 'powerline/bindings/vim/'}
 Plugin 'altercation/vim-colors-solarized'
+Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'godlygeek/csapprox'
 Plugin 'godlygeek/tabular'
 Plugin 'kien/ctrlp.vim'
