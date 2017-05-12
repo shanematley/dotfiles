@@ -4,6 +4,7 @@
 if ! zgen saved; then
     echo "Creating a zgen save"
 
+    zgen load willghatch/zsh-cdr
     # Fish shell-like syntax highlighting
     zgen load zsh-users/zsh-syntax-highlighting
     # Directory listings for zsh with git features
