@@ -5,5 +5,6 @@ function gs() {
     git -c color.status=always outgoing|sed 's/^/  /'
     echo "$(tput bold)$(tput setaf 4)RECENT$(tput sgr0)"
     git --no-pager graph -10
+    echo
 }
 alias gitn="git --no-pager"
