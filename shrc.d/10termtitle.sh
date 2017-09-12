@@ -6,6 +6,10 @@ function termtitle() {
     fi
 }
 
-function panetitle() {
+function panename() {
     echo -en "\033k$@\033\\"
+}
+
+function panetitle() {
+    echo -en "\033]2;$@\033\\"
 }
