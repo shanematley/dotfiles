@@ -30,6 +30,10 @@ hand will be replaced.)
 
 Use -v to install VIM vundle and bundles and -p to install powerline
 
+To change shell, run following and log out/in:
+
+    chsh -s /bin/zsh
+
 Vim on Windows
 =======================
 
