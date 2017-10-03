@@ -62,3 +62,15 @@ reattach-to-user-namespace is not installed. Install this using:
 
     brew install reattach-to-user-namespace
 
+Profiling ZSH
+=============
+
+To time changes to zsh, run the following:
+
+    time zsh -ic exit
+
+To profile, add the following line to the top of `.zshrc` and open a new shell. Then run `zprof|less` to view the profile information.
+
+    zmodload zsh/zprof
+
+
