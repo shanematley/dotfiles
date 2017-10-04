@@ -382,6 +382,7 @@ endif
 inoremap <leader>ds <C-R>=strftime("%Y-%m-%d %T")<CR>
 inoremap <leader>ymd <C-R>=strftime("%Y-%m-%d")<CR>
 inoremap <leader>hms <C-R>=strftime("%T")<CR>
+inoremap <leader>dl <C-R>=strftime("%A, %d %b %Y")<CR>
 
 " Shortcut to perform substitution
 nnoremap gs :%s//g<Left><Left>
