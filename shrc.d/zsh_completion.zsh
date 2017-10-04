@@ -8,7 +8,6 @@ setopt always_to_end
 setopt auto_name_dirs
 
 autoload -U compinit
-compinit -i
 
 # The zsh/complist module offers three extensions to completion listings: the
 # ability to highlight matches in such a list, the ability to scroll through
@@ -36,8 +35,9 @@ zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#) ([0-9a-z-
 zstyle ':completion:*:*:*:*:processes' command "ps -u `whoami` -o pid,user,comm -w -w"
 zstyle ':completion:*:cd:*' tag-order local-directories directory-stack path-directories
 # Use caching so that commands like apt and dpkg complete are useable
-zstyle ':completion::complete:*' use-cache 1
-zstyle ':completion::complete:*' cache-path "/tmp/.zsh_${USER}_cache"
+zstyle ':completion:*' use-cache on
+zstyle ':completion:*' cache-path "/tmp/.zsh_${USER}_cache"
+zstyle ':completion:*' accept-exact '*(N)'
 
 # Don't complete uninteresting users -- Andrey's list
 zstyle ':completion:*:*:*:users' ignored-patterns \
