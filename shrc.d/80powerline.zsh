@@ -1,6 +1,6 @@
 if [[ $(uname -s) == Darwin ]]; then
-    if [[ -f ~/Library/Python/2.7/lib/python/site-packages/powerline/bindings/zsh/powerline.zsh ]]; then
-        . ~/Library/Python/2.7/lib/python/site-packages/powerline/bindings/zsh/powerline.zsh
+    if [[ -f ~/bin/powerline.zsh ]]; then
+        source ~/bin/powerline.zsh
     fi
 else
     PATH="$HOME/.local/bin:$PATH"
