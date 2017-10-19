@@ -205,9 +205,9 @@ fi
 if [[ $INSTALL_OPTION_POWERLINE ]]; then
     section "Installing powerline"
     if [[ $(uname -s) == Darwin ]]; then
-        pip install powerline-status
-        ln -s $(pip show powerline-status|awk '/Location/ { print $2}')/powerline/bindings/zsh/powerline.zsh ~/bin/
-        pip install psutil # For uptime
+        pip install --user powerline-status
+        create_link $(pip show powerline-status|awk '/Location/ { print $2}')/powerline/bindings/zsh/powerline.zsh ~/bin/powerline.zsh
+        pip install --user psutil # For uptime
     else
         pip install --user powerline-status
     fi
