@@ -39,10 +39,12 @@ nnoremap <leader><space> :nohlsearch<cr>
 
 " Plug ------------------------------------------------------------------------- {{{
 call plug#begin()
+Plug 'Chun-Yang/vim-action-ag'
 Plug 'Glench/Vim-Jinja2-Syntax'
 Plug 'altercation/vim-colors-solarized'
 Plug 'benmills/vimux'
 Plug 'ervandew/supertab' " Use tab for insert completion
+Plug 'gabesoft/vim-ags',  { 'on' : ['Ags'] }
 Plug 'gmarik/Vundle.vim'
 Plug 'godlygeek/csapprox'
 Plug 'godlygeek/tabular'
@@ -51,7 +53,6 @@ Plug 'kana/vim-scratch'
 Plug 'kien/ctrlp.vim'
 Plug 'mileszs/ack.vim'
 Plug 'moll/vim-bbye'
-Plug 'rking/ag.vim'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree', { 'on':  ['NERDTreeToggle', 'NERDTreeFind'] }
 Plug 'sjl/badwolf'
