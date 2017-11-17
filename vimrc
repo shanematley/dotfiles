@@ -49,6 +49,7 @@ Plug 'gmarik/Vundle.vim'
 Plug 'godlygeek/csapprox'
 Plug 'godlygeek/tabular'
 Plug 'https://shanematley@bitbucket.org/shanematley/cppguards.git'
+Plug 'itchyny/lightline.vim'
 Plug 'kana/vim-scratch'
 Plug 'kien/ctrlp.vim'
 Plug 'mileszs/ack.vim'
@@ -72,6 +73,91 @@ Plug 'yegappan/grep'
 call plug#end()
 "}}}
 
+" Plugin configuration: lightline {{{
+let g:lightline = {
+      \ 'colorscheme': 'Dracula',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'filename' ], ['ctrlpmark', 'agsstats'] ],
+      \   'right': [ [ 'syntastic', 'lineinfo' ], ['percent'], [ 'fileformat', 'fileencoding', 'filetype' ] ]
+      \ },
+      \ 'component_function': {
+      \   'fugitive': 'StatusFugitive',
+      \   'filename': 'StatusFileName',
+      \   'mode': 'StatusFileMode',
+      \   'ctrlpmark': 'StatusCtrlPMark',
+      \   'agsstats': 'StatusAgsStats',
+      \ },
+      \ 'component_expand': {
+      \   'syntastic': 'SyntasticStatuslineFlag',
+      \ },
+      \ 'component_type': {
+      \   'syntastic': 'error',
+      \ },
+      \ 'separator': { 'left': "\ue0b0", 'right': "\ue0b2" },
+      \ 'subseparator': { 'left': "\ue0b1", 'right': "\ue0b3" }
+      \ }
+let g:lightline.enable = { 'statusline': 1, 'tabline': 0 }
+
+function! StatusModified()
+  return &ft =~ 'help' ? '' : &modified ? '+' : &modifiable ? '' : '-'
+endfunction
+
+function! StatusReadonly()
+  return &ft !~? 'help' && &readonly ? "\ue0a2" : ''
+endfunction
+
+function! StatusFileName()
+  let fname = expand('%:t')
+  return fname == 'ControlP' ? g:lightline.ctrlp_item :
+        \ fname == '__Tagbar__' ? g:lightline.fname :
+        \ fname == 'search-results.agsv' ? split(ags#get_status_string())[2] :
+        \ fname =~ '__Gundo\|NERD_tree' ? '' :
+        \ ('' != StatusReadonly() ? StatusReadonly() . ' ' : '') .
+        \ ('' != fname ? fname : '[No Name]') .
+        \ ('' != StatusModified() ? ' ' . StatusModified() : '')
+endfunction
+
+function! StatusFugitive()
+  try
+    if expand('%:t') !~? 'Tagbar\|Gundo\|NERD\|search-results.agsv' && &ft !~? 'vimfiler' && exists('*fugitive#head')
+      let mark = "\ue0a0 "  " edit here for cool mark
+      let _ = fugitive#head()
+      return strlen(_) ? mark._ : ''
+    endif
+  catch
+  endtry
+  return ''
+endfunction
+
+function! StatusFileMode()
+  let fname = expand('%:t')
+  return fname == '__Tagbar__' ? 'Tagbar' :
+        \ fname == 'ControlP' ? 'CtrlP' :
+        \ fname == '__Gundo__' ? 'Gundo' :
+        \ fname == 'search-results.agsv' ? 'AgS' :
+        \ fname == '__Gundo_Preview__' ? 'Gundo Preview' :
+        \ fname =~ 'NERD_tree' ? 'NERDTree' : lightline#mode()
+endfunction
+
+function! StatusCtrlPMark()
+  if expand('%:t') =~ 'ControlP'
+    call lightline#link('iR'[g:lightline.ctrlp_regex])
+    return lightline#concatenate([g:lightline.ctrlp_prev, g:lightline.ctrlp_item
+          \ , g:lightline.ctrlp_next], 0)
+  else
+    return ''
+  endif
+endfunction
+
+function! StatusAgsStats()
+  if expand('%:t') =~ 'search-results.agsv'
+    return join(split(ags#get_status_string())[0:1], " " . g:lightline.subseparator.left . " ")
+  else
+    return ''
+  endif
+endfunction
+"}}}
+
 " YouCompleteMe ---------------------------------------------------------------- {{{
 if filereadable(glob(b:local_vim_files . "ycmconf.py"))
     let g:ycm_global_ycm_extra_conf = b:local_vim_files . 'ycmconf.py'
@@ -86,23 +172,31 @@ endif
 set wildignore+=*.o,*.obj,*.git,*.bzr,*.pyc,*~,*/build/*
 "}}}
 
-" Ctrl-P ----------------------------------------------------------------------- {{{
+" Plugin configuration: ctrlp.vim {{{
 let g:ctrlp_map='<leader>t'
-let g:ctrlp_max_files=0
-"if has ("unix")
-"    let g:ctrlp_user_command = {
-"      \ 'types': {
-"        \ 1: ['.git/', 'cd %s && git ls-files'],
-"        \ 2: ['.hg/', 'hg --cwd %s locate -I .'],
-"        \ },
-"      \ 'fallback': 'find %s -type f'
-"      \ }
-""            \ 'fallback': 'find %s -type f'
-"endif
+let g:ctrlp_max_files=20000
+let g:ctrlp_max_depth=8
 let g:ctrlp_custom_ignore = {
             \ 'dir': '\v[\/](\.(git|hg|svn)|venv|tmp)$',
             \ 'file': '\v\.(exe|so|dll|pyc|class|jar|java|xdc|tar.gz)$'
             \ }
+
+let g:ctrlp_status_func = {
+  \ 'main': 'CtrlPStatusFunc_1',
+  \ 'prog': 'CtrlPStatusFunc_2',
+  \ }
+
+function! CtrlPStatusFunc_1(focus, byfname, regex, prev, item, next, marked)
+  let g:lightline.ctrlp_regex = a:regex
+  let g:lightline.ctrlp_prev = a:prev
+  let g:lightline.ctrlp_item = a:item
+  let g:lightline.ctrlp_next = a:next
+  return lightline#statusline(0)
+endfunction
+
+function! CtrlPStatusFunc_2(str)
+  return lightline#statusline(0)
+endfunction
 
 " The following permits deletion of buffers
 let g:ctrlp_buffer_func = { 'enter': 'MyCtrlPMappings' }
@@ -116,10 +210,6 @@ func! s:DeleteBuffer()
     exec "bd" bufid
     exec "norm \<F5>"
 endfunc
-
-" If using Silver Searcher (ag)
-" let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
-
 "}}}
 
 " VIM User Interface ----------------------------------------------------------- {{{
