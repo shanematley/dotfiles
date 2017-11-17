@@ -32,7 +32,7 @@ USAGE
 OPTIONS
 
     -h  Show this help message
-    -v  Install VIM vundle and bundles
+    -v  Install VIM plugins
     -p  Install powerline
 
 EOF
@@ -57,7 +57,7 @@ Actions to be taken:
 EOF
 for f in "${FILES[@]}"; do echo "    $f"; done
 
-[[ $INSTALL_OPTION_VIM ]] && echo -e "\n * VIM vundle and bundles will be installed."; 
+[[ $INSTALL_OPTION_VIM ]] && echo -e "\n * VIM plugins will be installed."; 
 [[ $INSTALL_OPTION_POWERLINE ]] && echo -e "\n * Powerline will be installed."; 
 echo
 
@@ -183,22 +183,23 @@ else
 fi
 
 
-# Offer to install VIM bundles
+# Offer to install VIM plugins
 if [[ $INSTALL_OPTION_VIM ]]; then
-    section "Installing Vundle for VIM"
+    section "Installing plugins for vim"
 
     [[ ! -d ~/.vim ]] && fail "./vim does not exist. Aborting"
-    [[ ! -d ~/.vim/bundle ]] && mkdir ~/.vim/bundle
-    if [[ ! -d ~/.vim/bundle/Vundle.vim ]]; then
-        git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim && success "Vundle installed"
+    if [[ ! -f ~/.vim/autoload/plug.vim ]]; then
+        curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
     else
-        info "Skipping cloning of Vundle. Already present and will upgrade itself."
+        vim +PlugUpgrade +qall
+        info "Upgraded Plug."
     fi
-    section "Installing Vundle bundles"
-    if vim +PluginInstall +qall; then
-        success "Vundble bundles installed/upgraded"
+
+    section "Installing Plug plugins"
+    if vim +PlugInstall +qall; then
+        success "Plug bundles installed/upgraded"
     else
-        fail "An error occurred while installing Vundle bundles"
+        fail "An error occurred while installing Plug bundles"
     fi
 fi
 

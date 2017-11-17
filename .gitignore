@@ -4,5 +4,7 @@ vim/doc/tabs
 vim/local/*
 vim/.netrwhist
 vim/spell
+vim/autoload/plug.vim
+vim/plugged
 tags
 shrc.d/local/*

@@ -1,6 +1,5 @@
 " Extensibility points
-" There are two files specifically looked for in b:local_vim_files:
-" * vundle.vimrc -- Add any required Vundle bundles in here
+" There is one file specifically looked for in b:local_vim_files:
 " * ycmconf.py      -- Configuration for YouCompleteMe. (Also requires the
 "                      YouCompleteMe plugin to be added in the first place
 "                      by adding the bundle to vundle.vimrc)
@@ -38,66 +37,38 @@ nnoremap <leader><space> :nohlsearch<cr>
 
 "}}}
 
-" Vundle ----------------------------------------------------------------------- {{{
-filetype off
-
-if has("gui_win32") || has("gui_win32s")
-    " Add path for VIM files under dotfiles, e.g. ftplugin
-    let s:dotfiles_path=escape(expand('<sfile>:p:h'), '\,').'/vim'
-    let &runtimepath.=','.s:dotfiles_path
-    " Add a separate path for Vundle as it must go under
-    " %USERPROFILE%/vimfiles/bundle. I'm not 100% sure why, but every attempt
-    " to get it working under the dotfiles directory resulted in this git repo
-    " being overwritten.
-    set runtimepath+=~/vimfiles/bundle/Vundle.vim/
-    let path='~/vimfiles/bundle'
-    call vundle#begin(path)
-else
-    set rtp+=~/.vim/bundle/Vundle.vim
-    call vundle#begin()
-endif
-
-Plugin 'gmarik/Vundle.vim'
-if filereadable(glob(b:local_vim_files . "vundle.vimrc"))
-    " Put "Bundle 'Valloric/YouCompleteMe'" in the following if desired:
-    execute 'source' b:local_vim_files . "vundle.vimrc"
-endif
-Plugin 'kana/vim-scratch'
-" Use tab for insert completion
-Plugin 'ervandew/supertab'
-Plugin 'vim-scripts/genutils'
-" F3 displays open buffers + deletion capability
-Plugin 'vim-scripts/SelectBuf'
-" Switch header/source with :A and <leader>-s/S
-Plugin 'vim-scripts/a.vim'
-"Plugin 'powerline/powerline', {'rtp' : 'powerline/bindings/vim/'}
-Plugin 'altercation/vim-colors-solarized'
-Plugin 'benmills/vimux'
-Plugin 'godlygeek/csapprox'
-Plugin 'godlygeek/tabular'
-Plugin 'kien/ctrlp.vim'
-Plugin 'mileszs/ack.vim'
-Plugin 'moll/vim-bbye.git'
-Plugin 'rking/ag.vim'
-Plugin 'scrooloose/nerdcommenter'
-Plugin 'scrooloose/nerdtree'
-Plugin 'sjl/badwolf'
-Plugin 'tpope/vim-characterize'
-Plugin 'tpope/vim-abolish'
-Plugin 'tpope/vim-dispatch'
-Plugin 'tpope/vim-repeat'
-Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-unimpaired'
-Plugin 'tpope/vim-fugitive'
-" Close previous tag with C--
-Plugin 'vim-scripts/closetag.vim'
-Plugin 'yegappan/grep'
-Plugin 'sjl/gundo.vim'
-Plugin 'https://shanematley@bitbucket.org/shanematley/cppguards.git'
-Plugin 'Glench/Vim-Jinja2-Syntax'
-
-call vundle#end()
-filetype plugin indent on
+" Plug ------------------------------------------------------------------------- {{{
+call plug#begin()
+Plug 'Glench/Vim-Jinja2-Syntax'
+Plug 'altercation/vim-colors-solarized'
+Plug 'benmills/vimux'
+Plug 'ervandew/supertab' " Use tab for insert completion
+Plug 'gmarik/Vundle.vim'
+Plug 'godlygeek/csapprox'
+Plug 'godlygeek/tabular'
+Plug 'https://shanematley@bitbucket.org/shanematley/cppguards.git'
+Plug 'kana/vim-scratch'
+Plug 'kien/ctrlp.vim'
+Plug 'mileszs/ack.vim'
+Plug 'moll/vim-bbye'
+Plug 'rking/ag.vim'
+Plug 'scrooloose/nerdcommenter'
+Plug 'scrooloose/nerdtree', { 'on':  ['NERDTreeToggle', 'NERDTreeFind'] }
+Plug 'sjl/badwolf'
+Plug 'sjl/gundo.vim'
+Plug 'tpope/vim-abolish'
+Plug 'tpope/vim-characterize'
+Plug 'tpope/vim-dispatch', { 'on' : ['Make', 'Start', 'Dispatch', 'FocusDispatch', 'Copen'] }
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-unimpaired'
+Plug 'vim-scripts/SelectBuf' " F3 displays open buffers + deletion capability
+Plug 'vim-scripts/a.vim' " Switch header/source with :A and <leader>-s/S
+Plug 'vim-scripts/closetag.vim' " Close previous tag with C--
+Plug 'vim-scripts/genutils'
+Plug 'yegappan/grep'
+call plug#end()
 "}}}
 
 " YouCompleteMe ---------------------------------------------------------------- {{{
