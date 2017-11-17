@@ -52,6 +52,7 @@ Plug 'https://shanematley@bitbucket.org/shanematley/cppguards.git'
 Plug 'itchyny/lightline.vim'
 Plug 'kana/vim-scratch'
 Plug 'kien/ctrlp.vim'
+Plug 'majutsushi/tagbar', { 'on' : 'TagbarOpenAutoClose' }
 Plug 'mileszs/ack.vim'
 Plug 'moll/vim-bbye'
 Plug 'scrooloose/nerdcommenter'
@@ -155,6 +156,30 @@ function! StatusAgsStats()
   else
     return ''
   endif
+endfunction
+"}}}
+" Plugin configuration: tagbar {{{
+nnoremap <silent> <F8> :TagbarOpenAutoClose<CR>
+autocmd FileType tagbar nnoremap <buffer> <silent> <ESC> <ESC>:TagbarClose<CR>
+let g:tagbar_status_func = 'TagbarStatusFunc'
+let g:tagbar_type_rst = {
+    \ 'ctagstype': 'rst',
+    \ 'ctagsbin' : '/usr/bin/rst2ctags',
+    \ 'ctagsargs' : '-f - --sort=yes',
+    \ 'kinds' : [
+        \ 's:sections',
+        \ 'i:images'
+    \ ],
+    \ 'sro' : '|',
+    \ 'kind2scope' : {
+        \ 's' : 'section',
+    \ },
+    \ 'sort': 0,
+\ }
+
+function! TagbarStatusFunc(current, sort, fname, ...) abort
+    let g:lightline.fname = a:fname
+  return lightline#statusline(0)
 endfunction
 "}}}
 
