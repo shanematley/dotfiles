@@ -74,6 +74,7 @@ Plug 'vim-scripts/a.vim' " Switch header/source with :A and <leader>-s/S
 Plug 'vim-scripts/closetag.vim' " Close previous tag with C--
 Plug 'vim-scripts/genutils'
 Plug 'yegappan/grep'
+Plug 'xuhdev/SingleCompile', { 'on' : [ 'SCChooseCompiler',     'SCCompile',            'SCCompileRun',         'SCCompileRunAsync', 'SCChooseInterpreter',  'SCCompileAF',          'SCCompileRunAF',       'SCCompileRunAsyncAF' ] }
 call plug#end()
 "}}}
 
@@ -206,6 +207,18 @@ function! ViewASM(file, gccargs)
     goto 1
 endfunction
 command! -nargs=* ViewASM call ViewASM(expand('%'), <q-args>)
+"}}}
+"{{{ Plugin configuration: SingleCompile
+function! SingleCompileGCC()
+    let l:gcc=sort(glob(exepath("g++") . "*", 1, 1))[-1]
+    call SingleCompile#SetCompilerTemplate('cpp', l:gcc, 'GNU C++1y Compiler', l:gcc, '-std=c++1z -pthread -Wall -Wextra -Weffc++ -isystem. -x c++ -o "$(FILE_TITLE)$"', '"./$(FILE_TITLE)$"')
+    call SingleCompile#SetOutfile('cpp', l:gcc, '"$(FILE_TITLE)$"')
+    call SingleCompile#ChooseCompiler('cpp', l:gcc)
+endfunction
+autocmd! User SingleCompile call SingleCompileGCC()
+
+nnoremap <silent> <F9> :SCCompile<cr>:clist<cr>
+nnoremap <silent> <F10> :SCCompileRun<cr>:clist<cr>
 "}}}
 
 " YouCompleteMe ---------------------------------------------------------------- {{{
@@ -805,18 +818,6 @@ call s:LoadProjectSpecificSettings()
 nnoremap <leader>n :NERDTreeToggle<cr>
 let NERDTreeIgnore=['\.pyc$', '\~$']
 "}}}
-
-" Note: nnoremap => n (Works in normal mode) nore (non-recursive, vs re for recursive) map
-"nnoremap <silent> <F5> :Bgrep<CR>
-nnoremap <F9> :vertical wincmd f<CR>
-" F8 is tag list
-"nnoremap <F5> :cn<cr>
-nnoremap <F6> :cp<cr>
-"The following maps to Shift-F5 when using putty in Xterm R6 mode. Used C-V to
-"insert character.
-"nnoremap [28~ :cp<cr>
-"nnoremap <F4> :cr<cr>
-" for putty
 
 if exists("g:btm_rainbow_color") && g:btm_rainbow_color
    call rainbow_parenthsis#LoadSquare ()
