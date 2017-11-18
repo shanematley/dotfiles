@@ -59,6 +59,7 @@ Plug 'majutsushi/tagbar', { 'on' : 'TagbarOpenAutoClose' }
 Plug 'mileszs/ack.vim'
 Plug 'moll/vim-bbye'
 Plug 'rhysd/vim-clang-format', {'on': 'ClangFormat'}
+Plug 'richq/cmakecompletion-vim', {'for' : 'cmake' } " C-X C-O for completion of cmake;  K mapping for help
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree', { 'on':  ['NERDTreeToggle', 'NERDTreeFind'] }
 Plug 'sjl/badwolf'
