@@ -8,6 +8,8 @@
 
 let b:local_vim_files = "~/.vim/local/"
 
+let mapleader = ","
+
 " General ---------------------------------------------------------------------- {{{
 set history=1000
 set nocompatible
@@ -39,15 +41,12 @@ nnoremap <leader><space> :nohlsearch<cr>
 
 " Plug ------------------------------------------------------------------------- {{{
 call plug#begin()
-Plug 'Chun-Yang/vim-action-ag'
-Plug 'Glench/Vim-Jinja2-Syntax'
-Plug 'NLKNguyen/papercolor-theme'
-Plug 'PeterRincker/vim-argumentative'
-Plug 'Shirk/vim-gas', { 'for' : 'gas' }
 Plug 'altercation/vim-colors-solarized'
 Plug 'benmills/vimux'
+Plug 'Chun-Yang/vim-action-ag'
 Plug 'ervandew/supertab' " Use tab for insert completion
 Plug 'gabesoft/vim-ags',  { 'on' : ['Ags'] }
+Plug 'Glench/Vim-Jinja2-Syntax'
 Plug 'gmarik/Vundle.vim'
 Plug 'godlygeek/csapprox'
 Plug 'godlygeek/tabular'
@@ -60,10 +59,13 @@ Plug 'kien/ctrlp.vim'
 Plug 'majutsushi/tagbar', { 'on' : 'TagbarOpenAutoClose' }
 Plug 'mileszs/ack.vim'
 Plug 'moll/vim-bbye'
+Plug 'NLKNguyen/papercolor-theme'
+Plug 'PeterRincker/vim-argumentative'
 Plug 'rhysd/vim-clang-format', {'on': 'ClangFormat'}
 Plug 'richq/cmakecompletion-vim', {'for' : 'cmake' } " C-X C-O for completion of cmake;  K mapping for help
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree', { 'on':  ['NERDTreeToggle', 'NERDTreeFind'] }
+Plug 'Shirk/vim-gas', { 'for' : 'gas' }
 Plug 'sjbach/lusty' ", { 'on' : ['LustyJuggler', 'LustyBufferExplorer', 'LustyFilesystemExplorerFromHere'] }
 Plug 'sjl/badwolf'
 Plug 'sjl/gundo.vim'
@@ -76,13 +78,13 @@ Plug 'tpope/vim-projectionist'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
-Plug 'vim-scripts/SelectBuf' " F3 displays open buffers + deletion capability
 Plug 'vim-scripts/a.vim' " Switch header/source with :A and <leader>-s/S
 Plug 'vim-scripts/closetag.vim' " Close previous tag with C--
 Plug 'vim-scripts/genutils'
+Plug 'vim-scripts/SelectBuf' " F3 displays open buffers + deletion capability
 Plug 'vim-scripts/vim-indent-object'
-Plug 'yegappan/grep'
 Plug 'xuhdev/SingleCompile', { 'on' : [ 'SCChooseCompiler',     'SCCompile',            'SCCompileRun',         'SCCompileRunAsync', 'SCChooseInterpreter',  'SCCompileAF',          'SCCompileRunAF',       'SCCompileRunAsyncAF' ] }
+Plug 'yegappan/grep'
 call plug#end()
 "}}}
 
@@ -255,21 +257,6 @@ let g:sneak#streak = 1
 let g:LustyJugglerShowKeys = 'a'
 let g:LustyJugglerAltTabMode = 1
 "}}}
-
-" YouCompleteMe ---------------------------------------------------------------- {{{
-if filereadable(glob(b:local_vim_files . "ycmconf.py"))
-    let g:ycm_global_ycm_extra_conf = b:local_vim_files . 'ycmconf.py'
-endif
-let s:uname = system('uname')
-if s:uname == "SunOs\n" || v:version < 703 || (v:version == 703 && !has('patch584'))
-    set runtimepath-=~/.vim/bundle/YouCompleteMe
-endif
-"}}}
-
-" Ignored files ---------------------------------------------------------------- {{{
-set wildignore+=*.o,*.obj,*.git,*.bzr,*.pyc,*~,*/build/*
-"}}}
-
 " Plugin configuration: ctrlp.vim {{{
 let g:ctrlp_map='<leader>t'
 let g:ctrlp_max_files=20000
@@ -308,6 +295,60 @@ func! s:DeleteBuffer()
     exec "bd" bufid
     exec "norm \<F5>"
 endfunc
+"}}}
+" Plugin configuration: Tabularize {{{
+if exists(":Tabularize")
+    " Note if reusing this in a straight command, remove the second '\' before
+    " the pipe.
+    "nnoremap <Leader>ac :Tabularize /\("[^"]*"\\|[^",]*\),\zs/l0l1<CR>
+    " Line up on arguments
+    nnoremap <Leader>ac :Tabularize /\v("[^"]*"\|[^",]*),\zs/l0l1<CR>
+    vnoremap <Leader>ac :Tabularize /\("[^"]*"\\|[^",]*\),\zs/l0l1<CR>
+    " Line up on method variables (underscores at beginning)
+    nnoremap <Leader>am :Tabularize /\<_\ze.*/l1l0<CR>
+    vnoremap <Leader>am :Tabularize /\<_\ze.*/l1l0<CR>
+    " Line up on ...???
+    nnoremap <Leader>ap :Tabularize /\(^[^(]*(\zs.*$\\|^\s*\zs[^(]*$\)/l0l0<CR>
+    vnoremap <Leader>ap :Tabularize /\(^[^(]*(\zs.*$\\|^\s*\zs[^(]*$\)/l0l0<CR>
+    " Line up typedefs
+    vnoremap <Leader>at :Tabularize /.\{-}\zs[^ ]*$/l1l0<CR>
+    nnoremap <Leader>at :Tabularize /.\{-}\zs[^ ]*$/l1l0<CR>
+    " Line up on variable name and =
+    " Note: \h\w+ is any valid c++ identifier
+    vnoremap <Leader>av :Tabularize /\v(\=\|\h\w+\ze\s*\=)/<CR>
+    nnoremap <Leader>av :Tabularize /\v(\=\|\h\w+\ze\s*\=)/<CR>
+    " Line up on open brace '{'
+    vnoremap <Leader>a[ :Tabularize /{.*/<CR>
+    nnoremap <Leader>a[ :Tabularize /{.*/<CR>
+endif
+"s/"\([^"]\+\)"/\=substitute(submatch(0), ',', '__;__', 'g')/g | gv | Tabular /,\zs
+
+" Format arguments with apace after comma
+nnoremap <Leader>f, :s/,\ze[^ ]/, /g<CR>
+vnoremap <Leader>f, :s/,\ze[^ ]/, /g<CR>
+
+"}}}
+" Plugin configuration: gundo {{{
+let g:gundo_preview_bottom=1
+"}}}
+" Plugin configuratino: NERDTree {{{
+nnoremap <leader>r :NERDTreeFind<cr>
+nnoremap <leader>n :NERDTreeToggle<cr>
+let NERDTreeIgnore=['\.pyc$', '\~$']
+"}}}
+
+" YouCompleteMe ---------------------------------------------------------------- {{{
+if filereadable(glob(b:local_vim_files . "ycmconf.py"))
+    let g:ycm_global_ycm_extra_conf = b:local_vim_files . 'ycmconf.py'
+endif
+let s:uname = system('uname')
+if s:uname == "SunOs\n" || v:version < 703 || (v:version == 703 && !has('patch584'))
+    set runtimepath-=~/.vim/bundle/YouCompleteMe
+endif
+"}}}
+
+" Ignored files ---------------------------------------------------------------- {{{
+set wildignore+=*.o,*.obj,*.git,*.bzr,*.pyc,*~,*/build/*
 "}}}
 
 " VIM User Interface ----------------------------------------------------------- {{{
@@ -414,7 +455,6 @@ com! LoadLocalProjectSpecificSettings call s:LoadProjectSpecificSettings()
 "}}}
 
 " Shortcut Keys, Mappings ------------------------------------------------------ {{{
-let mapleader = ","
 
 nnoremap ZX :qa<CR>
 nnoremap <leader>b :CtrlPBuffer<cr>
@@ -546,9 +586,6 @@ inoremap <leader>dl <C-R>=strftime("%A, %d %b %Y")<CR>
 
 " Shortcut to perform substitution
 nnoremap gs :%s//g<Left><Left>
-
-" Find current file in NERDTree
-nnoremap <leader>r :NERDTreeFind<cr>
 
 " Vimux shortcuts
 map <Leader>vl :VimuxRunLastCommand<CR>
@@ -756,39 +793,6 @@ endfunction
 
 "}}}
 
-" Tabularize ------------------------------------------------------------- {{{
-if exists(":Tabularize")
-    " Note if reusing this in a straight command, remove the second '\' before
-    " the pipe.
-    "nnoremap <Leader>ac :Tabularize /\("[^"]*"\\|[^",]*\),\zs/l0l1<CR>
-    " Line up on arguments
-    nnoremap <Leader>ac :Tabularize /\v("[^"]*"\|[^",]*),\zs/l0l1<CR>
-    vnoremap <Leader>ac :Tabularize /\("[^"]*"\\|[^",]*\),\zs/l0l1<CR>
-    " Line up on method variables (underscores at beginning)
-    nnoremap <Leader>am :Tabularize /\<_\ze.*/l1l0<CR>
-    vnoremap <Leader>am :Tabularize /\<_\ze.*/l1l0<CR>
-    " Line up on ...???
-    nnoremap <Leader>ap :Tabularize /\(^[^(]*(\zs.*$\\|^\s*\zs[^(]*$\)/l0l0<CR>
-    vnoremap <Leader>ap :Tabularize /\(^[^(]*(\zs.*$\\|^\s*\zs[^(]*$\)/l0l0<CR>
-    " Line up typedefs
-    vnoremap <Leader>at :Tabularize /.\{-}\zs[^ ]*$/l1l0<CR>
-    nnoremap <Leader>at :Tabularize /.\{-}\zs[^ ]*$/l1l0<CR>
-    " Line up on variable name and =
-    " Note: \h\w+ is any valid c++ identifier
-    vnoremap <Leader>av :Tabularize /\v(\=\|\h\w+\ze\s*\=)/<CR>
-    nnoremap <Leader>av :Tabularize /\v(\=\|\h\w+\ze\s*\=)/<CR>
-    " Line up on open brace '{'
-    vnoremap <Leader>a[ :Tabularize /{.*/<CR>
-    nnoremap <Leader>a[ :Tabularize /{.*/<CR>
-endif
-"s/"\([^"]\+\)"/\=substitute(submatch(0), ',', '__;__', 'g')/g | gv | Tabular /,\zs
-
-" Format arguments with apace after comma
-nnoremap <Leader>f, :s/,\ze[^ ]/, /g<CR>
-vnoremap <Leader>f, :s/,\ze[^ ]/, /g<CR>
-
-"}}}
-
 " Clang Format ----------------------------------------------------------- {{{
 " Assume clang-format.py lives in ~/bin
 
@@ -825,24 +829,11 @@ nmap <leader>cc :call ClangCheck()<CR><CR>
 
 "}}}
 
-" The Silver Searcher ---------------------------------------------------- {{{
-nnoremap <leader>a :Ag 
-"}}}
-
-" Gundo ------------------------------------------------------------------ {{{
-let g:gundo_preview_bottom=1
-"}}}
-
 " Load any local .vim.local files
 if filereadable(glob("~/.vimrc.local"))
     source ~/.vimrc.local
 endif
 call s:LoadProjectSpecificSettings()
-
-" NERDTree --------------------------------------------------------------- {{{
-nnoremap <leader>n :NERDTreeToggle<cr>
-let NERDTreeIgnore=['\.pyc$', '\~$']
-"}}}
 
 if exists("g:btm_rainbow_color") && g:btm_rainbow_color
    call rainbow_parenthsis#LoadSquare ()
@@ -914,10 +905,6 @@ function! SpacesToColumn(count)
 endfunction
 "com! -nargs=1 SpacesToColumn exe "norm! 100A<Space><Esc>d<args><Bar>"
 nnoremap <leader>f<space> :<C-U>call SpacesToColumn(v:count)<CR>
-
-" Wrap word in const-ref
-nnoremap <leader>cr viwbviconst<space><esc>ea&<esc>
-nnoremap <leader>ncr viwbvdbf&x
 
 " Expand public/private/protected
 iabbrev pub: public:
