@@ -63,6 +63,7 @@ Plug 'rhysd/vim-clang-format', {'on': 'ClangFormat'}
 Plug 'richq/cmakecompletion-vim', {'for' : 'cmake' } " C-X C-O for completion of cmake;  K mapping for help
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree', { 'on':  ['NERDTreeToggle', 'NERDTreeFind'] }
+Plug 'sjbach/lusty' ", { 'on' : ['LustyJuggler', 'LustyBufferExplorer', 'LustyFilesystemExplorerFromHere'] }
 Plug 'sjl/badwolf'
 Plug 'sjl/gundo.vim'
 Plug 'tommcdo/vim-exchange'
@@ -247,6 +248,10 @@ let g:PaperColor_Theme_Options = {
 "}}}
 " Plugin configuration: vim-sneak {{{
 let g:sneak#streak = 1
+"}}}
+" Plugin configuration: lusty {{{
+let g:LustyJugglerShowKeys = 'a'
+let g:LustyJugglerAltTabMode = 1
 "}}}
 
 " YouCompleteMe ---------------------------------------------------------------- {{{
@@ -949,8 +954,8 @@ function! NsToString(ns)
     return strftime("%Y-%m-%d %H:%M:%S", str2nr(m[1])).'.'.m[2]
 endfunction
 
-nnoremap <leader>l yiwciw<C-r>=NsToString('<C-r>"')<cr><esc>
-nnoremap <leader>L yiwea (<C-r>=NsToString('<C-r>"')<cr>)<esc>
+"nnoremap <leader>l yiwciw<C-r>=NsToString('<C-r>"')<cr><esc>
+"nnoremap <leader>L yiwea (<C-r>=NsToString('<C-r>"')<cr>)<esc>
 
 
 " vim:fdm=marker
