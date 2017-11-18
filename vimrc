@@ -53,6 +53,7 @@ Plug 'godlygeek/csapprox'
 Plug 'godlygeek/tabular'
 Plug 'https://shanematley@bitbucket.org/shanematley/cppguards.git'
 Plug 'itchyny/lightline.vim'
+Plug 'justinmk/vim-sneak'
 Plug 'kana/vim-scratch'
 Plug 'kien/ctrlp.vim'
 Plug 'majutsushi/tagbar', { 'on' : 'TagbarOpenAutoClose' }
@@ -243,6 +244,9 @@ let g:PaperColor_Theme_Options = {
   \     }
   \   }
   \ }
+"}}}
+" Plugin configuration: vim-sneak {{{
+let g:sneak#streak = 1
 "}}}
 
 " YouCompleteMe ---------------------------------------------------------------- {{{
