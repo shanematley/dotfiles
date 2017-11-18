@@ -41,6 +41,7 @@ nnoremap <leader><space> :nohlsearch<cr>
 call plug#begin()
 Plug 'Chun-Yang/vim-action-ag'
 Plug 'Glench/Vim-Jinja2-Syntax'
+Plug 'NLKNguyen/papercolor-theme'
 Plug 'Shirk/vim-gas', { 'for' : 'gas' }
 Plug 'altercation/vim-colors-solarized'
 Plug 'benmills/vimux'
@@ -225,6 +226,21 @@ nnoremap <silent> <F10> :SCCompileRun<cr>:clist<cr>
 let g:clang_format#code_style='google'
 autocmd FileType c,cpp nnoremap <buffer> gR :.ClangFormat<CR>
 autocmd FileType c,cpp vnoremap <buffer> gR :ClangFormat<CR>
+"}}}
+" Plugin configuration: papercolor-theme {{{
+let g:PaperColor_Theme_Options = {
+  \   'language': {
+  \     'python': {
+  \       'highlight_builtins' : 1
+  \     },
+  \     'cpp': {
+  \       'highlight_standard_library': 1
+  \     },
+  \     'c': {
+  \       'highlight_builtins' : 1
+  \     }
+  \   }
+  \ }
 "}}}
 
 " YouCompleteMe ---------------------------------------------------------------- {{{
@@ -645,20 +661,10 @@ syntax enable
 if has("gui_running")
     set t_Co=256
     set guitablabel=%M\ %t
-"else
-    "let g:solarized_termcolors=256
 endif
 
-colorscheme badwolf
-"try
-    "" Must set background to dark first
-    "set background=dark
-    "colorscheme solarized
-"catch /^Vim\%((\a\+)\)\=:E185/
-    "" Unable to load solarized. Haven't run Vundle? Use desert in the
-    "" meantime.
-    "colorscheme desert
-"endtry
+set background=dark
+colorscheme PaperColor
 
 call togglebg#map("<F5>")
 hi MatchParen ctermbg=blue guibg=lightblue
