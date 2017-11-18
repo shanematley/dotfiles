@@ -80,6 +80,7 @@ Plug 'vim-scripts/SelectBuf' " F3 displays open buffers + deletion capability
 Plug 'vim-scripts/a.vim' " Switch header/source with :A and <leader>-s/S
 Plug 'vim-scripts/closetag.vim' " Close previous tag with C--
 Plug 'vim-scripts/genutils'
+Plug 'vim-scripts/vim-indent-object'
 Plug 'yegappan/grep'
 Plug 'xuhdev/SingleCompile', { 'on' : [ 'SCChooseCompiler',     'SCCompile',            'SCCompileRun',         'SCCompileRunAsync', 'SCChooseInterpreter',  'SCCompileAF',          'SCCompileRunAF',       'SCCompileRunAsyncAF' ] }
 call plug#end()
