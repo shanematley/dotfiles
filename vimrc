@@ -56,6 +56,7 @@ Plug 'kien/ctrlp.vim'
 Plug 'majutsushi/tagbar', { 'on' : 'TagbarOpenAutoClose' }
 Plug 'mileszs/ack.vim'
 Plug 'moll/vim-bbye'
+Plug 'rhysd/vim-clang-format', {'on': 'ClangFormat'}
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree', { 'on':  ['NERDTreeToggle', 'NERDTreeFind'] }
 Plug 'sjl/badwolf'
@@ -219,6 +220,11 @@ autocmd! User SingleCompile call SingleCompileGCC()
 
 nnoremap <silent> <F9> :SCCompile<cr>:clist<cr>
 nnoremap <silent> <F10> :SCCompileRun<cr>:clist<cr>
+"}}}
+" Plugin configuration: vim-clang-format {{{
+let g:clang_format#code_style='google'
+autocmd FileType c,cpp nnoremap <buffer> gR :.ClangFormat<CR>
+autocmd FileType c,cpp vnoremap <buffer> gR :ClangFormat<CR>
 "}}}
 
 " YouCompleteMe ---------------------------------------------------------------- {{{
