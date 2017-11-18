@@ -42,6 +42,7 @@ call plug#begin()
 Plug 'Chun-Yang/vim-action-ag'
 Plug 'Glench/Vim-Jinja2-Syntax'
 Plug 'NLKNguyen/papercolor-theme'
+Plug 'PeterRincker/vim-argumentative'
 Plug 'Shirk/vim-gas', { 'for' : 'gas' }
 Plug 'altercation/vim-colors-solarized'
 Plug 'benmills/vimux'
