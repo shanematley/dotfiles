@@ -54,6 +54,7 @@ Plug 'godlygeek/tabular'
 Plug 'https://shanematley@bitbucket.org/shanematley/cppguards.git'
 Plug 'itchyny/lightline.vim'
 Plug 'justinmk/vim-sneak'
+Plug 'justinmk/vim-syntax-extra'
 Plug 'kana/vim-scratch'
 Plug 'kien/ctrlp.vim'
 Plug 'majutsushi/tagbar', { 'on' : 'TagbarOpenAutoClose' }
