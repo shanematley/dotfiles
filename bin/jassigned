@@ -11,7 +11,7 @@ args = parser.parse_args()
 j = jiracred.Jira(args.update_password)
 d = j.search('assignee="{}"+AND+resolution=unresolved+order+by+updatedDate+DESC'.format(j.username))
 
-table = [[t['key'], t['fields']['status']['name'], t['fields']['summary'], urlparse.urljoin(j.jira_server, '/browse/' + t['key'])] for t in d['issues']]
+table = [[t['key'], t['fields']['status']['name'], t['fields']['summary'], urlparse.urljoin(j.jira_server, '/browse/' + t['key']), ','.join(t['fields']['labels'])] for t in d['issues']]
 
-print tabulate.tabulate(table, headers=['key', 'status', 'summary', 'url'])
+print tabulate.tabulate(table, headers=['key', 'status', 'summary', 'url', 'labels'])
 
