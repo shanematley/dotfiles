@@ -14,6 +14,13 @@ softfail () { printf "\r\033[2K  [\033[0;31mFAIL\033[0m] $1\n"; }
 SCRIPTPATH=$(cd $(dirname $0); pwd;)
 FILES=("vimrc" "vim" "tmux" "tmux.conf" "inputrc" "shrc.d" "gitconfig.common" "powerline:$HOME/.config/powerline" "man:$HOME/man")
 
+osis() {
+    local n=0
+    if [[ "$1" == "-n" ]]; then n=1; shift; fi
+    uname -s|grep -i "$1" >/dev/null
+    return $(( $n ^ $? ))
+}
+
 function yesno {
     while true; do
         read -p "$1 [y/n] " -n 1 -r; echo
@@ -33,21 +40,18 @@ OPTIONS
 
     -h  Show this help message
     -v  Install VIM plugins
-    -p  Install powerline
 
 EOF
 
 while getopts ":vph" opt; do
-    case $opt in
+    case $ot in
         v) INSTALL_OPTION_VIM=1;;
-        p) INSTALL_OPTION_POWERLINE=1;;
         h) echo "$USAGE_MSG"; exit 0;;
         \?) fail "Invalid option: $OPTARG";;
     esac
 done
 
 : ${INSTALL_OPTION_VIM:=}
-: ${INSTALL_OPTION_POWERLINE:=}
 
 cat <<EOF
 Actions to be taken:
@@ -58,7 +62,6 @@ EOF
 for f in "${FILES[@]}"; do echo "    $f"; done
 
 [[ $INSTALL_OPTION_VIM ]] && echo -e "\n * VIM plugins will be installed."; 
-[[ $INSTALL_OPTION_POWERLINE ]] && echo -e "\n * Powerline will be installed."; 
 echo
 
 yesno "Would you like to continue?" || fail "Aborting" 
@@ -68,7 +71,7 @@ function create_link {
     local DEST="$2"
     [[ -e "$DEST" && ! -L "$DEST" ]]                   && { softfail "ERROR: $DEST already exists. Skipping."; return 1; }
     [[ -L "$DEST" && $(readlink "$DEST") -ef "$SRC" ]] && { info "Skipping: $DEST already points to correct file."; return 0; }
-    if [[ $(uname -s) == "Darwin" ]]; then
+    if osis Darwin; then
         ln -shf "$SRC" "$DEST"
     else
         ln -snf "$SRC" "$DEST"
@@ -132,6 +135,55 @@ function check_shrc() {
     fi
 }
 
+function sync_brew_package() {
+    local command_name="$1"
+    local package_name="$2"
+    if osis Darwin; then
+        if ! command -v $command_name >/dev/null 2>&1; then
+            if command -v brew >/dev/null 2>&1; then
+                info "Missing $package_name Installing via Homebrew."
+                if brew install $package_name; then
+                    success "$package_name installed"
+                else
+                    softfail "$package_name missing. Homebrew installation of $package_name failed"
+                fi
+            else
+                softfail "$package_name missing and unable to install as HomeBrew is missing."
+            fi
+        else
+            info "Skipping: $package_name already present"
+        fi
+    fi
+}
+
+function check_binary_presence() {
+    local command_name="$1"
+    if ! command -v $command_name >/dev/null 2>&1; then
+        softfail "$command_name missing."
+    else
+        info "Skipping: $command_name already present"
+    fi
+}
+
+function sync_pip_package() {
+    local package="$1"
+    if pip show $package >/dev/null; then
+        info "Skipping: $package already present"
+        return 0
+    else
+        if ! command -v pip >/dev/null 2>&1; then
+            softfail "$package could not be installed as pip missing"
+            return 1
+        elif pip install --user ${package}; then
+            success "$package installed"
+            return 0
+        else
+            softfail "$package could not be installed"
+            return 1
+        fi
+    fi
+}
+
 section "Offloading zshrc/bashrc"
 
 check_shrc zshrc
@@ -176,12 +228,9 @@ done
 section "Prerequisites"
 
 # Check for tmux-mem-cpu-load presence
-if ! command -v tmux-mem-cpu-load >/dev/null 2>&1; then
-    softfail "tmux-mem-cpu-load missing. Install via brew install tmux-mem-cpu-load or equivalent"
-else
-    info "tmux-mem-cpu-load present"
-fi
-
+osis Linux && check_binary_presence tmux-mem-cpu-load
+osis Darwin && sync_brew_package tmux-mem-cpu-load tmux-mem-cpu-load
+sync_brew_package reattach-to-user-namespace reattach-to-user-namespace
 
 # Offer to install VIM plugins
 if [[ $INSTALL_OPTION_VIM ]]; then
@@ -203,13 +252,11 @@ if [[ $INSTALL_OPTION_VIM ]]; then
     fi
 fi
 
-if [[ $INSTALL_OPTION_POWERLINE ]]; then
-    section "Installing powerline"
-    if [[ $(uname -s) == Darwin ]]; then
-        pip install --user powerline-status
-        create_link $(pip show powerline-status|awk '/Location/ { print $2}')/powerline/bindings/zsh/powerline.zsh ~/bin/powerline.zsh
-        pip install --user psutil # For uptime
-    else
-        pip install --user powerline-status
-    fi
+section "Powerline"
+
+if osis Darwin; then
+    sync_pip_package powerline-status && create_link $(pip show powerline-status|awk '/Location/ { print $2}')/powerline/bindings/zsh/powerline.zsh ~/bin/powerline.zsh
+    sync_pip_package psutil
+else
+    sync_pip_package
 fi
