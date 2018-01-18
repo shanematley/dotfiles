@@ -255,7 +255,7 @@ fi
 section "Powerline"
 
 if osis Darwin; then
-    sync_pip_package powerline-status && create_link $(pip show powerline-status|awk '/Location/ { print $2}')/powerline/bindings/zsh/powerline.zsh ~/bin/powerline.zsh
+    sync_pip_package powerline-status && create_link $(pip2 show powerline-status|awk '/Location/ { print $2}')/powerline/bindings/zsh/powerline.zsh ~/bin/powerline.zsh
     sync_pip_package psutil
 else
     sync_pip_package powerline-status
