@@ -167,14 +167,14 @@ function check_binary_presence() {
 
 function sync_pip_package() {
     local package="$1"
-    if pip show $package >/dev/null; then
+    if pip2 show $package >/dev/null; then
         info "Skipping: $package already present"
         return 0
     else
-        if ! command -v pip >/dev/null 2>&1; then
-            softfail "$package could not be installed as pip missing"
+        if ! command -v pip2 >/dev/null 2>&1; then
+            softfail "$package could not be installed as pip2 missing"
             return 1
-        elif pip install --user ${package}; then
+        elif pip2 install --user ${package}; then
             success "$package installed"
             return 0
         else
