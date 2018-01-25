@@ -1,15 +1,26 @@
 #!/bin/zsh
 
 autoload -U colors && colors
+
+# Simple prompt for when there are no zsh prompts installed
+#
 # For additional information on the options available, refer to
 # section EXPANSION OF PROMPT SEQUENCES of zshmisc(1)
-read -r -d '' PROMPT <<EOF
-$PR_SET_CHARSET$PR_STITLE${(e)PR_TITLEBAR}\
-%{$PR_MAGENTA%}► %{$PR_GREEN%}%n@%m%{$reset_color%}%{$PR_MAGENTA%}:\
-%{$PR_CYAN%}%~%{$reset_color%}\
-%{%(!.$PR_RED.$reset_color)%} %{$PR_MAGENTA%}[%D{%Y-%m-%d %H:%M%Z}] %(1j.{%j} .)
-%#%{$reset_color%}
-EOF
-PROMPT="${PROMPT} "
+prepare_prompt() {
+    local -a parts
+    # Username@Host
+    parts+=("%F{yellow}%n@%m%f")
+    # Working directory
+    parts+=(":%F{blue}%~%f")
+    # Date/Time
+    parts+=(" %F{10}[%D{%Y-%m-%d %T %Z}]%f")
+    # Jobs
+    parts+=(" %F{9}%(1j.{%j} .)%f")
+    # Prompt
+    parts+=($'\n'"%(?.%F{magenta}.%F{red})❯%f ")
 
-export PROMPT
+    PROMPT="${(j..)parts}"
+    export PROMPT
+}
+prepare_prompt
+
