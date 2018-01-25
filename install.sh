@@ -40,6 +40,7 @@ OPTIONS
 
     -h  Show this help message
     -v  Install VIM plugins
+    -p  Install Powerline
 
 EOF
 
@@ -47,11 +48,13 @@ while getopts ":vph" opt; do
     case $ot in
         v) INSTALL_OPTION_VIM=1;;
         h) echo "$USAGE_MSG"; exit 0;;
+        p) INSTALL_POWERLINE=1;;
         \?) fail "Invalid option: $OPTARG";;
     esac
 done
 
 : ${INSTALL_OPTION_VIM:=}
+: ${INSTALL_POWERLINE:=}
 
 cat <<EOF
 Actions to be taken:
@@ -252,13 +255,15 @@ if [[ $INSTALL_OPTION_VIM ]]; then
     fi
 fi
 
-section "Powerline"
+if [[ $INSTALL_POWERLINE ]]; then
+    section "Powerline"
 
-if osis Darwin; then
-    sync_pip_package powerline-status && create_link $(pip2 show powerline-status|awk '/Location/ { print $2}')/powerline/bindings/zsh/powerline.zsh ~/bin/powerline.zsh
-    sync_pip_package psutil
-else
-    sync_pip_package powerline-status
+    if osis Darwin; then
+        sync_pip_package powerline-status && create_link $(pip2 show powerline-status|awk '/Location/ { print $2}')/powerline/bindings/zsh/powerline.zsh ~/bin/powerline.zsh
+        sync_pip_package psutil
+    else
+        sync_pip_package powerline-status
+    fi
 fi
 
 section "ZSH Plugins"
