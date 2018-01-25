@@ -260,3 +260,9 @@ if osis Darwin; then
 else
     sync_pip_package powerline-status
 fi
+
+section "ZSH Plugins"
+
+# Used in conjunction with 10zfunctions.sh to provide additional ZSH functionality
+create_link "$SCRIPTPATH/zfunctions" "$HOME/.zfunctions"
+
