@@ -275,3 +275,19 @@ section "Submodules"
 
 git submodule sync
 git submodule update --init
+
+section "Verifying tools"
+
+function check_vim_option() {
+    # No idea why, but -q on grep is not working on linux here...
+    if $1 --version|grep '\+'$2 >/dev/null; then
+        info "$1 has +$2"
+    else
+        softfail "$1 does not have +$2"
+    fi
+}
+
+check_vim_option vim clipboard
+osis Linux && check_vim_option vim xterm_clipboard
+osis Darwin && check_vim_option mvim clipboard
+
