@@ -6,6 +6,8 @@ setopt auto_menu
 setopt complete_in_word
 setopt always_to_end
 setopt auto_name_dirs
+setopt globcomplete
+
 
 autoload -U compinit
 
@@ -38,6 +40,9 @@ zstyle ':completion:*:cd:*' tag-order local-directories directory-stack path-dir
 zstyle ':completion:*' use-cache on
 zstyle ':completion:*' cache-path "/tmp/.zsh_${USER}_cache"
 zstyle ':completion:*' accept-exact '*(N)'
+# case-insensitive (all),partial-word and then substring completion
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' \
+    'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
 
 # Don't complete uninteresting users -- Andrey's list
 zstyle ':completion:*:*:*:users' ignored-patterns \
