@@ -2,8 +2,6 @@
 
 # if the init scipt doesn't exist
 if ! zgen saved; then
-    echo "Creating a zgen save"
-
     zgen load willghatch/zsh-cdr
     # Fish shell-like syntax highlighting
     zgen load zsh-users/zsh-syntax-highlighting
@@ -23,7 +21,5 @@ if ! zgen saved; then
     zgen load unixorn/autoupdate-zgen
     # Fish-like suggestions. It suggests commands as you type, based on command history.
     zgen load zsh-users/zsh-autosuggestions
-    # save all to init script
-    zgen save
 fi
 

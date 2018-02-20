@@ -1,2 +1,2 @@
-for f in $(find -sE ~/.shrc.d/       \( -type f -or -type l \) -regex '.*\.(sh|zsh)' 2>/dev/null); do source "$f"; done
-for f in $(find -sE ~/.shrc.d.local/ \( -type f -or -type l \) -regex '.*\.(sh|zsh)' 2>/dev/null); do source "$f"; done
+MY_SCRIPTS_LOAD_ORDER=($(find -sE ~/.shrc.d/ ~/.shrc.d.local/ \( -type f -or -type l \) -regex '.*\.(sh|zsh)' 2>/dev/null|awk 'BEGIN {FS="/"; OFS="|"}{print $NF,$0}'|sort -n -t"|" -k1|awk -F "|" '{print $NF}'))
+for f in "${MY_SCRIPTS_LOAD_ORDER[@]}"; do source "$f"; done
