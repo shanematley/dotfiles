@@ -22,8 +22,8 @@ zstyle ':filter-select:highlight' selected standout
 zstyle ':filter-select' max-lines 20
 zstyle ':filter-select' rotate-list yes
 zstyle ':filter-select' case-insensitive yes
-zstyle ':zaw:zaw-src-git-files' default zaw-callback-append-to-buffer
-zstyle ':zaw:zaw-src-git-files' alt zaw-callback-edit-file
+zstyle ':zaw:git-files' default zaw-callback-append-to-buffer
+zstyle ':zaw:git-files' alt zaw-callback-edit-file
 
 unset "zaw_sources[perldoc]"
 unset "zaw_sources[locate]"
