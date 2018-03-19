@@ -45,7 +45,7 @@ OPTIONS
 EOF
 
 while getopts ":vph" opt; do
-    case $ot in
+    case $opt in
         v) INSTALL_OPTION_VIM=1;;
         h) echo "$USAGE_MSG"; exit 0;;
         p) INSTALL_POWERLINE=1;;
@@ -84,6 +84,18 @@ function create_link {
         success "Linked $DEST -> $SRC"
     else
         softfail "Unable to link $DEST to $SRC"
+    fi
+}
+
+function create_dir {
+    local DEST="$1"
+    [[ -d "$DEST" ]] && { info "Skipping: directory $DEST already exists."; return 0; }
+    if mkdir -p "$DEST"; then
+        success "Created directory $DEST"
+    elif [[ $# > 1 && $2 == hardfail ]]; then
+        fail "Unable to create directory $DEST"
+    else
+        softfail "Unable to create directory $DEST"
     fi
 }
 
@@ -214,6 +226,7 @@ fi
 section "Linking bin files"
 
 # Setup bin files
+create_dir "$HOME/bin" hardfail
 for f in "$SCRIPTPATH/bin/"*; do
     create_link "$f" "$HOME/bin/$(basename $f)"
 done
