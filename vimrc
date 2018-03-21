@@ -60,7 +60,7 @@ Plug 'majutsushi/tagbar', { 'on' : 'TagbarOpenAutoClose' }
 Plug 'mileszs/ack.vim'
 Plug 'moll/vim-bbye'
 Plug 'NLKNguyen/papercolor-theme'
-Plug 'PeterRincker/vim-argumentative'
+Plug 'PeterRincker/vim-argumentative' " Shift arguments with <, >, Move between argument boundaries with [, ], New text objects a, i,
 Plug 'rhysd/vim-clang-format', {'on': 'ClangFormat'}
 Plug 'richq/cmakecompletion-vim', {'for' : 'cmake' } " C-X C-O for completion of cmake;  K mapping for help
 Plug 'scrooloose/nerdcommenter'
@@ -82,7 +82,7 @@ Plug 'vim-scripts/a.vim' " Switch header/source with :A and <leader>-s/S
 Plug 'vim-scripts/closetag.vim' " Close previous tag with C--
 Plug 'vim-scripts/genutils'
 Plug 'vim-scripts/SelectBuf' " F3 displays open buffers + deletion capability
-Plug 'vim-scripts/vim-indent-object'
+Plug 'vim-scripts/vim-indent-object' " ai, ii, aI, iI (an/inner indentation level and line above/below)
 Plug 'xuhdev/SingleCompile', { 'on' : [ 'SCChooseCompiler',     'SCCompile',            'SCCompileRun',         'SCCompileRunAsync', 'SCChooseInterpreter',  'SCCompileAF',          'SCCompileRunAF',       'SCCompileRunAsyncAF' ] }
 Plug 'yegappan/grep'
 call plug#end()
