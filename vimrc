@@ -407,7 +407,7 @@ set showbreak=↪
 " tabs to two spaces in html/xml files
 augroup filetype_html
     autocmd!
-    autocmd filetype html,xml setlocal ts=2 sts=2 sw=2
+    autocmd FileType html,xml setlocal ts=2 sts=2 sw=2
 augroup END
 
 augroup filetype_GNUmakefile
@@ -417,7 +417,7 @@ augroup END
 
 augroup filetype_vim
     autocmd!
-    autocmd filetype vim setlocal foldmethod=marker
+    autocmd FileType vim setlocal foldmethod=marker
 augroup END
 "}}}
 
@@ -639,11 +639,11 @@ set list
 set listchars=tab:>.,trail:.,extends:#,nbsp:.
 augroup filetype_html_listchars
     autocmd!
-    autocmd filetype html,xml setlocal listchars-=tab:>.
+    autocmd FileType html,xml setlocal listchars-=tab:>.
 augroup END
 augroup filetype_asm
     autocmd!
-    autocmd filetype asm setlocal nolist
+    autocmd FileType asm setlocal nolist
 augroup END
 "}}}
 
@@ -651,11 +651,11 @@ augroup END
 syntax on
 filetype on
 filetype plugin indent on
-au BufNewFile,BufRead *.log set filetype=log
-au BufNewFile,BufRead *.ipp set filetype=cpp
-au BufNewFile,BufRead *.ixx set filetype=cpp
-au BufNewFile,BufRead *.tpp set filetype=cpp
-au BufNewFile,BufRead *.txx set filetype=cpp
+au BufNewFile,BufRead *.log set FileType=log
+au BufNewFile,BufRead *.ipp set FileType=cpp
+au BufNewFile,BufRead *.ixx set FileType=cpp
+au BufNewFile,BufRead *.tpp set FileType=cpp
+au BufNewFile,BufRead *.txx set FileType=cpp
 "}}}
 
 " Plugin Shortcuts ------------------------------------------------------------- {{{
@@ -843,7 +843,7 @@ endif
 
 augroup filetype_markdown
     autocmd!
-    autocmd BufNewFile,BufRead *.md set filetype=markdown
+    autocmd BufNewFile,BufRead *.md set FileType=markdown
 augroup END
 
 " First tab completes as much as possible; second provides a list; third
@@ -945,6 +945,5 @@ endfunction
 
 "nnoremap <leader>l yiwciw<C-r>=NsToString('<C-r>"')<cr><esc>
 "nnoremap <leader>L yiwea (<C-r>=NsToString('<C-r>"')<cr>)<esc>
-
 
 " vim:fdm=marker
