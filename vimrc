@@ -470,9 +470,22 @@ command! -nargs=1 Silent
 
 command! -nargs=* -bar Silent2 make <args> <bar> cwindow
 
+function! OpenCurrentFile()
+    if (&ft=='markdown')
+        echom "Opened " . expand("%") . " in Marked 2"
+        exec "Silent open \"marked://open?file=" . expand("%:p") . "\""
+        exec "Silent open \"marked://style/" . expand("%:t:r") . "?css=Meeting\ Markdown\""
+        exec "Silent open marked://refresh"
+    else
+        echom "Opened " . expand("%") . " in default Mac viewing application"
+        exec "Silent open " . shellescape(expand("%"))
+    endif
+endfunction
+
 " Use <leader>o to open in external viewer on Mac.
 if has("mac") || has("macunix")
-    nnoremap <leader>o :exe "Silent open " . shellescape(expand("%"))<cr>
+    "nnoremap <leader>o :exe "Silent open " . shellescape(expand("%"))<cr>
+    nnoremap <leader>o :call OpenCurrentFile()<cr>
 endif
 
 " Move line down
