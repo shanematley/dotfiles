@@ -9,6 +9,7 @@
 let b:local_vim_files = "~/.vim/local/"
 
 let mapleader = ","
+:nmap <space> ,
 
 " General ---------------------------------------------------------------------- {{{
 set history=1000
