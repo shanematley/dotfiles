@@ -12,7 +12,7 @@ fail ()     { printf "\r\033[2K  [\033[0;31mFAIL\033[0m] $1\n"; echo ''; exit; }
 softfail () { printf "\r\033[2K  [\033[0;31mFAIL\033[0m] $1\n"; }
 
 SCRIPTPATH=$(cd $(dirname $0); pwd;)
-FILES=("vimrc" "vim" "tmux" "tmux.conf" "inputrc" "shrc.d" "gitconfig.common" "powerline:$HOME/.config/powerline" "man:$HOME/man")
+FILES=("vimrc" "vim" "tmux" "tmux.conf" "inputrc" "shrc.d" "gitconfig.common" "ideavimrc" "powerline:$HOME/.config/powerline" "man:$HOME/man")
 
 osis() {
     local n=0
