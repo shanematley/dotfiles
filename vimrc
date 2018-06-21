@@ -855,11 +855,6 @@ if exists("g:btm_rainbow_color") && g:btm_rainbow_color
    call rainbow_parenthsis#Activate ()
 endif
 
-augroup filetype_markdown
-    autocmd!
-    autocmd BufNewFile,BufRead *.md set FileType=markdown
-augroup END
-
 " First tab completes as much as possible; second provides a list; third
 " starts cyclying through the options
 set wildmode=longest,list,full
