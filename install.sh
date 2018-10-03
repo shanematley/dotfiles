@@ -12,7 +12,18 @@ fail ()     { printf "\r\033[2K  [\033[0;31mFAIL\033[0m] $1\n"; echo ''; exit; }
 softfail () { printf "\r\033[2K  [\033[0;31mFAIL\033[0m] $1\n"; }
 
 SCRIPTPATH=$(cd $(dirname $0); pwd;)
-FILES=("vimrc" "vim" "tmux" "tmux.conf" "inputrc" "shrc.d" "gitconfig.common" "ideavimrc" "powerline:$HOME/.config/powerline" "man:$HOME/man")
+FILES=("vimrc"
+    "vim"
+    "tmux"
+    "tmux.conf"
+    "inputrc"
+    "shrc.d"
+    "gdbinit"
+    "gitconfig.common"
+    "tridactylrc"
+    "ideavimrc"
+    "powerline:$HOME/.config/powerline"
+    "man:$HOME/man")
 
 osis() {
     local n=0
@@ -31,23 +42,23 @@ function yesno {
     done
 }
 
-read -r -d '' USAGE_MSG <<EOF
+usage() {
+    cat << EOF
 USAGE
-
-    $(basename $0) [-hvp]
+    $(basename $0) [options]
 
 OPTIONS
-
     -h  Show this help message
     -v  Install VIM plugins
     -p  Install Powerline
-
 EOF
+    exit $1
+}
 
 while getopts ":vph" opt; do
     case $opt in
         v) INSTALL_OPTION_VIM=1;;
-        h) echo "$USAGE_MSG"; exit 0;;
+        h) usage 0;;
         p) INSTALL_POWERLINE=1;;
         \?) fail "Invalid option: $OPTARG";;
     esac
