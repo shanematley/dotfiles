@@ -256,6 +256,8 @@ section "Prerequisites"
 
 # Check for tmux-mem-cpu-load presence
 osis Linux && check_binary_presence tmux-mem-cpu-load
+check_binary_presence curl
+check_binary_presence git
 osis Darwin && sync_brew_package tmux-mem-cpu-load tmux-mem-cpu-load
 sync_brew_package reattach-to-user-namespace reattach-to-user-namespace
 
