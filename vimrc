@@ -463,6 +463,9 @@ nnoremap <leader>ps :LoadLocalProjectSpecificSettings<cr>
 
 nnoremap <leader>m :silent Make<cr>
 
+noremap <leader>va :Gblame<CR>
+noremap gh :Glog<CR>
+
 " A command to execute an external command without requiring the user
 " to press Enter to dismiss a prompt.
 command! -nargs=1 Silent
