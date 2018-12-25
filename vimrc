@@ -1,4 +1,4 @@
-" Extensibility points
+" eXTENSIbility points
 " There is one file specifically looked for in b:local_vim_files:
 " * ycmconf.py      -- Configuration for YouCompleteMe. (Also requires the
 "                      YouCompleteMe plugin to be added in the first place
@@ -10,6 +10,8 @@ let b:local_vim_files = "~/.vim/local/"
 
 let mapleader = ","
 :nmap <space> ,
+
+filetype plugin indent on
 
 " General ---------------------------------------------------------------------- {{{
 set history=1000
@@ -89,136 +91,8 @@ Plug 'yegappan/grep'
 call plug#end()
 "}}}
 
-" Plugin configuration: lightline {{{
-let g:lightline = {
-      \ 'colorscheme': 'Dracula',
-      \ 'active': {
-      \   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'filename' ], ['ctrlpmark', 'agsstats'] ],
-      \   'right': [ [ 'syntastic', 'lineinfo' ], ['percent'], [ 'fileformat', 'fileencoding', 'filetype' ] ]
-      \ },
-      \ 'component_function': {
-      \   'fugitive': 'StatusFugitive',
-      \   'filename': 'StatusFileName',
-      \   'mode': 'StatusFileMode',
-      \   'ctrlpmark': 'StatusCtrlPMark',
-      \   'agsstats': 'StatusAgsStats',
-      \ },
-      \ 'component_expand': {
-      \   'syntastic': 'SyntasticStatuslineFlag',
-      \ },
-      \ 'component_type': {
-      \   'syntastic': 'error',
-      \ },
-      \ 'separator': { 'left': "\ue0b0", 'right': "\ue0b2" },
-      \ 'subseparator': { 'left': "\ue0b1", 'right': "\ue0b3" }
-      \ }
-let g:lightline.enable = { 'statusline': 1, 'tabline': 0 }
-
-function! StatusModified()
-  return &ft =~ 'help' ? '' : &modified ? '+' : &modifiable ? '' : '-'
-endfunction
-
-function! StatusReadonly()
-  return &ft !~? 'help' && &readonly ? "\ue0a2" : ''
-endfunction
-
-function! StatusFileName()
-  let fname = expand('%:t')
-  return fname == 'ControlP' ? g:lightline.ctrlp_item :
-        \ fname == '__Tagbar__' ? g:lightline.fname :
-        \ fname == 'search-results.agsv' ? split(ags#get_status_string())[2] :
-        \ fname =~ '__Gundo\|NERD_tree' ? '' :
-        \ ('' != StatusReadonly() ? StatusReadonly() . ' ' : '') .
-        \ ('' != fname ? fname : '[No Name]') .
-        \ ('' != StatusModified() ? ' ' . StatusModified() : '')
-endfunction
-
-function! StatusFugitive()
-  try
-    if expand('%:t') !~? 'Tagbar\|Gundo\|NERD\|search-results.agsv' && &ft !~? 'vimfiler' && exists('*fugitive#head')
-      let mark = "\ue0a0 "  " edit here for cool mark
-      let _ = fugitive#head()
-      return strlen(_) ? mark._ : ''
-    endif
-  catch
-  endtry
-  return ''
-endfunction
-
-function! StatusFileMode()
-  let fname = expand('%:t')
-  return fname == '__Tagbar__' ? 'Tagbar' :
-        \ fname == 'ControlP' ? 'CtrlP' :
-        \ fname == '__Gundo__' ? 'Gundo' :
-        \ fname == 'search-results.agsv' ? 'AgS' :
-        \ fname == '__Gundo_Preview__' ? 'Gundo Preview' :
-        \ fname =~ 'NERD_tree' ? 'NERDTree' : lightline#mode()
-endfunction
-
-function! StatusCtrlPMark()
-  if expand('%:t') =~ 'ControlP'
-    call lightline#link('iR'[g:lightline.ctrlp_regex])
-    return lightline#concatenate([g:lightline.ctrlp_prev, g:lightline.ctrlp_item
-          \ , g:lightline.ctrlp_next], 0)
-  else
-    return ''
-  endif
-endfunction
-
-function! StatusAgsStats()
-  if expand('%:t') =~ 'search-results.agsv'
-    return join(split(ags#get_status_string())[0:1], " " . g:lightline.subseparator.left . " ")
-  else
-    return ''
-  endif
-endfunction
-"}}}
-" Plugin configuration: tagbar {{{
 nnoremap <silent> <F8> :TagbarOpenAutoClose<CR>
-autocmd FileType tagbar nnoremap <buffer> <silent> <ESC> <ESC>:TagbarClose<CR>
-let g:tagbar_status_func = 'TagbarStatusFunc'
-let g:tagbar_type_rst = {
-    \ 'ctagstype': 'rst',
-    \ 'ctagsbin' : '/usr/bin/rst2ctags',
-    \ 'ctagsargs' : '-f - --sort=yes',
-    \ 'kinds' : [
-        \ 's:sections',
-        \ 'i:images'
-    \ ],
-    \ 'sro' : '|',
-    \ 'kind2scope' : {
-        \ 's' : 'section',
-    \ },
-    \ 'sort': 0,
-\ }
 
-function! TagbarStatusFunc(current, sort, fname, ...) abort
-    let g:lightline.fname = a:fname
-  return lightline#statusline(0)
-endfunction
-"}}}
-" Plugin configuration: vim-gas {{{
-function! ViewASM(file, gccargs)
-    let g:clam_winpos = 'vertical botright'
-    let buffer_name = "[view-asm]"
-    let winnr = bufwinnr('^' . escape(buffer_name, "[]*+.") . '$')
-    if winnr < 0
-        silent! execute 'vertical botright new ' . buffer_name
-        setlocal buftype=nowrite bufhidden=wipe nobuflisted noswapfile nowrap nonumber
-        silent! execute 'au BufUnload <buffer> execute bufwinnr(' . bufnr('#') . ') . ''wincmd w'''
-    else
-        silent! execute winnr . 'wincmd w'
-    endif
-    normal! ggdG
-    let l:gcc=sort(glob(exepath("g++") . "*", 1, 1))[-1]
-    exe 'r !' . l:gcc .' -Ofast -std=c++1y -fno-stack-protector -masm=intel -fno-asynchronous-unwind-tables -fno-dwarf2-cfi-asm -fomit-frame-pointer -mtune=native -march=native -fverbose-asm ' . a:gccargs . ' -S -o - -c '. a:file . '| sed -e "/^\t\\.[a-z0-9]*[^:]/d" -e "/^\\.L[^0-9][A-Z0-9]*:$/d"  | c++filt'
-    set ft=gas
-    " set readonly
-    " set nomodified
-    goto 1
-endfunction
-command! -nargs=* ViewASM call ViewASM(expand('%'), <q-args>)
-"}}}
 "{{{ Plugin configuration: SingleCompile
 function! SingleCompileGCC()
     let l:gcc=sort(glob(exepath("g++") . "*", 1, 1))[-1]
@@ -230,11 +104,6 @@ autocmd! User SingleCompile call SingleCompileGCC()
 
 nnoremap <silent> <F9> :SCCompile<cr>:clist<cr>
 nnoremap <silent> <F10> :SCCompileRun<cr>:clist<cr>
-"}}}
-" Plugin configuration: vim-clang-format {{{
-let g:clang_format#code_style='google'
-autocmd FileType c,cpp nnoremap <buffer> gR :.ClangFormat<CR>
-autocmd FileType c,cpp vnoremap <buffer> gR :ClangFormat<CR>
 "}}}
 " Plugin configuration: papercolor-theme {{{
 let g:PaperColor_Theme_Options = {
@@ -250,52 +119,6 @@ let g:PaperColor_Theme_Options = {
   \     }
   \   }
   \ }
-"}}}
-" Plugin configuration: vim-sneak {{{
-let g:sneak#streak = 1
-"}}}
-" Plugin configuration: lusty {{{
-let g:LustyJugglerShowKeys = 'a'
-let g:LustyJugglerAltTabMode = 1
-"}}}
-" Plugin configuration: ctrlp.vim {{{
-let g:ctrlp_map='<leader>t'
-let g:ctrlp_max_files=20000
-let g:ctrlp_max_depth=8
-let g:ctrlp_custom_ignore = {
-            \ 'dir': '\v[\/](\.(git|hg|svn)|venv|tmp)$',
-            \ 'file': '\v\.(exe|so|dll|pyc|class|jar|java|xdc|tar.gz)$'
-            \ }
-
-let g:ctrlp_status_func = {
-  \ 'main': 'CtrlPStatusFunc_1',
-  \ 'prog': 'CtrlPStatusFunc_2',
-  \ }
-
-function! CtrlPStatusFunc_1(focus, byfname, regex, prev, item, next, marked)
-  let g:lightline.ctrlp_regex = a:regex
-  let g:lightline.ctrlp_prev = a:prev
-  let g:lightline.ctrlp_item = a:item
-  let g:lightline.ctrlp_next = a:next
-  return lightline#statusline(0)
-endfunction
-
-function! CtrlPStatusFunc_2(str)
-  return lightline#statusline(0)
-endfunction
-
-" The following permits deletion of buffers
-let g:ctrlp_buffer_func = { 'enter': 'MyCtrlPMappings' }
-func! MyCtrlPMappings()
-    nnoremap <buffer> <silent> <c-@> :call <sid>DeleteBuffer()<cr>
-endfunc
-func! s:DeleteBuffer()
-    let line = getline('.')
-    let bufid = line =~ '\[\d\+\*No Name\]$' ? str2nr(matchstr(line, '\d\+'))
-        \ : fnamemodify(line[2:], ':p')
-    exec "bd" bufid
-    exec "norm \<F5>"
-endfunc
 "}}}
 " Plugin configuration: Tabularize {{{
 if exists(":Tabularize")
@@ -393,40 +216,26 @@ endif
 "}}}
 
 " Text, tabs, indenting etc ---------------------------------------------------- {{{
-set expandtab
-set smarttab        " insert tabs on the start of a line according to shiftwidth, not tabstop
-set tabstop=4       " a tab is four spaces
+
+" default indent settings
+set autoindent      " use indent of previous line on new lines
+set expandtab       " use spaces instead of tabs
 set shiftwidth=4    " number of spaces to use for autoindenting
-set autoindent      " always set autoindenting on
+set softtabstop=4   " number of spaces to insert with tab key
+
 set copyindent      " copy the previous indentation on autoindenting
-set softtabstop=4
 set shiftround      " use multiple of shiftwidth when indenting with '<' and '>'
 set nowrap          " don't wrap lines
+
 set cursorline      " highlight the current row
-set showbreak=↪
 
-" tabs to two spaces in html/xml files
-augroup filetype_html
-    autocmd!
-    autocmd FileType html,xml setlocal ts=2 sts=2 sw=2
-augroup END
+" Prefix wrapped rows
+set showbreak=...
 
-augroup filetype_GNUmakefile
-    autocmd!
-    autocmd BufRead,BufNewFile GNUmakefile setlocal expandtab
-augroup END
-
-augroup filetype_vim
-    autocmd!
-    autocmd FileType vim setlocal foldmethod=marker
-augroup END
-"}}}
-
-" Visual Mode ------------------------------------------------------------------ {{{
 " Visual mode pressing * or # searches for the current selection
 " Super useful! From an idea by Michael Naumann
-vnoremap <silent> * :call VisualSelection('f')<CR>
-vnoremap <silent> # :call VisualSelection('b')<CR>
+vnoremap <silent> * <Plug>VisualSelectionSearchForward
+vnoremap <silent> # <Plug>VisualSelectionSearchBackward
 "}}}
 
 " File Handling ---------------------------------------------------------------- {{{
@@ -438,7 +247,8 @@ try
 catch
 endtry
 
-set modelines=1     " commands in a file on how VIM is to display the file
+" Don't allow setting options via buffer context
+set nomodeline
 set nobackup
 set noswapfile
 "}}}
@@ -651,76 +461,28 @@ com! DiffPerforce call s:DiffWithPerforceCheckedOut()
 
 "}}}
 
-"{{{ show whitespace except in html and xml files
 set list
-set listchars=tab:>.,trail:.,extends:#,nbsp:.
-augroup filetype_html_listchars
-    autocmd!
-    autocmd FileType html,xml setlocal listchars-=tab:>.
-augroup END
-augroup filetype_asm
-    autocmd!
-    autocmd FileType asm setlocal nolist
-augroup END
-"}}}
 
-" Setup syntax for log, ipp, ixx, tpp and txx {{{
-syntax on
-filetype on
-filetype plugin indent on
-au BufNewFile,BufRead *.log set FileType=log
-au BufNewFile,BufRead *.ipp set FileType=cpp
-au BufNewFile,BufRead *.ixx set FileType=cpp
-au BufNewFile,BufRead *.tpp set FileType=cpp
-au BufNewFile,BufRead *.txx set FileType=cpp
-"}}}
+" Define extra 'list' display characters
+set listchars+=tab:>-
+set listchars+=trail:.
+set listchars+=extends:>
+set listchars+=precedes:<
+silent set listchars+=nbsp:+
 
-" Plugin Shortcuts ------------------------------------------------------------- {{{
-
-" to insert the special character below, type Ctrl-v then '[', but don't let go of Ctrl
-map s :A<CR>
-map <leader>s :A<CR>
+nnoremap <leader>s :A<CR>
 nnoremap <leader>S <C-w>v<C-w>l:A<CR>
 
-" <C-W>! -> Close buffer without closing window {{{
-nmap <C-W>! :Bdelete<CR>
-"}}}
+nmap <C-W>! :Bdelete<CR>  " close buffer without closing window
 
-" leader key is set to \ by default, to change: letmapleader = ","
-map <leader>pp :setlocal paste!<cr>
+noremap <leader>pp :setlocal paste!<cr>
 
-" Provide for /// comments and //
-augroup cpp_comments
-    autocmd!
-    autocmd FileType c,cpp,h,hpp,cxx,txx,ixx,ipp setlocal comments-=:// comments+=:///,://
-augroup END
-"}}}
-
-" Status Line ------------------------------------------------------------------ {{{
-set statusline=%-3.3n\ \        " BufferNum
-set statusline+=%{HasPaste()}   " Paste mode
-set statusline+=%F              " File name
-set statusline+=%m              " Modified flag
-set statusline+=%r\             " Read only flag
-set statusline+=(%{FileSize()}) " File size
-set statusline+=%h\             " Help file flag
-set statusline+=%w              " Preview window flag
-set statusline+=%=              " Align the remainder on the right
-set statusline+=L:%l/%L\        " L:Current line/total lines
-set statusline+=(%p%%)\         " Percent through file
-set statusline+=C:%c\           " C:Column number
-set statusline+=[%Y,%{&ff}]     " [File processing type, line ending type]
 set laststatus=2    " Always show statusline
 
 if has ("spell")
     set spelllang=en_gb
     "nnoremap <leader>s :set spell!<CR>
 endif
-
-if has ("folding")
-    set foldenable
-endif
-"}}}
 
 " Colours and Fonts ------------------------------------------------------------ {{{
 syntax enable
@@ -737,112 +499,19 @@ call togglebg#map("<F5>")
 hi MatchParen ctermbg=blue guibg=lightblue
 "}}}
 
-" Tab Line settings ------------------------------------------------------ {{{
-if exists("+showtabline")
-  function! MyTabLine()
-    let s = ''
-    for i in range(tabpagenr('$'))
-      " set up some oft-used variables
-      let tab = i + 1 " range() starts at 0
-      let winnr = tabpagewinnr(tab) " gets current window of current tab
-      let buflist = tabpagebuflist(tab) " list of buffers associated with the windows in the current tab
-      let bufnr = buflist[winnr - 1] " current buffer number
-      let bufname = bufname(bufnr) " gets the name of the current buffer in the current window of the current tab
-
-      let s .= '%' . tab . 'T' " start a tab
-      let s .= (tab == tabpagenr() ? '%#TabLineSel#' : '%#TabLine#') " if this tab is the current tab...set the right highlighting
-      let s .= ' ' . tab .':' " current tab number
-      let n = tabpagewinnr(tab,'$') " get the number of windows in the current tab
-      let bufmodified = getbufvar(bufnr, "&mod")
-      if bufmodified
-        let s .= ' +'
-      endif
-      if bufname != ''
-        let s .= ' [' . pathshorten(bufname) . ']' " outputs the one-letter-path shorthand & filename
-      else
-        let s .= ' [No Name]'
-      endif
-      if n > 1
-        let s .= '(' . n . ')' " if there's more than one, add a colon and display the count
-      endif
-      "let s .= ' '
-    endfor
-    let s .= '%#TabLineFill#' " blank highlighting between the tabs and the righthand close 'X'
-    let s .= '%T' " resets tab page number?
-    let s .= '%=' " seperate left-aligned from right-aligned
-    let s .= '%#TabLine#' " set highlight for the 'X' below
-    let s .= '%999XX' " places an 'X' at the far-right
-    return s
-  endfunction
-  set tabline=%!MyTabLine()
-endif
-"}}}
-
-" Diff settings ---------------------------------------------------------- {{{
-set diffopt+=iwhite
-"}}}
-
-" Custom functions ------------------------------------------------------- {{{
-
-" Output long VIM commands in a more raedable format. E.g.
-" :Bufferize digraphs or :Bufferize maps or :Bufferize let g:
-command! -nargs=* -complete=command Bufferize call s:Bufferize(<q-args>)
-function! s:Bufferize(cmd)
-    let cmd = a:cmd
-    redir => output
-    silent exe cmd
-    redir END
-
-    new
-    setlocal nonumber
-    call setline(1, split(output, "\n"))
-    set nomodified
-endfunction
-
 " Insert digraphs by typing the letters then C-n rather than the normal
 " way of entering diagraph mode with C-k and typing the two keys.
-inoremap <C-n> <esc>:call <SID>Digraph()<cr>a
-function! s:Digraph()
-    let col = col('.')
-    let chars = getline('.')[col - 2 : col - 1]
-    exe "normal! s\<esc>s\<c-k>".chars
-endfunction
+imap <C-n> <Plug>(DigraphFromPrevChars)
 
-"}}}
+" Map double Ctrl-K in insert mode to search digraph names
+" Run :helptags ~/.vim/doc to generate docs
+imap <C-K><C-K> <Plug>(DigraphSearch)
 
 " Clang Format ----------------------------------------------------------- {{{
 " Assume clang-format.py lives in ~/bin
 
-"noremap <leader>cf :pyf $HOME/bin/clang-format.py<cr>
-"noremap <leader>cf :execute "normal! :pyf $HOME/bin/clang-format.py"<cr>
 noremap <leader>cf :pyf $HOME/bin/clang-format.py<cr>
-inoremap <leader>cf <c-o>:pyf $HOME/bin/clang-format.py<cr>
-
-function! ClangCheckImpl(cmd)
-  if &autowrite | wall | endif
-  echo "Running " . a:cmd . " ..."
-  let l:output = system(a:cmd)
-  cexpr l:output
-  cwindow
-  let w:quickfix_title = a:cmd
-  if v:shell_error != 0
-    cc
-  endif
-  let g:clang_check_last_cmd = a:cmd
-endfunction
-
-function! ClangCheck()
-  let l:filename = expand('%')
-  if l:filename =~ '\.\(cpp\|cxx\|cc\|c\)$'
-    call ClangCheckImpl("clang-check " . l:filename)
-  elseif exists("g:clang_check_last_cmd")
-    call ClangCheckImpl(g:clang_check_last_cmd)
-  else
-    echo "Can't detect file's compilation arguments and no previous clang-check invocation!"
-  endif
-endfunction
-
-nmap <leader>cc :call ClangCheck()<CR><CR>
+nmap <leader>cc <Plug>(RunClangCheck)
 
 "}}}
 
@@ -869,93 +538,18 @@ endif
 
 " Helper Functions ------------------------------------------------------------- {{{
 
-function! VisualSelection(direction) range
-    let l:saved_reg = @"
-    execute "normal! vgvy"
-
-    let l:pattern = escape(@", '\\/.*$^~[]')
-    let l:pattern = substitute(l:pattern, "\n$", "", "")
-
-    if a:direction == 'b'
-        execute "normal ?" . l:pattern . "^M"
-    elseif a:direction == 'gv'
-        call CmdLine("vimgrep " . '/'. l:pattern . '/' . ' **/*.')
-    elseif a:direction == 'replace'
-        call CmdLine("%s" . '/'. l:pattern . '/')
-    elseif a:direction == 'f'
-        execute "normal /" . l:pattern . "^M"
-    endif
-
-    let @/ = l:pattern
-    let @" = l:saved_reg
-endfunction
-
-function! HasPaste()
-    if &paste
-        return 'PASTE MODE  '
-    else
-        return ''
-    endif
-endfunction
-
-function! FileSize()
-    let bytes = getfsize(expand("%:p"))
-    if bytes <= 0
-        return ""
-    endif
-    if bytes < 1024
-        return bytes
-    else
-        return (bytes / 1024) . "K"
-    endif
-endfunction
-
 " A command to insert a series of spaces up to line designated by the repeat
 " count
 function! SpacesToColumn(count)
     exe "norm! 100A\<Space>\<Esc>d" . a:count . "\<Bar>"
 endfunction
-"com! -nargs=1 SpacesToColumn exe "norm! 100A<Space><Esc>d<args><Bar>"
 nnoremap <leader>f<space> :<C-U>call SpacesToColumn(v:count)<CR>
 
-" Expand public/private/protected
-iabbrev pub: public:
-iabbrev pri: private:
-iabbrev pro: protected:
-iabbrev stdos std::ostream
-iabbrev stdoss std::ostringstream
-
-" Toggles a charater at the end, used below for <leader>; to toggle end semi-colon
-function! ToggleEndChar(charToMatch)
-    exec "norm! m`"
-    s/\v(.)$/\=submatch(1)==a:charToMatch ? '' : submatch(1).a:charToMatch
-    exec "norm! ``"
-endfunction
-nnoremap <leader>; :call ToggleEndChar(';')<CR>
+nmap <leader>; <Plug>(ToggleSemicolonAtEnd)   " toggle semicolon at end of line
 
 let g:ctags_statusline=1
 
-nnoremap <leader>f_ /_[^_]\+_<cr>
-
-function! s:get_visual_selection()
-  " Why is this not a built-in Vim script function?!
-  let [lnum1, col1] = getpos("'<")[1:2]
-  let [lnum2, col2] = getpos("'>")[1:2]
-  let lines = getline(lnum1, lnum2)
-  let lines[-1] = lines[-1][: col2 - (&selection == 'inclusive' ? 1 : 2)]
-  let lines[0] = lines[0][col1 - 1:]
-  return join(lines, "\n")
-endfunction
-
-function! NsToString(ns)
-    let m = matchlist(a:ns, '\v(\d+)(\d{9})')
-    if empty(m)
-        throw "No nanosecond timestamp in ".a:ns
-    endif
-    return strftime("%Y-%m-%d %H:%M:%S", str2nr(m[1])).'.'.m[2]
-endfunction
-
-"nnoremap <leader>l yiwciw<C-r>=NsToString('<C-r>"')<cr><esc>
-"nnoremap <leader>L yiwea (<C-r>=NsToString('<C-r>"')<cr>)<esc>
+" Don't display splash screen on start
+set shortmess+=I
 
 " vim:fdm=marker
