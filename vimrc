@@ -473,6 +473,18 @@ silent set listchars+=nbsp:+
 nnoremap <leader>s :A<CR>
 nnoremap <leader>S <C-w>v<C-w>l:A<CR>
 
+" "in line" (entire line sans white-space; cursor at beginning)
+xnoremap <silent> il :<c-u>normal! g_v^<cr>
+onoremap <silent> il :<c-u>normal! g_v^<cr>
+xnoremap <silent> al :<c-u>normal! $v0<cr>
+onoremap <silent> al :<c-u>normal! $v0<cr>
+" "in number" (next number after cursor on current line)
+xmap <silent> in <Plug>(XInNumber)
+omap <silent> in <Plug>(OInNumber)
+" "around number" (next number on line and possible surrounding white-space)
+xmap <silent> an <Plug>(XAroundNumber)
+omap <silent> an <Plug>(OAroundNumber)
+
 nmap <C-W>! :Bdelete<CR>  " close buffer without closing window
 
 noremap <leader>pp :setlocal paste!<cr>
