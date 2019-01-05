@@ -464,10 +464,7 @@ com! DiffPerforce call s:DiffWithPerforceCheckedOut()
 set list
 
 " Define extra 'list' display characters
-set listchars+=tab:>-
-set listchars+=trail:.
-set listchars+=extends:>
-set listchars+=precedes:<
+set listchars=tab:>-,trail:.,extends:>,precedes:<
 silent set listchars+=nbsp:+
 
 nnoremap <leader>s :A<CR>
