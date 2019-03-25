@@ -1,8 +1,8 @@
 #!/bin/zsh
 
 export HISTFILE=$HOME/.zsh_history
-export HISTSIZE=1024
-export SAVEHIST=1024
+export HISTSIZE=10000
+export SAVEHIST=10000
 
 setopt append_history
 setopt hist_ignore_space
