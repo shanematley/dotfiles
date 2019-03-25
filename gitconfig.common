@@ -81,6 +81,7 @@
     rup = remote -v update
     aliases = !git config -l | grep ^alias\\. | cut -c 7-
     info = for-each-ref --format=\"%(refname:short)  <=  %(upstream:short)\" refs/heads
+    recent = "!git for-each-ref --sort=-committerdate refs/heads/ --format='%(committerdate:short) %(authorname) %(refname:short)'"
 
 [pretty]
     la = tformat:%C(yellow)%h%Creset%C(bold red)%d%Creset %s %C(bold blue)<%an>%Creset %C(green)%ad%Creset
