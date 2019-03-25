@@ -1,5 +1,5 @@
-from ConfigParser import SafeConfigParser
-import keyring, os, getpass, urlparse, requests
+from configparser import SafeConfigParser
+import keyring, os, getpass, urllib, requests
 
 CONFIG_DESC="""CONFIGURATION OF JIRA SCRIPTS
 
@@ -27,7 +27,7 @@ class Jira(object):
             keyring.set_password('jira_scripts', self.username, self.password)
 
     def get(self, url):
-        rest_uri = urlparse.urljoin(self.jira_server, '/rest/api/2/') + url
+        rest_uri = urllib.parse.urljoin(self.jira_server, '/rest/api/2/') + url
         r = requests.get(rest_uri, auth=(self.username, self.password), headers=({'Content-Type':'application/json'}), verify=False)
         r.raise_for_status()
         return r.json()
