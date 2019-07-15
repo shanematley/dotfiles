@@ -9,7 +9,18 @@ nsdate() {
         st=$(( $1 / $div ))
         nst=$(( $1 % $div ))
     fi
-    printf "%s.%09d\n" "$(date -d @${st} +"%Y-%m-%d %H:%M:%S")" "${nst}"
+    if [[ $(uname -s) == Darwin ]]; then
+        datecmd=gdate
+    else
+        datecmd=date
+    fi
+
+    if ! command -v $datecmd >/dev/null 2>&1; then
+        >&2 echo "Missing $datecmd. Please install $datecmd."
+        return
+    fi
+
+    printf "%s.%09d\n" "$($datecmd -d @${st} +"%Y-%m-%d %H:%M:%S")" "${nst}"
 }
 
 alias jpdate="TZ='Asia/Tokyo' nsdate"
