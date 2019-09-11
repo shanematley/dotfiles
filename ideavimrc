@@ -27,6 +27,9 @@ nnoremap <C-k> gT
 nnoremap tj  gt
 nnoremap tk  gT
 
+" Toggle Presentation Mode
+nnoremap <leader>p :action TogglePresentationMode<cr>
+
 " Open a new vertical split and switch to it. Use <C-w>s to get a horizontal split
 nnoremap <leader>w <C-w>v<C-w>l
 
@@ -36,7 +39,8 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
-nnoremap <leader>m :action Build<cr>
+nnoremap <leader>mb :action Build<cr>
+nnoremap <leader>mr :action Run<cr>
 nnoremap <leader>\\ :action FindUsages<cr>
 nnoremap <leader>/ :action ShowUsages<cr>
 
@@ -51,7 +55,7 @@ vnoremap <leader>a <esc>gvhh:<C-U>action VimVisualSwapSelections<cr>:action Goto
 "inoremap <C-H> <C-O>:action GotoRelated<cr>
 "vnoremap <C-H> :<C-U>action GotoRelated<cr>
 
-noremap <leader>p :<C-U>action PinActiveEditorTab<cr>
+noremap <leader>P :<C-U>action PinActiveEditorTab<cr>
 
 nnoremap <leader>g :action GotoSymbol<cr>
 vnoremap <leader>g <esc>gvhh:<C-U>action VimVisualSwapSelections<cr>:action GotoSymbol<cr>
@@ -85,7 +89,6 @@ noremap <C-W>H :<C-U>action MoveEditorToOppositeTabGroup<cr>
 nnoremap <leader>* :action HighlightUsagesInFile<cr>
 vnoremap <leader>* <esc>gvhh:<C-U>action VimVisualSwapSelections<cr>:action HighlightUsagesInFile<cr>
 nnoremap <leader>R :action RunClass<cr>
-" nnoremap <leader>r :action Run<cr>
 nnoremap <leader>r :action Refactorings.QuickListPopupAction<cr>
 vnoremap <leader>r <esc>gvhh:<C-U>action VimVisualSwapSelections<cr>:action Refactorings.QuickListPopupAction<cr>
 nnoremap <leader>n :action RenameElement<cr>
