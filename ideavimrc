@@ -157,3 +157,4 @@ noremap <leader>vi :<C-U>action Tool_External<space>Tools_Vim<CR>
 noremap <leader>* :<C-U>action MultiHighlight<CR>
 noremap <leader>#  :<C-U>action MultiHighlight.ClearAction<CR>
 
+set clipboard+=ideaput
