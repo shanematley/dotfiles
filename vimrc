@@ -46,9 +46,7 @@ nnoremap <leader><space> :nohlsearch<cr>
 call plug#begin()
 Plug 'altercation/vim-colors-solarized'
 Plug 'benmills/vimux'
-Plug 'Chun-Yang/vim-action-ag'
 Plug 'ervandew/supertab' " Use tab for insert completion
-Plug 'gabesoft/vim-ags',  { 'on' : ['Ags'] }
 Plug 'Glench/Vim-Jinja2-Syntax'
 Plug 'gmarik/Vundle.vim'
 Plug 'godlygeek/csapprox'
@@ -87,7 +85,8 @@ Plug 'vim-scripts/genutils'
 Plug 'vim-scripts/SelectBuf' " F3 displays open buffers + deletion capability
 Plug 'vim-scripts/vim-indent-object' " ai, ii, aI, iI (an/inner indentation level and line above/below)
 Plug 'xuhdev/SingleCompile', { 'on' : [ 'SCChooseCompiler',     'SCCompile',            'SCCompileRun',         'SCCompileRunAsync', 'SCChooseInterpreter',  'SCCompileAF',          'SCCompileRunAF',       'SCCompileRunAsyncAF' ] }
-Plug 'yegappan/grep'
+Plug 'junegunn/fzf'
+Plug 'junegunn/fzf.vim'
 call plug#end()
 "}}}
 
@@ -268,7 +267,8 @@ com! LoadLocalProjectSpecificSettings call s:LoadProjectSpecificSettings()
 " Shortcut Keys, Mappings ------------------------------------------------------ {{{
 
 nnoremap ZX :qa<CR>
-nnoremap <leader>b :CtrlPBuffer<cr>
+nnoremap <leader>b :Buffers<cr>
+nnoremap <leader>t :GFiles<cr>
 nnoremap <leader>ps :LoadLocalProjectSpecificSettings<cr>
 
 nnoremap <leader>m :silent Make<cr>
