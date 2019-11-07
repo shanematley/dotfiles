@@ -1,7 +1,7 @@
 set surround
 set argtextobj
 
-set clipboard=unnamedplus,unnamed
+set clipboard=unnamedplus,unnamed,ideaput
 let mapleader = ","
 :nmap <space> ,
 set ignorecase smartcase
@@ -13,6 +13,7 @@ set history=1000
 " set mps+=<:>
 set nonumber
 set norelativenumber
+set smartjoin
 
 inoremap jj <ESC>
 inoremap JJ <ESC>
@@ -45,11 +46,11 @@ nnoremap <leader>\\ :action FindUsages<cr>
 nnoremap <leader>/ :action ShowUsages<cr>
 
 nnoremap <leader>q :action FindInPath<cr>
-vnoremap <leader>q <esc>gvhh:<C-U>action VimVisualSwapSelections<cr>:action FindInPath<cr>
-vnoremap <leader>S <esc>gvhh:<C-U>action VimVisualSwapSelections<cr>:action SurroundWith<cr>
+vnoremap <leader>q :action FindInPath<cr>:action EditorEscape<cr>
+vnoremap <leader>S :action SurroundWith<cr>
 
 nnoremap <leader>a :action GotoAction<cr>
-vnoremap <leader>a <esc>gvhh:<C-U>action VimVisualSwapSelections<cr>:action GotoAction<cr>
+vnoremap <leader>a <esc>gvhh:<C-U>action GotoAction<cr>
 
 "nnoremap <C-H> :action GotoRelated<cr>
 "inoremap <C-H> <C-O>:action GotoRelated<cr>
@@ -58,10 +59,10 @@ vnoremap <leader>a <esc>gvhh:<C-U>action VimVisualSwapSelections<cr>:action Goto
 noremap <leader>P :<C-U>action PinActiveEditorTab<cr>
 
 nnoremap <leader>g :action GotoSymbol<cr>
-vnoremap <leader>g <esc>gvhh:<C-U>action VimVisualSwapSelections<cr>:action GotoSymbol<cr>
+vnoremap <leader>g <esc>gvhh:<C-U>action GotoSymbol<cr>
 
 nnoremap <leader>. :action GotoClass<cr>
-vnoremap <leader>. <esc>gvhh:<C-U>action VimVisualSwapSelections<cr>:action GotoClass<cr>
+vnoremap <leader>. <esc>gvhh:<C-U>action GotoClass<cr>
 
 noremap <leader>] :<C-U>action GotoImplementation<cr>
 noremap <leader>[ :<C-U>action GotoSuperMethod<cr>
@@ -77,8 +78,8 @@ nnoremap <leader>d :action VcsShowCurrentChangeMarker<cr>
 nnoremap <leader>U :action Vcs.RollbackChangedLines<cr>
 noremap <leader>va :<C-U>action Annotate<CR>
 nnoremap gh :action Vcs.ShowTabbedFileHistory<CR>
-vnoremap gh <esc>gvhh:<C-U>action VimVisualSwapSelections<cr>:action Vcs.ShowHistoryForBlock<CR>
-"vnoremap gh <esc>gvhh:<C-U>action VimVisualSwapSelections<cr>:action LocalHistory.ShowSelectionHistory<CR>
+vnoremap gh <esc>gvhh:<C-U>action Vcs.ShowHistoryForBlock<CR>
+"vnoremap gh <esc>gvhh:<C-U>action LocalHistory.ShowSelectionHistory<CR>
 noremap gl :<C-U>action JumpToLastChange<CR>
 noremap g; :<C-U>action JumpToLastChange<CR>
 noremap g, :<C-U>action JumpToNextChange<CR>
@@ -87,18 +88,18 @@ noremap <C-W>L :<C-U>action MoveEditorToOppositeTabGroup<cr>
 noremap <C-W>H :<C-U>action MoveEditorToOppositeTabGroup<cr>
 " nnoremap <leader>gt :action GotoTest<cr>
 nnoremap <leader>* :action HighlightUsagesInFile<cr>
-vnoremap <leader>* <esc>gvhh:<C-U>action VimVisualSwapSelections<cr>:action HighlightUsagesInFile<cr>
+vnoremap <leader>* <esc>gvhh:<C-U>action HighlightUsagesInFile<cr>
 nnoremap <leader>R :action RunClass<cr>
 nnoremap <leader>r :action Refactorings.QuickListPopupAction<cr>
-vnoremap <leader>r <esc>gvhh:<C-U>action VimVisualSwapSelections<cr>:action Refactorings.QuickListPopupAction<cr>
+vnoremap <leader>r <esc>gvhh:<C-U>action refactorings.QuickListPopupAction<cr>
 nnoremap <leader>n :action RenameElement<cr>
-vnoremap <leader>em <esc>gvhh:<C-U>action VimVisualSwapSelections<cr>:action ExtractMethod<cr>
+vnoremap <leader>em <esc>gvhh:<C-U>:action ExtractMethod<cr>
 nnoremap <leader>em :<C-U>action ExtractMethod<cr><esc>
 nnoremap <leader>eg :<C-U>action Generate<cr><esc>
 noremap <leader>ec :<C-U>action IntroduceConstant<cr><esc>
 noremap <leader>ev :<C-U>action IntroduceVariable<cr><esc>
 nnoremap <leader>t :<C-U>action GotoFile<cr>
-vnoremap <leader>t <esc>gvhh:<C-U>action VimVisualSwapSelections<cr>:action GotoFile<cr>
+vnoremap <leader>t <esc>gvhh:<C-U>action GotoFile<cr>
 "nnoremap <leader>x :action FileChooser.GotoHome<cr>
 nnoremap gQ :action ReformatCode<cr>
 vnoremap gQ :<C-U>action ReformatCode<cr>
@@ -108,10 +109,7 @@ noremap S :action AceAction<cr>
 " noremap zZ :action AceTargetAction<cr>
 noremap <leader>l :action AceLineAction<cr>
 nnoremap gcc :action CommentByLineComment<cr>
-vnoremap gcc <esc>gvhh:<C-U>action VimVisualSwapSelections<cr>:action CommentByLineComment<cr>
-
-nnoremap gC :action ClangFormat.ClangFormat<cr>
-vnoremap gC <esc>gvhh:<C-U>action VimVisualSwapSelections<cr>:action ClangFormat.ClangFormat<cr>
+vnoremap gcc <esc>gvhh:<C-U>action CommentByLineComment<cr>
 
 " unimpaired mappings
 noremap cow :<C-U>action EditorToggleUseSoftWraps<cr>
@@ -157,4 +155,3 @@ noremap <leader>vi :<C-U>action Tool_External<space>Tools_Vim<CR>
 noremap <leader>* :<C-U>action MultiHighlight<CR>
 noremap <leader>#  :<C-U>action MultiHighlight.ClearAction<CR>
 
-set clipboard+=ideaput
