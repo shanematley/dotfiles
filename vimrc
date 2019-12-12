@@ -516,10 +516,10 @@ imap <C-n> <Plug>(DigraphFromPrevChars)
 " Run :helptags ~/.vim/doc to generate docs
 imap <C-K><C-K> <Plug>(DigraphSearch)
 
-" Clang Format ----------------------------------------------------------- {{{
-" Assume clang-format.py lives in ~/bin
+" ClangFormat ----------------------------------------------------------- {{{
 
-noremap <leader>cf :pyf $HOME/bin/clang-format.py<cr>
+noremap <leader>cf :ClangFormat<cr>
+vnoremap <leader>cf :ClangFormat<cr>
 nmap <leader>cc <Plug>(RunClangCheck)
 
 "}}}
