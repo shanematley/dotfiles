@@ -67,7 +67,6 @@ Plug 'richq/cmakecompletion-vim', {'for' : 'cmake' } " C-X C-O for completion of
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree', { 'on':  ['NERDTreeToggle', 'NERDTreeFind'] }
 Plug 'Shirk/vim-gas', { 'for' : 'gas' }
-Plug 'sjbach/lusty' ", { 'on' : ['LustyJuggler', 'LustyBufferExplorer', 'LustyFilesystemExplorerFromHere'] }
 Plug 'sjl/badwolf'
 Plug 'sjl/gundo.vim'
 Plug 'tommcdo/vim-exchange'
