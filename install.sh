@@ -12,6 +12,7 @@ fail ()     { printf "\r\033[2K  [\033[0;31mFAIL\033[0m] $1\n"; echo ''; exit; }
 softfail () { printf "\r\033[2K  [\033[0;31mFAIL\033[0m] $1\n"; }
 
 SCRIPTPATH=$(cd $(dirname $0); pwd;)
+KONSOLE_THEMES=~/.local/share/konsole
 FILES=("vimrc"
     "vim"
     "tmux"
@@ -298,6 +299,35 @@ section "Submodules"
 
 git submodule sync
 git submodule update --init
+
+section "Konsole/Yakuake"
+
+function install_theme() {
+    local theme_source="$1"
+    local theme_name="$(basename "$theme")"
+    local dest_path="$KONSOLE_THEMES/$theme_name"
+    if [[ ! -f $dest_path ]]; then
+        if cp "$theme_source" "$dest_path"; then
+            success "Installed theme $theme_name"
+        else
+            softfail "Failed to install theme $theme_name"
+        fi
+    else
+        if diff -q "$theme_source" "$dest_path" >/dev/null; then
+            info "Theme $theme_name already installed"
+        else
+            softfail "Theme $theme_name already exists. Manually remove $dest_path if you wish to reinstall"
+        fi
+    fi
+}
+
+if [[ -d ~/.local/share/konsole ]]; then
+    for theme in "$SCRIPTPATH/konsole_themes/"*; do
+        install_theme "$theme"
+    done
+else
+    info "No konsole directory. Not installing konsole_themes"
+fi
 
 section "Verifying tools"
 
