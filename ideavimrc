@@ -1,5 +1,6 @@
 set surround
 set argtextobj
+let g:argtextobj_pairs="(:),{:},[:],<:>"
 
 set clipboard=unnamedplus,unnamed,ideaput
 let mapleader = ","
@@ -119,7 +120,7 @@ noremap <leader>; :<C-U>action VimWindowRight<cr>
 noremap <leader>j :<C-U>action VimWindowDown<cr>
 noremap <leader>k :<C-U>action VimWindowUp<cr>
 noremap <leader>h :<C-U>action VimWindowLeft<cr>
-noremap <esc> <esc>:<C-U>noh<CR>:action Escape<cr>:action HideSideWindows<cr>
+"noremap <esc> <esc>:<C-U>noh<CR>:action Escape<cr>:action HideSideWindows<cr>
 
 noremap <leader>c :<C-U>action ActivateMessagesToolWindow<cr>
 noremap <leader>s :<C-U>action ActivateFindToolWindow<cr>
