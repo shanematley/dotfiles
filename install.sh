@@ -24,6 +24,7 @@ FILES=("vimrc"
     "tridactylrc"
     "ideavimrc"
     "powerline:$HOME/.config/powerline"
+    "karabiner:$HOME/.config/karabiner"
     "man:$HOME/man")
 
 osis() {
