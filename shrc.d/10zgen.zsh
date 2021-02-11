@@ -16,7 +16,7 @@ if ! zgen saved; then
     # Plugin that generates completion functions automatically from getopt-style help texts.
     zgen load RobSis/zsh-completion-generator
     # Set up easy auto updating, both of zgen and the bundles loaded in your configuration.
-    zgen load unixorn/autoupdate-zgen
+    #zgen load unixorn/autoupdate-zgen
     # Fish-like suggestions. It suggests commands as you type, based on command history.
     zgen load zsh-users/zsh-autosuggestions
 fi
