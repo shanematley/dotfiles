@@ -197,7 +197,7 @@ if has('gui_running')
 
     if has("gui_mac") && has("gui_gnome")
         set term=gnome-256color
-        colorscheme molokai
+        colorscheme powerline
         set guifont=Monospace\ Bold\ 12
     endif
 
@@ -503,6 +503,10 @@ endif
 set background=dark
 colorscheme PaperColor
 
+let g:lightline = {
+      \ 'colorscheme': 'powerline',
+      \ }
+
 call togglebg#map("<F5>")
 hi MatchParen ctermbg=blue guibg=lightblue
 "}}}
@@ -559,5 +563,15 @@ let g:ctags_statusline=1
 
 " Don't display splash screen on start
 set shortmess+=I
+
+" Replace Obsidian images with standard Markdown images
+" ![[Path to image]] with ![Path to image](Path%20to%20image]]
+function! ReplaceObsidianImageMarkdown()
+    " Save cursor position
+    let l:save = winsaveview()
+    %s/!\[\[\([^]]\+\)\]\]/![\1](\1)/g
+    call winrestview(l:save)
+    echo "Replaced Obsidian image references with standard Markdown references"
+endfunction
 
 " vim:fdm=marker
