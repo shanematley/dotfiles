@@ -1,1 +1,0 @@
-alias macif='networksetup -listnetworkserviceorder'
