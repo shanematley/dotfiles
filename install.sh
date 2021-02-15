@@ -5,10 +5,10 @@
 set -uo pipefail
 
 section()   { printf "\n## $1\n\n"; }
-info ()     { printf "\r  [ \033[00;34m..\033[0m ] $1\n"; }
-user ()     { printf "\r  [ \033[0;33m??\033[0m ] $1\n"; }
-success ()  { printf "\r\033[2K  [ \033[00;32mOK\033[0m ] $1\n"; }
-fail ()     { printf "\r\033[2K  [\033[0;31mFAIL\033[0m] $1\n"; echo ''; exit; }
+info()      { printf "\r  [ \033[00;34m..\033[0m ] $1\n"; }
+user()      { printf "\r  [ \033[0;33m??\033[0m ] $1\n"; }
+success()   { printf "\r\033[2K  [ \033[00;32mOK\033[0m ] $1\n"; }
+fail()      { printf "\r\033[2K  [\033[0;31mFAIL\033[0m] $1\n"; echo ''; exit; }
 softfail () { printf "\r\033[2K  [\033[0;31mFAIL\033[0m] $1\n"; }
 
 SCRIPTPATH=$(cd $(dirname $0); pwd;)
@@ -163,12 +163,16 @@ function check_shrc() {
     fi
 }
 
+function installed() {
+    command -v "${1}" >/dev/null 2>&1
+}
+
 function sync_brew_package() {
     local command_name="$1"
     local package_name="$2"
     if osis Darwin; then
-        if ! command -v $command_name >/dev/null 2>&1; then
-            if command -v brew >/dev/null 2>&1; then
+        if ! installed $command_name; then
+            if installed brew; then
                 info "Missing $package_name Installing via Homebrew."
                 if brew install $package_name; then
                     success "$package_name installed"
@@ -185,12 +189,7 @@ function sync_brew_package() {
 }
 
 function check_binary_presence() {
-    local command_name="$1"
-    if ! command -v $command_name >/dev/null 2>&1; then
-        softfail "$command_name missing."
-    else
-        info "Skipping: $command_name already present"
-    fi
+    installed "$1" && info "Skipping: $1 already present" || softfail "$1 missing"
 }
 
 function sync_pip_package() {
@@ -199,7 +198,7 @@ function sync_pip_package() {
         info "Skipping: $package already present"
         return 0
     else
-        if ! command -v pip2 >/dev/null 2>&1; then
+        if ! installed pip2; then
             softfail "$package could not be installed as pip2 missing"
             return 1
         elif pip2 install --user ${package}; then
