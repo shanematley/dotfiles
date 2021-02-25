@@ -290,10 +290,24 @@ if [[ $INSTALL_POWERLINE ]]; then
     fi
 fi
 
-section "ZSH Plugins"
+install_zsh_plugins() {
+    local zfunction_src="$SCRIPTPATH/zfunctions"
+    local zfunction_dst="$HOME/.zfunctions"
 
-# Used in conjunction with 10zfunctions.sh to provide additional ZSH functionality
-create_link "$SCRIPTPATH/zfunctions" "$HOME/.zfunctions"
+    section "ZSH Plugins"
+
+    # Used in conjunction with 10zfunctions.sh to provide additional ZSH functionality
+    if [[ "${zfunction_src}" -ef "${zfunction_dst}" ]]; then
+        rm "${zfunction_dst}" && success "ZSH Plugins: Removed old symlink"
+    fi
+    mkdir "${zfunction_dst}" 2>/dev/null && success "ZSH Plugins: Created ${zfunction_dst}" || info "ZSH Plugins: ${zfunction_dst} already present"
+    for file in "${zfunction_src}/"*; do
+        create_link "${file}" "${zfunction_dst}/${file/*\//}"
+    done
+}
+
+install_zsh_plugins
+
 
 section "Submodules"
 
