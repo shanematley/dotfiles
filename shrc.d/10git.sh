@@ -8,3 +8,19 @@ function gs() {
     echo
 }
 alias gitn="git --no-pager"
+
+
+commit_onto() {
+    command -v fzf >/dev/null 2>&1 || { echo "commit_onto requires fzf"; return; }
+
+    if [[ $(git diff --name-only --cached | wc -l) -eq 0 ]]; then
+        echo 'No changes staged!'
+        return
+    fi
+    local commit=$(git log --oneline --decorate=no origin/master.. | fzf | cut -d' ' -f1)
+    if [[ -z "$commit" ]]; then
+        return
+    fi
+    git commit -m "fixup! $commit"
+    GIT_SEQUENCE_EDITOR=true git rebase -i --autosquash
+}
