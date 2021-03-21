@@ -1,4 +1,9 @@
+################################################################################
+# Date functions for getting local time from a unix style timestamp in ns
+################################################################################
+
 nsdate() {
+    [[ -z $1 ]] && { echo "Usage: jpdate|hkdate|audate|utdate ns"; return; }
     local st=$1
     local nst=0
     #1521740309.720

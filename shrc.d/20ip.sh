@@ -40,3 +40,13 @@ function my_public_ip()
 {
     dig +short myip.opendns.com @resolver1.opendns.com
 }
+
+alias localip="ipconfig getifaddr en0"
+
+# Show active network interfaces
+alias ifactive="ifconfig | pcregrep -M -o '^[^\t:]+:([^\n]|\n\t)*status: active'"
+
+# One of @janmoesen’s ProTip™s
+for method in GET HEAD POST PUT DELETE TRACE OPTIONS; do
+    alias "${method}"="lwp-request -m '${method}'"
+done

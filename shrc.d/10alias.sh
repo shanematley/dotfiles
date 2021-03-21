@@ -11,13 +11,6 @@ alias cdp="cd $(pwd)"
 alias path='echo -e ${PATH//:/\\n}'
 alias libpath='echo -e ${LD_LIBRARY_PATH//:/\\n}'
 
-function make_unique_temp() {
-    if [[ $Apple == true ]]; then
-        mktemp -t "temp"
-    else
-        mktemp
-    fi
-}
 function yesno {
     local QUESTION="$1"
     local ANSWER=""
@@ -34,6 +27,7 @@ function yesno {
         esac
     done
 }
+
 function editpath {
     TEMP_FILE=$(make_unique_temp)
     echo "Created temp file: $TEMP_FILE"
@@ -96,18 +90,6 @@ fi
 alias json="python -m json.tool"
 alias xml="xmllint --format -"
 alias html="tidy -i --indent-spaces 4"
-
-hash ack-grep 2>/dev/null && alias ack=ack-grep
-
-if [[ $Apple == true ]]; then
-    memcpu() { echo "*** Top 10 cpu eating processes ***"; ps aux | sort -nr -k 3 | head -10;
-        echo "*** Top 10 memory eating processes ***"; ps aux | sort -nr -k 4 | head -n10;
-    }
-else
-    memcpu() { echo "*** Top 10 cpu eating processes ***"; ps auxf | sort -nr -k 3 | head -10;
-        echo "*** Top 10 memory eating processes ***"; ps auxf | sort -nr -k 4 | head -n10;
-    }
-fi
 
 if [[ $Linux == true ]]; then
     alias chown='chown --preserve-root'
