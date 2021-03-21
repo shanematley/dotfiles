@@ -1,7 +1,6 @@
 if [[ $(uname) == Darwin ]]; then
     # pwdf: echoes path of front-most window of Finder
-    pwdf ()
-        {
+    pwdf () {
         currFolderPath=$( /usr/bin/osascript <<"        EOT"
             tell application "Finder"
                 try
@@ -17,7 +16,7 @@ if [[ $(uname) == Darwin ]]; then
     }
 
     alias cdf='cd "`pwdf`"'
-    alias lsf='ls `pwdf`'
-    alias llf='ll `pwdf`'
-    alias laf='la `pwdf`'
+    alias lsf='ls "`pwdf`"'
+    alias llf='ll "`pwdf`"'
+    alias laf='la "`pwdf`"'
 fi
