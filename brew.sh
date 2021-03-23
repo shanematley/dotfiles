@@ -71,6 +71,7 @@ brew install rlwrap
 brew install tree
 brew install vbindiff
 brew install zopfli
+brew install tokei
 
 # Remove outdated versions from the cellar.
 brew cleanup
