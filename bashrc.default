@@ -1,1 +1,1 @@
-for f in $(find ~/.shrc.d/ ~/.shrc.d.local/ \( -type f -or -type l \) -regex '.*\.\(sh\|bash\)' 2>/dev/null); do source "$f"; done
+for f in $(find ~/.shrc.d/ ~/.shrc.d.local/ -maxdepth 1 \( -type f -or -type l \) -regex '.*\.\(sh\|bash\)' 2>/dev/null); do source "$f"; done
