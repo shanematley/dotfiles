@@ -29,29 +29,48 @@ brew install wget
 brew install vim --with-override-system-vi
 
 # Install some CTF tools; see https://github.com/ctfs/write-ups.
+# WiFi security
 #brew install aircrack-ng
+# Remove large files or passwords from git history
 #brew install bfg
 #brew install binutils
+# Binwalk is a tool for searching a given binary image for embedded files and executable code
 #brew install binwalk
+# Classical cipher cracking
 #brew install cifer
-#brew install dex2jar
+# TCP-over-DNS tunnel server and client
 #brew install dns2tcp
+# Zip password cracker
 #brew install fcrackzip
+# Foremost is a console program to recover files based on their headers, footers, and internal data structures
 #brew install foremost
+# A tool to exploit the hash length extension attack in various hashing algorithms.
 #brew install hashpump
+# Network logon cracker which supports many services
 #brew install hydra
+# Featureful UNIX password cracker
 #brew install john
-#brew install knock
+# Image manipulation
 #brew install netpbm
+# Port scanning utility for large networks
 brew install nmap
+# Print info and check PNG, JNG, and MNG files
 #brew install pngcheck
+# SOcket CAT: netcat on steroids
 brew install socat
+# Penetration testing for SQL injection and database servers
 #brew install sqlmap
+# TCP/IP packet demultiplexer
 #brew install tcpflow
+# Replay saved tcpdump files at arbitrary speeds
 #brew install tcpreplay
+# Analyze tcpdump output
 #brew install tcptrace
+# tcpserver and tcpclient are easy-to-use command-line tools for building TCP client-server applications.
 #brew install ucspi-tcp # `tcpserver` etc.
+# PDF viewer
 #brew install xpdf
+# General-purpose data compression with high compression ratio
 #brew install xz
 
 # Install other useful binaries.
