@@ -10,6 +10,8 @@ setopt globcomplete
 
 
 autoload -U compinit
+# Initialise completions. -i ignores insecure directories. (Using -u would use insecure directories)
+compinit -i
 
 # The zsh/complist module offers three extensions to completion listings: the
 # ability to highlight matches in such a list, the ability to scroll through
