@@ -93,5 +93,8 @@ brew install vbindiff
 brew install zopfli
 brew install tokei
 
+# dive - a tool for exploring a docker image, layer contents etc. https://github.com/wagoodman/dive
+brew install dive
+
 # Remove outdated versions from the cellar.
 brew cleanup
