@@ -15,6 +15,8 @@ BREW_PREFIX=$(brew --prefix)
 # Don’t forget to add `$(brew --prefix coreutils)/libexec/gnubin` to `$PATH`.
 brew install coreutils
 
+brew install fzf
+
 # Install some other useful utilities like `sponge`.
 #brew install moreutils
 # Install GNU `find`, `locate`, `updatedb`, and `xargs`, `g`-prefixed.
