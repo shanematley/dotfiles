@@ -84,12 +84,15 @@ Plug 'vim-scripts/genutils'
 Plug 'vim-scripts/SelectBuf' " F3 displays open buffers + deletion capability
 Plug 'vim-scripts/vim-indent-object' " ai, ii, aI, iI (an/inner indentation level and line above/below)
 Plug 'xuhdev/SingleCompile', { 'on' : [ 'SCChooseCompiler',     'SCCompile',            'SCCompileRun',         'SCCompileRunAsync', 'SCChooseInterpreter',  'SCCompileAF',          'SCCompileRunAF',       'SCCompileRunAsyncAF' ] }
-Plug 'junegunn/fzf'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 call plug#end()
 "}}}
 
 nnoremap <silent> <F8> :TagbarOpenAutoClose<CR>
+
+nnoremap <silent> <C-t> :Files<CR> 
+nnoremap <silent> <leader>g :Rg<CR> 
 
 "{{{ Plugin configuration: SingleCompile
 function! SingleCompileGCC()
