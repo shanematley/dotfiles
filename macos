@@ -254,6 +254,18 @@ defaults write com.google.Chrome PMPrintingExpandedStateForPrint2 -bool true
 defaults write com.google.Chrome.canary PMPrintingExpandedStateForPrint2 -bool true
 
 ###############################################################################
+# Add applications to local user login items
+###############################################################################
+
+if [[ -d /Applications/Hammerspoon.app ]]; then
+    osascript -e 'tell application "System Events" to make login item at end with properties {path:"/Applications/Hammerspoon.app", hidden:true}' > /dev/null
+fi
+if [[ -d /Applications/Karabiner-Elements.app ]]; then
+    osascript -e 'tell application "System Events" to make login item at end with properties {path:"/Applications/Karabiner-Elements.app", hidden:true}' > /dev/null
+fi
+
+
+###############################################################################
 # Kill affected applications                                                  #
 ###############################################################################
 
