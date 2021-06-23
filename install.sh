@@ -219,6 +219,8 @@ check_shrc bashrc
 
 section "Linking dotfiles"
 
+create_dir "$HOME/.hammerspoon"
+
 for f in "${FILES[@]}"; do
     [[ $f =~ ([^:]+):?(.*)? ]] || fail "Bad file specified in FILES. Adjust script. File: '$f'"
     DEST="${BASH_REMATCH[1]}"
