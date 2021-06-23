@@ -95,6 +95,9 @@ brew install vbindiff
 brew install zopfli
 brew install tokei
 
+# Hammerspoon for great keyboard shortcuts as inspired by https://github.com/jasonrudolph/keyboard
+brew install hammerspoon
+
 # dive - a tool for exploring a docker image, layer contents etc. https://github.com/wagoodman/dive
 brew install dive
 

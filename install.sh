@@ -25,6 +25,7 @@ FILES=("vimrc"
     "ideavimrc"
     "powerline:$HOME/.config/powerline"
     "karabiner:$HOME/.config/karabiner"
+    "hammerspoon:$HOME/.hammerspoon/keyboard"
     "man:$HOME/man")
 
 osis() {
@@ -341,6 +342,15 @@ if [[ -d ~/.local/share/konsole ]]; then
     done
 else
     info "No konsole directory. Not installing konsole_themes"
+fi
+
+section "Hammerspoon"
+
+if ! grep -sq "require('keyboard')" ~/.hammerspoon/init.lua; then
+    echo "require('keyboard') -- Load Hammerspoon with subset of: https://github.com/jasonrudolph/keyboard" >> ~/.hammerspoon/init.lua
+    success "Added keyboard to Hammerspoon init.lua"
+else
+    info "Hammerspoon init.lua ok"
 fi
 
 section "Verifying tools"
