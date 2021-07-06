@@ -46,19 +46,27 @@ function toggle_zoom_combined(toggle_off1, toggle_off2, toggle_on1, toggle_on2)
     end
 end
 
+-- modifier_key: e.g. {"cmd"} alternatively use nil to not affect modifiers. Modifiers
+--   include: "fn", "ctrl", "alt", "cmd", "shift"
+-- key: e.g. "v"
+function make_send_key_to_application(app_name, modifier_key, key)
+    return function()
+        local found_app = hs.appfinder.appFromName(app_name)
+        if (found_app) then
+            hs.eventtap.keyStroke(modifier_key, key, nil, found_app)
+        end
+    end
+end
+
 return {
   { 'a', 'Music' },             -- "A" for "Apple Music"
   { 'b', 'Google Chrome' },     -- "B" for "Browser"
-  { 'c', 'Slack' },             -- "C for "Chat"
-  { 'd', 'Remember The Milk' }, -- "D" for "Do!" ... or "Done!"
-  { 'e', 'Atom' },              -- "E" for "Editor"
   { 'f', 'Finder' },            -- "F" for "Finder"
-  { 'g', 'Mailplane 3' },       -- "G" for "Gmail"
   { 'n', 'Messages' },
   { 'o', 'Omnifocus' },
-  { 's', 'Slack' },             -- "S" for "Slack"
   { 't', 'iTerm' },             -- "T" for "Terminal"
   { 'z', 'Zoom.us' },              -- "Z" for "Zoom"
+  { 'p', make_send_key_to_application('zoom.us', {'alt'}, 'y') },
   { '\\', toggle_zoom('Mute Audio', 'Unmute Audio') },
   { ']', toggle_zoom_combined('Mute Audio', 'Stop Video', 'Unmute Audio', 'Start Video') },
   { '[', toggle_zoom('Stop Video', 'Start Video') },
