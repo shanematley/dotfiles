@@ -19,7 +19,6 @@ FILES=("vimrc"
     "tmux.conf"
     "inputrc"
     "shrc.d"
-    "gdbinit"
     "gitconfig.common"
     "tridactylrc"
     "ideavimrc"
@@ -161,6 +160,27 @@ function check_shrc() {
         success "INFO: $1 successfully offloaded"
     else
         fail "Failed to update $1 correctly"
+    fi
+}
+
+function check_gdbinit() {
+    local gdbinit_path="$HOME/.gdbinit"
+    local source_path="$SCRIPTPATH/gdbinit"
+
+    if [[ -L ${gdbinit_path} &&  $(readlink "$gdbinit_path") -ef "$source_path" ]]; then
+        rm "$gdbinit_path" && success "Removing symlink to gdbinit (legacy mode)"
+    fi
+
+    local source_line="source $SCRIPTPATH/gdbinit"
+
+    if [[ ! -e ${gdbinit_path} ]]; then
+        echo "$source_line" > ${gdbinit_path}
+        success "Created ${gdbinit_path}"
+    elif grep -q "$source_line" "$gdbinit_path"; then
+        info "$gdbinit_path ok"
+    else
+        # check and possibly replace
+        echo "$source_line" >> "$gdbinit_path" && success "Added $source_line to $gdbinit_path" || softfail "Failed to add to $gdbinit_path"
     fi
 }
 
@@ -310,6 +330,10 @@ install_zsh_plugins() {
 }
 
 install_zsh_plugins
+
+section "GDB"
+
+check_gdbinit
 
 
 section "Submodules"
