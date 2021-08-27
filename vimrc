@@ -16,12 +16,13 @@ filetype plugin indent on
 " General ---------------------------------------------------------------------- {{{
 set history=1000
 set nocompatible
+
 " Enable mouse mode. Use SGR 1006 mouse mode if the functionality is present
 " in this version of VIM. This was added in 7.3.632 and must be compiled in.
 set mouse=a
 if has("mouse_sgr")
     set ttymouse=sgr
-else
+elseif !has('nvim')
     set ttymouse=xterm2
 endif
 "}}}
@@ -83,7 +84,6 @@ Plug 'vim-scripts/closetag.vim' " Close previous tag with C--
 Plug 'vim-scripts/genutils'
 Plug 'vim-scripts/SelectBuf' " F3 displays open buffers + deletion capability
 Plug 'vim-scripts/vim-indent-object' " ai, ii, aI, iI (an/inner indentation level and line above/below)
-Plug 'xuhdev/SingleCompile', { 'on' : [ 'SCChooseCompiler',     'SCCompile',            'SCCompileRun',         'SCCompileRunAsync', 'SCChooseInterpreter',  'SCCompileAF',          'SCCompileRunAF',       'SCCompileRunAsyncAF' ] }
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 call plug#end()
@@ -94,18 +94,6 @@ nnoremap <silent> <F8> :TagbarOpenAutoClose<CR>
 nnoremap <silent> <C-t> :Files<CR> 
 nnoremap <silent> <leader>g :Rg<CR> 
 
-"{{{ Plugin configuration: SingleCompile
-function! SingleCompileGCC()
-    let l:gcc=sort(glob(exepath("g++") . "*", 1, 1))[-1]
-    call SingleCompile#SetCompilerTemplate('cpp', l:gcc, 'GNU C++1y Compiler', l:gcc, '-std=c++1z -pthread -Wall -Wextra -Weffc++ -isystem. -x c++ -o "$(FILE_TITLE)$"', '"./$(FILE_TITLE)$"')
-    call SingleCompile#SetOutfile('cpp', l:gcc, '"$(FILE_TITLE)$"')
-    call SingleCompile#ChooseCompiler('cpp', l:gcc)
-endfunction
-autocmd! User SingleCompile call SingleCompileGCC()
-
-nnoremap <silent> <F9> :SCCompile<cr>:clist<cr>
-nnoremap <silent> <F10> :SCCompileRun<cr>:clist<cr>
-"}}}
 " Plugin configuration: papercolor-theme {{{
 let g:PaperColor_Theme_Options = {
   \   'language': {
@@ -275,8 +263,8 @@ nnoremap <leader>ps :LoadLocalProjectSpecificSettings<cr>
 
 nnoremap <leader>m :silent Make<cr>
 
-noremap <leader>va :Gblame<CR>
-noremap gh :Glog<CR>
+noremap <leader>va :Git blame<CR>
+noremap gh :Git log<CR>
 
 " A command to execute an external command without requiring the user
 " to press Enter to dismiss a prompt.
@@ -434,33 +422,6 @@ else
     nnoremap <leader>diff :write !diff -du % -<CR>
 endif
 
-function! s:DiffWithSaved()
-    let filetype=&ft
-    diffthis
-    vnew | r # | normal! 1Gdd
-    diffthis
-    exe "setlocal bt=nofile bh=wipe nobl noswf ro ft=" . filetype
-endfunction
-com! DiffSaved call s:DiffWithSaved()
-
-function! s:DiffWithGITCheckedOut()
-    let filetype=&ft
-    diffthis
-    vnew | exe "%!git diff " . expand("#:p") . "| patch -p 1 -Rs -o /dev/stdout"
-    exe "setlocal bt=nofile bh=wipe nobl noswf ro ft=" . filetype
-    diffthis
-endfunction
-com! DiffGit call s:DiffWithGITCheckedOut()
-
-function! s:DiffWithPerforceCheckedOut()
-    let filetype=&ft
-    diffthis
-    vnew | exe "%!p4 diff -du " . expand("#:p") . "...| patch -p0 -Rs -o /dev/stdout"
-    exe "setlocal bt=nofile bh=wipe nobl noswf ro ft=" . filetype
-    diffthis
-endfunction
-com! DiffPerforce call s:DiffWithPerforceCheckedOut()
-
 "}}}
 
 set list
@@ -553,28 +514,11 @@ endif
 
 " Helper Functions ------------------------------------------------------------- {{{
 
-" A command to insert a series of spaces up to line designated by the repeat
-" count
-function! SpacesToColumn(count)
-    exe "norm! 100A\<Space>\<Esc>d" . a:count . "\<Bar>"
-endfunction
-nnoremap <leader>f<space> :<C-U>call SpacesToColumn(v:count)<CR>
-
 nmap <leader>; <Plug>(ToggleSemicolonAtEnd)   " toggle semicolon at end of line
 
 let g:ctags_statusline=1
 
 " Don't display splash screen on start
 set shortmess+=I
-
-" Replace Obsidian images with standard Markdown images
-" ![[Path to image]] with ![Path to image](Path%20to%20image]]
-function! ReplaceObsidianImageMarkdown()
-    " Save cursor position
-    let l:save = winsaveview()
-    %s/!\[\[\([^]]\+\)\]\]/![\1](\1)/g
-    call winrestview(l:save)
-    echo "Replaced Obsidian image references with standard Markdown references"
-endfunction
 
 " vim:fdm=marker
