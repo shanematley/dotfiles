@@ -25,6 +25,7 @@ FILES=("vimrc"
     "powerline:$HOME/.config/powerline"
     "karabiner:$HOME/.config/karabiner"
     "hammerspoon:$HOME/.hammerspoon/keyboard"
+    "nvim_init.vim:$HOME/.config/nvim/init.vim"
     "man:$HOME/man")
 
 osis() {
@@ -240,6 +241,7 @@ check_shrc bashrc
 section "Linking dotfiles"
 
 create_dir "$HOME/.hammerspoon"
+create_dir "$HOME/.config/nvim"
 
 for f in "${FILES[@]}"; do
     [[ $f =~ ([^:]+):?(.*)? ]] || fail "Bad file specified in FILES. Adjust script. File: '$f'"
