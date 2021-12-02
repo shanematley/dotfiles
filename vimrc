@@ -45,6 +45,7 @@ nnoremap <leader><space> :nohlsearch<cr>
 
 " Plug ------------------------------------------------------------------------- {{{
 call plug#begin()
+Plug 'airblade/vim-gitgutter'
 Plug 'altercation/vim-colors-solarized'
 Plug 'benmills/vimux'
 Plug 'ervandew/supertab' " Use tab for insert completion
@@ -93,6 +94,7 @@ nnoremap <silent> <F8> :TagbarOpenAutoClose<CR>
 
 nnoremap <silent> <C-t> :Files<CR> 
 nnoremap <silent> <leader>g :Rg<CR> 
+nnoremap <silent> <leader>q :Rg <C-r><C-w><CR> 
 
 " Plugin configuration: papercolor-theme {{{
 let g:PaperColor_Theme_Options = {
@@ -264,7 +266,7 @@ nnoremap <leader>ps :LoadLocalProjectSpecificSettings<cr>
 nnoremap <leader>m :silent Make<cr>
 
 noremap <leader>va :Git blame<CR>
-noremap gh :Git log<CR>
+noremap gh :Git log -- %<CR>
 
 " A command to execute an external command without requiring the user
 " to press Enter to dismiss a prompt.
