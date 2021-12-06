@@ -24,6 +24,15 @@
     ll = log --oneline --decorate -20
     la = log --pretty=la --decorate --date=short -20
 
+    # log with files modified
+    lm = log --pretty=format:"%Cred%h%C(yellow)%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
+
+    # list branches by recently modified
+    b = "!git for-each-ref --sort=-authordate refs/heads --format='%(authordate)%09%(objectname:short)%09%(authorname)%09%(refname:short)'"
+    bc = "!git for-each-ref --sort=-committerdate refs/heads --format='%(committerdate)%09%(objectname:short)%09%(authorname)%09%(refname:short)'"
+    # branch list sorted by most recent commit
+    bl = branch --sort=-committerdate
+
     # Common pull variations
     puff = pull --ff-only
     pure = pull --rebase
@@ -57,6 +66,7 @@
     gr = grep -Ii
     # Grep from root folder
     gra = "!f() { A=$(pwd) && TOPLEVEL=$(git rev-parse --show-toplevel) && cd $TOPLEVEL && git grep --full-name -In $1 | xargs -I{} echo $TOPLEVEL/{} && cd $A; }; f"
+    gb = "!f() { git grep -n $1 | while IFS=: read i j k; do git blame -L $j,$j $i | cat; done }; f"
 
     # Show the last tag
     lasttag = describe --tags --abbrev=0
@@ -81,7 +91,6 @@
     rup = remote -v update
     aliases = !git config -l | grep ^alias\\. | cut -c 7-
     info = for-each-ref --format=\"%(refname:short)  <=  %(upstream:short)\" refs/heads
-    recent = "!git for-each-ref --sort=-committerdate refs/heads/ --format='%(committerdate:short) %(authorname) %(refname:short)'"
 
 [pretty]
     la = tformat:%C(yellow)%h%Creset%C(bold red)%d%Creset %s %C(bold blue)<%an>%Creset %C(green)%ad%Creset
