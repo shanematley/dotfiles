@@ -79,8 +79,10 @@ brew install socat
 brew install fasd
 brew install git
 brew install git-lfs
+brew install gron
 #brew install gs
 #brew install imagemagick --with-webp
+brew install jq
 brew install mtr
 #brew install lua
 #brew install lynx
