@@ -149,8 +149,11 @@ defaults write com.apple.dock expose-animation-duration -float 0.1
 # Automatically hide and show the Dock
 defaults write com.apple.dock autohide -bool true
 
-# Automatically hide and show the Dock
-defaults write com.apple.dock autohide -bool true
+# Show/hide macOS Dock instantly - Intel
+defaults write com.apple.dock autohide-delay -float 0 && killall Dock
+
+# Show/hide macOS Dock instantly - M1 apparently
+#defaults write com.apple.dock autohide-delay -float 0 && defaults write com.apple.dock autohide-time-modifier -float 0.4 && killall Dock
 
 # Make Dock icons of hidden applications translucent
 defaults write com.apple.dock showhidden -bool true
