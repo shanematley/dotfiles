@@ -47,54 +47,74 @@ nnoremap <leader><space> :nohlsearch<cr>
 call plug#begin()
 Plug 'airblade/vim-gitgutter'
 Plug 'altercation/vim-colors-solarized'
-Plug 'benmills/vimux'
-Plug 'ervandew/supertab' " Use tab for insert completion
+Plug 'preservim/vimux'
+Plug 'google/vim-maktaba' " For vim-bazel. Must be before it.
+Plug 'bazelbuild/vim-bazel'
+"Plug 'ervandew/supertab' " Use tab for insert completion
 Plug 'Glench/Vim-Jinja2-Syntax'
-Plug 'gmarik/Vundle.vim'
-Plug 'godlygeek/csapprox'
-Plug 'godlygeek/tabular'
+"Plug 'gmarik/Vundle.vim'
+"Plug 'godlygeek/csapprox'
+"Plug 'godlygeek/tabular'
 Plug 'https://shanematley@bitbucket.org/shanematley/cppguards.git'
 Plug 'itchyny/lightline.vim'
-Plug 'justinmk/vim-sneak'
-Plug 'justinmk/vim-syntax-extra'
-Plug 'kana/vim-scratch'
-Plug 'kien/ctrlp.vim'
-Plug 'majutsushi/tagbar', { 'on' : 'TagbarOpenAutoClose' }
-Plug 'mileszs/ack.vim'
-Plug 'moll/vim-bbye'
+Plug 'justinmk/vim-sneak' " s followed by two characters
+"Plug 'justinmk/vim-syntax-extra'
+"Plug 'kana/vim-scratch'
+"Plug 'ctrlpvim/ctrlp.vim'
+"Plug 'majutsushi/tagbar', { 'on' : 'TagbarOpenAutoClose' }
+"Plug 'mileszs/ack.vim'
+Plug 'moll/vim-bbye'  " Close buffers with Bdelete|Bwipeout without ruining window setup
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'NLKNguyen/papercolor-theme'
 Plug 'PeterRincker/vim-argumentative' " Shift arguments with <, >, Move between argument boundaries with [, ], New text objects a, i,
 Plug 'rhysd/vim-clang-format', {'on': 'ClangFormat'}
 Plug 'richq/cmakecompletion-vim', {'for' : 'cmake' } " C-X C-O for completion of cmake;  K mapping for help
-Plug 'scrooloose/nerdcommenter'
-Plug 'scrooloose/nerdtree', { 'on':  ['NERDTreeToggle', 'NERDTreeFind'] }
-Plug 'Shirk/vim-gas', { 'for' : 'gas' }
-Plug 'sjl/badwolf'
-Plug 'sjl/gundo.vim'
-Plug 'tommcdo/vim-exchange'
-Plug 'tpope/vim-abolish'
-Plug 'tpope/vim-characterize'
+Plug 'preservim/nerdcommenter'
+Plug 'preservim/nerdtree', { 'on':  ['NERDTreeToggle', 'NERDTreeFind'] }
+Plug 'Shirk/vim-gas', { 'for' : 'gas' } " Syntax highlighting for GNU as
+"Plug 'sjl/gundo.vim'
+Plug 'mbbill/undotree'
+Plug 'tommcdo/vim-exchange' " cx or cxx or X (visual mode) to exchange. cxc to clear
+Plug 'tpope/vim-abolish' " Replacement with variations: :%Subvert/facilit{y,ies}/building{,s}/g
+                         " Also: Press crs (coerce to snake_case). MixedCase (crm), camelCase (crc),
+                         " snake_case (crs), UPPER_CASE (cru), dash-case (cr-), dot.case (cr.),
+                         " space case (cr<space>), and Title Case (crt)
+Plug 'tpope/vim-characterize' " Additional info with (ga) for character
 Plug 'tpope/vim-dispatch', { 'on' : ['Make', 'Start', 'Dispatch', 'FocusDispatch', 'Copen'] }
 Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-projectionist'
+Plug 'tpope/vim-projectionist' " A number of things, but includes :A, :AS, :AV, and :AT to jump to an 'alternate' file
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
-Plug 'tpope/vim-unimpaired'
+Plug 'tpope/vim-unimpaired' " [q/|]q for cprev|cnext; yos toggle spell; yon toggle numbers; [n|]n jump between conflict markers;
+                            " [f|]f next/previous file in directory; yow toggle wrap
 Plug 'vim-scripts/a.vim' " Switch header/source with :A and <leader>-s/S
-Plug 'vim-scripts/closetag.vim' " Close previous tag with C--
 Plug 'vim-scripts/genutils'
-Plug 'vim-scripts/SelectBuf' " F3 displays open buffers + deletion capability
 Plug 'vim-scripts/vim-indent-object' " ai, ii, aI, iI (an/inner indentation level and line above/below)
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+Plug 'luochen1990/rainbow'
 call plug#end()
 "}}}
 
-nnoremap <silent> <F8> :TagbarOpenAutoClose<CR>
 
-nnoremap <silent> <C-t> :Files<CR> 
-nnoremap <silent> <leader>g :Rg<CR> 
-nnoremap <silent> <leader>q :Rg <C-r><C-w><CR> 
+nnoremap <silent> <C-t> :Files<CR>
+" C-/
+nnoremap <silent> <M-/> :History/<CR>
+nnoremap <silent> <M-;> :History:<CR>
+nnoremap <silent> <leader>ll :Lines<CR>
+nnoremap <silent> <leader>lb :BLines<CR>
+nnoremap <silent> <leader>g :Rg<CR>
+nnoremap <silent> <leader>q :Rg <C-r><C-w><CR>
+nnoremap <silent> <leader>Q :Rg \b<C-r><C-w>\b<CR>
+nnoremap <silent> <leader>U :GitGutterUndoHunk<CR>
+
+nnoremap <silent> <F2> :call CocAction('diagnosticNext')<cr>
+nnoremap <silent> <S-F2> :call CocAction('diagnosticPrevious')<cr>
+
+let g:rainbow_active = 1 "set to 0 if you want to enable it later via :RainbowToggle
+
+" Use `s` to jump to a two character prefix
+let g:sneak#label = 1
 
 " Plugin configuration: papercolor-theme {{{
 let g:PaperColor_Theme_Options = {
@@ -111,55 +131,11 @@ let g:PaperColor_Theme_Options = {
   \   }
   \ }
 "}}}
-" Plugin configuration: Tabularize {{{
-if exists(":Tabularize")
-    " Note if reusing this in a straight command, remove the second '\' before
-    " the pipe.
-    "nnoremap <Leader>ac :Tabularize /\("[^"]*"\\|[^",]*\),\zs/l0l1<CR>
-    " Line up on arguments
-    nnoremap <Leader>ac :Tabularize /\v("[^"]*"\|[^",]*),\zs/l0l1<CR>
-    vnoremap <Leader>ac :Tabularize /\("[^"]*"\\|[^",]*\),\zs/l0l1<CR>
-    " Line up on method variables (underscores at beginning)
-    nnoremap <Leader>am :Tabularize /\<_\ze.*/l1l0<CR>
-    vnoremap <Leader>am :Tabularize /\<_\ze.*/l1l0<CR>
-    " Line up on ...???
-    nnoremap <Leader>ap :Tabularize /\(^[^(]*(\zs.*$\\|^\s*\zs[^(]*$\)/l0l0<CR>
-    vnoremap <Leader>ap :Tabularize /\(^[^(]*(\zs.*$\\|^\s*\zs[^(]*$\)/l0l0<CR>
-    " Line up typedefs
-    vnoremap <Leader>at :Tabularize /.\{-}\zs[^ ]*$/l1l0<CR>
-    nnoremap <Leader>at :Tabularize /.\{-}\zs[^ ]*$/l1l0<CR>
-    " Line up on variable name and =
-    " Note: \h\w+ is any valid c++ identifier
-    vnoremap <Leader>av :Tabularize /\v(\=\|\h\w+\ze\s*\=)/<CR>
-    nnoremap <Leader>av :Tabularize /\v(\=\|\h\w+\ze\s*\=)/<CR>
-    " Line up on open brace '{'
-    vnoremap <Leader>a[ :Tabularize /{.*/<CR>
-    nnoremap <Leader>a[ :Tabularize /{.*/<CR>
-endif
-"s/"\([^"]\+\)"/\=substitute(submatch(0), ',', '__;__', 'g')/g | gv | Tabular /,\zs
 
-" Format arguments with apace after comma
-nnoremap <Leader>f, :s/,\ze[^ ]/, /g<CR>
-vnoremap <Leader>f, :s/,\ze[^ ]/, /g<CR>
-
-"}}}
-" Plugin configuration: gundo {{{
-let g:gundo_preview_bottom=1
-"}}}
 " Plugin configuratino: NERDTree {{{
 nnoremap <leader>r :NERDTreeFind<cr>
 nnoremap <leader>n :NERDTreeToggle<cr>
 let NERDTreeIgnore=['\.pyc$', '\~$']
-"}}}
-
-" YouCompleteMe ---------------------------------------------------------------- {{{
-if filereadable(glob(b:local_vim_files . "ycmconf.py"))
-    let g:ycm_global_ycm_extra_conf = b:local_vim_files . 'ycmconf.py'
-endif
-let s:uname = system('uname')
-if s:uname == "SunOs\n" || v:version < 703 || (v:version == 703 && !has('patch584'))
-    set runtimepath-=~/.vim/bundle/YouCompleteMe
-endif
 "}}}
 
 " Ignored files ---------------------------------------------------------------- {{{
@@ -374,21 +350,22 @@ let g:lasttab = 1
 nmap t; :exe "tabn ".g:lasttab<CR>
 au TabLeave * let g:lasttab = tabpagenr()
 
-" Open up a scratch buffer quickly
-nnoremap <leader><tab> :ScratchOpen<cr>
+"{{{  Undotree toggle
+nnoremap <leader>u :UndotreeToggle<CR>
 
-" Show yankring
-nnoremap <silent> <F2> :YRShow<cr>
-inoremap <silent> <F2> <ESC>:YRShow<cr>
+if has("persistent_undo")
+   let target_path = expand('~/.undodir')
 
-" Gundo toggle
-nnoremap <leader>u :GundoToggle<CR>
+    " create the directory and any parent directories
+    " if the location does not exist.
+    if !isdirectory(target_path)
+        call mkdir(target_path, "p", 0700)
+    endif
 
-" Move a line of text using ALT+[jk] or Command+[jk] on mac
-nmap <M-j> mz:m+<cr>$z
-nmap <M-k> mz:m-2<cr>$z
-vmap <M-j> :m'>+<cr>$<my$>mzgv$yo$z
-vmap <M-k> :m'<-2<cr>$>my$<mzgv$yo$z
+    let &undodir=target_path
+    set undofile
+endif
+"}}}
 
 if has("mac") || has("macunix")
   nmap <D-j> <M-j>
@@ -411,18 +388,6 @@ map <Leader>vl :VimuxRunLastCommand<CR>
 map <Leader>vp :VimuxPromptCommand<CR>
 map <Leader>vi :VimuxInspectRunner<CR>
 map <Leader>vz :VimuxZoomRunner<CR>
-
-"}}}
-
-"{{{ Custom diff commands
-
-" diff current file from last written
-
-if executable('colordiff')
-    nnoremap <leader>diff :write !diff -du % - \| colordiff<CR>
-else
-    nnoremap <leader>diff :write !diff -du % -<CR>
-endif
 
 "}}}
 
@@ -454,8 +419,7 @@ noremap <leader>pp :setlocal paste!<cr>
 set laststatus=2    " Always show statusline
 
 if has ("spell")
-    set spelllang=en_gb
-    "nnoremap <leader>s :set spell!<CR>
+    set spelllang=en_au
 endif
 
 " Colours and Fonts ------------------------------------------------------------ {{{
@@ -489,7 +453,6 @@ imap <C-K><C-K> <Plug>(DigraphSearch)
 
 noremap <leader>cf :ClangFormat<cr>
 vnoremap <leader>cf :ClangFormat<cr>
-nmap <leader>cc <Plug>(RunClangCheck)
 
 "}}}
 
@@ -498,12 +461,6 @@ if filereadable(glob("~/.vimrc.local"))
     source ~/.vimrc.local
 endif
 call s:LoadProjectSpecificSettings()
-
-if exists("g:btm_rainbow_color") && g:btm_rainbow_color
-   call rainbow_parenthsis#LoadSquare ()
-   call rainbow_parenthsis#LoadRound ()
-   call rainbow_parenthsis#Activate ()
-endif
 
 " First tab completes as much as possible; second provides a list; third
 " starts cyclying through the options
