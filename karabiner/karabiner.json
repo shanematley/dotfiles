@@ -527,7 +527,7 @@
                     },
                     "to": [
                         {
-                            "key_code": "launchpad"
+                            "key_code": "dashboard"
                         }
                     ]
                 },
