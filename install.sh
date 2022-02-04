@@ -11,7 +11,7 @@ success()   { printf "\r\033[2K  [ \033[00;32mOK\033[0m ] $1\n"; }
 fail()      { printf "\r\033[2K  [\033[0;31mFAIL\033[0m] $1\n"; echo ''; exit; }
 softfail () { printf "\r\033[2K  [\033[0;31mFAIL\033[0m] $1\n"; }
 
-SCRIPTPATH=$(cd $(dirname $0); pwd;)
+SCRIPTPATH=$(cd "$(dirname "$0")"; pwd;)
 KONSOLE_THEMES=~/.local/share/konsole
 FILES=("vimrc"
     "vim"
@@ -29,13 +29,14 @@ FILES=("vimrc"
     "man:$HOME/man")
 
 osis() {
-    local n=0
-    if [[ "$1" == "-n" ]]; then n=1; shift; fi
+    local n
+    n=0
+    if [[ $1 == -n ]]; then n=1; shift; fi
     uname -s|grep -i "$1" >/dev/null
     return $(( $n ^ $? ))
 }
 
-function yesno {
+yesno() {
     while true; do
         read -p "$1 [y/n] " -n 1 -r; echo
         case $REPLY in
@@ -83,9 +84,11 @@ echo
 
 yesno "Would you like to continue?" || fail "Aborting" 
 
-function create_link {
-    local SRC="$1"
-    local DEST="$2"
+create_link() {
+    local SRC
+    local DEST
+    SRC="$1"
+    DEST="$2"
     [[ -e "$DEST" && ! -L "$DEST" ]]                   && { softfail "ERROR: $DEST already exists. Skipping."; return 1; }
     [[ -L "$DEST" && $(readlink "$DEST") -ef "$SRC" ]] && { info "Skipping: $DEST already points to correct file."; return 0; }
     if osis Darwin; then
@@ -101,8 +104,9 @@ function create_link {
     fi
 }
 
-function create_dir {
-    local DEST="$1"
+create_dir() {
+    local DEST
+    DEST="$1"
     [[ -d "$DEST" ]] && { info "Skipping: directory $DEST already exists."; return 0; }
     if mkdir -p "$DEST"; then
         success "Created directory $DEST"
@@ -114,24 +118,32 @@ function create_dir {
 }
 
 # Select a appropriate script file. E.g. echo zshrc.darwin if present, otherwise zshrc.default
-function select_file() {
-    local os=$(uname -s|tr '[:upper:]' '[:lower:]')
-    local file="$SCRIPTPATH/$1.default"
+select_file() {
+    local os
+    local file
+    os=$(uname -s|tr '[:upper:]' '[:lower:]')
+    file="$SCRIPTPATH/$1.default"
     [[ -f $SCRIPTPATH/$1.${os} ]] && file="$SCRIPTPATH/$1.${os}"
     echo "$file"
 }
 
-function shrc_correct() {
-    local type_name="$1"
-    local dest_path="$2"
-    local source_path="$3"
+shrc_correct() {
+    local type_name
+    local dest_path
+    local source_path
+    type_name="$1"
+    dest_path="$2"
+    source_path="$3"
     diff -q <(sed '/SM: -- Begin offload -- '"$type_name"'/,/SM: -- End offload -- '"$type_name"'/!d; /^#/d' "$dest_path" 2>/dev/null) "$source_path" >/dev/null
 }
 
-function shrc_append() {
-    local type_name="$1"
-    local dest_path="$2"
-    local source_path="$3"
+shrc_append() {
+    local type_name
+    local dest_path
+    local source_path
+    type_name="$1"
+    dest_path="$2"
+    source_path="$3"
     cat <<-EOF >> $dest_path
 		# SM: -- Begin offload -- $type_name
 		$(<$source_path)
@@ -139,10 +151,13 @@ function shrc_append() {
 		EOF
 }
 
-function check_shrc() {
-    local source_path=$(select_file "$1")
-    local source_file=$(basename "$source_path")
-    local dest_path="$HOME/.$1"
+check_shrc() {
+    local source_path
+    local source_file
+    local dest_path
+    source_path=$(select_file "$1")
+    source_file=$(basename "$source_path")
+    dest_path="$HOME/.$1"
     if shrc_correct "$1" "$dest_path" "$source_path"; then
         info "Skipping: $1 set correctly"
         return
@@ -164,15 +179,18 @@ function check_shrc() {
     fi
 }
 
-function check_gdbinit() {
-    local gdbinit_path="$HOME/.gdbinit"
-    local source_path="$SCRIPTPATH/gdbinit"
+check_gdbinit() {
+    local gdbinit_path
+    local source_path
+    gdbinit_path="$HOME/.gdbinit"
+    source_path="$SCRIPTPATH/gdbinit"
 
     if [[ -L ${gdbinit_path} &&  $(readlink "$gdbinit_path") -ef "$source_path" ]]; then
         rm "$gdbinit_path" && success "Removing symlink to gdbinit (legacy mode)"
     fi
 
-    local source_line="source $SCRIPTPATH/gdbinit"
+    local source_line
+    source_line="source $SCRIPTPATH/gdbinit"
 
     if [[ ! -e ${gdbinit_path} ]]; then
         echo "$source_line" > ${gdbinit_path}
@@ -185,13 +203,15 @@ function check_gdbinit() {
     fi
 }
 
-function installed() {
+installed() {
     command -v "${1}" >/dev/null 2>&1
 }
 
-function sync_brew_package() {
-    local command_name="$1"
-    local package_name="$2"
+sync_brew_package() {
+    local command_name
+    local package_name
+    command_name="$1"
+    package_name="$2"
     if osis Darwin; then
         if ! installed $command_name; then
             if installed brew; then
@@ -210,12 +230,13 @@ function sync_brew_package() {
     fi
 }
 
-function check_binary_presence() {
+check_binary_presence() {
     installed "$1" && info "Skipping: $1 already present" || softfail "$1 missing"
 }
 
-function sync_pip_package() {
-    local package="$1"
+sync_pip_package() {
+    local package
+    package="$1"
     if pip2 show $package >/dev/null; then
         info "Skipping: $package already present"
         return 0
@@ -316,8 +337,10 @@ if [[ $INSTALL_POWERLINE ]]; then
 fi
 
 install_zsh_plugins() {
-    local zfunction_src="$SCRIPTPATH/zfunctions"
-    local zfunction_dst="$HOME/.zfunctions"
+    local zfunction_src
+    local zfunction_dst
+    zfunction_src="$SCRIPTPATH/zfunctions"
+    zfunction_dst="$HOME/.zfunctions"
 
     section "ZSH Plugins"
 
@@ -345,10 +368,13 @@ git submodule update --init
 
 section "Konsole/Yakuake"
 
-function install_theme() {
-    local theme_source="$1"
-    local theme_name="$(basename "$theme")"
-    local dest_path="$KONSOLE_THEMES/$theme_name"
+install_theme() {
+    local theme_source
+    local theme_name
+    local dest_path
+    theme_source="$1"
+    theme_name="$(basename "$theme")"
+    dest_path="$KONSOLE_THEMES/$theme_name"
     if [[ ! -f $dest_path ]]; then
         if cp "$theme_source" "$dest_path"; then
             success "Installed theme $theme_name"
@@ -383,7 +409,7 @@ fi
 
 section "Verifying tools"
 
-function check_vim_option() {
+check_vim_option() {
     # No idea why, but -q on grep is not working on linux here...
     if $1 --version|grep '\+'$2 >/dev/null; then
         info "$1 has +$2"
