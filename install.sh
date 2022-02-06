@@ -4,14 +4,14 @@
 
 set -uo pipefail
 
-section()   { printf "\n## $1\n\n"; }
-info()      { printf "\r  [ \033[00;34m..\033[0m ] $1\n"; }
-user()      { printf "\r  [ \033[0;33m??\033[0m ] $1\n"; }
-success()   { printf "\r\033[2K  [ \033[00;32mOK\033[0m ] $1\n"; }
-fail()      { printf "\r\033[2K  [\033[0;31mFAIL\033[0m] $1\n"; echo ''; exit; }
-softfail () { printf "\r\033[2K  [\033[0;31mFAIL\033[0m] $1\n"; }
+section()   { printf "\n## %s\n\n" "$1"; }
+info()      { printf "\r  [ \033[00;34m..\033[0m ] %s\n" "$1"; }
+user()      { printf "\r  [ \033[0;33m??\033[0m ] %s\n" "$1"; }
+success()   { printf "\r\033[2K  [ \033[00;32mOK\033[0m ] %s\n" "$1"; }
+fail()      { printf "\r\033[2K  [\033[0;31mFAIL\033[0m] %s\n" "$1"; echo ''; exit; }
+softfail () { printf "\r\033[2K  [\033[0;31mFAIL\033[0m] %s\n" "$1"; }
 
-SCRIPTPATH=$(cd "$(dirname "$0")"; pwd;)
+SCRIPTPATH=$(cd "$(dirname "$0")" || exit; pwd;)
 KONSOLE_THEMES=~/.local/share/konsole
 FILES=("vimrc"
     "vim"
@@ -34,7 +34,7 @@ osis() {
     n=0
     if [[ $1 == -n ]]; then n=1; shift; fi
     uname -s|grep -i "$1" >/dev/null
-    return $(( $n ^ $? ))
+    return $(( n ^ $? ))
 }
 
 yesno() {
@@ -50,14 +50,14 @@ yesno() {
 usage() {
     cat << EOF
 USAGE
-    $(basename $0) [options]
+    $(basename "$0") [options]
 
 OPTIONS
     -h  Show this help message
     -v  Install VIM plugins
     -p  Install Powerline
 EOF
-    exit $1
+    exit "$1"
 }
 
 while getopts ":vph" opt; do
@@ -111,7 +111,7 @@ create_dir() {
     [[ -d "$DEST" ]] && { info "Skipping: directory $DEST already exists."; return 0; }
     if mkdir -p "$DEST"; then
         success "Created directory $DEST"
-    elif [[ $# > 1 && $2 == hardfail ]]; then
+    elif (( $# > 1 )) && [[ $2 == hardfail ]]; then
         fail "Unable to create directory $DEST"
     else
         softfail "Unable to create directory $DEST"
@@ -145,9 +145,9 @@ shrc_append() {
     type_name="$1"
     dest_path="$2"
     source_path="$3"
-    cat <<-EOF >> $dest_path
+    cat <<-EOF >> "$dest_path"
 		# SM: -- Begin offload -- $type_name
-		$(<$source_path)
+		$(<"$source_path")
 		# SM: -- End offload -- $type_name
 		EOF
 }
@@ -170,7 +170,7 @@ check_shrc() {
         shrc_append "$1" "$dest_path" "$source_path"
     else
         info "Replacing .$1 to update .shrc.d processing with $source_file. Backup at .$1.old"
-        sed -i.old '/SM: -- Begin offload -- '$1'/,/SM: -- End offload -- '$1'/ {//!d;}; /SM: -- Begin offload/r'"$source_path" "$dest_path"
+        sed -i.old '/SM: -- Begin offload -- '"$1"'/,/SM: -- End offload -- '"$1"'/ {//!d;}; /SM: -- Begin offload/r'"$source_path" "$dest_path"
     fi
 
     if shrc_correct "$1" "$dest_path" "$source_path"; then
@@ -194,13 +194,17 @@ check_gdbinit() {
     source_line="source $SCRIPTPATH/gdbinit"
 
     if [[ ! -e ${gdbinit_path} ]]; then
-        echo "$source_line" > ${gdbinit_path}
+        echo "$source_line" > "${gdbinit_path}"
         success "Created ${gdbinit_path}"
     elif grep -q "$source_line" "$gdbinit_path"; then
         info "$gdbinit_path ok"
     else
         # check and possibly replace
-        echo "$source_line" >> "$gdbinit_path" && success "Added $source_line to $gdbinit_path" || softfail "Failed to add to $gdbinit_path"
+        if echo "$source_line" >> "$gdbinit_path"; then
+            success "Added $source_line to $gdbinit_path"
+        else
+            softfail "Failed to add to $gdbinit_path"
+        fi
     fi
 }
 
@@ -214,10 +218,10 @@ sync_brew_package() {
     command_name="$1"
     package_name="$2"
     if osis Darwin; then
-        if ! installed $command_name; then
+        if ! installed "$command_name"; then
             if installed brew; then
                 info "Missing $package_name Installing via Homebrew."
-                if brew install $package_name; then
+                if brew install "$package_name"; then
                     success "$package_name installed"
                 else
                     softfail "$package_name missing. Homebrew installation of $package_name failed"
@@ -232,20 +236,24 @@ sync_brew_package() {
 }
 
 check_binary_presence() {
-    installed "$1" && info "Skipping: $1 already present" || softfail "$1 missing"
+    if installed "$1"; then
+        info "Skipping: $1 already present"
+    else
+        softfail "$1 missing"
+    fi
 }
 
 sync_pip_package() {
     local package
     package="$1"
-    if pip2 show $package >/dev/null; then
+    if pip2 show "$package" >/dev/null; then
         info "Skipping: $package already present"
         return 0
     else
         if ! installed pip2; then
             softfail "$package could not be installed as pip2 missing"
             return 1
-        elif pip2 install --user ${package}; then
+        elif pip2 install --user "${package}"; then
             success "$package installed"
             return 0
         else
@@ -287,7 +295,7 @@ section "Linking bin files"
 # Setup bin files
 create_dir "$HOME/bin" hardfail
 for f in "$SCRIPTPATH/bin/"*; do
-    create_link "$f" "$HOME/bin/$(basename $f)"
+    create_link "$f" "$HOME/bin/$(basename "$f")"
 done
 
 section "Generating awk files"
@@ -330,7 +338,7 @@ if [[ $INSTALL_POWERLINE ]]; then
     section "Powerline"
 
     if osis Darwin; then
-        sync_pip_package powerline-status && create_link $(pip2 show powerline-status|awk '/Location/ { print $2}')/powerline/bindings/zsh/powerline.zsh ~/bin/powerline.zsh
+        sync_pip_package powerline-status && create_link "$(pip4 show powerline-status|awk '/Location/ { print $2}')/powerline/bindings/zsh/powerline.zsh" ~/bin/powerline.zsh
         sync_pip_package psutil
     else
         sync_pip_package powerline-status
@@ -349,7 +357,13 @@ install_zsh_plugins() {
     if [[ "${zfunction_src}" -ef "${zfunction_dst}" ]]; then
         rm "${zfunction_dst}" && success "ZSH Plugins: Removed old symlink"
     fi
-    mkdir "${zfunction_dst}" 2>/dev/null && success "ZSH Plugins: Created ${zfunction_dst}" || info "ZSH Plugins: ${zfunction_dst} already present"
+
+    if mkdir "${zfunction_dst}" 2>/dev/null; then
+        success "ZSH Plugins: Created ${zfunction_dst}"
+    else
+        info "ZSH Plugins: ${zfunction_dst} already present"
+    fi
+
     for file in "${zfunction_src}/"*; do
         create_link "${file}" "${zfunction_dst}/${file/*\//}"
     done
