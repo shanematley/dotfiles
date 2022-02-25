@@ -16,6 +16,9 @@ set nonumber
 set norelativenumber
 set smartjoin
 
+" For Which Key
+set notimeout
+
 inoremap jj <ESC>
 inoremap JJ <ESC>
 inoremap jk <ESC>
