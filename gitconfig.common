@@ -91,6 +91,9 @@
     rup = remote -v update
     aliases = !git config -l | grep ^alias\\. | cut -c 7-
     info = for-each-ref --format=\"%(refname:short)  <=  %(upstream:short)\" refs/heads
+    # git change-commits GIT_AUTHOR_EMAIL "old@email.com" "new@email.com"
+    # git change-commits GIT_COMMITTER_EMAIL "old@example.com" "new@example.com"
+    change-commits = "!f() { VAR=$1; OLD=$2; NEW=$3; shift 3; git filter-branch --env-filter \"if [[ \\\"$`echo $VAR`\\\" = '$OLD' ]]; then export $VAR='$NEW'; fi\" $@; }; f"
 
 [pretty]
     la = tformat:%C(yellow)%h%Creset%C(bold red)%d%Creset %s %C(bold blue)<%an>%Creset %C(green)%ad%Creset
