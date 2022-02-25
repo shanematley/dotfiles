@@ -104,8 +104,8 @@ nnoremap <silent> <M-;> :History:<CR>
 nnoremap <silent> <leader>ll :Lines<CR>
 nnoremap <silent> <leader>lb :BLines<CR>
 nnoremap <silent> <leader>g :Rg<CR>
-nnoremap <silent> <leader>q :Rg <C-r><C-w><CR>
-nnoremap <silent> <leader>Q :Rg \b<C-r><C-w>\b<CR>
+nnoremap <leader>q :Rg <C-r><C-w><CR>
+nnoremap <leader>Q :Rg \b<C-r><C-w>\b<CR>
 nnoremap <silent> <leader>U :GitGutterUndoHunk<CR>
 
 nnoremap <silent> <F2> :call CocAction('diagnosticNext')<cr>
