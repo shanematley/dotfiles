@@ -448,8 +448,10 @@ info 'To use true color and italics support with alacritty, add this to .tmux.co
 section "Verifying tools"
 
 check_vim_option() {
+    if ! installed $1; then
+        softfail "$1 is not installed, so cannot configure it"
     # No idea why, but -q on grep is not working on linux here...
-    if $1 --version|grep '\+'$2 >/dev/null; then
+    elif $1 --version|grep '\+'$2 >/dev/null; then
         info "$1 has +$2"
     else
         softfail "$1 does not have +$2"
