@@ -26,6 +26,7 @@ FILES=("vimrc"
     "karabiner:$HOME/.config/karabiner"
     "hammerspoon:$HOME/.hammerspoon/keyboard"
     "nvim_init.vim:$HOME/.config/nvim/init.vim"
+    "alacritty:$HOME/.config/alacritty"
     "man:$HOME/man")
 
 osis() {
@@ -406,6 +407,43 @@ if ! grep -sq "require('keyboard')" ~/.hammerspoon/init.lua; then
 else
     info "Hammerspoon init.lua ok"
 fi
+
+
+section "Alacritty"
+
+configure_alacritty() {
+    local terminfo_url
+    local terminfo_temp
+    if infocmp alacritty &>/dev/null; then
+        info "Alacritty terminfo ok"
+    else
+        terminfo_url="https://raw.githubusercontent.com/alacritty/alacritty/master/extra/alacritty.info"
+        if ! terminfo_temp=$("mktemp"); then
+            failed "Unable to get temp file"
+            return
+        fi
+        success "Got temp file: $terminfo_temp"
+        if ! curl -s -o "$terminfo_temp" "$terminfo_url"; then
+            failed "Failed to download latest alacritty terminfo"
+            return
+        fi
+        success "Downloaded terminfo. Contents: "
+        cat "$terminfo_temp"
+        if ! tic -xe alacritty,alacritty-direct "$terminfo_temp"; then
+            failed "Failed to install alacritty terminfo"
+            return
+        fi
+        success "Installed terminfo"
+        if ! rm "$terminfo_temp"; then
+            failed "Unable to setup Alacritty terminfo"
+            return
+        fi
+        success "Installed Alacritty terminfo"
+    fi
+}
+
+configure_alacritty
+info 'To use true color and italics support with alacritty, add this to .tmux.conf: set -g default-terminal "alacritty"'
 
 section "Verifying tools"
 
