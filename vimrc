@@ -432,6 +432,7 @@ endif
 
 set background=dark
 colorscheme PaperColor
+highlight Comment cterm=italic gui=italic
 
 let g:lightline = {
       \ 'colorscheme': 'powerline',
