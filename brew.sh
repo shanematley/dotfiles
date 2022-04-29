@@ -2,6 +2,10 @@
 
 # Install command-line tools using Homebrew.
 
+# Run sudo and keep-alive: update existing `sudo` time stamp until this script has finished
+sudo -v
+while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
+
 # Make sure we’re using the latest Homebrew.
 brew update
 
@@ -96,6 +100,7 @@ brew install tree
 brew install vbindiff
 brew install zopfli
 brew install tokei
+brew install --cask pastebot
 
 # Hammerspoon for great keyboard shortcuts as inspired by https://github.com/jasonrudolph/keyboard
 brew install hammerspoon
