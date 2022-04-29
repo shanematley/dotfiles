@@ -66,6 +66,7 @@ Plug 'justinmk/vim-sneak' " s followed by two characters
 Plug 'moll/vim-bbye'  " Close buffers with Bdelete|Bwipeout without ruining window setup
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'NLKNguyen/papercolor-theme'
+Plug 'ojroques/vim-oscyank'
 Plug 'PeterRincker/vim-argumentative' " Shift arguments with <, >, Move between argument boundaries with [, ], New text objects a, i,
 Plug 'rhysd/vim-clang-format', {'on': 'ClangFormat'}
 Plug 'richq/cmakecompletion-vim', {'for' : 'cmake' } " C-X C-O for completion of cmake;  K mapping for help
@@ -96,6 +97,7 @@ Plug 'luochen1990/rainbow'
 call plug#end()
 "}}}
 
+autocmd TextYankPost * if v:event.operator is 'y' && v:event.regname is '+' | execute 'OSCYankReg +' | endif
 
 nnoremap <silent> <C-t> :Files<CR>
 " C-/
