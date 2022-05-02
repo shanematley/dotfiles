@@ -202,6 +202,19 @@ function window.nextScreen(win)
   end
 end
 
+function window.prevScreen(win)
+  local currentScreen = win:screen()
+  local allScreens = hs.screen.allScreens()
+  currentScreenIndex = hs.fnutils.indexOf(allScreens, currentScreen)
+  prevScreenIndex = currentScreenIndex - 1
+
+  if allScreens[prevScreenIndex] then
+    win:moveToScreen(allScreens[prevScreenIndex])
+  else
+    win:moveToScreen(allScreens[#allScreens])
+  end
+end
+
 windowLayoutMode = hs.hotkey.modal.new({}, 'F16')
 
 windowLayoutMode.entered = function()
