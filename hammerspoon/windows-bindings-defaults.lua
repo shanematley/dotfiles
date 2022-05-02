@@ -42,6 +42,7 @@ return {
     { {},         ',',      'downLeft' },
     { {},         '.',      'downRight' },
     { {},         'n',      'nextScreen' },
+    { {},         'p',      'prevScreen' },
     { {},         'right',  'moveOneScreenEast' },
     { {},         'left',   'moveOneScreenWest' },
   }
