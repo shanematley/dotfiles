@@ -88,6 +88,7 @@ brew install gron
 #brew install imagemagick --with-webp
 brew install jq
 brew install mtr
+brew install node
 #brew install lua
 #brew install lynx
 #brew install p7zip
@@ -100,6 +101,7 @@ brew install tree
 brew install vbindiff
 brew install zopfli
 brew install tokei
+brew install highlight
 brew install --cask pastebot
 
 # Hammerspoon for great keyboard shortcuts as inspired by https://github.com/jasonrudolph/keyboard
