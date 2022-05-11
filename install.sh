@@ -476,3 +476,38 @@ check_vim_option vim clipboard
 osis Linux && check_vim_option vim xterm_clipboard
 osis Darwin && check_vim_option mvim clipboard
 
+section "Setup FZF bindings"
+
+write_if_update_required() {
+    local dest
+    local contents
+    dest="$1"
+    contents=$(</dev/stdin)
+
+    if ! diff -q "$dest" <(echo "$contents") &>/dev/null; then
+        echo "$contents" > "$dest"
+        success "Updated $dest"
+    else
+        info "No need to update $dest"
+    fi
+}
+
+check_fzf_bindings_mac() {
+    if brew list fzf &>/dev/null; then
+        local contents
+        read -r -d '' contents <<EOF
+source $(brew ls -v fzf|grep 'key-bindings.zsh')
+source $(brew ls -v fzf|grep 'completion.zsh')
+EOF
+        echo "$contents" | write_if_update_required "$SCRIPTPATH/shrc.d/generated/91fzfbindings.zsh"
+
+        read -r -d '' contents <<EOF
+source $(brew ls -v fzf|grep 'key-bindings.bash')
+source $(brew ls -v fzf|grep 'completion.bash')
+EOF
+        echo "$contents" | write_if_update_required "$SCRIPTPATH/shrc.d/generated/91fzfbindings.bash"
+    fi
+}
+
+osis Darwin && check_fzf_bindings_mac
+

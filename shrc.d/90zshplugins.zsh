@@ -18,7 +18,7 @@ bindkey '^R' zaw-history
 bindkey '^X\t' zaw-cdr
 bindkey '^X;' zaw
 #bindkey '^Xa' zaw-searcher
-bindkey '\ec' zaw-cdr
+bindkey '\ed' zaw-cdr
 #bindkey '\ea' zaw-searcher
 bindkey '\er' zaw-fasd-files
 bindkey '\eg' zaw-git-files
