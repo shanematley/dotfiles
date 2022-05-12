@@ -24,7 +24,7 @@ FILES=("vimrc"
     "ideavimrc"
     "powerline:$HOME/.config/powerline"
     "karabiner:$HOME/.config/karabiner"
-    "hammerspoon:$HOME/.hammerspoon/keyboard"
+    "hammerspoon:$HOME/.hammerspoon"
     "nvim_init.vim:$HOME/.config/nvim/init.vim"
     "alacritty:$HOME/.config/alacritty"
     "man:$HOME/man")
@@ -270,7 +270,6 @@ check_shrc bashrc
 
 section "Linking dotfiles"
 
-create_dir "$HOME/.hammerspoon"
 create_dir "$HOME/.config/nvim"
 
 for f in "${FILES[@]}"; do
