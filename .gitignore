@@ -8,5 +8,5 @@ vim/autoload/plug.vim
 vim/plugged
 tags
 shrc.d/local/*
-shrc.d/generated
+shrc.d/generated/*sh
 tmux/plugins/tmux-urlview
