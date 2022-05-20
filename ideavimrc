@@ -102,6 +102,7 @@ nmap <leader>em <Action>(ExtractMethod)<esc>
 nmap <leader>eg <Action>(Generate)<esc>
 map <leader>ec <Action>(IntroduceConstant)<esc>
 map <leader>ev <Action>(IntroduceVariable)<esc>
+map <leader>ef <Action>(IntroduceField)<esc>
 nmap <leader>t <Action>(GotoFile)
 vnoremap <leader>t <esc>gvhh:<C-U>action GotoFile<cr>
 "nmap <leader>x <Action>(FileChooser.GotoHome)
@@ -137,7 +138,6 @@ map <leader>x <Action>(SelectInProjectView)
 "
 map <leader>z <Action>(CloseContent)
 map <leader>b <Action>(RecentFiles)
-map <F8> <Action>(FileStructurePopup)
 map <leader>s <Action>(FileStructurePopup)
 imap <C-N> <Action>(HippieCompletion)
 imap <Tab> <Action>(CodeCompletion)
