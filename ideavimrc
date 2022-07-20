@@ -46,6 +46,7 @@ nnoremap <C-l> <C-w>l
 
 nmap <leader>mb <Action>(Build)
 nmap <leader>mr <Action>(Run)
+nmap <leader>md <Action>(Debug)
 nmap <leader>\\ <Action>(FindUsages)
 nmap <leader>/ <Action>(ShowUsages)
 
@@ -103,6 +104,7 @@ nmap <leader>eg <Action>(Generate)<esc>
 map <leader>ec <Action>(IntroduceConstant)<esc>
 map <leader>ev <Action>(IntroduceVariable)<esc>
 map <leader>ef <Action>(IntroduceField)<esc>
+map <leader>ep <Action>(IntroduceParameter)<esc>
 nmap <leader>t <Action>(GotoFile)
 vnoremap <leader>t <esc>gvhh:<C-U>action GotoFile<cr>
 "nmap <leader>x <Action>(FileChooser.GotoHome)
