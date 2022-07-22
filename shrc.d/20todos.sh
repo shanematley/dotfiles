@@ -18,5 +18,5 @@ EXAMPLES
 EOF
         return 1
     fi
-    grep TODO $(git diff $1...$2 --name-only) | sed 's/:.*//' | uniq -c
+    grep TODO "$(git diff "$1"..."$2" --name-only)" | sed 's/:.*//' | uniq -c
 }

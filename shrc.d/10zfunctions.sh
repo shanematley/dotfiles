@@ -1,2 +1,2 @@
 
-fpath=("$HOME/.zfunctions" $fpath)
+fpath=("$HOME/.zfunctions" "${fpath[@]}")

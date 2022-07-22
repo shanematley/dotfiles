@@ -3,8 +3,6 @@
 [[ $OSTYPE =~ darwin* ]] && Apple=true
 [[ $OSTYPE =~ linux* ]] && Linux=true
 
-alias cdp="cd $(pwd)"
-
 # -----------------------------------------------------------------------------
 # Handy aliases to view PATH and LD_LIBRARY_PATH
 
@@ -16,9 +14,9 @@ function yesno {
     local ANSWER=""
     while true; do
         if [[ -n $ZSH_NAME ]]; then
-            read -q "ANSWER?$QUESTION [y/n]"
+            read -r -q "ANSWER?$QUESTION [y/n]"
         else
-            read -n 1 -p "$QUESTION [y/n] " ANSWER
+            read -r -n 1 -p "$QUESTION [y/n] " ANSWER
             echo
         fi
         case $ANSWER in
@@ -29,15 +27,11 @@ function yesno {
 }
 
 function editpath {
-    TEMP_FILE=$(make_unique_temp)
+    TEMP_FILE="$(mktemp)"
     echo "Created temp file: $TEMP_FILE"
-    if [[ -n $ZSH_NAME ]]; then
-        path >! "$TEMP_FILE"
-    else
-        path > "$TEMP_FILE"
-    fi
+    path > "$TEMP_FILE"
     vim "$TEMP_FILE"
-    NEW_PATH=$(cat "$TEMP_FILE" | tr '\n' ':' | sed 's/:$//')
+    NEW_PATH=$(tr '\n' ':' < "$TEMP_FILE" | sed 's/:$//')
     echo "$NEW_PATH"
     echo "    Original: $PATH"
     echo "    New:      $NEW_PATH"
@@ -60,7 +54,7 @@ alias du='du -kh'
 alias ll='ls -l'
 if [[ $Linux == true ]]; then 
     if [[ -x /usr/bin/dircolors ]]; then
-        eval "`dircolors -b`"
+        eval "$(dircolors -b)"
         alias ls='ls -F --color=auto'
     fi
 else

@@ -8,11 +8,12 @@ nsdate() {
     local nst=0
     #1521740309.720
     # 10 digits for seconds
-    local digits=$(echo -n $1|wc -c)
+    local digits
+    digits=$(echo -n "$1"|wc -c)
     if [[ $digits -gt 10 ]]; then
-        local div=$(( 10 ** ($digits - 10) ))
-        st=$(( $1 / $div ))
-        nst=$(( $1 % $div ))
+        local div=$(( 10 ** (digits - 10) ))
+        st=$(( $1 / div ))
+        nst=$(( $1 % div ))
     fi
     if [[ $(uname -s) == Darwin ]]; then
         datecmd=gdate
