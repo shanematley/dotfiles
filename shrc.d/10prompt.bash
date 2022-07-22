@@ -20,7 +20,7 @@ prompt_git() {
 }
 
 prompt_jobs() {
-    [[ -n "$(jobs)" ]] && printf ' {%d}' $(jobs | sed -n '$=')
+    [[ -n "$(jobs)" ]] && printf ' {%d}' "$(jobs | sed -n '$=')"
 }
 
 create_my_prompt() {

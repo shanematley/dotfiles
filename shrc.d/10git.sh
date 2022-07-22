@@ -17,7 +17,8 @@ commit_onto() {
         echo 'No changes staged!'
         return
     fi
-    local commit=$(git log --oneline --decorate=no origin/master.. | fzf | cut -d' ' -f1)
+    local commit
+    commit=$(git log --oneline --decorate=no origin/master.. | fzf | cut -d' ' -f1)
     if [[ -z "$commit" ]]; then
         return
     fi
