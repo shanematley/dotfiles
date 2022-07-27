@@ -102,8 +102,9 @@ autocmd TextYankPost * if v:event.operator is 'y' && v:event.regname is '+' | ex
 
 nnoremap <silent> <C-t> :Files<CR>
 " C-/
-nnoremap <silent> <M-/> :History/<CR>
-nnoremap <silent> <M-;> :History:<CR>
+nnoremap <silent> <leader>hh :History<CR>
+nnoremap <silent> <leader>h/ :History/<CR>
+nnoremap <silent> <leader>h; :History:<CR>
 nnoremap <silent> <leader>ll :Lines<CR>
 nnoremap <silent> <leader>lb :BLines<CR>
 nnoremap <silent> <leader>g :Rg<CR>
