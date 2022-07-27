@@ -1,0 +1,9 @@
+#!/bin/bash
+#
+# Who has been developing a section of the code base:
+#
+# Show who has made the most changes in my/path over the past six months:
+#  $ git who --since='6 months ago' my/path
+
+set -e
+git log --format='%an' "$@" | sort | uniq -c | sort -rn
