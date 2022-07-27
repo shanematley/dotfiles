@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-import jiracred, argparse, urlparse
+import jiracred, argparse, urllib
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--update-password', action='store_true',
@@ -12,7 +12,7 @@ ticket = args.key
 j = jiracred.Jira(args.update_password)
 d = j.get('issue/' + ticket)
 
-print """{key} {fields[summary]}
+print("""{key} {fields[summary]}
 
 Status: {fields[status][name]}
 
@@ -21,5 +21,5 @@ DESCRIPTION
 
 Link: {url}
 
-""".format(url=urlparse.urljoin(j.jira_server, '/browse/' + d['key']), **d)
+""".format(url=urllib.parse.urljoin(j.jira_server, '/browse/' + d['key']), **d))
 
