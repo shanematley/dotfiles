@@ -50,6 +50,7 @@ Plug 'altercation/vim-colors-solarized'
 Plug 'preservim/vimux'
 Plug 'google/vim-maktaba' " For vim-bazel. Must be before it.
 Plug 'bazelbuild/vim-bazel'
+Plug 'cappyzawa/starlark.vim'
 "Plug 'ervandew/supertab' " Use tab for insert completion
 Plug 'Glench/Vim-Jinja2-Syntax'
 "Plug 'gmarik/Vundle.vim'
