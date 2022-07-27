@@ -508,5 +508,8 @@ EOF
     fi
 }
 
+# For Linux install fzf using the following and the bindings and completions will be installed as requested:
+#   $ git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+#   $ ~/.fzf/install
 osis Darwin && check_fzf_bindings_mac
 
