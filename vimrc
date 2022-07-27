@@ -66,6 +66,10 @@ Plug 'justinmk/vim-sneak' " s followed by two characters
 "Plug 'mileszs/ack.vim'
 Plug 'moll/vim-bbye'  " Close buffers with Bdelete|Bwipeout without ruining window setup
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" Installing for C++:
+" :CocInstall coc-clangd
+" Create compile_commands.json by cloning the following repo and running the
+" generate.py script when in bazel directory. https://github.com/grailbio/bazel-compilation-database
 Plug 'NLKNguyen/papercolor-theme'
 Plug 'ojroques/vim-oscyank'
 Plug 'PeterRincker/vim-argumentative' " Shift arguments with <, >, Move between argument boundaries with [, ], New text objects a, i,
@@ -183,6 +187,7 @@ if has('gui_running')
         set guifont=Consolas:h10
         set enc=utf-8
     endif
+    highlight Comment cterm=italic gui=italic
 endif
 "}}}
 
@@ -246,6 +251,7 @@ nnoremap <leader>ps :LoadLocalProjectSpecificSettings<cr>
 nnoremap <leader>m :silent Make<cr>
 
 noremap <leader>va :Git blame<CR>
+noremap <leader>vr :Git blame --reverse<CR>
 noremap gh :Git log -- %<CR>
 
 " A command to execute an external command without requiring the user
