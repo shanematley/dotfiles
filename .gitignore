@@ -6,6 +6,9 @@ vim/.netrwhist
 vim/spell
 vim/autoload/plug.vim
 vim/plugged
+vim/swap
+vim/undodir
+vim/backup
 tags
 shrc.d/local/*
 shrc.d/generated/*sh
