@@ -512,7 +512,7 @@ set undodir^=~/.vim/undo//
 "}}}
 
 " Use :call UseCocShortcuts() to enable COC usage
-function UseCocShortcuts()
+function s:UseCocShortcuts()
     if !exists('g:did_coc_loaded')
         return
     endif
@@ -528,6 +528,12 @@ function UseCocShortcuts()
         \ CheckBackspace() ? "\<TAB>" :
         \ coc#refresh()
     inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+    function! CheckBackspace() abort
+        let col = col('.') - 1
+        return !col || getline('.')[col - 1]  =~# '\s'
+    endfunction
+
 
     " Use `[g` and `]g` to navigate diagnostics
     " Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
@@ -593,6 +599,8 @@ function UseCocShortcuts()
     xmap ac <Plug>(coc-classobj-a)
     omap ac <Plug>(coc-classobj-a)
 
+    inoremap <expr> <cr> coc#pum#visible() ? coc#_select_confirm() : "\<CR>"
+
     " Remap <C-f> and <C-b> for scroll float windows/popups.
     if has('nvim-0.4.0') || has('patch-8.2.0750')
     nnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
@@ -622,15 +630,18 @@ function UseCocShortcuts()
     " provide custom statusline: lightline.vim, vim-airline.
     set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
+    " Use autocmd to force lightline update.
+    autocmd User CocStatusChange,CocDiagnosticChange call lightline#update()
+
     " Mappings for CoCList
     " Show all diagnostics.
-    nnoremap <silent><nowait> <space>a  :<C-u>CocList diagnostics<cr>
+    nnoremap <silent><nowait> <space>a  :<C-u>CocList -A diagnostics<cr>
     " Manage extensions.
     nnoremap <silent><nowait> <space>e  :<C-u>CocList extensions<cr>
     " Show commands.
     nnoremap <silent><nowait> <space>c  :<C-u>CocList commands<cr>
     " Find symbol of current document.
-    nnoremap <silent><nowait> <space>o  :<C-u>CocList outline<cr>
+    nnoremap <silent><nowait> <space>o  :<C-u>CocList -A outline<cr>
     " Search workspace symbols.
     nnoremap <silent><nowait> <space>s  :<C-u>CocList -I symbols<cr>
     " Do default action for next item.
@@ -640,5 +651,7 @@ function UseCocShortcuts()
     " Resume latest coc list.
     nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 endfunction
+
+com! UseCocShortcuts call s:UseCocShortcuts()
 
 " vim:fdm=marker
