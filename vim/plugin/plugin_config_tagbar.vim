@@ -19,3 +19,5 @@ function! TagbarStatusFunc(current, sort, fname, ...) abort
     let g:lightline.fname = a:fname
   return lightline#statusline(0)
 endfunction
+
+nnoremap <silent> <leader>d :TagbarOpenAutoClose<CR>

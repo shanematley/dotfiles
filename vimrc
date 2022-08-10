@@ -61,8 +61,7 @@ Plug 'itchyny/lightline.vim'
 Plug 'justinmk/vim-sneak' " s followed by two characters
 "Plug 'justinmk/vim-syntax-extra'
 "Plug 'kana/vim-scratch'
-"Plug 'ctrlpvim/ctrlp.vim'
-"Plug 'majutsushi/tagbar', { 'on' : 'TagbarOpenAutoClose' }
+Plug 'majutsushi/tagbar', { 'on' : [ 'TagbarOpenAutoClose', 'TagbarToggle', 'TagbarOpen' ] }
 "Plug 'mileszs/ack.vim'
 Plug 'moll/vim-bbye'  " Close buffers with Bdelete|Bwipeout without ruining window setup
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
