@@ -442,11 +442,9 @@ set background=dark
 colorscheme PaperColor
 highlight Comment cterm=italic gui=italic
 
-let g:lightline = {
-      \ 'colorscheme': 'powerline',
-      \ }
+" Mode is not necessary with lightline as mode is shown on the left
+set noshowmode
 
-call togglebg#map("<F5>")
 hi MatchParen ctermbg=blue guibg=lightblue
 "}}}
 
