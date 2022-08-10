@@ -43,6 +43,33 @@ nnoremap <leader><space> :nohlsearch<cr>
 
 "}}}
 
+
+" Running pre-commit checks:
+"
+" # set makeprg and populate the QuickFix list with pre-commit check reports
+" :set makeprg=pre-commit
+"
+" # Run shellcheck on all files
+" :make run shellcheck --all-files
+"
+" # Do a confirmed string replace on the QuickFix elements:
+" :cdo s/<WRONG>/<RIGHT>/c
+"
+" # Save all modified files
+" :cfdo w
+let g:ale_fixers = {
+\   'cpp': ['clang-format'],
+\   'python': ['black', 'isort'],
+\   'starlark': ['buildifier'],
+\   'bzl': ['buildifier'],
+\}
+
+nmap <silent> <C-k> <Plug>(ale_previous_wrap)
+nmap <silent> <C-j> <Plug>(ale_next_wrap)
+
+" Needs to be set before plugins loaded
+let g:ale_disable_lsp = 1
+
 " Plug ------------------------------------------------------------------------- {{{
 call plug#begin()
 Plug 'airblade/vim-gitgutter'
@@ -50,6 +77,7 @@ Plug 'preservim/vimux'
 Plug 'google/vim-maktaba' " For vim-bazel. Must be before it.
 Plug 'bazelbuild/vim-bazel', { 'on': ['Bazel'] }
 Plug 'cappyzawa/starlark.vim', { 'for': 'starlark' }
+Plug 'dense-analysis/ale'
 "Plug 'ervandew/supertab' " Use tab for insert completion
 Plug 'Glench/Vim-Jinja2-Syntax'
 "Plug 'gmarik/Vundle.vim'
@@ -511,6 +539,10 @@ set undodir^=~/.vim/undo//
 
 "}}}
 
+nmap <silent> [g <Plug>(ale_previous_wrap)
+nmap <silent> ]g <Plug>(ale_next_wrap)
+
+
 " Use :call UseCocShortcuts() to enable COC usage
 function s:UseCocShortcuts()
     if !exists('g:did_coc_loaded')
@@ -537,8 +569,8 @@ function s:UseCocShortcuts()
 
     " Use `[g` and `]g` to navigate diagnostics
     " Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
-    nmap <silent> [g <Plug>(coc-diagnostic-prev)
-    nmap <silent> ]g <Plug>(coc-diagnostic-next)
+    "nmap <silent> [g <Plug>(coc-diagnostic-prev)
+    "nmap <silent> ]g <Plug>(coc-diagnostic-next)
 
     " GoTo code navigation.
     nmap <silent> gd <Plug>(coc-definition)
@@ -628,7 +660,7 @@ function s:UseCocShortcuts()
     " Add (Neo)Vim's native statusline support.
     " NOTE: Please see `:h coc-status` for integrations with external plugins that
     " provide custom statusline: lightline.vim, vim-airline.
-    set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
+    "set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
     " Use autocmd to force lightline update.
     autocmd User CocStatusChange,CocDiagnosticChange call lightline#update()
