@@ -58,13 +58,16 @@ nnoremap <leader><space> :nohlsearch<cr>
 " # Save all modified files
 " :cfdo w
 "
+let g:ale_enabled = 0
+let g:ale_linters = {'python': ['flake8', 'bandit']}
 " " Sample fixers
-"let g:ale_fixers = {
-"\   'cpp': ['clang-format'],
-"\   'python': ['black', 'isort'],
-"\   'starlark': ['buildifier'],
-"\   'bzl': ['buildifier'],
-"\}
+let g:ale_fixers = {
+\   'cpp': ['clang-format'],
+\   'python': ['black', 'isort'],
+\   'starlark': ['buildifier'],
+\   'bzl': ['buildifier'],
+\}
+
 "
 "nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 "nmap <silent> <C-j> <Plug>(ale_next_wrap)
@@ -79,7 +82,7 @@ Plug 'preservim/vimux'
 Plug 'google/vim-maktaba' " For vim-bazel. Must be before it.
 Plug 'bazelbuild/vim-bazel', { 'on': ['Bazel'] }
 Plug 'cappyzawa/starlark.vim', { 'for': 'starlark' }
-"Plug 'dense-analysis/ale'
+Plug 'dense-analysis/ale'
 "Plug 'ervandew/supertab' " Use tab for insert completion
 Plug 'Glench/Vim-Jinja2-Syntax'
 "Plug 'gmarik/Vundle.vim'
@@ -93,6 +96,7 @@ Plug 'justinmk/vim-sneak' " s followed by two characters
 Plug 'majutsushi/tagbar', { 'on' : [ 'TagbarOpenAutoClose', 'TagbarToggle', 'TagbarOpen' ] }
 "Plug 'mileszs/ack.vim'
 Plug 'moll/vim-bbye'  " Close buffers with Bdelete|Bwipeout without ruining window setup
+" Python: :CocInstall coc-pyright
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " Installing for C++:
 " :CocInstall coc-clangd
