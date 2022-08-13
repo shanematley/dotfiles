@@ -103,6 +103,7 @@ brew install zopfli
 brew install tokei
 brew install highlight
 brew install --cask pastebot
+brew install pbzip2
 
 # Hammerspoon for great keyboard shortcuts as inspired by https://github.com/jasonrudolph/keyboard
 brew install hammerspoon
