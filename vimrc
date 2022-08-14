@@ -44,37 +44,6 @@ nnoremap <leader><space> :nohlsearch<cr>
 "}}}
 
 
-" Running pre-commit checks:
-"
-" # set makeprg and populate the QuickFix list with pre-commit check reports
-" :set makeprg=pre-commit
-"
-" # Run shellcheck on all files
-" :make run shellcheck --all-files
-"
-" # Do a confirmed string replace on the QuickFix elements:
-" :cdo s/<WRONG>/<RIGHT>/c
-"
-" # Save all modified files
-" :cfdo w
-"
-let g:ale_enabled = 0
-let g:ale_linters = {'python': ['flake8', 'bandit']}
-" " Sample fixers
-let g:ale_fixers = {
-\   'cpp': ['clang-format'],
-\   'python': ['black', 'isort'],
-\   'starlark': ['buildifier'],
-\   'bzl': ['buildifier'],
-\}
-
-"
-"nmap <silent> <C-k> <Plug>(ale_previous_wrap)
-"nmap <silent> <C-j> <Plug>(ale_next_wrap)
-"
-"" Needs to be set before plugins loaded
-"let g:ale_disable_lsp = 1
-
 " Plug ------------------------------------------------------------------------- {{{
 call plug#begin()
 Plug 'airblade/vim-gitgutter'
@@ -545,8 +514,6 @@ set undodir^=~/.vim/undo//
 
 "}}}
 
-"nmap <silent> [g <Plug>(ale_previous_wrap)
-"nmap <silent> ]g <Plug>(ale_next_wrap)
 
 
 " Use :call UseCocShortcuts() to enable COC usage
@@ -575,8 +542,14 @@ function s:UseCocShortcuts()
 
     " Use `[g` and `]g` to navigate diagnostics
     " Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
-    nmap <silent> [g <Plug>(coc-diagnostic-prev)
-    nmap <silent> ]g <Plug>(coc-diagnostic-next)
+    let ale_enabled = get(g:, 'ale_enabled', 0)
+    if (ale_enabled)
+        nmap <silent> [g <Plug>(ale_previous_wrap)
+        nmap <silent> ]g <Plug>(ale_next_wrap)
+    else
+        nmap <silent> [g <Plug>(coc-diagnostic-prev)
+        nmap <silent> ]g <Plug>(coc-diagnostic-next)
+    endif
 
     " GoTo code navigation.
     nmap <silent> gd <Plug>(coc-definition)
