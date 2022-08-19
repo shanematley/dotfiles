@@ -161,4 +161,5 @@ noremap <leader>vi :<C-U>action Tool_External<space>Tools_Vim<CR>
 
 map <leader>* <Action>(MultiHighlight)
 map <leader># <Action>(MultiHighlight.ClearAction)
+set which-key
 
