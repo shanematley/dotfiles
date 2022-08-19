@@ -38,9 +38,15 @@ fi
 
 # Information on the completion system:
 # http://zsh.sourceforge.net/Doc/Release/Completion-System.html
+# https://thevaluable.dev/zsh-completion-guide-examples/
+#
+# List of styles for the completion system:
+#   man zshcompsys - Search for "Standard Styles"
+# List of tags:
+#   man zshcompsys - Search for "Standard Tags"
 #
 # Fields are:
-# :completion:function:completer:command:argument:tag
+# :completion:function:completer (with dropped underscore):command:argument:tag
 
 # Menu selection will be started unconditionally
 zstyle ':completion:*:*:*:*:*' menu select
@@ -49,8 +55,11 @@ zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#) ([0-9a-z-
 zstyle ':completion:*:*:*:*:processes' command "ps -u `whoami` -o pid,user,comm -w -w"
 # Use caching so that commands like apt and dpkg complete are useable
 zstyle ':completion:*' use-cache on
-zstyle ':completion:*' cache-path "/tmp/.zsh_${USER}_cache"
+zstyle ':completion:*' cache-path "${XDG_CACHE_HOME-$HOME/.cache}/zsh/.zcompcache"
 zstyle ':completion:*' accept-exact '*(N)'
+# Use this for full file names
+#zstyle ':completion:*' file-list all
+zstyle ':completion:*' completer _extensions _complete _approximate
 # case-insensitive (all),partial-word and then substring completion
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' \
     'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
@@ -60,6 +69,10 @@ zstyle ':completion:*' group-name ''
 # Display a short description of the matches in a completion list
 zstyle ':completion:*:descriptions' format %d
 zstyle ':completion:*:descriptions' format %B%d%b
+zstyle ':completion:*:*:*:*:descriptions' format '%F{green}-- %d --%f'
+zstyle ':completion:*:*:*:*:corrections' format '%F{yellow}!- %d (errors: %e) -!%f'
+zstyle ':completion:*:messages' format ' %F{purple} -- %d --%f'
+zstyle ':completion:*:warnings' format ' %F{red}-- no matches found --%f'
 # Set the order of groups of matches for cd and pushd
 zstyle ':completion:*:complete:(cd|pushd):*' tag-order 'local-directories named-directories path-directories'
 
