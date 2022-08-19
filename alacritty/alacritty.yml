@@ -108,7 +108,24 @@ window:
   #multiplier: 3
 
 # Font configuration
-#font:
+font:
+  normal:
+    family: JetBrains Mono
+    style: Light
+
+  bold:
+    family: JetBrains Mono
+    style: Bold
+
+  italic:
+    family: JetBrains Mono
+    style: Light Italic
+
+  bold_italic:
+    family: JetBrains Mono
+    style: Bold Italic
+
+  size: 12.0
   # Normal (roman) font face
   #normal:
     # Font family
