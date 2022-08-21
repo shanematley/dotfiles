@@ -57,7 +57,6 @@ Plug 'Glench/Vim-Jinja2-Syntax'
 "Plug 'gmarik/Vundle.vim'
 "Plug 'godlygeek/csapprox'
 "Plug 'godlygeek/tabular'
-Plug 'https://shanematley@bitbucket.org/shanematley/cppguards.git'
 Plug 'itchyny/lightline.vim'
 Plug 'justinmk/vim-sneak' " s followed by two characters
 "Plug 'justinmk/vim-syntax-extra'
