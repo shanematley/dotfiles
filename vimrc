@@ -360,19 +360,6 @@ au TabLeave * let g:lasttab = tabpagenr()
 
 "{{{  Undotree toggle
 nnoremap <leader>u :UndotreeToggle<CR>
-
-if has("persistent_undo")
-   let target_path = expand('~/.undodir')
-
-    " create the directory and any parent directories
-    " if the location does not exist.
-    if !isdirectory(target_path)
-        call mkdir(target_path, "p", 0700)
-    endif
-
-    let &undodir=target_path
-    set undofile
-endif
 "}}}
 
 if has("mac") || has("macunix")
@@ -488,10 +475,19 @@ set shortmess+=I
 
 " Configuration to keep edits safe --------------------------------------------- {{{
 
-" Protect changes between writes. Default values of
-" updatecount (200 keystrokes) and updatetime
-" (4 seconds) are fine
+function s:CreateDirIfMissing(dir_path)
+    let target_path = expand(a:dir_path)
+    if !isdirectory(target_path)
+        echo "Created " . l:target_path . " directory"
+        call mkdir(target_path, "p", 0700)
+    endif
+    return l:target_path
+endfunction
+
+" Protect changes between writes. Default values of updatecount (200 keystrokes)
+" and updatetime (4 seconds) are fine
 set swapfile
+let swap_target_path = s:CreateDirIfMissing('~/.vim/swap')
 set directory^=~/.vim/swap//
 
 " protect against crash-during-write
@@ -504,12 +500,14 @@ set backupcopy=auto
 if has("patch-8.1.0251")
     " consolidate the writebackups -- not a big
     " deal either way, since they usually get deleted
+    let backup_target_path = s:CreateDirIfMissing('~/.vim/backup')
     set backupdir^=~/.vim/backup//
 end
 
-" persist the undo tree for each file
-set undofile
-set undodir^=~/.vim/undo//
+if has("persistent_undo")
+    let &undodir=s:CreateDirIfMissing('~/.vim/undodir')
+    set undofile
+endif
 
 "}}}
 
