@@ -118,22 +118,6 @@ create_dir() {
     fi
 }
 
-create_dir_and_chmod() {
-    local DEST
-    local permissions
-    DEST="$1"
-    permissions="$2"
-    [[ -d "$DEST" ]] && { info "Skipping: directory $DEST already exists."; return 0; }
-    if mkdir -p "$DEST"; then
-        chmod "$permissions" "$DEST"
-        success "Created directory $DEST"
-    elif (( $# > 1 )) && [[ $2 == hardfail ]]; then
-        fail "Unable to create directory $DEST"
-    else
-        softfail "Unable to create directory $DEST"
-    fi
-}
-
 # Select a appropriate script file. E.g. echo zshrc.darwin if present, otherwise zshrc.default
 select_file() {
     local os
@@ -294,12 +278,6 @@ for f in "${FILES[@]}"; do
     LINK="${BASH_REMATCH[2]:-${HOME}/.${DEST}}"
     create_link "$SCRIPTPATH/$DEST" "$LINK"
 done
-
-section "Adding vim swap, undo, and backup"
-
-create_dir_and_chmod "$HOME/.vim/swap" 600
-create_dir_and_chmod "$HOME/.vim/undodir" 600
-create_dir_and_chmod "$HOME/.vim/backup" 600
 
 section "Adding git common commands"
 
