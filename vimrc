@@ -239,6 +239,40 @@ com! LoadLocalProjectSpecificSettings call s:LoadProjectSpecificSettings()
 
 "}}}
 
+function! s:list_buffers()
+  redir => list
+  silent ls
+  redir END
+  return split(list, "\n")
+endfunction
+
+function! s:delete_buffers(lines)
+  execute 'bdelete' join(map(a:lines, {_, line -> split(line)[0]}))
+endfunction
+
+
+"function! s:fzf_close_buffers(...)
+  "let [query, args] = (a:0 && type(a:1) == type('')) ?
+        "\ [a:1, a:000[1:]] : ['', a:000]
+  "let sorted = fzf#vim#_buflisted_sorted()
+  "let header_lines = '--header-lines=' . (bufnr('') == get(sorted, 0, 0) ? 1 : 0)
+  "let tabstop = len(max(sorted)) >= 4 ? 9 : 8
+  "return s:fzf('buffers', {
+  "\ 'source':  map(sorted, 'fzf#vim#_format_buffer(v:val)'),
+  "\ 'sink*':   s:function('s:delete_buffers'),
+  "\ 'options': ['+m', '-x', '--tiebreak=index', header_lines, '--ansi', '-d', '\t', '--with-nth', '3..', '-n', '2,1..2', '--prompt', 'Buf> ', '--query', query, '--preview-window', '+{2}-/2', '--tabstop', tabstop]
+  "\}, args)
+"endfunction
+
+
+"command! -bar -bang -nargs=? -complete=buffer BD  call s:fzf_close_buffers(<q-args>, fzf#vim#with_preview({ "placeholder": "{1}" }), <bang>0)',
+
+command! BD call fzf#run(fzf#wrap({
+  \ 'source': s:list_buffers(),
+  \ 'sink*': { lines -> s:delete_buffers(lines) },
+  \ 'options': '--multi --reverse --bind ctrl-a:select-all'
+  \ }))
+
 " Shortcut Keys, Mappings ------------------------------------------------------ {{{
 
 nnoremap ZX :qa<CR>
