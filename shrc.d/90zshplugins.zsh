@@ -17,9 +17,7 @@ source "${MY_LOCAL_PLUGINS}/zaw/zaw.zsh"
 bindkey '^R' zaw-history
 bindkey '^X\t' zaw-cdr
 bindkey '^X;' zaw
-#bindkey '^Xa' zaw-searcher
-bindkey '\ed' zaw-cdr
-#bindkey '\ea' zaw-searcher
+bindkey '^X^a' zaw-searcher
 bindkey '\er' zaw-fasd-files
 bindkey '\eg' zaw-git-files
 bindkey '\ee' zaw-fasd-directories
