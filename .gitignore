@@ -13,3 +13,4 @@ tags
 shrc.d/local/*
 shrc.d/generated/*sh
 tmux/plugins/tmux-urlview
+tmux/plugins/tmux-open
