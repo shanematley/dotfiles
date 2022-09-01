@@ -3,7 +3,7 @@
 	url = https://github.com/thewtex/tmux-mem-cpu-load.git
 [submodule "pure"]
 	path = pure
-	url = https://github.com/shanematley/pure.git
+	url = https://github.com/sindresorhus/pure.git
 [submodule "tmux/plugins/tpm"]
 	path = tmux/plugins/tpm
 	url = https://github.com/tmux-plugins/tpm
