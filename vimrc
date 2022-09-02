@@ -174,7 +174,6 @@ if has('gui_running')
 
     if has("gui_mac") && has("gui_gnome")
         set term=gnome-256color
-        colorscheme powerline
         set guifont=Monospace\ Bold\ 12
     endif
 
@@ -457,6 +456,35 @@ syntax enable
 if has("gui_running")
     set guitablabel=%M\ %t
 endif
+
+
+let g:lightline = {
+      \ 'colorscheme': 'PaperColor',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'gitbranch', 'filename'], [ 'cocstatus', 'readonly' ] ],
+      \   'right': [ ['percent'], [ 'fileformat', 'fileencoding', 'filetype' ] ]
+      \ },
+      \ 'tabline': {
+      \   'left': [ [ 'tabs' ] ], 'right': [ [ 'close'] ],
+      \ },
+      \ 'tab': {
+      \   'active': [ 'tabnum', 'filename', 'modified' ],
+      \   'inactive': [ 'tabnum', 'filename', 'modified' ]
+      \ },
+      \ 'component_function': {
+      \   'fugitive': 'StatusFugitive',
+      \   'filename': 'StatusFileName',
+      \   'gitbranch': 'FugitiveHead',
+      \   'mode': 'StatusFileMode',
+      \   'cocstatus': 'coc#status',
+      \ }
+      \ }
+let g:lightline.enable = { 'statusline': 1, 'tabline': 1 }
+
+" This ensures lightline updates to match dark/light background when toggled
+autocmd OptionSet background
+      \ execute 'source' globpath(&rtp, 'autoload/lightline/colorscheme/PaperColor.vim')
+      \ | call lightline#colorscheme() | call lightline#update()
 
 set background=dark
 colorscheme PaperColor
