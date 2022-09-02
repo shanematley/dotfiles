@@ -4,6 +4,7 @@
 [submodule "pure"]
 	path = pure
 	url = https://github.com/sindresorhus/pure.git
+	branch = main
 [submodule "tmux/plugins/tpm"]
 	path = tmux/plugins/tpm
 	url = https://github.com/tmux-plugins/tpm
