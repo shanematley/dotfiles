@@ -1,25 +1,3 @@
-let g:lightline = {
-      \ 'colorscheme': 'powerline',
-      \ 'active': {
-      \   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'gitbranch', 'filename'], [ 'cocstatus', 'readonly' ] ],
-      \   'right': [ ['percent'], [ 'fileformat', 'fileencoding', 'filetype' ] ]
-      \ },
-      \ 'tabline': {
-      \   'left': [ [ 'tabs' ] ], 'right': [ [ 'close'] ],
-      \ },
-      \ 'tab': {
-      \   'active': [ 'tabnum', 'filename', 'modified' ],
-      \   'inactive': [ 'tabnum', 'filename', 'modified' ]
-      \ },
-      \ 'component_function': {
-      \   'fugitive': 'StatusFugitive',
-      \   'filename': 'StatusFileName',
-      \   'gitbranch': 'FugitiveHead',
-      \   'mode': 'StatusFileMode',
-      \   'cocstatus': 'coc#status',
-      \ }
-      \ }
-let g:lightline.enable = { 'statusline': 1, 'tabline': 1 }
 
 function! s:StatusModified()
   return &ft =~ 'help' ? '' : &modified ? '+' : &modifiable ? '' : '-'
