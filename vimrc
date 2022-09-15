@@ -419,6 +419,22 @@ map <Leader>vz :VimuxZoomRunner<CR>
 
 "}}}
 
+
+"{{{ Diff options
+" Some interesting discussion on diffing algorithms
+" https://stackoverflow.com/questions/32365271/whats-the-difference-between-git-diff-patience-and-git-diff-histogram/32367597#32367597
+if has('nvim-0.3.2') || has("patch-8.1.0360")
+    set diffopt=internal,algorithm:histogram,indent-heuristic
+endif
+
+" Turn off whitespaces compare and folding in vimdiff
+set diffopt+=iwhite
+set diffopt+=vertical
+
+" Show filler lines, to keep the text synchronized with a window that has inserted lines at the same position
+set diffopt+=filler
+"}}}
+
 set list
 
 " Define extra 'list' display characters
