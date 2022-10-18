@@ -4,16 +4,20 @@ backup_k8s_mysql() {
   local db_name
   local pod_name
   local backup_location
+  local dry_run
+  local k8_context
   declare -a k8s_db_params
 
-  while getopts 'n:d:o:l:h' c; do
+  while getopts 'c:s:d:o:l:hn' c; do
     case $c in
-    n) ns="$OPTARG" ;;
+    n) dry_run=1 ;;
+    c) k8_context="$OPTARG" ;;
+    s) ns="$OPTARG" ;;
     d) db_name="$OPTARG" ;;
     o) backup_location="$OPTARG" ;;
     l) selector="$OPTARG" ;;
     h)
-      echo "Usage: backup_k8s_mysql [-n namespace] -s selector -o dest_file.sql[.gz] -d database_name"
+      echo "Usage: backup_k8s_mysql [-s namespace] -l selector -o dest_file.sql[.gz] -d database_name"
       return 0
       ;;
     *) return 0 ;;
@@ -29,7 +33,18 @@ backup_k8s_mysql() {
   fi
   k8s_db_params+=("-l" "${selector}")
 
-  pod_name="$(/usr/local/bin/kubectl get pod -n "${ns}" -l "${selector}" -o jsonpath='{.items[0].metadata.name}')"
+  local args
+  args=(/usr/local/bin/kubectl get pod -n "${ns}" -l "${selector}" -o "jsonpath={.items[0].metadata.name}")
+  if [[ -n "$k8_context" ]]; then
+      args+=(--context "$k8_context")
+  fi
+  if [[ $dry_run == 1 ]]; then
+      echo "Would run:"
+      printf '%s\n' "${args[@]}"
+      return
+  else
+    pod_name="$("${args[@]}")"
+  fi
   if [[ -z ${pod_name} ]]; then
     echo "Failed to find k8s pod using selector ${selector} (namespace: {$ns})"
     return 1
@@ -37,7 +52,14 @@ backup_k8s_mysql() {
 
   local kubectl_cmd
   # shellcheck disable=SC2016 # MYSQL_ROOT_PASSWORD is expanded on remote end
-  kubectl_cmd=(exec -n "${ns}" "${pod_name}" -- sh -c 'exec mysqldump -uroot -p"$MYSQL_ROOT_PASSWORD" '"${db_name}")
+  kubectl_cmd=(exec -n "${ns}" "${pod_name}")
+  if [[ -n "$k8_context" ]]; then
+      kubectl_cmd+=(--context "$k8_context")
+  fi
+  kubectl_cmd+=(-- sh -c 'exec mysqldump -uroot -p"$MYSQL_ROOT_PASSWORD" '"${db_name}")
+
+  #echo "Running: "
+  #printf '%s\n' "${kubectl_cmd[@]}"
 
   if [[ ${backup_location} =~ .*\.gz$ ]]; then
     /usr/local/bin/kubectl "${kubectl_cmd[@]}" | gzip >"${backup_location}" || { 1>&2 echo "Failed to backup up ${db_name} on pod ${pod_name} to ${backup_location}"; return 1; }
