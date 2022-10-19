@@ -64,7 +64,6 @@ return {
   { 'f', 'Finder' },            -- "F" for "Finder"
   { 'n', 'Messages' },
   { 'o', 'Omnifocus' },
-  { 'z', 'Zoom.us' },              -- "Z" for "Zoom"
   { 'p', make_send_key_to_application('zoom.us', {'alt'}, 'y') },
   { '\\', toggle_zoom('Mute Audio', 'Unmute Audio') },
   { ']', toggle_zoom_combined('Mute Audio', 'Stop Video', 'Unmute Audio', 'Start Video') },
