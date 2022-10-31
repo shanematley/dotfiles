@@ -423,7 +423,10 @@ map <Leader>vz :VimuxZoomRunner<CR>
 "{{{ Diff options
 " Some interesting discussion on diffing algorithms
 " https://stackoverflow.com/questions/32365271/whats-the-difference-between-git-diff-patience-and-git-diff-histogram/32367597#32367597
-if has('nvim-0.3.2') || has("patch-8.1.0360")
+" The initial branch for mac is due to https://github.com/agude/dotfiles/issues/2
+if has('mac') && $VIM == '/usr/share/vim'
+    set diffopt-=internal
+elseif has('nvim-0.3.2') || has("patch-8.1.0360")
     set diffopt=internal,algorithm:histogram,indent-heuristic
 endif
 
