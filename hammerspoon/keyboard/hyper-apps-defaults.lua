@@ -62,9 +62,12 @@ return {
   { 'a', 'Music' },             -- "A" for "Apple Music"
   { 'b', 'Google Chrome' },     -- "B" for "Browser"
   { 'f', 'Finder' },            -- "F" for "Finder"
-  { 'n', 'Messages' },
+  { 'n', 'Notes' },
   { 'o', 'Omnifocus' },
+  { 'r', 'Reminders' },
   { 'p', make_send_key_to_application('zoom.us', {'alt'}, 'y') },
+  { 'v', 'Messages' },
+  { '4', 'Banktivity' },
   { '\\', toggle_zoom('Mute Audio', 'Unmute Audio') },
   { ']', toggle_zoom_combined('Mute Audio', 'Stop Video', 'Unmute Audio', 'Start Video') },
   { '[', toggle_zoom('Stop Video', 'Start Video') },
