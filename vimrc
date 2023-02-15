@@ -283,7 +283,7 @@ nnoremap <leader>m :silent Make<cr>
 
 noremap <leader>va :Git blame<CR>
 noremap <leader>vr :Git blame --reverse<CR>
-noremap gh :Git log -- %<CR>
+noremap gh :Git log --follow -- %<CR>
 
 " A command to execute an external command without requiring the user
 " to press Enter to dismiss a prompt.
