@@ -174,6 +174,23 @@ end
 
 -- +-----------------+
 -- |      |          |
+-- | HERE |          |
+-- |      |          |
+-- +-----------------+
+function window.left60(win)
+  local f = win:frame()
+  local screen = win:screen()
+  local max = screen:frame()
+
+  f.x = max.x
+  f.y = max.y
+  f.w = max.w * 0.6
+  f.h = max.h
+  win:setFrame(f)
+end
+
+-- +-----------------+
+-- |      |          |
 -- |      |   HERE   |
 -- |      |          |
 -- +-----------------+
@@ -185,6 +202,23 @@ function window.right60(win)
   f.x = max.x + (max.w * 0.4)
   f.y = max.y
   f.w = max.w * 0.6
+  f.h = max.h
+  win:setFrame(f)
+end
+
+-- +-----------------+
+-- |      |          |
+-- |      |   HERE   |
+-- |      |          |
+-- +-----------------+
+function window.right40(win)
+  local f = win:frame()
+  local screen = win:screen()
+  local max = screen:frame()
+
+  f.x = max.x + (max.w * 0.6)
+  f.y = max.y
+  f.w = max.w * 0.4
   f.h = max.h
   win:setFrame(f)
 end
