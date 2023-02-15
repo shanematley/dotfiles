@@ -32,7 +32,7 @@ brew install fzf
 brew install wget
 
 # Install more recent versions of some macOS tools.
-brew install vim --with-override-system-vi
+brew install vim
 
 # Install some CTF tools; see https://github.com/ctfs/write-ups.
 # WiFi security
@@ -104,6 +104,7 @@ brew install tokei
 brew install highlight
 brew install --cask pastebot
 brew install pbzip2
+brew install extract_url
 
 # Hammerspoon for great keyboard shortcuts as inspired by https://github.com/jasonrudolph/keyboard
 brew install hammerspoon
