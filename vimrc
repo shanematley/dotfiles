@@ -90,6 +90,7 @@ Plug 'tpope/vim-dispatch', { 'on' : ['Make', 'Start', 'Dispatch', 'FocusDispatch
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-projectionist' " A number of things, but includes :A, :AS, :AV, and :AT to jump to an 'alternate' file
 Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-obsession'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired' " [q/|]q for cprev|cnext; yos toggle spell; yon toggle numbers; [n|]n jump between conflict markers;
                             " [f|]f next/previous file in directory; yow toggle wrap
