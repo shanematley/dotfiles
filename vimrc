@@ -87,6 +87,7 @@ Plug 'tpope/vim-abolish' " Replacement with variations: :%Subvert/facilit{y,ies}
                          " space case (cr<space>), and Title Case (crt)
 Plug 'tpope/vim-characterize' " Additional info with (ga) for character
 Plug 'tpope/vim-dispatch', { 'on' : ['Make', 'Start', 'Dispatch', 'FocusDispatch', 'Copen'] }
+Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-projectionist' " A number of things, but includes :A, :AS, :AV, and :AT to jump to an 'alternate' file
 Plug 'tpope/vim-repeat'
