@@ -1,5 +1,6 @@
 *pyc
 .DS_Store
+bin/venv
 vim/doc/tabs
 vim/local/*
 vim/.netrwhist
