@@ -519,8 +519,10 @@ imap <C-K><C-K> <Plug>(DigraphSearch)
 
 " ClangFormat ----------------------------------------------------------- {{{
 
-noremap <leader>cf :ClangFormat<cr>
-vnoremap <leader>cf :ClangFormat<cr>
+" Formatting selected code. Note: these are overridden by clangd usage in coc.vim section
+nnoremap <leader>f :ClangFormat<cr>
+nnoremap <C-A-l> :ClangFormat<cr>
+xnoremap <leader>f :ClangFormat<cr>
 
 "}}}
 
@@ -655,9 +657,10 @@ function s:UseCocShortcuts()
     " Symbol renaming.
     nmap <leader>rn <Plug>(coc-rename)
 
-    " Formatting selected code.
-    xmap <leader>f  <Plug>(coc-format-selected)
-    nmap <leader>f  <Plug>(coc-format-selected)
+    " Formatting selected code. Note: these override basic ClangFormat bindings above
+    nnoremap <leader>f  <Plug>(coc-format)
+    nnoremap <C-A-l> <Plug>(coc-format)
+    xnoremap <leader>f  <Plug>(coc-format-selected)
 
     augroup mygroup
     autocmd!
