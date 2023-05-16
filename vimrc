@@ -105,6 +105,7 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'stsewd/fzf-checkout.vim' " Introduces :GBranches - FZF for git branches
 Plug 'junegunn/fzf.vim'
 Plug 'luochen1990/rainbow'
+Plug 'will133/vim-dirdiff'
 call plug#end()
 "}}}
 
@@ -172,6 +173,10 @@ nnoremap <leader>nr :NERDTreeFind<cr>
 nnoremap <leader>nn :NERDTreeFocus<cr>
 nnoremap <leader>n :NERDTreeToggle<cr>
 let NERDTreeIgnore=['\.pyc$', '\~$']
+"}}}
+
+"""{{{ Plugin configuration: vim-dirdiff
+let g:DirDiffAddArgs = "-w"
 "}}}
 
 " Ignored files ---------------------------------------------------------------- {{{
