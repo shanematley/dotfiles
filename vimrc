@@ -57,6 +57,9 @@ Plug 'Glench/Vim-Jinja2-Syntax'
 "Plug 'gmarik/Vundle.vim'
 "Plug 'godlygeek/csapprox'
 "Plug 'godlygeek/tabular'
+if has('nvim')
+    Plug 'ibhagwan/fzf-lua', {'branch': 'main'}
+endif
 Plug 'itchyny/lightline.vim'
 Plug 'justinmk/vim-sneak' " s followed by two characters
 "Plug 'justinmk/vim-syntax-extra'
@@ -99,6 +102,7 @@ Plug 'vim-scripts/a.vim' " Switch header/source with :A and <leader>-s/S
 Plug 'vim-scripts/genutils'
 Plug 'vim-scripts/vim-indent-object' " ai, ii, aI, iI (an/inner indentation level and line above/below)
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'stsewd/fzf-checkout.vim' " Introduces :GBranches - FZF for git branches
 Plug 'junegunn/fzf.vim'
 Plug 'luochen1990/rainbow'
 call plug#end()
@@ -107,18 +111,38 @@ call plug#end()
 autocmd TextYankPost * if v:event.operator is 'y' && v:event.regname is '+' | execute 'OSCYankRegister +' | endif
 vmap <leader>c <Plug>OSCYankVisual
 
-nnoremap <silent> <C-t> :Files<CR>
-" C-/
-nnoremap <silent> <leader>hh :History<CR>
-nnoremap <silent> <leader>h/ :History/<CR>
-nnoremap <silent> <leader>h; :History:<CR>
-nnoremap <silent> <leader>ll :Lines<CR>
-nnoremap <silent> <leader>lb :BLines<CR>
-nnoremap <silent> <leader>g :Rg<CR>
-nnoremap <leader>q :Rg <C-r><C-w><CR>
-nnoremap <leader>Q :Rg \b<C-r><C-w>\b<CR>
-nnoremap <silent> <leader>U :GitGutterUndoHunk<CR>
+if has('nvim')
+    nnoremap <leader>b <cmd>lua require('fzf-lua').buffers()<CR>
+    nnoremap <leader>t <cmd>lua require('fzf-lua').git_files()<CR>
+    nnoremap <silent> <C-t> <cmd>lua require('fzf-lua').files()<CR>
+    nnoremap <silent> <leader>hh <cmd>lua require('fzf-lua').oldfiles()<CR>
+    nnoremap <silent> <leader>h/ <cmd>lua require('fzf-lua').search_history()<CR>
+    nnoremap <silent> <leader>h; <cmd>lua require('fzf-lua').command_history()<CR>
+    nnoremap <silent> <leader>ll <cmd>lua require('fzf-lua').lines()<CR>
+    nnoremap <silent> <leader>lb <cmd>lua require('fzf-lua').blines()<CR>
+    nnoremap <silent> <leader>g <cmd>lua require('fzf-lua').grep_project()<CR>
+    nnoremap <silent> <leader>gb <cmd>lua require('fzf-lua').git_branches()<CR>
+    nnoremap <silent> <leader>gs <cmd>lua require('fzf-lua').git_stash()<CR>
+    nnoremap <silent> <leader>gc <cmd>lua require('fzf-lua').git_commits()<CR>
+    nnoremap <silent> <leader>gh <cmd>lua require('fzf-lua').git_bcommits()<CR>
+    nnoremap <leader>q <cmd>lua require('fzf-lua').grep_cword()<CR>
+    nnoremap <leader>Q <cmd>lua require('fzf-lua').grep_cWORD()<CR>
+else
+    nnoremap <leader>b :Buffers<cr>
+    nnoremap <leader>t :GFiles<cr>
+    nnoremap <silent> <C-t> :Files<CR>
+    nnoremap <silent> <leader>hh :History<CR>
+    nnoremap <silent> <leader>h/ :History/<CR>
+    nnoremap <silent> <leader>h; :History:<CR>
+    nnoremap <silent> <leader>ll :Lines<CR>
+    nnoremap <silent> <leader>lb :BLines<CR>
+    nnoremap <silent> <leader>g :Rg<CR>
+    nnoremap <silent> <leader>gb :GBranches<CR>
+    nnoremap <leader>q :Rg <C-r><C-w><CR>
+    nnoremap <leader>Q :Rg \b<C-r><C-w>\b<CR>
+endif
 
+nnoremap <silent> <leader>U :GitGutterUndoHunk<CR>
 nnoremap <silent> <F2> :call CocAction('diagnosticNext')<cr>
 nnoremap <silent> <S-F2> :call CocAction('diagnosticPrevious')<cr>
 
@@ -242,45 +266,15 @@ com! LoadLocalProjectSpecificSettings call s:LoadProjectSpecificSettings()
 
 "}}}
 
-function! s:list_buffers()
-  redir => list
-  silent ls
-  redir END
-  return split(list, "\n")
-endfunction
-
-function! s:delete_buffers(lines)
-  execute 'bdelete' join(map(a:lines, {_, line -> split(line)[0]}))
-endfunction
-
-
-"function! s:fzf_close_buffers(...)
-  "let [query, args] = (a:0 && type(a:1) == type('')) ?
-        "\ [a:1, a:000[1:]] : ['', a:000]
-  "let sorted = fzf#vim#_buflisted_sorted()
-  "let header_lines = '--header-lines=' . (bufnr('') == get(sorted, 0, 0) ? 1 : 0)
-  "let tabstop = len(max(sorted)) >= 4 ? 9 : 8
-  "return s:fzf('buffers', {
-  "\ 'source':  map(sorted, 'fzf#vim#_format_buffer(v:val)'),
-  "\ 'sink*':   s:function('s:delete_buffers'),
-  "\ 'options': ['+m', '-x', '--tiebreak=index', header_lines, '--ansi', '-d', '\t', '--with-nth', '3..', '-n', '2,1..2', '--prompt', 'Buf> ', '--query', query, '--preview-window', '+{2}-/2', '--tabstop', tabstop]
-  "\}, args)
-"endfunction
-
-
-"command! -bar -bang -nargs=? -complete=buffer BD  call s:fzf_close_buffers(<q-args>, fzf#vim#with_preview({ "placeholder": "{1}" }), <bang>0)',
-
-command! BD call fzf#run(fzf#wrap({
-  \ 'source': s:list_buffers(),
-  \ 'sink*': { lines -> s:delete_buffers(lines) },
-  \ 'options': '--multi --reverse --bind ctrl-a:select-all'
-  \ }))
+let g:fzf_action = {
+  \ 'ctrl-t': 'tab split',
+  \ 'ctrl-x': 'split',
+  \ 'ctrl-v': 'vsplit',
+  \ 'ctrl-y': {lines -> setreg('+', join(lines, "\n"))}}
 
 " Shortcut Keys, Mappings ------------------------------------------------------ {{{
 
 nnoremap ZX :qa<CR>
-nnoremap <leader>b :Buffers<cr>
-nnoremap <leader>t :GFiles<cr>
 nnoremap <leader>ps :LoadLocalProjectSpecificSettings<cr>
 
 nnoremap <leader>m :silent Make<cr>
