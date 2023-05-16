@@ -104,7 +104,8 @@ Plug 'luochen1990/rainbow'
 call plug#end()
 "}}}
 
-autocmd TextYankPost * if v:event.operator is 'y' && v:event.regname is '+' | execute 'OSCYankReg +' | endif
+autocmd TextYankPost * if v:event.operator is 'y' && v:event.regname is '+' | execute 'OSCYankRegister +' | endif
+vmap <leader>c <Plug>OSCYankVisual
 
 nnoremap <silent> <C-t> :Files<CR>
 " C-/
