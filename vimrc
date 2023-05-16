@@ -146,7 +146,7 @@ nnoremap <silent> <leader>U :GitGutterUndoHunk<CR>
 nnoremap <silent> <F2> :call CocAction('diagnosticNext')<cr>
 nnoremap <silent> <S-F2> :call CocAction('diagnosticPrevious')<cr>
 
-let g:rainbow_active = 1 "set to 0 if you want to enable it later via :RainbowToggle
+let g:rainbow_active = 0 "set to 0 if you want to enable it later via :RainbowToggle
 
 " Use `s` to jump to a two character prefix
 let g:sneak#label = 1
@@ -512,10 +512,6 @@ set noshowmode
 
 hi MatchParen ctermbg=blue guibg=lightblue
 "}}}
-
-" Insert digraphs by typing the letters then C-n rather than the normal
-" way of entering diagraph mode with C-k and typing the two keys.
-imap <C-n> <Plug>(DigraphFromPrevChars)
 
 " Map double Ctrl-K in insert mode to search digraph names
 " Run :helptags ~/.vim/doc to generate docs
