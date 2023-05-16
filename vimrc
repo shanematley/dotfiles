@@ -283,6 +283,8 @@ noremap <leader>va :Git blame<CR>
 noremap <leader>vr :Git blame --reverse<CR>
 noremap gh :Git log --follow -- %<CR>
 
+noremap <leader>y% :let @" = expand("%")<cr>
+
 " A command to execute an external command without requiring the user
 " to press Enter to dismiss a prompt.
 command! -nargs=1 Silent
