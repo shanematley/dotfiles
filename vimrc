@@ -144,7 +144,8 @@ let g:PaperColor_Theme_Options = {
 "}}}
 
 " Plugin configuratino: NERDTree {{{
-nnoremap <leader>r :NERDTreeFind<cr>
+nnoremap <leader>nr :NERDTreeFind<cr>
+nnoremap <leader>nn :NERDTreeFocus<cr>
 nnoremap <leader>n :NERDTreeToggle<cr>
 let NERDTreeIgnore=['\.pyc$', '\~$']
 "}}}
