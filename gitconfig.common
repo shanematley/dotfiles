@@ -95,3 +95,6 @@
     ll = false
     la = false
 
+[difftool "nvimdir"]
+    cmd = nvim -f '+next' '+execute \"DirDiff\" argv(0) argv(1)' "$LOCAL" "$REMOTE" '+syntax off'
+
