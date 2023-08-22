@@ -24,6 +24,8 @@ bindkey '\er' zaw-fasd-files
 bindkey '\eg' zaw-git-files
 bindkey '\ee' zaw-fasd-directories
 bindkey '\ep' zaw-process
+bindkey '^X^b' zaw-git-recent-branches
+bindkey '^X^l' zaw-git-log
 
 bindkey -M filterselect '\e' send-break
 bindkey -M filterselect '^J' down-line-or-history
