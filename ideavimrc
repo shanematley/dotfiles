@@ -47,7 +47,7 @@ nnoremap <C-l> <C-w>l
 nmap <leader>mb <Action>(Build)
 nmap <leader>mr <Action>(Run)
 nmap <leader>md <Action>(Debug)
-nmap <leader>\\ <Action>(FindUsages)
+nmap gr <Action>(FindUsages)
 nmap <leader>/ <Action>(ShowUsages)
 
 nmap <leader>q <Action>(FindInPath)
@@ -76,8 +76,8 @@ nmap [m <Action>(MethodUp)
 nmap ]m <Action>(MethodDown)
 nmap [c <Action>(VcsShowPrevChangeMarker)
 nmap ]c <Action>(VcsShowNextChangeMarker)
-nmap [[ <Action>(PreviousOccurence)
-nmap ]] <Action>(NextOccurence)
+nmap [g <Action>(PreviousOccurence)
+nmap ]g <Action>(NextOccurence)
 nmap <leader>hp <Action>(VcsShowCurrentChangeMarker)
 nmap <leader>hu <Action>(Vcs.RollbackChangedLines)
 nmap <leader>va <Action>(Annotate)
@@ -96,7 +96,8 @@ nmap <leader>* <Action>(HighlightUsagesInFile)
 vnoremap <leader>* <esc>gvhh:<C-U>action HighlightUsagesInFile<cr>
 nmap <leader>R <Action>(RunClass)
 nmap <leader>r <Action>(Refactorings.QuickListPopupAction)
-vnoremap <leader>r <esc>gvhh:<C-U>action refactorings.QuickListPopupAction<cr>
+vmap <leader>r <Action>(Refactorings.QuickListPopupAction)
+"vnoremap <leader>r <esc>gvhh:<C-U>action refactorings.QuickListPopupAction<cr>
 nmap <leader>n <Action>(RenameElement)
 vnoremap <leader>em <esc>gvhh:<C-U>:action ExtractMethod<cr>
 nmap <leader>em <Action>(ExtractMethod)<esc>
@@ -141,6 +142,7 @@ map <leader>x <Action>(SelectInProjectView)
 map <leader>z <Action>(CloseContent)
 map <leader>b <Action>(RecentFiles)
 map <leader>s <Action>(FileStructurePopup)
+nmap <space>o <Action>(FileStructurePopup)
 imap <C-N> <Action>(HippieCompletion)
 imap <Tab> <Action>(CodeCompletion)
 imap <C-I> <Action>(SmartTypeCompletion)
