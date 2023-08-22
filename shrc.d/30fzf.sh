@@ -44,3 +44,14 @@ if command -v kubectl >/dev/null 2>&1; then
             --preview 'kubectl logs --follow --all-containers --tail=10000 --namespace {1} {2}' "$@"
     }
 fi
+
+fzf_diff() {
+        preview="git diff $@ --color=always -- {-1}"
+        git diff $@ --name-only | fzf -m --ansi --preview $preview --preview-window wrap
+}
+
+fzf_diff() {
+        preview="git diff --name-only --diff-filter=d --relative -- {-1} | \
+            xargs bat --diff --color=always --style=numbers,changes {-1}"
+        git diff $@ --name-only | fzf -m --ansi --preview $preview
+}
