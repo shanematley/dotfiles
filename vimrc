@@ -47,6 +47,8 @@ nnoremap <leader><space> :nohlsearch<cr>
 " Plug ------------------------------------------------------------------------- {{{
 call plug#begin()
 Plug 'airblade/vim-gitgutter'
+" Baszel support for go to definition, build/test/run buffer, jump to BUILD file, etc
+Plug 'alexander-born/bazel.nvim'
 Plug 'preservim/vimux'
 Plug 'google/vim-maktaba' " For vim-bazel. Must be before it.
 Plug 'bazelbuild/vim-bazel', { 'on': ['Bazel'] }
@@ -57,6 +59,7 @@ Plug 'Glench/Vim-Jinja2-Syntax'
 "Plug 'gmarik/Vundle.vim'
 "Plug 'godlygeek/csapprox'
 "Plug 'godlygeek/tabular'
+Plug 'honza/vim-snippets'
 if has('nvim')
     Plug 'ibhagwan/fzf-lua', {'branch': 'main'}
 endif
@@ -83,6 +86,7 @@ Plug 'preservim/nerdtree', { 'on':  ['NERDTreeToggle', 'NERDTreeFind'] }
 Plug 'Shirk/vim-gas', { 'for' : 'gas' } " Syntax highlighting for GNU as
 "Plug 'sjl/gundo.vim'
 Plug 'mbbill/undotree'
+Plug 'SirVer/ultisnips'
 Plug 'tommcdo/vim-exchange' " cx or cxx or X (visual mode) to exchange. cxc to clear
 Plug 'tpope/vim-abolish' " Replacement with variations: :%Subvert/facilit{y,ies}/building{,s}/g
                          " Also: Press crs (coerce to snake_case). MixedCase (crm), camelCase (crc),
@@ -123,7 +127,8 @@ if has('nvim')
     nnoremap <silent> <leader>lb <cmd>lua require('fzf-lua').blines()<CR>
     nnoremap <silent> <leader>g <cmd>lua require('fzf-lua').grep_project()<CR>
     nnoremap <silent> <leader>gb <cmd>lua require('fzf-lua').git_branches()<CR>
-    nnoremap <silent> <leader>gs <cmd>lua require('fzf-lua').git_stash()<CR>
+    nnoremap <silent> <leader>gs <cmd>lua require('fzf-lua').git_status()<CR>
+    nnoremap <silent> <leader>gt <cmd>lua require('fzf-lua').git_stash()<CR>
     nnoremap <silent> <leader>gc <cmd>lua require('fzf-lua').git_commits()<CR>
     nnoremap <silent> <leader>gh <cmd>lua require('fzf-lua').git_bcommits()<CR>
     nnoremap <leader>q <cmd>lua require('fzf-lua').grep_cword()<CR>
@@ -527,9 +532,14 @@ imap <C-K><C-K> <Plug>(DigraphSearch)
 " ClangFormat ----------------------------------------------------------- {{{
 
 " Formatting selected code. Note: these are overridden by clangd usage in coc.vim section
-nnoremap <leader>f :ClangFormat<cr>
-nnoremap <C-A-l> :ClangFormat<cr>
-xnoremap <leader>f :ClangFormat<cr>
+autocmd FileType cpp nnoremap <buffer> <leader>f :ClangFormat<cr>
+autocmd FileType cpp nnoremap <buffer> <C-A-l> :ClangFormat<cr>
+autocmd FileType cpp xnoremap <buffer> <leader>f :ClangFormat<cr>
+autocmd FileType starlark,bzl,python nnoremap <buffer> <leader>f <Plug>(ale_fix)
+autocmd FileType starlark,bzl,python nnoremap <silent> [g <Plug>(ale_previous_wrap)
+autocmd FileType starlark,bzl,python nnoremap <silent> ]g <Plug>(ale_next_wrap)
+autocmd FileType starlark,bzl,python nnoremap <silent> K <Plug>(ale_hover)
+"autocmd FileType starlark,bzl,python nnomap <leader>qf  <Plug>(coc-fix-current)
 
 "}}}
 
