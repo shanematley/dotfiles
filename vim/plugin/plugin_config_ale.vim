@@ -6,7 +6,9 @@ let g:ale_enabled = 0
 let g:ale_disable_lsp = 1
 
 let g:ale_linters = {
-    \ 'python': ['flake8', 'bandit']}
+    \ 'python': ['flake8', 'bandit', 'pyls']}
+
+let g:ale_python_pylsp_executable = 'pyls'
 
 let g:ale_fixers = {
     \   'cpp': ['clang-format'],
