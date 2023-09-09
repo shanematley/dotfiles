@@ -490,11 +490,15 @@ endif
 let g:lightline = {
       \ 'colorscheme': 'PaperColor',
       \ 'active': {
-      \   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'gitbranch', 'filename'], [ 'cocstatus', 'readonly' ] ],
+      \   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'filename', 'buffernumber'], [ 'cocstatus', 'readonly' ] ],
       \   'right': [ ['percent'], [ 'fileformat', 'fileencoding', 'filetype' ] ]
       \ },
+      \ 'inactive': {
+      \   'left': [ [ 'fugitive', 'filename', 'buffernumber'] ],
+      \   'right': [ ['lineinfo'], ['percent'] ],
+      \ },
       \ 'tabline': {
-      \   'left': [ [ 'tabs' ] ], 'right': [ [ 'close'] ],
+      \   'left': [ [ 'tabs' ] ], 'right': [ [ 'gitbranch', 'close' ] ],
       \ },
       \ 'tab': {
       \   'active': [ 'tabnum', 'filename', 'modified' ],
@@ -506,6 +510,9 @@ let g:lightline = {
       \   'gitbranch': 'FugitiveHead',
       \   'mode': 'StatusFileMode',
       \   'cocstatus': 'coc#status',
+      \ },
+      \ 'component': {
+      \   'buffernumber': '%n'
       \ }
       \ }
 let g:lightline.enable = { 'statusline': 1, 'tabline': 1 }
