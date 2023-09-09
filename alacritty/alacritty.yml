@@ -13,6 +13,11 @@ import:
   #- &colorscheme ~/.config/alacritty/night_owlish_light.yml
   - &keyboard ~/.config/alacritty/keyboard.yml
 
+  # alacritty.local.yml is for overriding things locally. E.g. to override colorscheme:
+  #    import:
+  #      - &colorscheme ~/.config/alacritty/night_owlish_light.yml
+  - ~/.config/alacritty.local.yml
+
 # Any items in the `env` entry below will be added as
 # environment variables. Some entries may override variables
 # set by alacritty itself.
