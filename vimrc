@@ -39,7 +39,7 @@ call plug#begin()
 Plug 'airblade/vim-gitgutter'
 " Baszel support for go to definition, build/test/run buffer, jump to BUILD file, etc
 if has('nvim')
-    Plug 'alexander-born/bazel.nvim'
+    Plug 'alexander-born/bazel.nvim', { 'for': 'starlark' }
 endif
 Plug 'preservim/vimux'
 Plug 'google/vim-maktaba' " For vim-bazel. Must be before it.
