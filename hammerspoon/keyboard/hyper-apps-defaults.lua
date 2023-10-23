@@ -59,6 +59,7 @@ function make_send_key_to_application(app_name, modifier_key, key)
 end
 
 return {
+  { '`', 'Alacritty' },
   { 'a', 'Music' },             -- "A" for "Apple Music"
   { 'b', 'Google Chrome' },     -- "B" for "Browser"
   { 'f', 'Finder' },            -- "F" for "Finder"
