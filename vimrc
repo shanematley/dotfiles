@@ -48,7 +48,9 @@ nnoremap <leader><space> :nohlsearch<cr>
 call plug#begin()
 Plug 'airblade/vim-gitgutter'
 " Baszel support for go to definition, build/test/run buffer, jump to BUILD file, etc
-Plug 'alexander-born/bazel.nvim'
+if has('nvim')
+    Plug 'alexander-born/bazel.nvim'
+endif
 Plug 'preservim/vimux'
 Plug 'google/vim-maktaba' " For vim-bazel. Must be before it.
 Plug 'bazelbuild/vim-bazel', { 'on': ['Bazel'] }
