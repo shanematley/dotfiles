@@ -115,9 +115,6 @@ Plug 'will133/vim-dirdiff'
 call plug#end()
 "}}}
 
-autocmd TextYankPost * if v:event.operator is 'y' && v:event.regname is '+' | execute 'OSCYankRegister +' | endif
-vmap <leader>c <Plug>OSCYankVisual
-
 if has('nvim')
     nnoremap <leader>b <cmd>lua require('fzf-lua').buffers()<CR>
     nnoremap <leader>t <cmd>lua require('fzf-lua').git_files()<CR>
