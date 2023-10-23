@@ -616,7 +616,9 @@ let backup_target_path = s:CreateDirIfMissing('~/.vim/backup')
 set backupdir^=~/.vim/backup//
 
 if has("persistent_undo")
-    let &undodir=s:CreateDirIfMissing('~/.vim/undodir')
+    if !has('nvim')
+        let &undodir=s:CreateDirIfMissing('~/.vim/undodir')
+    endif
     set undofile
 endif
 
