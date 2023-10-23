@@ -1,3 +1,5 @@
+let s:local_config_files_dir = expand('~/.vim/local')
+
 let mapleader = ","
 :nmap <space> ,
 
@@ -102,6 +104,12 @@ Plug 'stsewd/fzf-checkout.vim' " Introduces :GBranches - FZF for git branches
 Plug 'junegunn/fzf.vim'
 Plug 'luochen1990/rainbow'
 Plug 'will133/vim-dirdiff'
+
+let s:local_plugged_config_files = globpath(s:local_config_files_dir, '**/*.plugged.vim', 0, 1)
+for s:config_file in s:local_plugged_config_files
+    execute 'source' s:config_file
+endfor
+
 call plug#end()
 "}}}
 
@@ -545,11 +553,14 @@ function! LoadLocalConfigs()
         source ~/.vimrc.local
     endif
 
-    " Load any files in ~/.vim/local
-    let b:local_config_files_dir = expand('~/.vim/local')
-    let b:local_config_files = globpath(b:local_config_files_dir, '**/*.vim', 0, 1)
-    for b:config_file in b:local_config_files
-        execute 'source' b:config_file
+    " Load any .vim files in ~/.vim/local. (Ignore .plugged.vim as they are
+    " loaded above)
+    let s:old_wildignore = &wildignore
+    set wildignore=*.plugged.vim
+    let s:local_config_files = globpath(s:local_config_files_dir, '**/*.vim', 0, 1)
+    let &wildignore = s:old_wildignore
+    for s:config_file in s:local_config_files
+        execute 'source' s:config_file
     endfor
 endfunction
 
