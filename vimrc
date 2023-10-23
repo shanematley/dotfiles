@@ -1,13 +1,3 @@
-" eXTENSIbility points
-" There is one file specifically looked for in b:local_vim_files:
-" * ycmconf.py      -- Configuration for YouCompleteMe. (Also requires the
-"                      YouCompleteMe plugin to be added in the first place
-"                      by adding the bundle to vundle.vimrc)
-"
-" Additionally ~/.vimrc.local is loaded at some point for local config.
-
-let b:local_vim_files = "~/.vim/local/"
-
 let mapleader = ","
 :nmap <space> ,
 
@@ -549,10 +539,22 @@ autocmd FileType starlark,bzl,python nnoremap <silent> K <Plug>(ale_hover)
 
 "}}}
 
-" Load any local .vim.local files
-if filereadable(glob("~/.vimrc.local"))
-    source ~/.vimrc.local
-endif
+function! LoadLocalConfigs()
+    " Load any local .vim.local files
+    if filereadable(glob("~/.vimrc.local"))
+        source ~/.vimrc.local
+    endif
+
+    " Load any files in ~/.vim/local
+    let b:local_config_files_dir = expand('~/.vim/local')
+    let b:local_config_files = globpath(b:local_config_files_dir, '**/*.vim', 0, 1)
+    for b:config_file in b:local_config_files
+        execute 'source' b:config_file
+    endfor
+endfunction
+
+call LoadLocalConfigs()
+
 call s:LoadProjectSpecificSettings()
 
 " First tab completes as much as possible; second provides a list; third
