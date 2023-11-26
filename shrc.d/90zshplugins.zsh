@@ -40,6 +40,7 @@ zstyle ':filter-select' rotate-list yes
 zstyle ':filter-select' case-insensitive yes
 zstyle ':zaw:git-files' default zaw-callback-append-to-buffer
 zstyle ':zaw:git-files' alt zaw-callback-edit-file
+zstyle ':zaw:git-recent-branches' alt zaw-callback-append-to-buffer
 
 unset "zaw_sources[perldoc]"
 unset "zaw_sources[locate]"
