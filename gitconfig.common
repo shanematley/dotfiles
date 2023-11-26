@@ -98,3 +98,9 @@
 [difftool "nvimdir"]
     cmd = nvim -f '+next' '+execute \"DirDiff\" argv(0) argv(1)' "$LOCAL" "$REMOTE" '+syntax off'
 
+[merge]
+    tool = "nvimdiff4"
+    prompt = true
+
+[mergetool "nvimdiff4"]
+    cmd = nvim -d $LOCAL $BASE $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'
