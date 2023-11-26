@@ -101,7 +101,7 @@ Plug 'vim-scripts/genutils'
 Plug 'vim-scripts/vim-indent-object' " ai, ii, aI, iI (an/inner indentation level and line above/below)
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'stsewd/fzf-checkout.vim' " Introduces :GBranches - FZF for git branches
-Plug 'junegunn/fzf.vim'
+Plug 'junegunn/gv.vim'
 Plug 'luochen1990/rainbow'
 Plug 'will133/vim-dirdiff'
 
