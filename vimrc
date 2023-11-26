@@ -689,6 +689,10 @@ function s:UseCocShortcuts()
     endif
     endfunction
 
+    command! -nargs=0 SwitchSourceHeader   :call     CocActionAsync('runCommand', 'clangd.switchSourceHeader')
+    " Overrides default above
+    nnoremap <leader>s :SwitchSourceHeader<CR>
+
     " Highlight the symbol and its references when holding the cursor.
     autocmd CursorHold * silent call CocActionAsync('highlight')
 
