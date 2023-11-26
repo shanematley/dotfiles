@@ -351,7 +351,7 @@ nnoremap Y y$
 nnoremap <leader>ez :vsplit ~/.zshrc<cr>
 nnoremap <leader>eb :vsplit ~/.bashrc<cr>
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
-nnoremap <leader>sv :source $MYVIMRC<cr>
+nnoremap <leader>evs :source $MYVIMRC<cr>
 
 " Use jj to exit back to normal mode without hitting ESC
 inoremap jj <ESC>
