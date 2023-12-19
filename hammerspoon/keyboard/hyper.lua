@@ -9,7 +9,16 @@ for i, mapping in ipairs(hyperModeAppMappings) do
   local app = mapping[2]
   hs.hotkey.bind({'shift', 'ctrl', 'alt', 'cmd'}, key, function()
     if (type(app) == 'string') then
-      hs.application.open(app)
+      local a = hs.application.get(app)
+      if (a == nil) then
+        hs.application.open(app)
+      else
+        if a:isFrontmost() then
+            a:hide()
+        else
+            a:activate()
+        end
+      end
     elseif (type(app) == 'function') then
       app()
     else
