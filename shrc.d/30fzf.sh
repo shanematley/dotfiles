@@ -5,13 +5,29 @@ if command -v highlight >/dev/null 2>&1; then
         rg --files-with-matches --no-messages "$1" | fzf --preview "highlight -O ansi {} 2> /dev/null | rg --colors 'match:bg:yellow' --ignore-case --pretty --context 10 '$1' || rg --ignore-case --pretty --context 10 '$1' {}"
     }
 
-    export FZF_CTRL_T_OPTS="--preview '(highlight -O ansi -l {} 2> /dev/null || cat {} || tree -C {}) 2> /dev/null | head -200'"
+    export FZF_CTRL_T_OPTS="
+        --multi
+        --preview '(highlight -O ansi -l {} 2> /dev/null || cat {} || tree -C {}) 2> /dev/null | head -200'
+        --bind 'alt-enter:become(vim {+} < /dev/tty > /dev/tty),ctrl-y:execute-silent(echo -n {+} | pbcopy)+abort,ctrl-/:change-preview-window(50%|hidden|)'
+        --color header:italic
+        --header 'Press CTRL-Y to copy file paths into clipboard. ALT-Enter to open in vim. Ctrl-/ (Ctrl-_) to toggle preview'"
 fi
 
-export FZF_CTRL_R_OPTS="--sort --preview 'echo {}' --preview-window down:5:hidden:wrap --bind '?:toggle-preview'"
+# Use tmux by default. This is ignored when not in tmux
+export FZF_TMUX_OPTS='-p80%,60%'
+export FZF_DEFAULT_OPTS="--height=40% --layout=reverse --info=inline --border --color 'fg:#bbccdd,fg+:#ddeeff,bg:#334455,preview-bg:#223344,border:#778899'"
+export FZF_CTRL_R_OPTS="
+    --sort
+    --preview 'echo {}' --preview-window down:5:wrap --bind 'ctrl-/:toggle-preview'
+    --bind 'ctrl-y:execute-silent(echo -n {2..} | pbcopy)+abort,ctrl-/:change-preview-window(50%|hidden|)'
+    --header 'Press CTRL-Y to copy commands into clipboard. Ctrl-/ (Ctrl-_) to toggle preview 50%'
+    --color header:italic"
 
 # Use `tree` to show the entries of the directory
-export FZF_ALT_C_OPTS="--preview 'tree -C {} | head -200'"
+export FZF_ALT_C_OPTS="
+    --preview 'tree -C {} | head -200'
+    --header 'Press CTRL-Y to copy commands into clipboard. Ctrl-/ (Ctrl-_) to toggle preview'
+    --bind='ctrl-y:execute-silent(echo -n {+} | pbcopy)+abort,ctrl-/:change-preview-window(hidden|)'"
 
 # From https://github.com/junegunn/fzf#settings
 #
