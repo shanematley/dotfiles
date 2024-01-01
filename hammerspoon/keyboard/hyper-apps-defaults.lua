@@ -61,7 +61,7 @@ end
 return {
   { '`', 'Alacritty' },
   { 'a', 'Music' },             -- "A" for "Apple Music"
-  { 'b', 'Google Chrome' },     -- "B" for "Browser"
+  { 'b', 'Arc' },     -- "B" for "Browser"
   { 'f', 'Finder' },            -- "F" for "Finder"
   { 'n', 'Notes' },
   { 'o', 'Omnifocus' },
