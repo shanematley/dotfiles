@@ -10,6 +10,17 @@ color_scheme_vim_change() {
     mv $local_config.new $local_config
 }
 
+color_scheme_tmux_change() {
+    local local_config=~/.tmux.conf.local
+    if [[ ! -e $local_config ]]; then
+        echo "No local tmux config present. Adding"
+        echo 'source-file "~/.tmux/tmux-dark.conf"' > $local_config
+    fi
+    sed -Ee 's#^(source-file "~/.tmux/tmux-)(dark|light)(.conf")#\1'$1'\3#' $local_config > $local_config.new
+    mv $local_config.new $local_config
+    tmux source-file ~/.tmux.conf
+}
+
 is_dark() {
     local local_config=~/.config/alacritty.local.yml
     grep -v '#' $local_config | grep -q dark
@@ -29,12 +40,14 @@ update_colorthemes() {
 dark() {
     color_scheme_alacritty_change alacritty.dark
     color_scheme_vim_change dark
+    color_scheme_tmux_change dark
     update_colorthemes
 }
 
 light() {
     color_scheme_alacritty_change night_owlish_light
     color_scheme_vim_change light
+    color_scheme_tmux_change light
     update_colorthemes
 }
 
