@@ -86,3 +86,13 @@ fzf_diff() {
             xargs bat --diff --color=always --style=numbers,changes {-1}"
         git diff $@ --name-only | fzf -m --ansi --preview $preview
 }
+
+# Interactive jq queries using FZF
+# Idea from: https://social.jvns.ca/@b0rk/110135929111161568
+fzf_jq() {
+    if command -v jq >/dev/null 2>&1; then
+        echo '' | fzf --preview 'jq {q} < "'"$1"'"'
+    else
+        echo "jq is not installed. Please install jq first"
+    fi
+}
