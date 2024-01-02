@@ -13,6 +13,12 @@ color_scheme_alacritty_change() {
 
 color_scheme_vim_change() {
     local local_config=~/.vimrc.local
+    if [[ ! -e $local_config ]]; then
+        echo "No local vimrc config present. Adding"
+        cat <<-EOF > $local_config
+	set background=dark
+	EOF
+    fi
     sed -Ee 's/(set background=).*/\1'$1'/' $local_config > $local_config.new
     mv $local_config.new $local_config
 }
