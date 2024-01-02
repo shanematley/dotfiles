@@ -496,6 +496,8 @@ check_fzf_bindings_mac() {
         read -r -d '' contents <<EOF
 source $(brew ls -v fzf|grep 'key-bindings.zsh')
 source $(brew ls -v fzf|grep 'completion.zsh')
+# Override default CTRL-T with my own version
+bindkey '^t' fzf_my_ctrl_t
 EOF
         echo "$contents" | write_if_update_required "$SCRIPTPATH/shrc.d/generated/91fzfbindings.zsh"
 
@@ -510,5 +512,7 @@ EOF
 # For Linux install fzf using the following and the bindings and completions will be installed as requested:
 #   $ git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 #   $ ~/.fzf/install
+# Then make sure that the line `[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh` added to zshrc is BEFORE loading my scripts
+
 osis Darwin && check_fzf_bindings_mac
 
