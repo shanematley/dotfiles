@@ -509,10 +509,42 @@ EOF
     fi
 }
 
+check_fzf_bindings_linux() {
+    local fzf_dir=~/.fzf
+
+    if [[ ! -d ${fzf_dir} ]]; then
+        if git clone --depth 1 https://github.com/junegunn/fzf.git ${fzf_dir}; then
+            if ${fzf_dir}/install --key-bindings --completion --no-fish --no-update-rc; then
+                success "Installed fzf"
+            else
+                softfail "Failed to install fzf"
+            fi
+
+        else
+            softfail "Unable to clone fzf"
+        fi
+    else
+        (
+            cd ${fzf_dir}
+            git fetch
+            if git status --porcelain -b | grep -q behind; then
+                if git merge --ff-only; then
+                    success "Updated fzf"
+                else
+                    softfail "Failed to update fzf"
+                fi
+            else
+                info "No need to update fzf. (Though untested! Worth tested by doing git fetch --unshallow)"
+            fi
+        )
+    fi
+}
+
 # For Linux install fzf using the following and the bindings and completions will be installed as requested:
 #   $ git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 #   $ ~/.fzf/install
 # Then make sure that the line `[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh` added to zshrc is BEFORE loading my scripts
 
 osis Darwin && check_fzf_bindings_mac
+osis Linux && check_fzf_bindings_linux
 
