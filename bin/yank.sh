@@ -28,10 +28,9 @@ fi
 
 # if copy backend is resolved, copy and exit
 if [ -n "$copy_backend" ]; then
-  printf "$buf" | eval "$copy_backend" 
+  printf "$buf" | eval "$copy_backend"
   exit;
 fi
-
 
 # If no copy backends were eligible, decide to fallback to OSC 52 escape sequences
 # Note, most terminals do not handle OSC
@@ -46,7 +45,7 @@ buflen=$( printf %s "$buf" | wc -c )
 # The maximum length of an OSC 52 escape sequence is 100_000 bytes, of which
 # 7 bytes are occupied by a "\033]52;c;" header, 1 byte by a "\a" footer, and
 # 99_992 bytes by the base64-encoded result of 74_994 bytes of copyable text
-maxlen=74994 
+maxlen=74994
 
 # warn if exceeds maxlen
 if [ "$buflen" -gt "$maxlen" ]; then
@@ -55,12 +54,9 @@ fi
 
 # build up OSC 52 ANSI escape sequence
 esc="\033]52;c;$( printf %s "$buf" | head -c $maxlen | base64 | tr -d '\r\n' )\a"
-esc="\033Ptmux;\033$esc\033\\"
+# May need to set the following in tmux: set-window-option -g allow-passthrough on
+if [[ -n ${TMUX-} ]]; then
+    esc="\033Ptmux;\033$esc\033\\"
+fi
 
-# resolve target terminal to send escape sequence
-# if we are on remote machine, send directly to SSH_TTY to transport escape sequence
-# to terminal on local machine, so data lands in clipboard on our local machine
-pane_active_tty=$(tmux list-panes -F "#{pane_active} #{pane_tty}" | awk '$1=="1" { print $2 }')
-target_tty="${SSH_TTY:-$pane_active_tty}"
-
-printf "$esc" > "$target_tty"
+printf "$esc"
