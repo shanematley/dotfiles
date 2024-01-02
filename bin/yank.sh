@@ -9,8 +9,8 @@ is_app_installed() {
 # get data either form stdin or from file
 buf=$(cat "$@")
 
-copy_backend_remote_tunnel_port=$(tmux show-option -gvq "@copy_backend_remote_tunnel_port")
-copy_use_osc52_fallback=$(tmux show-option -gvq "@copy_use_osc52_fallback")
+copy_backend_remote_tunnel_port=$(tmux show-option -gvq "@copy_backend_remote_tunnel_port" 2>/dev/null || true)
+copy_use_osc52_fallback=$(tmux show-option -gvq "@copy_use_osc52_fallback" 2>/dev/null || true)
 
 # Resolve copy backend: pbcopy (OSX), reattach-to-user-namespace (OSX), xclip/xsel (Linux)
 copy_backend=""
