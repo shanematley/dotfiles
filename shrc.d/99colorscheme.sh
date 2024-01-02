@@ -1,5 +1,12 @@
 color_scheme_alacritty_change() {
     local local_config=~/.config/alacritty.local.yml
+    if [[ ! -e $local_config ]]; then
+        echo "No local alacritty config present. Adding"
+        cat <<-EOF > $local_config
+	import:
+	  - &colorscheme ~/.config/alacritty/alacritty.dark.yml
+	EOF
+    fi
     sed -Ee 's|(colorscheme.*/alacritty/).*(.yml)|\1'$1'\2|' $local_config > $local_config.new
     mv $local_config.new $local_config
 }
@@ -23,7 +30,7 @@ color_scheme_tmux_change() {
 
 is_dark() {
     local local_config=~/.config/alacritty.local.yml
-    grep -v '#' $local_config | grep -q dark
+    [[ ! -e $local_config ]] || grep -v '#' $local_config | grep -q dark
 }
 
 update_colorthemes() {
