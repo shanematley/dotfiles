@@ -81,6 +81,7 @@ brew install socat
 
 # Install other useful binaries.
 brew install fasd
+brew install fd
 brew install git
 brew install git-lfs
 brew install gron

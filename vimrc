@@ -117,6 +117,9 @@ call plug#end()
 "}}}
 
 if has('nvim')
+    lua require("fzf-lua").setup({ "fzf-vim" })
+    lua require("fzf-lua").setup({ "default" })
+
     nnoremap <leader>b <cmd>lua require('fzf-lua').buffers()<CR>
     nnoremap <leader>t <cmd>lua require('fzf-lua').git_files()<CR>
     nnoremap <silent> <C-t> <cmd>lua require('fzf-lua').files()<CR>
