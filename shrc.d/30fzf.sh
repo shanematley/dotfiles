@@ -13,15 +13,15 @@ if command -v fd >/dev/null 2>&1; then
     # - The first argument to the function ($1) is the base path to start traversal
     # - See the source code (completion.{bash,zsh}) for the details.
     _fzf_compgen_path() {
-        fd --hidden --follow --exclude ".git" . "$1"
+        fd --hidden --follow --exclude ".git" --strip-cwd-prefix . "$1"
     }
 
     # Use fd to generate the list for directory completion
     _fzf_compgen_dir() {
-        fd --type d --hidden --follow --exclude ".git" . "$1"
+        fd --type d --hidden --follow --exclude ".git" --strip-cwd-prefix . "$1"
     }
 
-    export FZF_CTRL_T_COMMAND="fd --hidden --follow --exclude .git"
+    export FZF_CTRL_T_COMMAND="fd --hidden --follow --exclude .git --strip-cwd-prefix"
 fi
 
 export FZF_CTRL_T_OPTS="
@@ -29,8 +29,8 @@ export FZF_CTRL_T_OPTS="
     --preview '(bat -n --color=always {} || cat {} | tree -C {}) 2> /dev/null | head -200'
     --bind 'ctrl-y:execute-silent(echo -n {+} | yank.sh > /dev/tty)+abort'
     --bind 'ctrl-/:change-preview-window(hidden|)'
-    --bind 'ctrl-w:reload(fd --hidden --follow --exclude .git .)'
-    --bind 'ctrl-e:reload(fd --hidden --follow --exclude .git -I .)'
+    --bind 'ctrl-w:reload(fd --hidden --follow --exclude .git --strip-cwd-prefix .)'
+    --bind 'ctrl-e:reload(fd --hidden --follow --exclude .git --strip-cwd-prefix -I .)'
     --color header:italic
     --header 'C-Y: copy to clipboard. C-/ (C-_): toggle preview. C-w: no ignored. C-e: show ignored'"
 
@@ -95,8 +95,8 @@ __fzf_my_ctrl_t() {
             --expect=alt-enter,ctrl-y,ctrl-y \
             --preview '(bat -n --color=always {} || cat {} | tree -C {}) 2> /dev/null | head -200' \
             --bind 'ctrl-/:change-preview-window(hidden|)' \
-            --bind 'ctrl-w:reload(fd --hidden --follow --exclude .git .)' \
-            --bind 'ctrl-e:reload(fd --hidden --follow --exclude .git -I .)' \
+            --bind 'ctrl-w:reload(fd --hidden --follow --exclude .git --strip-cwd-prefix .)' \
+            --bind 'ctrl-e:reload(fd --hidden --follow --exclude .git --strip-cwd-prefix -I .)' \
             --color header:italic \
             --header 'C-Y: copy to clipboard. A-Enter: vim. C-/ (C-_): toggle preview. C-w: no ignored. C-e: show ignored' \
             )
