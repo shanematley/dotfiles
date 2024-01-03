@@ -491,21 +491,26 @@ write_if_update_required() {
 }
 
 check_fzf_bindings_mac() {
-    if brew list fzf &>/dev/null; then
+    local fzf_files
+    fzf_files=$(brew ls -v fzf 2>/dev/null)
+    fzf_present=$?
+    if [[ $fzf_present == 0 ]]; then
         local contents
         read -r -d '' contents <<EOF
-source $(brew ls -v fzf|grep 'key-bindings.zsh')
-source $(brew ls -v fzf|grep 'completion.zsh')
+source $(echo "$fzf_files"|grep 'key-bindings.zsh')
+source $(echo "$fzf_files"|grep 'completion.zsh')
 # Override default CTRL-T with my own version
 bindkey '^t' fzf_my_ctrl_t
 EOF
         echo "$contents" | write_if_update_required "$SCRIPTPATH/shrc.d/generated/91fzfbindings.zsh"
 
         read -r -d '' contents <<EOF
-source $(brew ls -v fzf|grep 'key-bindings.bash')
-source $(brew ls -v fzf|grep 'completion.bash')
+source $(echo "$fzf_files"|grep 'key-bindings.bash')
+source $(echo "$fzf_files"|grep 'completion.bash')
 EOF
         echo "$contents" | write_if_update_required "$SCRIPTPATH/shrc.d/generated/91fzfbindings.bash"
+    else
+        info "No fzf installed"
     fi
 }
 
