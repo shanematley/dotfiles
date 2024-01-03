@@ -25,7 +25,7 @@ augroup VimOSCYankPost
     autocmd TextYankPost * call s:VimOSCYankPostCallback(v:event)
 augroup END
 
-nmap <leader>c <Plug>OSCYankOperator
-nmap <leader>cc <leader>c_
-vmap <leader>c <Plug>OSCYankVisual
+nmap <leader>+ <Plug>OSCYankOperator
+nmap <leader>++ <leader>+_
+vmap <leader>+ <Plug>OSCYankVisual
 
