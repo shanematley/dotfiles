@@ -20,9 +20,11 @@ bindkey '^X;' zaw
 if zaw-print-src|grep -q searcher; then
     bindkey '^X^a' zaw-searcher
 fi
-bindkey '\er' zaw-fasd-files
+if command -v fasd >/dev/null 2>&1; then 
+    bindkey '\er' zaw-fasd-files
+    bindkey '\ee' zaw-fasd-directories
+fi
 bindkey '\eg' zaw-git-files
-bindkey '\ee' zaw-fasd-directories
 bindkey '\ep' zaw-process
 bindkey '^X^b' zaw-git-recent-branches
 bindkey '^X^l' zaw-git-log
