@@ -34,6 +34,18 @@ color_scheme_tmux_change() {
     tmux source-file ~/.tmux.conf
 }
 
+fzf_set_dark_color_scheme() {
+    export FZF_DEFAULT_OPTS="${FZF_DEFAULT_OPTS_BASE} --color 'fg:#bbccdd,fg+:#ddeeff,bg:#334455,preview-bg:#223344,border:#778899'"
+}
+
+fzf_set_light_color_scheme() {
+    export FZF_DEFAULT_OPTS="${FZF_DEFAULT_OPTS_BASE}
+        --color=fg:#4d4d4c,bg:#eeeeee,hl:#d7005f
+        --color=fg+:#4d4d4c,bg+:#e8e8e8,hl+:#d7005f
+        --color=info:#4271ae,prompt:#8959a8,pointer:#d7005f
+        --color=marker:#4271ae,spinner:#4271ae,header:#4271ae"
+}
+
 is_dark() {
     local local_config=~/.config/alacritty.local.yml
     [[ ! -e $local_config ]] || grep -v '#' $local_config | grep -q dark

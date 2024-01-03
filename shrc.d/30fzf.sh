@@ -7,6 +7,14 @@ if command -v bat >/dev/null 2>&1; then
     }
 fi
 
+export FZF_CTRL_T_OPTS="
+    --multi
+    --preview '(bat -n --color=always {} || cat {} | tree -C {}) 2> /dev/null | head -200'
+    --bind 'ctrl-y:execute-silent(echo -n {+} | yank.sh > /dev/tty)+abort'
+    --bind 'ctrl-/:change-preview-window(hidden|)'
+    --color header:italic
+    --header 'C-Y: copy to clipboard. C-/ (C-_): toggle preview."$'\n\n'"'"
+
 if command -v fd >/dev/null 2>&1; then
     # Use fd (https://github.com/sharkdp/fd) instead of the default find
     # command for listing path candidates.
@@ -22,35 +30,15 @@ if command -v fd >/dev/null 2>&1; then
     }
 
     export FZF_CTRL_T_COMMAND="fd --hidden --follow --exclude .git --strip-cwd-prefix"
+    export FZF_CTRL_T_OPTS="${FZF_CTRL_T_OPTS}
+        --bind 'ctrl-w:reload(fd --hidden --follow --exclude .git --strip-cwd-prefix .)'
+        --bind 'ctrl-e:reload(fd --hidden --follow --exclude .git --strip-cwd-prefix -I .)'
+        --header 'C-Y: copy to clipboard. C-/ (C-_): toggle preview. C-w: no ignored. C-e: show ignored'"
 fi
-
-export FZF_CTRL_T_OPTS="
-    --multi
-    --preview '(bat -n --color=always {} || cat {} | tree -C {}) 2> /dev/null | head -200'
-    --bind 'ctrl-y:execute-silent(echo -n {+} | yank.sh > /dev/tty)+abort'
-    --bind 'ctrl-/:change-preview-window(hidden|)'
-    --bind 'ctrl-w:reload(fd --hidden --follow --exclude .git --strip-cwd-prefix .)'
-    --bind 'ctrl-e:reload(fd --hidden --follow --exclude .git --strip-cwd-prefix -I .)'
-    --color header:italic
-    --header 'C-Y: copy to clipboard. C-/ (C-_): toggle preview. C-w: no ignored. C-e: show ignored'"
 
 # Use tmux by default. This is ignored when not in tmux
 export FZF_TMUX_OPTS='-p80%,60%'
 export FZF_DEFAULT_OPTS_BASE="--height=40% --layout=reverse --info=inline --border"
-
-fzf_set_dark_color_scheme() {
-    export FZF_DEFAULT_OPTS="${FZF_DEFAULT_OPTS_BASE} --color 'fg:#bbccdd,fg+:#ddeeff,bg:#334455,preview-bg:#223344,border:#778899'"
-}
-
-fzf_set_light_color_scheme() {
-    export FZF_DEFAULT_OPTS="${FZF_DEFAULT_OPTS_BASE}
-        --color=fg:#4d4d4c,bg:#eeeeee,hl:#d7005f
-        --color=fg+:#4d4d4c,bg+:#e8e8e8,hl+:#d7005f
-        --color=info:#4271ae,prompt:#8959a8,pointer:#d7005f
-        --color=marker:#4271ae,spinner:#4271ae,header:#4271ae"
-}
-
-# Note: the fzf color scheme is set in 99colorscheme.sh
 
 export FZF_CTRL_R_OPTS="
     --sort
@@ -79,44 +67,6 @@ _fzf_comprun() {
     *)            fzf --preview 'bat -n --color=always {}' "$@" ;;
   esac
 }
-
-__fzf_my_ctrl_t() {
-    export __deployment_preview
-    local cmd="${FZF_CTRL_T_COMMAND:-"command find -L . -mindepth 1 \\( -path '*/.*' -o -fstype 'sysfs' -o -fstype 'devfs' -o -fstype 'devtmpfs' -o -fstype 'proc' \\) -prune \
-        -o -type f -print \
-        -o -type d -print \
-        -o -type l -print 2> /dev/null | cut -b3-"}"
-    local result
-    result=$(eval "$cmd" | fzf-tmux \
-            -p80%,60% \
-            --multi \
-            --scheme=path \
-            --reverse \
-            --expect=alt-enter,ctrl-y,ctrl-y \
-            --preview '(bat -n --color=always {} || cat {} | tree -C {}) 2> /dev/null | head -200' \
-            --bind 'ctrl-/:change-preview-window(hidden|)' \
-            --bind 'ctrl-w:reload(fd --hidden --follow --exclude .git --strip-cwd-prefix .)' \
-            --bind 'ctrl-e:reload(fd --hidden --follow --exclude .git --strip-cwd-prefix -I .)' \
-            --color header:italic \
-            --header 'C-Y: copy to clipboard. A-Enter: vim. C-/ (C-_): toggle preview. C-w: no ignored. C-e: show ignored' \
-            )
-    result=("${(@f)result}")
-
-    if [[ -z $result[1] ]]; then
-        LBUFFER="${BUFFER}${(j: :)result[@]:1}"
-    elif [[ $result[1] == alt-enter ]]; then
-        BUFFER="${EDITOR:-vim} ${(j: :)result[@]:1}"
-        zle accept-line
-    elif [[ $result[1] == ctrl-y ]]; then
-        echo -n "${result[@]:1}" | yank.sh
-    fi
-    zle reset-prompt
-    return 0
-}
-
-zle -N fzf_my_ctrl_t __fzf_my_ctrl_t
-bindkey '^t' fzf_my_ctrl_t
-
 
 if command -v kubectl >/dev/null 2>&1; then
     pods() {
