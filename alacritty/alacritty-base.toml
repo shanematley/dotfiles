@@ -1,0 +1,32 @@
+live_config_reload = true
+
+[font]
+size = 11.0
+
+[font.bold]
+family = "JetBrains Mono"
+style = "Bold"
+
+[font.bold_italic]
+family = "JetBrains Mono"
+style = "Bold Italic"
+
+[font.italic]
+family = "JetBrains Mono"
+style = "Light Italic"
+
+[font.normal]
+family = "JetBrains Mono"
+style = "Light"
+
+[window]
+dynamic_padding = false
+option_as_alt="Both"
+
+[mouse]
+hide_when_typing = true
+
+[shell]
+program = "/bin/zsh"
+args = ['-l']
+
