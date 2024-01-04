@@ -513,31 +513,48 @@ write_if_update_required() {
     fi
 }
 
-check_fzf_bindings_mac() {
-    local fzf_files
-    fzf_files=$(brew ls -v fzf 2>/dev/null)
-    fzf_present=$?
-    if [[ $fzf_present == 0 ]]; then
-        local contents
-        read -r -d '' contents <<EOF
-source $(echo "$fzf_files"|grep 'key-bindings.zsh')
-source $(echo "$fzf_files"|grep 'completion.zsh')
+ensure_fzf_bindings_correct() {
+    local fzf_shell
+    # Prefer directly cloned fzf, but fall back to others if provided
+    for d in ~/.fzf/shell "$@"; do
+        if [[ -d "$d" ]]; then
+            fzf_shell="$d"
+            break
+        fi
+    done
+
+    if [[ -z ${fzf_shell-} ]]; then
+        return
+    fi
+
+    for f in "$fzf_shell"/key-bindings.{zsh,bash} "$fzf_shell"/completion.{zsh,bash}; do
+        [[ ! -f $f ]] && { softfail "Cannot find expected fzf file $f"; return 1; }
+    done
+
+    write_if_update_required "$SCRIPTPATH/shrc.d/generated/91fzfbindings.zsh" <<EOF
+source $fzf_shell/key-bindings.zsh
+source $fzf_shell/completion.zsh
 # Override default CTRL-T with my own version
 bindkey '^t' fzf_my_ctrl_t
 EOF
-        echo "$contents" | write_if_update_required "$SCRIPTPATH/shrc.d/generated/91fzfbindings.zsh"
 
-        read -r -d '' contents <<EOF
-source $(echo "$fzf_files"|grep 'key-bindings.bash')
-source $(echo "$fzf_files"|grep 'completion.bash')
+    write_if_update_required "$SCRIPTPATH/shrc.d/generated/91fzfbindings.bash" <<EOF
+source $fzf_shell/key-bindings.bash
+source $fzf_shell/completion.bash
 EOF
-        echo "$contents" | write_if_update_required "$SCRIPTPATH/shrc.d/generated/91fzfbindings.bash"
+}
+
+check_fzf_bindings_mac() {
+    local fzf_files
+    fzf_files=$(brew --prefix fzf 2>/dev/null)
+    if [[ $? == 0 ]]; then
+        ensure_fzf_bindings_correct "$fzf_files/shell"
     else
         info "No fzf installed"
     fi
 }
 
-check_fzf_bindings_linux() {
+update_fzf_and_check_bindings_linux() {
     local fzf_dir=~/.fzf
 
     if [[ ! -d ${fzf_dir} ]]; then
@@ -566,6 +583,7 @@ check_fzf_bindings_linux() {
             fi
         )
     fi
+    ensure_fzf_bindings_correct
 }
 
 # For Linux install fzf using the following and the bindings and completions will be installed as requested:
@@ -574,5 +592,5 @@ check_fzf_bindings_linux() {
 # Then make sure that the line `[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh` added to zshrc is BEFORE loading my scripts
 
 osis Darwin && check_fzf_bindings_mac
-osis Linux && check_fzf_bindings_linux
+osis Linux && update_fzf_and_check_bindings_linux
 
