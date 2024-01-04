@@ -25,7 +25,6 @@ FILES=("vimrc"
     "powerline:$HOME/.config/powerline"
     "hammerspoon:$HOME/.hammerspoon"
     "nvim_init.vim:$HOME/.config/nvim/init.vim"
-    "alacritty:$HOME/.config/alacritty"
     "man:$HOME/man")
 
 osis() {
@@ -424,6 +423,30 @@ fi
 section "Alacritty"
 
 configure_alacritty() {
+    local alacritty_config_dir
+    local alacritty_config_file
+    local alacritty_template_file
+    alacritty_config_dir=~/.config/alacritty
+    alacritty_config_file=$alacritty_config_dir/alacritty.toml
+    alacritty_template_file="$SCRIPTPATH/alacritty/alacritty-template.toml"
+
+    [[ ! -d $alacritty_config_dir ]] && { mkdir $alacritty_config_dir && success "Created alacritty config dir"; }
+    if [[ ! -f $alacritty_config_file ]]; then
+        if sed "s:DOTFILES_PATH:$SCRIPTPATH:g" "$alacritty_template_file" > "$alacritty_config_file"; then
+            success "Created alacritty config file at $alacritty_config_file"
+        else
+            softfail "Was unable to create alacritty config file at $alacritty_config_file"
+        fi
+    else
+        if grep -Fq "alacritty-base.toml" "$alacritty_config_file" 2>/dev/null; then
+            info "Alacritty config is ok"
+        else
+            softfail "Alacritty config is present, but is not referring to alacritty-base.toml"
+        fi
+    fi
+
+
+
     local terminfo_url
     local terminfo_temp
     if infocmp alacritty &>/dev/null; then
