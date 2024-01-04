@@ -156,25 +156,31 @@ check_shrc() {
     local dest_path
     source_path=$(select_file "$1")
     source_file=$(basename "$source_path")
-    dest_path="$HOME/.$1"
+
+    if [[ -n $HOME/.$1.user ]]; then
+        dest_path="$HOME/.$1.user"
+    else
+        dest_path="$HOME/.$1"
+    fi
+
     if shrc_correct "$1" "$dest_path" "$source_path"; then
-        info "Skipping: $1 set correctly"
+        info "Skipping: $dest_path set correctly"
         return
     elif [[ ! -f $dest_path ]]; then
-        info "Creating ~/.$1 and offloading to $source_file"
+        info "Creating $dest_path and offloading to $source_file"
         shrc_append "$1" "$dest_path" "$source_path"
     elif ! grep -q 'SM: -- Begin offload -- '"$1" "$dest_path"; then
-        info "Editing ~/.$1 with offloading to $source_file"
+        info "Editing $dest_path with offloading to $source_file"
         shrc_append "$1" "$dest_path" "$source_path"
     else
-        info "Replacing .$1 to update .shrc.d processing with $source_file. Backup at .$1.old"
+        info "Replacing $dest_path to update .shrc.d processing with $source_file. Backup at $dest_path.old"
         sed -i.old '/SM: -- Begin offload -- '"$1"'/,/SM: -- End offload -- '"$1"'/ {//!d;}; /SM: -- Begin offload/r'"$source_path" "$dest_path"
     fi
 
     if shrc_correct "$1" "$dest_path" "$source_path"; then
-        success "INFO: $1 successfully offloaded"
+        success "INFO: $dest_path successfully offloaded"
     else
-        fail "Failed to update $1 correctly"
+        fail "Failed to update $dest_path correctly"
     fi
 }
 
