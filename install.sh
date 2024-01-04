@@ -586,11 +586,6 @@ update_fzf_and_check_bindings_linux() {
     ensure_fzf_bindings_correct
 }
 
-# For Linux install fzf using the following and the bindings and completions will be installed as requested:
-#   $ git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
-#   $ ~/.fzf/install
-# Then make sure that the line `[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh` added to zshrc is BEFORE loading my scripts
-
 osis Darwin && check_fzf_bindings_mac
 osis Linux && update_fzf_and_check_bindings_linux
 
