@@ -157,7 +157,7 @@ check_shrc() {
     source_path=$(select_file "$1")
     source_file=$(basename "$source_path")
 
-    if [[ -n $HOME/.$1.user ]]; then
+    if [[ -f $HOME/.$1.user ]]; then
         dest_path="$HOME/.$1.user"
     else
         dest_path="$HOME/.$1"
