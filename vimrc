@@ -546,8 +546,8 @@ endif
 let g:lightline = {
       \ 'colorscheme': 'PaperColor',
       \ 'active': {
-      \   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'filename', 'buffernumber'], [ 'cocstatus', 'readonly' ] ],
-      \   'right': [ ['percent'], [ 'fileformat', 'fileencoding', 'filetype' ] ]
+      \   'left': [ [ 'fugitive', 'filename', 'buffernumber'], [ 'mode', 'paste' ], [ 'cocstatus', 'readonly' ] ],
+      \   'right': [ ['lineinfo'], ['percent'], [ 'fileformat', 'fileencoding', 'filetype' ] ]
       \ },
       \ 'inactive': {
       \   'left': [ [ 'fugitive', 'filename', 'buffernumber'] ],
