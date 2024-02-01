@@ -80,7 +80,6 @@ Plug 'preservim/nerdtree', { 'on':  ['NERDTreeToggle', 'NERDTreeFind'] }
 Plug 'Shirk/vim-gas', { 'for' : 'gas' } " Syntax highlighting for GNU as
 "Plug 'sjl/gundo.vim'
 Plug 'mbbill/undotree'
-Plug 'SirVer/ultisnips'
 Plug 'tommcdo/vim-exchange' " cx or cxx or X (visual mode) to exchange. cxc to clear
 Plug 'tpope/vim-abolish' " Replacement with variations: :%Subvert/facilit{y,ies}/building{,s}/g
                          " Also: Press crs (coerce to snake_case). MixedCase (crm), camelCase (crc),
