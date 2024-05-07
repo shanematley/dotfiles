@@ -24,7 +24,7 @@ dynamic_padding = false
 option_as_alt="Both"
 
 [mouse]
-hide_when_typing = true
+hide_when_typing = false
 
 [shell]
 program = "/bin/zsh"
