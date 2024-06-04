@@ -31,5 +31,6 @@ nsdate() {
 
 alias jpdate="TZ='Asia/Tokyo' nsdate"
 alias hkdate="TZ='Asia/Hong_Kong' nsdate"
+alias krdate="TZ='Asia/Seoul' nsdate"
 alias audate="TZ='Australia/Sydney' nsdate"
 alias utdate="TZ='UTC' nsdate"
