@@ -28,13 +28,18 @@ backup_k8s_mysql() {
   : "${backup_location:?Missing -o backup location}"
   : "${selector:?Missing -l selector}"
 
+  if ! command -v "kubectl" >/dev/null 2>&1; then
+      echo "Cannot find kubectl. Ensure kubectl is on the PATH before using backup_k8s_mysql" >&2
+      return 1
+  fi
+
   if [[ -n ${ns} ]]; then
     k8s_db_params+=("-n" "${ns}")
   fi
   k8s_db_params+=("-l" "${selector}")
 
   local args
-  args=(/usr/local/bin/kubectl get pod -n "${ns}" -l "${selector}" -o "jsonpath={.items[0].metadata.name}")
+  args=(kubectl get pod -n "${ns}" -l "${selector}" -o "jsonpath={.items[0].metadata.name}")
   if [[ -n "$k8_context" ]]; then
       args+=(--context "$k8_context")
   fi
@@ -62,9 +67,9 @@ backup_k8s_mysql() {
   #printf '%s\n' "${kubectl_cmd[@]}"
 
   if [[ ${backup_location} =~ .*\.gz$ ]]; then
-    /usr/local/bin/kubectl "${kubectl_cmd[@]}" | gzip >"${backup_location}" || { 1>&2 echo "Failed to backup up ${db_name} on pod ${pod_name} to ${backup_location}"; return 1; }
+    kubectl "${kubectl_cmd[@]}" | gzip >"${backup_location}" || { 1>&2 echo "Failed to backup up ${db_name} on pod ${pod_name} to ${backup_location}"; return 1; }
   else
-    /usr/local/bin/kubectl "${kubectl_cmd[@]}" >"${backup_location}" || { 1>&2 echo "Failed to backup up ${db_name} on pod ${pod_name} to ${backup_location}"; return 1; }
+    kubectl "${kubectl_cmd[@]}" >"${backup_location}" || { 1>&2 echo "Failed to backup up ${db_name} on pod ${pod_name} to ${backup_location}"; return 1; }
   fi
   echo "Backed up ${db_name} on pod ${pod_name} to ${backup_location}"
 }
@@ -103,7 +108,7 @@ restore_k8s_mysql() {
   fi
   k8s_db_params+=("-l" "${selector}")
 
-  pod_name="$(/usr/local/bin/kubectl get pod -n "${ns}" -l "${selector}" -o jsonpath='{.items[0].metadata.name}')"
+  pod_name="$(kubectl get pod -n "${ns}" -l "${selector}" -o jsonpath='{.items[0].metadata.name}')"
   if [[ -z ${pod_name} ]]; then
     echo "Failed to find k8s pod using selector ${selector} (namespace: {$ns})"
     return 1
@@ -119,7 +124,7 @@ restore_k8s_mysql() {
   # Destroy and create db
   if [[ -n $drop_db ]]; then
     echo "Recreating DB"
-    if ! /usr/local/bin/kubectl "${kubectl_base[@]}" << EOF
+    if ! kubectl "${kubectl_base[@]}" << EOF
 DROP DATABASE IF EXISTS $db_name;
 CREATE DATABASE $db_name;
 EOF
@@ -141,7 +146,7 @@ EOF
     done < <(cat "${backup_location}")
   fi
 
-  if ! echo "$sql_cmd" | /usr/local/bin/kubectl "${kubectl_cmd[@]}"; then
+  if ! echo "$sql_cmd" | kubectl "${kubectl_cmd[@]}"; then
     1>&2 echo "Failed to restore ${db_name} on pod ${pod_name} from ${backup_location}"
     return 1
   fi
