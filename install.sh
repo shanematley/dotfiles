@@ -27,13 +27,7 @@ FILES=("vimrc"
     "nvim_init.vim:$HOME/.config/nvim/init.vim"
     "man:$HOME/man")
 
-osis() {
-    local n
-    n=0
-    if [[ $1 == -n ]]; then n=1; shift; fi
-    uname -s|grep -i "$1" >/dev/null
-    return $(( n ^ $? ))
-}
+source "${SCRIPTPATH}/shrc.d/10osis.sh"
 
 yesno() {
     while true; do
@@ -67,8 +61,8 @@ while getopts ":vph" opt; do
     esac
 done
 
-: ${INSTALL_OPTION_VIM:=}
-: ${INSTALL_POWERLINE:=}
+: "${INSTALL_OPTION_VIM:=}"
+: "${INSTALL_POWERLINE:=}"
 
 cat <<EOF
 Actions to be taken:
@@ -552,8 +546,7 @@ EOF
 
 check_fzf_bindings_mac() {
     local fzf_files
-    fzf_files=$(brew --prefix fzf 2>/dev/null)
-    if [[ $? == 0 ]]; then
+    if fzf_files=$(brew --prefix fzf 2>/dev/null); then
         ensure_fzf_bindings_correct "$fzf_files/shell"
     else
         info "No fzf installed"
@@ -576,7 +569,7 @@ update_fzf_and_check_bindings_linux() {
         fi
     else
         (
-            cd ${fzf_dir}
+            cd ${fzf_dir} || return
             git fetch
             if git status --porcelain -b | grep -q behind; then
                 if git merge --ff-only; then
