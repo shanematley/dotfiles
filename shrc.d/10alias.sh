@@ -27,20 +27,19 @@ function yesno {
 }
 
 function editpath {
-    TEMP_FILE="$(mktemp)"
-    echo "Created temp file: $TEMP_FILE"
-    path > "$TEMP_FILE"
-    vim "$TEMP_FILE"
-    NEW_PATH=$(tr '\n' ':' < "$TEMP_FILE" | sed 's/:$//')
-    echo "$NEW_PATH"
-    echo "    Original: $PATH"
-    echo "    New:      $NEW_PATH"
-    echo
+    local temp_file
+    temp_file="$(mktemp)"
+    # shellcheck disable=SC2064
+    trap "{ rm -f -- '$temp_file'; }" EXIT
+    echo "Created temp file: $temp_file"
+    path > "$temp_file"
+    vim "$temp_file"
+    local new_path
+    new_path=$(tr '\n' ':' < "$temp_file" | sed 's/:$//')
     echo "Diff:"
-    diff <(echo -e "${PATH//:/\\n}") <(echo -e "${NEW_PATH//:/\\n}")
+    diff -y --color=auto <(echo -e "${PATH//:/\\n}") <(echo -e "${new_path//:/\\n}")
     echo
-    yesno "Did you want to change your path?" && export PATH="$NEW_PATH"
-    rm "$TEMP_FILE"
+    yesno "Did you want to change your path?" && export PATH="$new_path"
 }
 
 # -----------------------------------------------------------------------------
