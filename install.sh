@@ -13,6 +13,9 @@ softfail () { printf "\r\033[2K  [\033[0;31mFAIL\033[0m] %s\n" "$1"; }
 
 SCRIPTPATH=$(cd "$(dirname "$0")" || exit; pwd;)
 KONSOLE_THEMES=~/.local/share/konsole
+
+: "${XDG_DATA_HOME:=$HOME/.local/share}"
+
 FILES=("vimrc"
     "vim"
     "tmux"
@@ -25,7 +28,7 @@ FILES=("vimrc"
     "powerline:$HOME/.config/powerline"
     "hammerspoon:$HOME/.hammerspoon"
     "nvim_init.vim:$HOME/.config/nvim/init.vim"
-    "man:$HOME/man")
+    )
 
 source "${SCRIPTPATH}/shrc.d/10osis.sh"
 
@@ -82,6 +85,16 @@ create_link() {
     local DEST
     SRC="$1"
     DEST="$2"
+
+    # This can be removed once things moved to ~/.local/bin
+    if [[ -n ${3-} ]]; then
+        local REMOVE_OLD
+        REMOVE_OLD="$3"
+        if [[ -L "$REMOVE_OLD" && $(readlink "$REMOVE_OLD") -ef "$SRC" ]]; then
+            rm "$REMOVE_OLD" && success "Removed old link $REMOVE_OLD"
+        fi
+    fi
+
     [[ -e "$DEST" && ! -L "$DEST" ]]                   && { softfail "ERROR: $DEST already exists. Skipping."; return 1; }
     [[ -L "$DEST" && $(readlink "$DEST") -ef "$SRC" ]] && { info "Skipping: $DEST already points to correct file."; return 0; }
     if osis Darwin; then
@@ -277,6 +290,15 @@ for f in "${FILES[@]}"; do
     create_link "$SCRIPTPATH/$DEST" "$LINK"
 done
 
+section "Linking man pages"
+
+for dir in "$SCRIPTPATH/man/"*; do
+    create_dir "$XDG_DATA_HOME/$dir"
+    for f in "$dir"/*; do
+        create_link "$f" "$XDG_DATA_HOME/man/$(basename "$dir")/$(basename "$f")"
+    done
+done
+
 section "Adding git common commands"
 
 # Setup git
@@ -290,9 +312,9 @@ fi
 section "Linking bin files"
 
 # Setup bin files
-create_dir "$HOME/bin" hardfail
+create_dir "$HOME/.local/bin" hardfail
 for f in "$SCRIPTPATH/bin/"*; do
-    create_link "$f" "$HOME/bin/$(basename "$f")"
+    create_link "$f" "$HOME/.local/bin/$(basename "$f")" "$HOME/bin/$(basename "$f")"
 done
 
 section "Generating awk files"
