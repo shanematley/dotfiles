@@ -293,7 +293,7 @@ done
 section "Linking man pages"
 
 for dir in "$SCRIPTPATH/man/"*; do
-    create_dir "$XDG_DATA_HOME/$dir"
+    create_dir "$XDG_DATA_HOME/man/$(basename "$dir")"
     for f in "$dir"/*; do
         create_link "$f" "$XDG_DATA_HOME/man/$(basename "$dir")/$(basename "$f")"
     done
