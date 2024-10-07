@@ -467,6 +467,7 @@ configure_alacritty() {
         fi
     fi
 
+    create_link "${SCRIPTPATH}/alacritty/themes" "$alacritty_config_dir/themes"
 
 
     local terminfo_url

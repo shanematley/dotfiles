@@ -1,0 +1,5 @@
+import = [
+    "/Users/shane/repos/dotfiles/alacritty/alacritty-base.toml",
+    "/Users/shane/repos/dotfiles/alacritty/themes/noctis-lux.toml",
+]
+
