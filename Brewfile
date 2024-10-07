@@ -85,6 +85,8 @@ brew "node"
 #brew p7zip
 brew "nvm"
 brew "pv"
+brew "pyenv"
+brew "pyenv-virtualenv"
 brew "rename"
 brew "rg"
 brew "rlwrap"
