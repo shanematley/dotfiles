@@ -1,5 +1,5 @@
 import = [
     "DOTFILES_PATH/alacritty/alacritty-base.toml",
-    "DOTFILES_PATH/alacritty/themes/noctis-lux.toml",
+    "~/.config/alacritty/themes/catppuccin-latte.toml",
 ]
 
