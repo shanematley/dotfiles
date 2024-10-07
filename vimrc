@@ -47,6 +47,11 @@ Plug 'preservim/vimux'
 Plug 'google/vim-maktaba' " For vim-bazel. Must be before it.
 Plug 'bazelbuild/vim-bazel', { 'on': ['Bazel'] }
 Plug 'cappyzawa/starlark.vim', { 'for': 'starlark' }
+if has('nvim')
+    Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
+else
+    Plug 'catppuccin/vim', { 'as': 'catppuccin' }
+endif
 Plug 'dense-analysis/ale'
 "Plug 'ervandew/supertab' " Use tab for insert completion
 Plug 'Glench/Vim-Jinja2-Syntax'
@@ -542,8 +547,9 @@ if has("gui_running")
 endif
 
 
+set termguicolors
+
 let g:lightline = {
-      \ 'colorscheme': 'PaperColor',
       \ 'active': {
       \   'left': [ [ 'fugitive', 'filename', 'buffernumber'], [ 'mode', 'paste' ], [ 'cocstatus', 'readonly' ] ],
       \   'right': [ ['lineinfo'], ['percent'], [ 'fileformat', 'fileencoding', 'filetype' ] ]
@@ -572,13 +578,31 @@ let g:lightline = {
       \ }
 let g:lightline.enable = { 'statusline': 1, 'tabline': 1 }
 
-" This ensures lightline updates to match dark/light background when toggled
-autocmd OptionSet background
-      \ execute 'source' globpath(&rtp, 'autoload/lightline/colorscheme/PaperColor.vim')
-      \ | call lightline#colorscheme() | call lightline#update()
+if has('nvim')
+    colorscheme catppuccin-latte
+else
+    colorscheme catppuccin_latte
+endif
+call lightline#update()
 
-set background=dark
-colorscheme PaperColor
+function! StartsWith(longer, shorter) abort
+  return a:longer[0:len(a:shorter)-1] ==# a:shorter
+endfunction
+
+" This ensures lightline updates to match the colorscheme
+autocmd ColorScheme * call UpdateLightlineColorScheme()
+
+function UpdateLightlineColorScheme()
+    let l:colorscheme = expand('<amatch>')
+    if StartsWith(l:colorscheme, 'catppuccin') && has('nvim')
+        " Catppuccin for NeoVim has just the "catppuccin" colorscheme
+        let l:colorscheme = 'catppuccin'
+    endif
+    let g:lightline.colorscheme = l:colorscheme
+    call lightline#disable()
+    call lightline#enable()
+endfunction
+
 highlight Comment cterm=italic gui=italic
 
 " Mode is not necessary with lightline as mode is shown on the left
