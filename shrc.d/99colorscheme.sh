@@ -10,10 +10,10 @@ color_scheme_vim_change() {
     if [[ ! -e $local_config ]]; then
         echo "No local vimrc config present. Adding"
         cat <<-EOF > $local_config
-	set background=dark
+	call MySetColourScheme("catppuccin_latte")
 	EOF
     fi
-    sed -Ee 's/(set background=).*/\1'$1'/' $local_config > $local_config.new
+    sed -Ee 's/(call MySetColourScheme\(").*("\))/\1'$1'\2/' $local_config > $local_config.new
     mv $local_config.new $local_config
 }
 
@@ -86,7 +86,7 @@ update_colorthemes() {
 dark() {
     echo "dark" > ~/.config/my_colortheme
     color_scheme_alacritty_change catppuccin-macchiato
-    color_scheme_vim_change dark
+    color_scheme_vim_change catppuccin_macchiato
     color_scheme_tmux_change dark
     update_colorthemes
 }
@@ -94,7 +94,7 @@ dark() {
 light() {
     echo "light" > ~/.config/my_colortheme
     color_scheme_alacritty_change catppuccin-latte
-    color_scheme_vim_change light
+    color_scheme_vim_change catppuccin_latte
     color_scheme_tmux_change light
     update_colorthemes
 }
