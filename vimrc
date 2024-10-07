@@ -461,6 +461,12 @@ let g:lasttab = 1
 nmap t; :exe "tabn ".g:lasttab<CR>
 au TabLeave * let g:lasttab = tabpagenr()
 
+"{{{ Helper functions
+function! StartsWith(longer, shorter) abort
+  return a:longer[0:len(a:shorter)-1] ==# a:shorter
+endfunction
+"}}}
+
 "{{{  Undotree toggle
 nnoremap <leader>u :UndotreeToggle<CR>
 "}}}
@@ -578,6 +584,14 @@ let g:lightline = {
       \ }
 let g:lightline.enable = { 'statusline': 1, 'tabline': 1 }
 
+function MySetColourScheme(colorscheme)
+    let l:colorscheme = a:colorscheme
+    if StartsWith(a:colorscheme, 'catppuccin') && has('nvim')
+        let l:colorscheme = substitute(a:colorscheme, "_", "-", "")
+    endif
+    execute 'colorscheme ' . l:colorscheme
+endfunction
+
 if has('nvim')
     colorscheme catppuccin-latte
 else
@@ -585,14 +599,10 @@ else
 endif
 call lightline#update()
 
-function! StartsWith(longer, shorter) abort
-  return a:longer[0:len(a:shorter)-1] ==# a:shorter
-endfunction
-
 " This ensures lightline updates to match the colorscheme
-autocmd ColorScheme * call UpdateLightlineColorScheme()
+autocmd ColorScheme * call s:UpdateLightlineColorScheme()
 
-function UpdateLightlineColorScheme()
+function s:UpdateLightlineColorScheme()
     let l:colorscheme = expand('<amatch>')
     if StartsWith(l:colorscheme, 'catppuccin') && has('nvim')
         " Catppuccin for NeoVim has just the "catppuccin" colorscheme
