@@ -503,6 +503,14 @@ configure_alacritty() {
 configure_alacritty
 info 'To use true color and italics support with alacritty, add this to .tmux.conf: set -g default-terminal "alacritty"'
 
+if installed "bat"; then
+    section "Configure bat"
+
+    mkdir -p ~/.config/bat
+    create_link "${SCRIPTPATH}/bat/themes" "$HOME/.config/bat/themes"
+    bat cache --build
+fi
+
 section "Verifying tools"
 
 check_vim_option() {
