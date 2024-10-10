@@ -765,9 +765,15 @@ function s:UseCocShortcuts()
 
     " GoTo code navigation.
     nmap <silent> gd <Plug>(coc-definition)
+    nmap <silent> <C-w>gd :call CocAction('jumpDefinition', 'vsplit')<CR>
+    nmap <silent> <C-w>ge :call CocAction('definitions', 'vsplit')<CR>
+    nmap <silent> <C-w>gc :call CocAction('jumpDeclaration', 'vsplit')<CR>
     nmap <silent> gy <Plug>(coc-type-definition)
+    nmap <silent> <C-w>gy :call CocAction('jumpTypeDefinition', 'vsplit')<CR>
     nmap <silent> gi <Plug>(coc-implementation)
+    nmap <silent> <C-w>gi :call CocAction('implementations', 'vsplit')<CR>
     nmap <silent> gr <Plug>(coc-references)
+    nmap <silent> <C-w>gr :call CocAction('references', 'vsplit')<CR>
 
     " Use K to show documentation in preview window.
     nnoremap <silent> K :call ShowDocumentation()<CR>
