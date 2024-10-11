@@ -717,6 +717,7 @@ endif
 "}}}
 
 
+let g:coc_global_extensions=['coc-json', 'coc-diagnostic', 'coc-clangd', 'coc-sh']
 
 " Use :call UseCocShortcuts() to enable COC usage
 function s:UseCocShortcuts()

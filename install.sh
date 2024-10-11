@@ -328,6 +328,8 @@ check_binary_presence curl
 check_binary_presence git
 sync_brew_package reattach-to-user-namespace reattach-to-user-namespace
 
+"${SCRIPTPATH}/set-default-coc-diagnostic-extensions.sh"
+
 # Offer to install VIM plugins
 if [[ $INSTALL_OPTION_VIM ]]; then
     section "Installing plugins for vim"
