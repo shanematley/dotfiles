@@ -317,8 +317,8 @@ section "Generating awk files"
 for f in "$SCRIPTPATH/bin/"*"awk"; do
     fbase=$(basename "$f")
     fdest=${fbase%.*}
-    "$SCRIPTPATH/bin/shb" "$f" awk -f > "$HOME/bin/$fdest"
-    chmod +x "$HOME/bin/$fdest"
+    "$SCRIPTPATH/bin/shb" "$f" awk -f > "$HOME/.local/bin/$fdest"
+    chmod +x "$HOME/.local/bin/$fdest"
     success "Generated $fdest from $fbase"
 done
 
