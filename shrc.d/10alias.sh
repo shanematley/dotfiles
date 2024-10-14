@@ -72,6 +72,8 @@ alias lr='ls -lR'               # recursive ls
 alias tree='tree -Csu'          # nice alternative to 'recursive ls'
 alias l='ls -CF'
 
+command -v kubectl &>/dev/null && alias k=kubectl
+
 # -----------------------------------------------------------------------------
 # enable color support for grep if linux supports it or on Apple
 if [[ -x /usr/bin/dircolors || $Apple == true ]]; then
