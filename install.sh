@@ -9,7 +9,7 @@ source "${BASH_SOURCE%/*}"/lib.sh
 SCRIPTPATH=$(cd "$(dirname "$0")" || exit; pwd;)
 KONSOLE_THEMES=~/.local/share/konsole
 
-: "${XDG_DATA_HOME:=$HOME/.local/share}"
+resolved_xdg_data_home="${XDG_DATA_HOME:-$HOME/.local/share}"
 
 FILES=("vimrc"
     "vim"
@@ -288,9 +288,9 @@ done
 section "Linking man pages"
 
 for dir in "$SCRIPTPATH/man/"*; do
-    create_dir "$XDG_DATA_HOME/man/$(basename "$dir")"
+    create_dir "$resolved_xdg_data_home/man/$(basename "$dir")"
     for f in "$dir"/*; do
-        create_link "$f" "$XDG_DATA_HOME/man/$(basename "$dir")/$(basename "$f")"
+        create_link "$f" "$resolved_xdg_data_home/man/$(basename "$dir")/$(basename "$f")"
     done
 done
 
