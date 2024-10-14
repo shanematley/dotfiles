@@ -14,7 +14,7 @@ k9s_config_path() {
 ensure_k9s_skins_installed() {
     local k9s_config_dir
     k9s_config_dir="$(k9s_config_path)"
-    ensure_dir "$k9s_config_dir"
+    ensure_dir "$k9s_config_dir/skins"
     for f in "$DOTFILES_PATH/k9s/skins/"*; do
         ensure_link "$f" "$k9s_config_dir/skins/$(basename "$f")"
     done
