@@ -525,6 +525,8 @@ check_vim_option vim clipboard
 osis Linux && check_vim_option vim xterm_clipboard
 osis Darwin && check_vim_option mvim clipboard
 
+"$HOME/.local/bin/k9s-set-color-theme.sh" install
+
 section "Setup FZF bindings"
 
 write_if_update_required() {
