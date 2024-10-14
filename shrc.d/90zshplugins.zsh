@@ -4,7 +4,6 @@ MY_LOCAL_PLUGINS="${0:a:h}/zshplugins"
 # TODO: add unixorn/git-extra-commands?
 # TODO: add RobSis/zsh-completion-generator
 
-source "${MY_LOCAL_PLUGINS}/k/k.sh"
 source "${MY_LOCAL_PLUGINS}/zsh-bd/bd.zsh"
 source "${MY_LOCAL_PLUGINS}/zsh-autosuggestions/zsh-autosuggestions.zsh"
 
