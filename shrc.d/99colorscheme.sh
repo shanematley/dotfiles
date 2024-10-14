@@ -88,6 +88,7 @@ dark() {
     color_scheme_alacritty_change catppuccin-macchiato
     color_scheme_vim_change catppuccin_macchiato
     color_scheme_tmux_change dark
+    k9s-set-color-theme.sh "catppuccin-macchiato"
     update_colorthemes
 }
 
@@ -96,6 +97,7 @@ light() {
     color_scheme_alacritty_change catppuccin-latte
     color_scheme_vim_change catppuccin_latte
     color_scheme_tmux_change light
+    k9s-set-color-theme.sh "catppuccin-latte"
     update_colorthemes
 }
 
