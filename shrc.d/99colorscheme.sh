@@ -13,7 +13,7 @@ color_scheme_vim_change() {
 	call MySetColourScheme("catppuccin_latte")
 	EOF
     fi
-    sed -Ee 's/(call MySetColourScheme\(").*("\))/\1'$1'\2/' $local_config > $local_config.new
+    sed -Ee 's/(call MySetColourScheme\(").*("\))/\1'"$1"'\2/' $local_config > $local_config.new
     mv $local_config.new $local_config
 }
 
@@ -23,7 +23,7 @@ color_scheme_tmux_change() {
         echo "No local tmux config present. Adding"
         echo 'source-file "~/.tmux/tmux-dark.conf"' > $local_config
     fi
-    sed -Ee 's#^(source-file "~/.tmux/tmux-)(dark|light)(.conf")#\1'$1'\3#' $local_config > $local_config.new
+    sed -Ee 's#^(source-file "~/.tmux/tmux-)(dark|light)(.conf")#\1'"$1"'\3#' $local_config > $local_config.new
     mv $local_config.new $local_config
     tmux source-file ~/.tmux.conf
 }
