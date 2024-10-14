@@ -11,9 +11,6 @@
 [submodule "shrc.d/zshplugins/zsh-syntax-highlighting"]
 	path = shrc.d/zshplugins/zsh-syntax-highlighting
 	url = https://github.com/zsh-users/zsh-syntax-highlighting.git
-[submodule "shrc.d/zshplugins/k"]
-	path = shrc.d/zshplugins/k
-	url = https://github.com/supercrabtree/k.git
 [submodule "shrc.d/zshplugins/zsh-bd"]
 	path = shrc.d/zshplugins/zsh-bd
 	url = https://github.com/Tarrasch/zsh-bd.git
