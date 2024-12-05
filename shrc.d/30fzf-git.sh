@@ -55,3 +55,27 @@ _gs() {
   git stash list | fzf-down --reverse -d: --preview 'git show --color=always {1}' |
   cut -d: -f1
 }
+
+# Completion for git when used with `FZF_COMPLETION_TRIGGER`
+# Info: https://github.com/junegunn/fzf?tab=readme-ov-file#custom-fuzzy-completion
+#
+# Example usage:
+# - complete on commits: `git rebase **<tab>`
+# - complete on files: `git log -- **<tab>`
+_fzf_complete_git() {
+    _fzf_complete \
+        --preview='git show --color=always {1}' \
+        --preview-window=wrap,~6 \
+        -- "$@" < <(
+            if [[ "$*" == *"--"* ]]; then
+                git ls-files
+            else
+                git log --pretty="%h %d %s (%an, %cr)"
+            fi
+        )
+}
+
+_fzf_complete_git_post() {
+    cut -d ' ' -f1
+}
+
