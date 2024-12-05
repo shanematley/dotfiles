@@ -100,5 +100,7 @@ light() {
     k9s-set-color-theme.sh "catppuccin-latte"
     update_colorthemes
 }
-
-update_colorthemes
+# Only run if the shell is interactive.
+if [[ $- == *i* ]]; then
+    update_colorthemes
+fi
