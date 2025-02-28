@@ -4,14 +4,34 @@
     submoduleSummary = true
 
 [diff]
+    # Better algorithm
+    algorithm = histogram
+
+    # Show code movement in different colors to added/removed
+    colorMoved = plain
+
+    # Replace a/ and b/ with where the diff is coming from, e.g. i/ (index), w/ (working directory), c/ (commit)
+    mnemonicPrefix = true
+
+    # Spend more time to determine files that are renamed
+    renames = true
+
     submodule = log
 
+[branch]
+    sort = -committerdate
+
 [color]
+    ui = auto
+
+[column]
     ui = auto
 
 [core]
     editor = vim
     abbrev = 12
+    fsmonitor = true
+    untrackedCache = true
     # Changing the -r to a -R seems to help with keeping track of the screen. Also
     # use -S to chop lines as this seems to make sense in most git commands
     pager = less -iwRS
@@ -99,8 +119,16 @@
     cmd = nvim -f '+next' '+execute \"DirDiff\" argv(0) argv(1)' "$LOCAL" "$REMOTE" '+syntax off'
 
 [merge]
+    conflictstyle = "zdiff3"
     tool = "nvimdiff4"
     prompt = true
 
 [mergetool "nvimdiff4"]
     cmd = nvim -d $LOCAL $BASE $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'
+
+[rerere]
+    enabled = true
+    autoupdate = true
+
+[tag]
+    sort = version:refname
