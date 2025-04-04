@@ -93,3 +93,5 @@ if [[ $Linux == true ]]; then
     alias rm='rm --preserve-root'
 fi
 
+
+alias dive="docker run -ti --rm  -v /var/run/docker.sock:/var/run/docker.sock docker.io/wagoodman/dive"
