@@ -5,7 +5,7 @@ set -e
 
 MAC_VERSION_STR=$(system_profiler SPSoftwareDataType|grep 'System Version'|grep -oE '\d+\.\d+\.\d+')
 
-if [[ $MAC_VERSION_STR =~ 10\.(12.*|11.*|10\.4|9.*|8.*|7.*) ]]; then
+if [[ $MAC_VERSION_STR =~ 10\.(12.*|11.*|10\.4|9.*|8.*|7.*) || $MAC_VERSION_STR =~ (15|14|13)\..* ]]; then
     echo "Sierra (10.12), El Capitan (10.11), Yosemite (10.10.4), Mavericks (10.9), Mountain Lion (10.8) or Lion (10.7)"
     sudo dscacheutil -flushcache && echo "Flushed cache using dscacheutil"
     sudo killall -HUP mDNSResponder && echo "Killed mDNSResponder"
