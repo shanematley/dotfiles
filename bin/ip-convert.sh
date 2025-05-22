@@ -3,7 +3,7 @@
 # and network order 32-bit decimal numbers (e.g. 2886794753)
 
 ipv4_network_order_to_dotted() {
-    local ip_network_order=$1
+    local ip_network_order="$1"
     printf "%d.%d.%d.%d\n" \
         $(( (ip_network_order >> 24) & 0xFF )) \
         $(( (ip_network_order >> 16) & 0xFF )) \
@@ -14,8 +14,13 @@ ipv4_network_order_to_dotted() {
 ipv4_dotted_to_network_order() {
     local ip_dotted="$1"
     IFS='.' read -r o1 o2 o3 o4 <<< "$ip_dotted"
-    ip_network_order=$(( (o1 << 24) + (o2 << 16) + (o3 << 8) + o4 ))
-    echo $ip_network_order
+
+    if [[ -z $o1 || -z $o4 ]]; then
+        echo "Invalid IP address format" >&2
+        return 1
+    fi
+    ip_network_order=$(( (10#$o1 << 24) + (10#$o2 << 16) + (10#$o3 << 8) + 10#$o4 ))
+    echo "$ip_network_order"
 }
 
 
@@ -51,7 +56,7 @@ is_valid_ipv4_network_order() {
 
 if [[ "$1" == "--alfred" ]]; then
     cat<<OUTEREOF
-To use $(basename $0) in Alfred, create a script filter with "input as {query}"
+To use $(basename "$0") in Alfred, create a script filter with "input as {query}"
 with the following script.
 
 This will output the conversion on the "{query}" variable, as well as populate
@@ -93,12 +98,17 @@ OUTEREOF
     exit
 fi
 
+if [[ $# -lt 1 ]]; then
+    echo "Usage: $(basename "$0") <IPv4 dotted string or network order integer>" >&2
+    exit 1
+fi
+
 if is_valid_ipv4_dotted "$1"; then
     ipv4_dotted_to_network_order "$1"
 elif is_valid_ipv4_network_order "$1"; then
     ipv4_network_order_to_dotted "$1"
 else
-    echo "Invalid ipv4 address. '$1' is neither an IPV4 dotted string or network order (big-endian) decimal"
+    echo "Invalid ipv4 address. '$1' is neither an IPV4 dotted string or network order (big-endian) decimal" >&2
     exit 1
 fi
 
