@@ -878,6 +878,7 @@ function s:UseCocShortcuts()
     nnoremap <silent><nowait> <space>c  :<C-u>CocList commands<cr>
     " Find symbol of current document.
     nnoremap <silent><nowait> <space>o  :<C-u>CocList -A outline<cr>
+    nnoremap <silent><nowait> <F4>  :<C-u>CocOutline<cr>
     " Search workspace symbols.
     nnoremap <silent><nowait> <space>s  :<C-u>CocList -I -A symbols<cr>
     nnoremap <silent><nowait> <space>S  :<C-u>CocList -I -A --tab symbols<cr>
