@@ -1,4 +1,4 @@
-tty >& /dev/null && {
+[ -t 0 ] && {
     # disable obsolete special chars in tty
     stty start undef
     stty stop undef
