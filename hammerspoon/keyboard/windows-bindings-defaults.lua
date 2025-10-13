@@ -25,8 +25,8 @@
 --------------------------------------------------------------------------------
 
 return {
-  modifiers = {'ctrl'},
-  showHelp  = false,
+  modifiers = {'ctrl', 'cmd'},
+  showHelp  = true,
   trigger   = 's',
   mappings  = {
     { {},         'return', 'maximize' },

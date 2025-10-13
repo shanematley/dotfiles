@@ -104,9 +104,9 @@ local zoom_enter_minimal_view = {{'Meeting', 'Enter Minimal View'}, {'Meeting', 
 hyper_log.i('hyper loaded. Call `hyper_debug_logs_enable` in console to view debug logging.')
 
 return {
-  { '`', 'Alacritty' },
+  { '`', 'Ghostty' },
   { 'a', 'Music' },             -- "A" for "Apple Music"
-  { 'b', 'Arc' },               -- "B" for "Browser"
+  { 'b', 'Google Chrome' },     -- "B" for "Browser"
   { 'f', 'Finder' },            -- "F" for "Finder"
   { 'n', 'Notes' },
   { 'o', 'Omnifocus' },
