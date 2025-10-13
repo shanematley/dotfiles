@@ -57,7 +57,9 @@ defaults write NSGlobalDomain KeyRepeat -int 1
 defaults write NSGlobalDomain InitialKeyRepeat -int 12
 
 # Allow repeated keys for VSCode
-defaults write com.microsoft.VSCode ApplePressAndHoldEnabled -bool false
+#defaults write com.microsoft.VSCode ApplePressAndHoldEnabled -bool false
+# Allow repeated keys for all applications
+defaults write -g ApplePressAndHoldEnabled -bool false
 
 ###############################################################################
 # Screen                                                                      #
