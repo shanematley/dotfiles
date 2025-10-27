@@ -5,6 +5,7 @@
 #   "requests",
 #   "questionary",
 #   "rich",
+#   "ldap3",
 # ]
 # ///
 
@@ -12,7 +13,6 @@ import argparse
 import hashlib
 import json
 import os
-import subprocess
 import sys
 import time
 import tomllib
@@ -354,84 +354,51 @@ class LDAPConfig:
 
 
 class LDAPProvider(GroupProvider):
-    """LDAP group provider using ldapsearch"""
+    """LDAP group provider using ldap3 library"""
 
     def __init__(self, config: LDAPConfig, cache: CacheManager):
         super().__init__("ldap", cache)
         self.config = config
 
-    def _run_ldapsearch(
-        self, ldap_filter: str, attributes: list[str]
-    ) -> dict[str, dict]:
-        """Run ldapsearch and parse LDIF output"""
-        # fmt: off
-        cmd = [
-            "ldapsearch",
-            "-H", f"ldap://{self.config.host}:{self.config.port}",
-            "-x",
-            "-D", self.config.user,
-            "-w", self.config.password,
-            "-b", self.config.base_dn,
-            "-o", "ldif-wrap=no",
-            ldap_filter,
-            *attributes,
-        ]
-        # fmt: on
+    def _search_ldap(self, ldap_filter: str, attributes: list[str]) -> dict[str, dict]:
+        """Execute LDAP search query using ldap3 library"""
+        from ldap3 import Connection, Server
 
         try:
-            result = subprocess.run(cmd, capture_output=True, text=True, timeout=30)
-            if result.returncode != 0:
-                return {}
+            server = Server(self.config.host, port=self.config.port)
+            conn = Connection(
+                server,
+                user=self.config.user,
+                password=self.config.password,
+                auto_bind=True,
+            )
 
-            return self._parse_ldif(result.stdout)
-        except (subprocess.TimeoutExpired, FileNotFoundError):
-            return {}
+            conn.search(
+                search_base=self.config.base_dn,
+                search_filter=ldap_filter,
+                attributes=attributes,
+            )
 
-    def _parse_ldif(self, ldif_output: str) -> dict[str, dict]:
-        """Parse LDIF output into dictionary of entries"""
-        import base64
-
-        entries = {}
-        current_dn = None
-        current_entry = {}
-
-        for line in ldif_output.split("\n"):
-            line = line.rstrip()
-
-            if line.startswith("dn:"):
-                # Save previous entry
-                if current_dn and current_entry:
-                    entries[current_dn] = current_entry
-
-                # Start new entry
-                current_dn = line.split(":", 1)[1].strip()
-                current_entry = {}
-
-            elif line and not line.startswith("#") and current_dn:
-                if ":" in line:
-                    key, value = line.split(":", 1)
-                    value = value.strip()
-
-                    # Handle base64 encoded values
-                    if value.startswith(":"):
-                        value = base64.b64decode(value[1:].strip()).decode(
-                            "utf-8", errors="ignore"
-                        )
-
-                    # Store multiple values as lists
-                    if key in current_entry:
-                        if isinstance(current_entry[key], list):
-                            current_entry[key].append(value)
-                        else:
-                            current_entry[key] = [current_entry[key], value]
+            # Convert entries to dict keyed by DN
+            entries = {}
+            for entry in conn.entries:
+                dn = entry.entry_dn
+                attrs = {}
+                for attr_name in entry.entry_attributes:
+                    attr_value = entry[attr_name].value
+                    # ldap3 returns lists for multi-valued attributes
+                    # Keep single values as strings for compatibility
+                    if isinstance(attr_value, list) and len(attr_value) == 1:
+                        attrs[attr_name] = attr_value[0]
                     else:
-                        current_entry[key] = value
+                        attrs[attr_name] = attr_value
+                entries[dn] = attrs
 
-        # Save last entry
-        if current_dn and current_entry:
-            entries[current_dn] = current_entry
+            conn.unbind()
+            return entries
 
-        return entries
+        except Exception:
+            return {}
 
     def search_groups(self, query: str, progress_callback=None) -> list[dict]:
         # Check cache
@@ -440,12 +407,9 @@ class LDAPProvider(GroupProvider):
             return cached
 
         # Escape query for LDAP filter
-        query_escaped = (
-            query.replace("\\", "\\\\")
-            .replace("*", "\\*")
-            .replace("(", "\\(")
-            .replace(")", "\\)")
-        )
+        from ldap3.utils.conv import escape_filter_chars
+
+        query_escaped = escape_filter_chars(query)
 
         ldap_filter = (
             f"(&(objectClass=group)"
@@ -454,7 +418,7 @@ class LDAPProvider(GroupProvider):
             f"(displayName=*{query_escaped}*)))"
         )
 
-        entries = self._run_ldapsearch(
+        entries = self._search_ldap(
             ldap_filter,
             [
                 "cn",
@@ -498,7 +462,7 @@ class LDAPProvider(GroupProvider):
 
         # Get group to find members
         ldap_filter = f"(&(objectClass=group)(distinguishedName={group_id}))"
-        entries = self._run_ldapsearch(ldap_filter, ["member"])
+        entries = self._search_ldap(ldap_filter, ["member"])
 
         members = []
         if entries:
@@ -507,61 +471,74 @@ class LDAPProvider(GroupProvider):
             if isinstance(member_dns, str):
                 member_dns = [member_dns]
 
-            # Fetch details for each member
-            for member_dn in member_dns:
-                member_filter = (
-                    f"(&(objectClass=person)(distinguishedName={member_dn}))"
-                )
-                member_entries = self._run_ldapsearch(
-                    member_filter,
-                    [
-                        "cn",
-                        "sn",
-                        "l",
-                        "description",
-                        "telephoneNumber",
-                        "givenName",
-                        "whenCreated",
-                        "whenChanged",
-                        "displayName",
-                        "company",
-                        "mailNickname",
-                        "sAMAccountName",
-                        "mail",
-                        "ipPhone",
-                    ],
-                )
+            if not member_dns:
+                return members
 
-                if member_entries:
-                    member_attrs = list(member_entries.values())[0]
-                    members.append(
-                        {
-                            "cn": member_attrs.get("cn", ""),
-                            "sn": member_attrs.get("sn", ""),
-                            "givenName": member_attrs.get("givenName", ""),
-                            "displayName": member_attrs.get("displayName", ""),
-                            "sAMAccountName": member_attrs.get("sAMAccountName", ""),
-                            "accountId": member_attrs.get(
-                                "sAMAccountName", ""
-                            ),  # Alias for compatibility
-                            "mail": member_attrs.get("mail", ""),
-                            "mailNickname": member_attrs.get("mailNickname", ""),
-                            "telephoneNumber": member_attrs.get("telephoneNumber", ""),
-                            "ipPhone": member_attrs.get("ipPhone", ""),
-                            "l": member_attrs.get("l", ""),
-                            "location": member_attrs.get(
-                                "l", ""
-                            ),  # Alias for compatibility
-                            "co": member_attrs.get("co", ""),
-                            "country": member_attrs.get(
-                                "co", ""
-                            ),  # Alias for compatibility
-                            "company": member_attrs.get("company", ""),
-                            "description": member_attrs.get("description", ""),
-                            "whenCreated": member_attrs.get("whenCreated", ""),
-                            "whenChanged": member_attrs.get("whenChanged", ""),
-                        }
-                    )
+            # Fetch all members in a single query using OR filter
+            # Build filter: (&(objectClass=person)(|(distinguishedName=dn1)(distinguishedName=dn2)...))
+            dn_filters = "".join(f"(distinguishedName={dn})" for dn in member_dns)
+            member_filter = f"(&(objectClass=person)(|{dn_filters}))"
+
+            member_entries = self._search_ldap(
+                member_filter,
+                [
+                    "distinguishedName",
+                    "cn",
+                    "sn",
+                    "l",
+                    "description",
+                    "telephoneNumber",
+                    "givenName",
+                    "whenCreated",
+                    "whenChanged",
+                    "displayName",
+                    "company",
+                    "mailNickname",
+                    "sAMAccountName",
+                    "mail",
+                    "ipPhone",
+                ],
+            )
+
+            # Process all member entries
+            for dn, member_attrs in member_entries.items():
+                # Convert datetime objects to strings
+                when_created = member_attrs.get("whenCreated", "")
+                if when_created and hasattr(when_created, "isoformat"):
+                    when_created = when_created.isoformat()
+
+                when_changed = member_attrs.get("whenChanged", "")
+                if when_changed and hasattr(when_changed, "isoformat"):
+                    when_changed = when_changed.isoformat()
+
+                members.append(
+                    {
+                        "cn": member_attrs.get("cn", ""),
+                        "sn": member_attrs.get("sn", ""),
+                        "givenName": member_attrs.get("givenName", ""),
+                        "displayName": member_attrs.get("displayName", ""),
+                        "sAMAccountName": member_attrs.get("sAMAccountName", ""),
+                        "accountId": member_attrs.get(
+                            "sAMAccountName", ""
+                        ),  # Alias for compatibility
+                        "mail": member_attrs.get("mail", ""),
+                        "mailNickname": member_attrs.get("mailNickname", ""),
+                        "telephoneNumber": member_attrs.get("telephoneNumber", ""),
+                        "ipPhone": member_attrs.get("ipPhone", ""),
+                        "l": member_attrs.get("l", ""),
+                        "location": member_attrs.get(
+                            "l", ""
+                        ),  # Alias for compatibility
+                        "co": member_attrs.get("co", ""),
+                        "country": member_attrs.get(
+                            "co", ""
+                        ),  # Alias for compatibility
+                        "company": member_attrs.get("company", ""),
+                        "description": member_attrs.get("description", ""),
+                        "whenCreated": when_created,
+                        "whenChanged": when_changed,
+                    }
+                )
 
         # Store in cache (30 minute TTL)
         self.cache.set("ldap", "get_members", {"group_id": group_id}, members, ttl=1800)
@@ -571,7 +548,7 @@ class LDAPProvider(GroupProvider):
     def validate_config(self) -> bool:
         try:
             # Try a simple search to validate connection
-            result = self._run_ldapsearch("(objectClass=*)", ["dn"])
+            result = self._search_ldap("(objectClass=*)", ["dn"])
             return len(result) > 0
         except Exception:
             return False
