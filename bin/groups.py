@@ -10,6 +10,7 @@
 # ///
 
 import argparse
+import csv
 import hashlib
 import json
 import os
@@ -20,7 +21,7 @@ import urllib.parse
 from abc import ABC, abstractmethod
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Any
+from typing import Any, TextIO
 
 import questionary
 import requests
@@ -363,6 +364,7 @@ class LDAPProvider(GroupProvider):
     def _search_ldap(self, ldap_filter: str, attributes: list[str]) -> dict[str, dict]:
         """Execute LDAP search query using ldap3 library"""
         from ldap3 import Connection, Server
+        from ldap3.core.exceptions import LDAPException
 
         try:
             server = Server(self.config.host, port=self.config.port)
@@ -397,7 +399,11 @@ class LDAPProvider(GroupProvider):
             conn.unbind()
             return entries
 
-        except Exception:
+        except LDAPException as e:
+            print(f"LDAP error: {e}", file=sys.stderr)
+            return {}
+        except Exception as e:
+            print(f"Unexpected error during LDAP search: {e}", file=sys.stderr)
             return {}
 
     def search_groups(self, query: str, progress_callback=None) -> list[dict]:
@@ -476,6 +482,8 @@ class LDAPProvider(GroupProvider):
 
             # Fetch all members in a single query using OR filter
             # Build filter: (&(objectClass=person)(|(distinguishedName=dn1)(distinguishedName=dn2)...))
+            # Note: ldap3 doesn't have built-in DN escaping, but DNs from LDAP searches are trusted
+            # If this becomes a concern, consider querying members individually
             dn_filters = "".join(f"(distinguishedName={dn})" for dn in member_dns)
             member_filter = f"(&(objectClass=person)(|{dn_filters}))"
 
@@ -501,7 +509,7 @@ class LDAPProvider(GroupProvider):
             )
 
             # Process all member entries
-            for dn, member_attrs in member_entries.items():
+            for _dn, member_attrs in member_entries.items():
                 # Convert datetime objects to strings
                 when_created = member_attrs.get("whenCreated", "")
                 if when_created and hasattr(when_created, "isoformat"):
@@ -644,11 +652,27 @@ class ConfigManager:
 class OutputFormatter:
     """Format output in various formats with TTY detection"""
 
-    def __init__(self, format_type: str = "auto", is_tty: bool | None = None):
+    # Common columns shared across all sources
+    COMMON_GROUP_COLUMNS = {"id", "name", "description"}
+    COMMON_MEMBER_COLUMNS = {"displayName", "accountId", "email"}
+
+    # Column name mappings: source-specific names -> common names
+    COLUMN_MAPPINGS = {
+        "mail": "email",  # LDAP uses 'mail', normalize to 'email'
+    }
+
+    def __init__(
+        self,
+        format_type: str = "auto",
+        is_tty: bool | None = None,
+        output_file: str | None = None,
+    ):
         if is_tty is None:
             is_tty = sys.stdout.isatty()
 
         self.is_tty = is_tty
+        self.output_file = output_file
+        self.file_handle: TextIO | None = None
 
         if format_type == "auto":
             self.format_type = "table" if is_tty else "plain"
@@ -657,16 +681,147 @@ class OutputFormatter:
 
         self.console = Console(force_terminal=is_tty)
 
+        # Track if CSV header has been written (for members command)
+        self._csv_header_written = False
+        self._all_headers_set: set[str] = set()  # Track unique headers
+        self._metadata_cols: list[str] = []  # Columns like source, group_name, group_id
+        self._buffered_rows: list[dict] = []  # Buffer rows when writing to file
+
+    def _get_output_handle(self) -> TextIO:
+        """Get the file handle to write to"""
+        if self.output_file and self.output_file != "-":
+            if not self.file_handle:
+                try:
+                    self.file_handle = open(self.output_file, "w")
+                except OSError as e:
+                    print(f"Error opening output file '{self.output_file}': {e}", file=sys.stderr)
+                    sys.exit(1)
+            return self.file_handle
+        return sys.stdout
+
+    def flush_csv(self):
+        """Flush buffered CSV rows to file with complete headers"""
+        if not self._buffered_rows or self.format_type != "csv":
+            return
+
+        output = self._get_output_handle()
+
+        # Build final header list
+        common_cols_set = (
+            self.COMMON_MEMBER_COLUMNS
+            if "group_name" in self._metadata_cols
+            else self.COMMON_GROUP_COLUMNS
+        )
+        common_cols = sorted([k for k in self._all_headers_set if k in common_cols_set])
+        specific_cols = sorted(
+            [
+                k
+                for k in self._all_headers_set
+                if k not in common_cols_set and k not in self._metadata_cols
+            ]
+        )
+        final_headers = self._metadata_cols + common_cols + specific_cols
+
+        # Write all rows with complete headers
+        writer = csv.DictWriter(output, fieldnames=final_headers, extrasaction="ignore")
+        writer.writeheader()
+        writer.writerows(self._buffered_rows)
+
+        # Clear buffer
+        self._buffered_rows = []
+
+    def close(self):
+        """Close file handle if open"""
+        # Flush any buffered CSV data
+        try:
+            self.flush_csv()
+        except Exception as e:
+            print(f"Error flushing CSV data: {e}", file=sys.stderr)
+
+        if self.file_handle:
+            try:
+                self.file_handle.close()
+            except Exception as e:
+                print(f"Error closing output file: {e}", file=sys.stderr)
+            finally:
+                self.file_handle = None
+
+    def _prefix_source_specific_columns(
+        self, data: dict, source: str, common_columns: set[str]
+    ) -> dict:
+        """Prefix source-specific columns with source name"""
+        result = {}
+        for key, value in data.items():
+            # Apply column name mapping if exists
+            mapped_key = self.COLUMN_MAPPINGS.get(key, key)
+
+            if mapped_key in common_columns:
+                result[mapped_key] = value
+            else:
+                result[f"{source}_{key}"] = value
+        return result
+
     def format_groups(self, groups: list[dict], source: str):
         """Format group search results"""
+        output = self._get_output_handle()
+
         if self.format_type == "json":
-            print(json.dumps(groups, indent=2))
+            print(json.dumps(groups, indent=2), file=output)
         elif self.format_type == "csv":
-            print("source,id,name,description")
+            # Transform groups to have prefixed columns
+            transformed_groups = []
             for group in groups:
-                print(
-                    f"{source},{group.get('id', '')},{group.get('name', '')},{group.get('description', '')}"
+                prefixed = self._prefix_source_specific_columns(
+                    group, source, self.COMMON_GROUP_COLUMNS
                 )
+                transformed_groups.append(prefixed)
+
+            # Collect all unique keys
+            all_keys = {"source"}
+            for group in transformed_groups:
+                all_keys.update(group.keys())
+
+            # Track metadata columns
+            if not self._metadata_cols:
+                self._metadata_cols = ["source"]
+
+            # Accumulate all headers seen
+            self._all_headers_set.update(all_keys)
+            self._all_headers_set.add("source")
+
+            # Prepare rows
+            rows = []
+            for group in transformed_groups:
+                row = {"source": source, **group}
+                rows.append(row)
+
+            # If writing to file, buffer the rows
+            if self.output_file and self.output_file != "-":
+                self._buffered_rows.extend(rows)
+            else:
+                # Writing to stdout - write immediately
+                common_cols = sorted(
+                    [k for k in self._all_headers_set if k in self.COMMON_GROUP_COLUMNS]
+                )
+                specific_cols = sorted(
+                    [
+                        k
+                        for k in self._all_headers_set
+                        if k not in self.COMMON_GROUP_COLUMNS
+                        and k not in self._metadata_cols
+                    ]
+                )
+                final_headers = self._metadata_cols + common_cols + specific_cols
+
+                writer = csv.DictWriter(
+                    output, fieldnames=final_headers, extrasaction="ignore"
+                )
+
+                if not self._csv_header_written:
+                    writer.writeheader()
+                    self._csv_header_written = True
+
+                writer.writerows(rows)
         elif self.format_type == "table" and self.is_tty:
             table = Table(title=f"{source.capitalize()} Groups")
             table.add_column("Name", style="cyan")
@@ -683,18 +838,83 @@ class OutputFormatter:
             self.console.print(table)
         else:  # plain
             for group in groups:
-                print(f"{group.get('name', '')} ({group.get('id', '')})")
+                print(f"{group.get('name', '')} ({group.get('id', '')})", file=output)
 
-    def format_members(self, members: list[dict], group_name: str):
+    def format_members(
+        self,
+        members: list[dict],
+        group_name: str,
+        source: str | None = None,
+        group_id: str | None = None,
+    ):
         """Format group member results"""
+        output = self._get_output_handle()
+
         if self.format_type == "json":
-            print(json.dumps(members, indent=2))
+            print(json.dumps(members, indent=2), file=output)
         elif self.format_type == "csv":
-            print("displayName,accountId,email")
+            # Transform members to have prefixed columns
+            transformed_members = []
             for member in members:
-                print(
-                    f"{member.get('displayName', '')},{member.get('accountId', '')},{member.get('mail', '')}"
+                prefixed = self._prefix_source_specific_columns(
+                    member, source or "unknown", self.COMMON_MEMBER_COLUMNS
                 )
+                transformed_members.append(prefixed)
+
+            # Collect all unique keys
+            all_keys = {"source", "group_name", "group_id"}
+            for member in transformed_members:
+                all_keys.update(member.keys())
+
+            # Track metadata columns
+            if not self._metadata_cols:
+                self._metadata_cols = ["source", "group_name", "group_id"]
+
+            # Accumulate all headers seen
+            self._all_headers_set.update(all_keys)
+
+            # Prepare rows
+            rows = []
+            for member in transformed_members:
+                row = {
+                    "source": source or "",
+                    "group_name": group_name,
+                    "group_id": group_id or "",
+                    **member,
+                }
+                rows.append(row)
+
+            # If writing to file, buffer the rows
+            if self.output_file and self.output_file != "-":
+                self._buffered_rows.extend(rows)
+            else:
+                # Writing to stdout - write immediately
+                common_cols = sorted(
+                    [
+                        k
+                        for k in self._all_headers_set
+                        if k in self.COMMON_MEMBER_COLUMNS
+                    ]
+                )
+                specific_cols = sorted(
+                    [
+                        k
+                        for k in self._all_headers_set
+                        if k not in self.COMMON_MEMBER_COLUMNS
+                        and k not in self._metadata_cols
+                    ]
+                )
+                final_headers = self._metadata_cols + common_cols + specific_cols
+
+                writer = csv.DictWriter(
+                    output, fieldnames=final_headers, extrasaction="ignore"
+                )
+
+                if not self._csv_header_written:
+                    writer.writeheader()
+                    self._csv_header_written = True
+
+                writer.writerows(rows)
         elif self.format_type == "table" and self.is_tty:
             table = Table(title=f"Members of {group_name}")
             table.add_column("Display Name", style="cyan")
@@ -712,7 +932,8 @@ class OutputFormatter:
         else:  # plain
             for member in members:
                 print(
-                    f"{member.get('displayName', '')} ({member.get('accountId', '')})"
+                    f"{member.get('displayName', '')} ({member.get('accountId', '')})",
+                    file=output,
                 )
 
     def format_cache_info(self, stats: dict):
@@ -828,6 +1049,9 @@ def main():
     search_parser.add_argument(
         "--sources", help="Comma-separated list of sources (e.g., confluence,ldap)"
     )
+    search_parser.add_argument(
+        "--output", "-o", help="Output file path (use '-' for stdout)"
+    )
 
     # members subcommand
     members_parser = subparsers.add_parser("members", help="List members of a group")
@@ -837,6 +1061,9 @@ def main():
     members_parser.add_argument("--sources", help="Comma-separated list of sources")
     members_parser.add_argument(
         "--exact-match", action="store_true", help="Only match exact group names"
+    )
+    members_parser.add_argument(
+        "--output", "-o", help="Output file path (use '-' for stdout)"
     )
 
     # sources subcommand
@@ -880,9 +1107,12 @@ def main():
     if ldap_config:
         providers["ldap"] = LDAPProvider(ldap_config, cache)
 
-    # Detect TTY
+    # Detect TTY and get output file
     is_tty = sys.stdout.isatty()
-    formatter = OutputFormatter(format_type=args.format, is_tty=is_tty)
+    output_file = getattr(args, "output", None)
+    formatter = OutputFormatter(
+        format_type=args.format, is_tty=is_tty, output_file=output_file
+    )
 
     # Handle cache commands
     if args.command == "cache":
@@ -931,61 +1161,74 @@ def main():
 
     # Handle search command
     if args.command == "search":
-        for name, provider in selected_providers.items():
-            try:
-                # Show progress bar for TTY when querying Confluence (paginated API)
-                if is_tty and name == "confluence":
-                    with Progress(
-                        SpinnerColumn(),
-                        TextColumn("[progress.description]{task.description}"),
-                        console=formatter.console,
-                    ) as progress:
-                        task = progress.add_task("Fetching groups...", total=None)
+        try:
+            for name, provider in selected_providers.items():
+                try:
+                    # Show progress bar for TTY when querying Confluence (paginated API)
+                    if is_tty and name == "confluence" and not output_file:
+                        with Progress(
+                            SpinnerColumn(),
+                            TextColumn("[progress.description]{task.description}"),
+                            console=formatter.console,
+                        ) as progress:
+                            task = progress.add_task("Fetching groups...", total=None)
 
-                        def update_progress(count):
-                            progress.update(
-                                task, description=f"Fetched {count} groups..."
+                            def update_progress(count):
+                                progress.update(
+                                    task, description=f"Fetched {count} groups..."
+                                )
+
+                            groups = provider.search_groups(
+                                args.query, progress_callback=update_progress
                             )
+                    else:
+                        groups = provider.search_groups(args.query)
 
-                        groups = provider.search_groups(
-                            args.query, progress_callback=update_progress
-                        )
-                else:
-                    groups = provider.search_groups(args.query)
-
-                if groups:
-                    if len(selected_providers) > 1 and is_tty:
-                        formatter.console.print(f"\n[bold]{name.capitalize()}[/bold]")
-                    formatter.format_groups(groups, name)
-            except Exception as e:
-                print(f"Error querying {name}: {e}", file=sys.stderr)
+                    if groups:
+                        if len(selected_providers) > 1 and is_tty and not output_file:
+                            formatter.console.print(
+                                f"\n[bold]{name.capitalize()}[/bold]"
+                            )
+                        formatter.format_groups(groups, name)
+                except Exception as e:
+                    print(f"Error querying {name}: {e}", file=sys.stderr)
+        finally:
+            formatter.close()
 
     # Handle members command
     elif args.command == "members":
-        for name, provider in selected_providers.items():
-            try:
-                groups = resolve_group(
-                    provider, args.group, args.exact_match, allow_interactive=is_tty
-                )
+        try:
+            for name, provider in selected_providers.items():
+                try:
+                    groups = resolve_group(
+                        provider, args.group, args.exact_match, allow_interactive=is_tty
+                    )
 
-                for group in groups:
-                    if len(selected_providers) > 1 or len(groups) > 1:
-                        if is_tty:
-                            formatter.console.print(
-                                f"\n[bold cyan]{group['name']}[/bold cyan] [dim]({name})[/dim]"
+                    for group in groups:
+                        if len(selected_providers) > 1 or len(groups) > 1:
+                            if is_tty and not output_file:
+                                formatter.console.print(
+                                    f"\n[bold cyan]{group['name']}[/bold cyan] [dim]({name})[/dim]"
+                                )
+                            elif not output_file:
+                                print(f"\n{group['name']} ({name})")
+
+                        members = provider.get_members(group["id"])
+                        if members:
+                            formatter.format_members(
+                                members,
+                                group["name"],
+                                source=name,
+                                group_id=group["id"],
                             )
-                        else:
-                            print(f"\n{group['name']} ({name})")
-
-                    members = provider.get_members(group["id"])
-                    if members:
-                        formatter.format_members(members, group["name"])
-                    elif is_tty:
-                        formatter.console.print("[dim]No members found[/dim]")
-                    else:
-                        print("No members found")
-            except Exception as e:
-                print(f"Error querying {name}: {e}", file=sys.stderr)
+                        elif is_tty and not output_file:
+                            formatter.console.print("[dim]No members found[/dim]")
+                        elif not output_file:
+                            print("No members found")
+                except Exception as e:
+                    print(f"Error querying {name}: {e}", file=sys.stderr)
+        finally:
+            formatter.close()
 
 
 if __name__ == "__main__":
