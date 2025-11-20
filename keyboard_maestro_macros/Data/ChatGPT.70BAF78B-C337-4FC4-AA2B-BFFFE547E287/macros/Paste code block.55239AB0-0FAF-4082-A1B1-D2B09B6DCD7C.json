@@ -1,0 +1,22 @@
+{
+	"CreationDate": 783914625.159375,
+	"UID": "55239AB0-0FAF-4082-A1B1-D2B09B6DCD7C",
+	"Name": "Paste code block",
+	"Triggers": [
+		{
+			"KeyCode": 14,
+			"MacroTriggerType": "HotKey",
+			"Modifiers": 4096,
+			"FireType": "Pressed"
+		}
+	],
+	"ModificationDate": 783914706.632918,
+	"Actions": [
+		{
+			"MacroActionType": "InsertText",
+			"Action": "ByPasting",
+			"Text": "```\n%SystemClipboard%\n```",
+			"ActionUID": 16458384
+		}
+	]
+}

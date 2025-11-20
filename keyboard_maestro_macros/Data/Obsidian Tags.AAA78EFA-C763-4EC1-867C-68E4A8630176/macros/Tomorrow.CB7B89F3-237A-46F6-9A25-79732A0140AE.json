@@ -1,0 +1,22 @@
+{
+	"CreationDate": 733825615.728496,
+	"UID": "CB7B89F3-237A-46F6-9A25-79732A0140AE",
+	"Name": "Tomorrow",
+	"Triggers": [
+		{
+			"KeyCode": 16,
+			"MacroTriggerType": "HotKey",
+			"Modifiers": 0,
+			"FireType": "Pressed"
+		}
+	],
+	"ModificationDate": 733825722.498253,
+	"Actions": [
+		{
+			"MacroActionType": "InsertText",
+			"Action": "ByPasting",
+			"Text": "@due(%ICUDateTimePlus%1%Days%yyyy-MM-dd%)",
+			"ActionUID": 15951
+		}
+	]
+}

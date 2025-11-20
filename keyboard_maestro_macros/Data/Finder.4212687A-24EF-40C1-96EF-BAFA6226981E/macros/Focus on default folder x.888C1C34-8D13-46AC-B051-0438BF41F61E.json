@@ -1,0 +1,34 @@
+{
+	"CreationDate": 524873348.584201,
+	"UID": "888C1C34-8D13-46AC-B051-0438BF41F61E",
+	"Name": "Focus on default folder x",
+	"Triggers": [
+		{
+			"KeyCode": 13,
+			"MacroTriggerType": "HotKey",
+			"Modifiers": 4096,
+			"FireType": "Pressed"
+		}
+	],
+	"ModificationDate": 568495323.562253,
+	"Actions": [
+		{
+			"MacroActionType": "MouseMoveAndClick",
+			"DragVerticalPosition": "0",
+			"ClickCount": 1,
+			"Modifiers": 0,
+			"Button": 0,
+			"Fuzz": 15,
+			"Action": "MoveAndClick",
+			"DisplayMatches": false,
+			"ActionUID": 253,
+			"DragHorizontalPosition": "0",
+			"RestoreMouseLocation": false,
+			"RelativeCorner": "TopLeft",
+			"VerticalPositionExpression": "41",
+			"HorizontalPositionExpression": "86",
+			"Relative": "Window",
+			"MouseDrag": "None"
+		}
+	]
+}

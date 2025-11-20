@@ -1,0 +1,141 @@
+{
+	"CreationDate": 769061266.00936,
+	"UID": "1C1EDBE6-3980-40F4-8CA3-67D050C632CF",
+	"Name": "OmniFocus | Search Remaining",
+	"Triggers": [
+		{
+			"KeyCode": 15,
+			"MacroTriggerType": "HotKey",
+			"Modifiers": 6400,
+			"FireType": "Pressed"
+		}
+	],
+	"ModificationDate": 769543861.357609,
+	"Actions": [
+		{
+			"MacroActionType": "Comment",
+			"Title": "OVERVIEW",
+			"StyledText": "\n\t\t\t\t\t\t\t41E4D515-C065-4C24-9859-EA2479C52CC9\n\t\t\t\t\t\t\tcnRmZAAAAAADAAAAAgAA\n\t\t\t\t\t\t\tAAcAAABUWFQucnRmAQAA\n\t\t\t\t\t\t\tAC4oAgAAKwAAAAEAAAAg\n\t\t\t\t\t\t\tAgAAe1xydGYxXGFuc2lc\n\t\t\t\t\t\t\tYW5zaWNwZzEyNTJcY29j\n\t\t\t\t\t\t\tb2FydGYyODIyClxjb2Nv\n\t\t\t\t\t\t\tYXRleHRzY2FsaW5nMFxj\n\t\t\t\t\t\t\tb2NvYXBsYXRmb3JtMHtc\n\t\t\t\t\t\t\tZm9udHRibFxmMFxmc3dp\n\t\t\t\t\t\t\tc3NcZmNoYXJzZXQwIEhl\n\t\t\t\t\t\t\tbHZldGljYTt9CntcY29s\n\t\t\t\t\t\t\tb3J0Ymw7XHJlZDI1NVxn\n\t\t\t\t\t\t\tcmVlbjI1NVxibHVlMjU1\n\t\t\t\t\t\t\tO1xyZWQwXGdyZWVuMFxi\n\t\t\t\t\t\t\tbHVlMDt9CntcKlxleHBh\n\t\t\t\t\t\t\tbmRlZGNvbG9ydGJsOztc\n\t\t\t\t\t\t\tY3NzcmdiXGMwXGMwXGMw\n\t\t\t\t\t\t\tXGM4NDcwNlxjbmFtZSBj\n\t\t\t\t\t\t\tb250cm9sVGV4dENvbG9y\n\t\t\t\t\t\t\tO30KXHBhcmRcdHg1NjBc\n\t\t\t\t\t\t\tdHgxMTIwXHR4MTY4MFx0\n\t\t\t\t\t\t\teDIyNDBcdHgyODAwXHR4\n\t\t\t\t\t\t\tMzM2MFx0eDM5MjBcdHg0\n\t\t\t\t\t\t\tNDgwXHR4NTA0MFx0eDU2\n\t\t\t\t\t\t\tMDBcdHg2MTYwXHR4Njcy\n\t\t\t\t\t\t\tMFxwYXJkaXJuYXR1cmFs\n\t\t\t\t\t\t\tXHBhcnRpZ2h0ZW5mYWN0\n\t\t\t\t\t\t\tb3IwCgpcZjBcZnMyNiBc\n\t\t\t\t\t\t\tY2YyIFN3aXRjaCB0byBP\n\t\t\t\t\t\t\tbW5pRm9jdXMgYW5kIFNl\n\t\t\t\t\t\t\tYXJjaCBSZW1haW5pbmcu\n\t\t\t\t\t\t\tIExhdW5jaCBPbW5pRm9j\n\t\t\t\t\t\t\tdXMgaWYgaXRcJzkycyBu\n\t\t\t\t\t\t\tb3QgYWxyZWFkeSBydW5u\n\t\t\t\t\t\t\taW5nIGFuZCBvcGVuIGEg\n\t\t\t\t\t\t\tbmV3IE9tbmlGb2N1cyBc\n\t\t\t\t\t\t\tCndpbmRvdyBpZiBubyBP\n\t\t\t\t\t\t\tbW5pRm9jdXMgd2luZG93\n\t\t\t\t\t\t\tcyBhcmUgY3VycmVudGx5\n\t\t\t\t\t\t\tIG9wZW4ufQEAAAAjAAAA\n\t\t\t\t\t\t\tAQAAAAcAAABUWFQucnRm\n\t\t\t\t\t\t\tEAAAALc9J2i2AQAAAAAA\n\t\t\t\t\t\t\tAAAAAAA=\n\t\t\t\t\t\t\t41E4D515-C065-4C24-9859-EA2479C52CC9\n\t\t\t\t\t\t\t",
+			"ActionColor": "Purple",
+			"ActionUID": 15100800
+		},
+		{
+			"MacroActionType": "ActivateApplication",
+			"ActionUID": 15100801,
+			"ReopenWindows": false,
+			"AllWindows": true,
+			"TimeOutAbortsMacro": true,
+			"AlreadyActivatedActionType": "Normal",
+			"Application": {
+				"BundleIdentifier": "com.omnigroup.OmniFocus3",
+				"Name": "OmniFocus",
+				"NewFile": "/Applications/OmniFocus.app"
+			}
+		},
+		{
+			"MacroActionType": "PauseUntil",
+			"Conditions": {
+				"ConditionListMatch": "All",
+				"ConditionList": [
+					{
+						"Application": {
+							"BundleIdentifier": "com.omnigroup.OmniFocus4",
+							"Name": "OmniFocus",
+							"NewFile": "/Applications/OmniFocus.app"
+						},
+						"ApplicationConditionType": "Active",
+						"ConditionType": "Application"
+					}
+				]
+			},
+			"TimeOutAbortsMacro": true,
+			"ActionUID": 15100802
+		},
+		{
+			"MacroActionType": "IfThenElse",
+			"ElseActions": [],
+			"Conditions": {
+				"ConditionListMatch": "All",
+				"ConditionList": [
+					{
+						"MenuConditionType": "IsNotEnabled",
+						"ConditionType": "Menu",
+						"MenuConditionSelectionType": "Is",
+						"MenuModifiers": 256,
+						"MenuShortcut": "C",
+						"MenuTitle": "Bring All to Front"
+					}
+				]
+			},
+			"ThenActions": [
+				{
+					"MacroActionType": "PauseUntil",
+					"Conditions": {
+						"ConditionListMatch": "All",
+						"ConditionList": [
+							{
+								"MenuConditionType": "IsEnabled",
+								"ConditionType": "Menu",
+								"MenuConditionSelectionType": "Is",
+								"MenuModifiers": 256,
+								"MenuShortcut": "C",
+								"MenuTitle": "New Window"
+							}
+						]
+					},
+					"TimeOutAbortsMacro": true,
+					"ActionUID": 15101588
+				},
+				{
+					"MacroActionType": "SelectMenuItem",
+					"TargetingType": "Specific",
+					"TargetApplication": {
+						"BundleIdentifier": "com.omnigroup.OmniFocus3",
+						"Name": "OmniFocus",
+						"NewFile": "/Applications/OmniFocus.app"
+					},
+					"Menu": [
+						"File",
+						"New Window"
+					],
+					"ActionUID": 15101197
+				}
+			],
+			"TimeOutAbortsMacro": true,
+			"ActionUID": 15101194
+		},
+		{
+			"MacroActionType": "PauseUntil",
+			"Conditions": {
+				"ConditionListMatch": "All",
+				"ConditionList": [
+					{
+						"MenuConditionType": "IsEnabled",
+						"ConditionType": "Menu",
+						"MenuConditionSelectionType": "Is",
+						"MenuModifiers": 256,
+						"MenuShortcut": "C",
+						"MenuTitle": "Search Remaining"
+					}
+				]
+			},
+			"TimeOutAbortsMacro": true,
+			"ActionUID": 15100803
+		},
+		{
+			"MacroActionType": "SelectMenuItem",
+			"TargetingType": "Specific",
+			"TargetApplication": {
+				"BundleIdentifier": "com.omnigroup.OmniFocus3",
+				"Name": "OmniFocus",
+				"NewFile": "/Applications/OmniFocus.app"
+			},
+			"Menu": [
+				"Edit",
+				"Find",
+				"Search Remaining"
+			],
+			"ActionUID": 15100804
+		}
+	]
+}

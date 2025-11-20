@@ -1,0 +1,18 @@
+{
+	"AddToMacroPalette": false,
+	"Modifiers": 0,
+	"CreationDate": 555307113.786642,
+	"AddToStatusMenu": false,
+	"PaletteUnderMouse": false,
+	"CustomIconData": "KMEP-GenericApplication-/Applications/OmniFocus.app",
+	"Name": "🌐 App | OmniFocus ",
+	"UID": "0190E63D-06C2-42CB-8D31-F01CFB46AAA8",
+	"Targeting": {
+		"Targeting": "All",
+		"TargetingApps": []
+	},
+	"Macros": [],
+	"ToggleMacroUID": "D8A29CDB-C4B4-44F2-9DC3-5C7C7FD0EE0B",
+	"Activate": "Normal",
+	"KeyCode": 32767
+}

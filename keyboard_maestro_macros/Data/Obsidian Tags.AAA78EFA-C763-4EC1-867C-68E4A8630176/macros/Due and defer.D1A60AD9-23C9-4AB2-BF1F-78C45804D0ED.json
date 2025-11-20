@@ -1,0 +1,22 @@
+{
+	"CreationDate": 777944619.085745,
+	"UID": "D1A60AD9-23C9-4AB2-BF1F-78C45804D0ED",
+	"Name": "Due and defer",
+	"Triggers": [
+		{
+			"KeyCode": 3,
+			"MacroTriggerType": "HotKey",
+			"Modifiers": 0,
+			"FireType": "Pressed"
+		}
+	],
+	"ModificationDate": 777944732.353486,
+	"Actions": [
+		{
+			"MacroActionType": "InsertText",
+			"Action": "ByPasting",
+			"Text": "@defer(%|% 00:00:00) @due( 12:00:00)",
+			"ActionUID": 16455914
+		}
+	]
+}

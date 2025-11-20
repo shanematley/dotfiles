@@ -1,0 +1,103 @@
+{
+	"UID": "98121C9E-87EC-47A5-8262-39217CCB2F46",
+	"CreationDate": 784983949.394825,
+	"ModificationDate": 785238952.901844,
+	"Triggers": [
+		{
+			"ReturnsValue": false,
+			"MacroTriggerType": "Subroutine",
+			"Parameters": [
+				"Local_JsonField"
+			]
+		}
+	],
+	"IsActive": false,
+	"Actions": [
+		{
+			"MacroActionType": "ExecuteSubroutine",
+			"ResultVariable": "Local_PageInfo",
+			"MacroUID": "6858E7EA-0F9D-407A-87EF-4015D298F039",
+			"Parameters": [],
+			"TimeOutAbortsMacro": true,
+			"ActionUID": 15812888
+		},
+		{
+			"MacroActionType": "InsertText",
+			"Action": "DisplayBriefly",
+			"Text": "%Variable%Local_PageInfo%",
+			"IsActive": false,
+			"ActionUID": 15812889
+		},
+		{
+			"MacroActionType": "SetVariableToText",
+			"Variable": "Local_FieldValue",
+			"Text": "%JSONValue%Local_PageInfo{%Variable%Local_JsonField%}%",
+			"ActionUID": 15812938
+		},
+		{
+			"MacroActionType": "IfThenElse",
+			"ActionUID": 15812974,
+			"IsDisclosed": false,
+			"TimeOutAbortsMacro": true,
+			"ElseActions": [],
+			"Conditions": {
+				"ConditionListMatch": "Any",
+				"ConditionList": [
+					{
+						"ConditionType": "Variable",
+						"VariableValue": "value",
+						"Variable": "Local_FieldValue",
+						"VariableConditionType": "IsEmpty"
+					},
+					{
+						"ConditionType": "Variable",
+						"VariableValue": "null",
+						"Variable": "Local_FieldValue",
+						"VariableConditionType": "Contains"
+					}
+				]
+			},
+			"ThenActions": [
+				{
+					"MacroActionType": "InsertText",
+					"Text": "Unable to copy. There was no content in the “%Variable%Local_JsonField%” field.",
+					"Action": "DisplayBriefly",
+					"ActionColor": "Red",
+					"ActionUID": 15812992
+				},
+				{
+					"MacroActionType": "Cancel",
+					"Action": "CancelThisMacro",
+					"ActionColor": "Red",
+					"ActionUID": 15812978
+				}
+			]
+		},
+		{
+			"MacroActionType": "Log",
+			"ActionName": "Log Whole JSON",
+			"IsActive": false,
+			"Text": "PageInfo is: %Variable%Local_PageInfo%",
+			"ActionUID": 15812890
+		},
+		{
+			"MacroActionType": "Log",
+			"Text": "Copying %Variable%Local_JsonField%: %Variable%Local_FieldValue%",
+			"IsActive": false,
+			"ActionUID": 15813036
+		},
+		{
+			"MacroActionType": "SetClipboardToText",
+			"JustDisplay": false,
+			"Text": "%Variable%Local_FieldValue%",
+			"ActionUID": 15812892
+		},
+		{
+			"MacroActionType": "InsertText",
+			"Action": "DisplayBriefly",
+			"Text": "Copied %Variable%Local_JsonField%: %SystemClipboard%",
+			"ActionUID": 15812893
+		}
+	],
+	"Name": "Copy Requested Field"
+}

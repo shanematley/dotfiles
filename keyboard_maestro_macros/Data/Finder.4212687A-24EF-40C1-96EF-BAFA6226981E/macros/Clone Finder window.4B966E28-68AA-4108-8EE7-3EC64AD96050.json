@@ -1,0 +1,34 @@
+{
+	"CreationDate": 549217532.191462,
+	"UID": "4B966E28-68AA-4108-8EE7-3EC64AD96050",
+	"Name": "Clone Finder window",
+	"Triggers": [
+		{
+			"KeyCode": 8,
+			"MacroTriggerType": "HotKey",
+			"Modifiers": 4096,
+			"FireType": "Pressed"
+		}
+	],
+	"ModificationDate": 556752352.290889,
+	"Actions": [
+		{
+			"MacroActionType": "ExecuteAppleScript",
+			"IncludedVariables": [
+				"9999"
+			],
+			"TrimResults": true,
+			"StopOnFailure": false,
+			"IncludeStdErr": false,
+			"ActionUID": 230,
+			"UseText": true,
+			"TrimResultsNew": true,
+			"TimeOutAbortsMacro": true,
+			"Path": "",
+			"DisplayKind": "None",
+			"HonourFailureSettings": true,
+			"Text": "tell application \"Finder\"\r\tset theSelection to (alias (path to desktop folder as text))\r\tset theCount to the count of windows\r\tif theCount > 0 then set theSelection to the target of the front Finder window\r\tmake new Finder window to theSelection\r\tactivate\rend tell\n",
+			"NotifyOnFailure": false
+		}
+	]
+}

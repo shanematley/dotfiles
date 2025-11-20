@@ -1,0 +1,22 @@
+{
+	"CreationDate": 701669407.362728,
+	"UID": "46AF9B25-90E3-47B4-924A-065F4F865EC4",
+	"Name": "Dev School Revamp",
+	"Triggers": [
+		{
+			"KeyCode": 15,
+			"MacroTriggerType": "HotKey",
+			"Modifiers": 0,
+			"FireType": "Pressed"
+		}
+	],
+	"ModificationDate": 711330892.223746,
+	"Actions": [
+		{
+			"MacroActionType": "InsertText",
+			"Action": "ByPasting",
+			"Text": "#DevSchool/2022Revamp",
+			"ActionUID": 13632
+		}
+	]
+}

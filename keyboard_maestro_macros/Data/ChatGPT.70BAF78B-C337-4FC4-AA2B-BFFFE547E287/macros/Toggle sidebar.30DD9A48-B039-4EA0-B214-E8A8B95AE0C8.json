@@ -1,0 +1,30 @@
+{
+	"CreationDate": 756705919.595853,
+	"UID": "30DD9A48-B039-4EA0-B214-E8A8B95AE0C8",
+	"Name": "Toggle sidebar",
+	"Triggers": [
+		{
+			"KeyCode": 1,
+			"MacroTriggerType": "HotKey",
+			"Modifiers": 2304,
+			"FireType": "Pressed"
+		}
+	],
+	"ModificationDate": 756705981.930785,
+	"Actions": [
+		{
+			"MacroActionType": "SelectMenuItem",
+			"TargetingType": "Specific",
+			"TargetApplication": {
+				"BundleIdentifier": "com.openai.chat",
+				"Name": "ChatGPT",
+				"NewFile": "/Applications/ChatGPT.app"
+			},
+			"Menu": [
+				"View",
+				"Toggle Sidebar"
+			],
+			"ActionUID": 19556
+		}
+	]
+}

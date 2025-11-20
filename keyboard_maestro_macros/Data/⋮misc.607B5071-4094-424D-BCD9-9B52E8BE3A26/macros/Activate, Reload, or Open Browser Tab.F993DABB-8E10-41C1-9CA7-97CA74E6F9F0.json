@@ -1,0 +1,1046 @@
+{
+	"UID": "F993DABB-8E10-41C1-9CA7-97CA74E6F9F0",
+	"CreationDate": 699255299.311268,
+	"ModificationDate": 769676003.402039,
+	"Triggers": [],
+	"Actions": [
+		{
+			"MacroActionType": "Comment",
+			"Title": "",
+			"ActionName": "MACRO DESCRIPTION",
+			"StyledText": "\n\t\t\t\t\t\t\t41E4D515-C065-4C24-9859-EA2479C52CC9\n\t\t\t\t\t\t\tcnRmZAAAAAADAAAAAgAA\n\t\t\t\t\t\t\tAAcAAABUWFQucnRmAQAA\n\t\t\t\t\t\t\tAC6UNAAAKwAAAAEAAACM\n\t\t\t\t\t\t\tNAAAe1xydGYxXGFuc2lc\n\t\t\t\t\t\t\tYW5zaWNwZzEyNTJcY29j\n\t\t\t\t\t\t\tb2FydGYyNzU5Clxjb2Nv\n\t\t\t\t\t\t\tYXRleHRzY2FsaW5nMFxj\n\t\t\t\t\t\t\tb2NvYXBsYXRmb3JtMHtc\n\t\t\t\t\t\t\tZm9udHRibFxmMFxmbmls\n\t\t\t\t\t\t\tXGZjaGFyc2V0MCBIZWx2\n\t\t\t\t\t\t\tZXRpY2FOZXVlLUJvbGQ7\n\t\t\t\t\t\t\tXGYxXGZuaWxcZmNoYXJz\n\t\t\t\t\t\t\tZXQwIEhlbHZldGljYU5l\n\t\t\t\t\t\t\tdWU7XGYyXGZuaWxcZmNo\n\t\t\t\t\t\t\tYXJzZXQwIEhlbHZldGlj\n\t\t\t\t\t\t\tYU5ldWUtQm9sZEl0YWxp\n\t\t\t\t\t\t\tYzsKXGYzXGZuaWxcZmNo\n\t\t\t\t\t\t\tYXJzZXQwIE1lbmxvLVJl\n\t\t\t\t\t\t\tZ3VsYXI7XGY0XGZuaWxc\n\t\t\t\t\t\t\tZmNoYXJzZXQwIEhlbHZl\n\t\t\t\t\t\t\tdGljYU5ldWUtSXRhbGlj\n\t\t\t\t\t\t\tO1xmNVxmbmlsXGZjaGFy\n\t\t\t\t\t\t\tc2V0MCBNZW5sby1JdGFs\n\t\t\t\t\t\t\taWM7Cn0Ke1xjb2xvcnRi\n\t\t\t\t\t\t\tbDtccmVkMjU1XGdyZWVu\n\t\t\t\t\t\t\tMjU1XGJsdWUyNTU7XHJl\n\t\t\t\t\t\t\tZDE1M1xncmVlbjEwMlxi\n\t\t\t\t\t\t\tbHVlNTE7XHJlZDE1Nlxn\n\t\t\t\t\t\t\tcmVlbjE1NlxibHVlMTU2\n\t\t\t\t\t\t\tO1xyZWQyNlxncmVlbjI2\n\t\t\t\t\t\t\tXGJsdWUyNjsKXHJlZDI0\n\t\t\t\t\t\t\tXGdyZWVuNTdcYmx1ZTEz\n\t\t\t\t\t\t\tNjtccmVkNTFcZ3JlZW41\n\t\t\t\t\t\t\tMVxibHVlNTE7XHJlZDI0\n\t\t\t\t\t\t\tN1xncmVlbjI0N1xibHVl\n\t\t\t\t\t\t\tMjQ3O1xyZWQwXGdyZWVu\n\t\t\t\t\t\t\tMFxibHVlMjMzO1xyZWQ3\n\t\t\t\t\t\t\tNlxncmVlbjc4XGJsdWU3\n\t\t\t\t\t\t\tODsKXHJlZDIyMFxncmVl\n\t\t\t\t\t\t\tbjE2MVxibHVlMTM7fQp7\n\t\t\t\t\t\t\tXCpcZXhwYW5kZWRjb2xv\n\t\t\t\t\t\t\tcnRibDs7XGNzc3JnYlxj\n\t\t\t\t\t\t\tNjY4MDBcYzQ3NTEyXGMy\n\t\t\t\t\t\t\tNTg2MDtcY3NzcmdiXGM2\n\t\t\t\t\t\t\tNzQ1MVxjNjc0NTFcYzY3\n\t\t\t\t\t\t\tNDUxO1xjc3NyZ2JcYzEz\n\t\t\t\t\t\t\tMzMzXGMxMzMzM1xjMTMz\n\t\t\t\t\t\t\tMzM7Clxjc3NyZ2JcYzEy\n\t\t\t\t\t\t\tMTU3XGMzMDE5NlxjNjAz\n\t\t\t\t\t\t\tOTI7XGNzc3JnYlxjMjYy\n\t\t\t\t\t\t\tNzVcYzI2Mjc1XGMyNjI3\n\t\t\t\t\t\t\tNTtcY3NzcmdiXGM5NzY0\n\t\t\t\t\t\t\tN1xjOTc2NDdcYzk3NjQ3\n\t\t\t\t\t\t\tO1xjc3NyZ2JcYzBcYzBc\n\t\t\t\t\t\t\tYzkzMzMzO1xjc2dlbmVy\n\t\t\t\t\t\t\taWNyZ2JcYzI5OTk5XGMz\n\t\t\t\t\t\t\tMDQ1N1xjMzA0NTc7Clxj\n\t\t\t\t\t\t\tc3NyZ2JcYzg5NDEyXGM2\n\t\t\t\t\t\t\tODYyN1xjMzkyMjt9Clxw\n\t\t\t\t\t\t\tYXJkXHR4NTYwXHR4MTEy\n\t\t\t\t\t\t\tMFx0eDE2ODBcdHgyMjQw\n\t\t\t\t\t\t\tXHR4MjgwMFx0eDMzNjBc\n\t\t\t\t\t\t\tdHgzOTIwXHR4NDQ4MFx0\n\t\t\t\t\t\t\teDUwNDBcdHg1NjAwXHR4\n\t\t\t\t\t\t\tNjE2MFx0eDY3MjBccGFy\n\t\t\t\t\t\t\tZGlybmF0dXJhbFxwYXJ0\n\t\t\t\t\t\t\taWdodGVuZmFjdG9yMAoK\n\t\t\t\t\t\t\tXGYwXGJcZnMyNiBcY2Yw\n\t\t\t\t\t\t\tIEFjdGl2YXRlLCBSZWxv\n\t\t\t\t\t\t\tYWQsIG9yIE9wZW4gQnJv\n\t\t\t\t\t\t\td3NlciBUYWIKXGYxXGIw\n\t\t\t\t\t\t\tICwgdjQuMFwKcmV2aXNl\n\t\t\t\t\t\t\tZDogMjAyNC0wMy0xMywg\n\t\t\t\t\t\t\tSmltIFNhdWVyXAoKXGYw\n\t\t\t\t\t\t\tXGIgXApccGFyZFxwYXJk\n\t\t\t\t\t\t\tZWZ0YWI1NjBcc2xsZWFk\n\t\t\t\t\t\t\taW5nMjBccGFydGlnaHRl\n\t\t\t\t\t\t\tbmZhY3RvcjAKXGNmMiBQ\n\t\t\t\t\t\t\tVVJQT1NFXApccGFyZFxw\n\t\t\t\t\t\t\tYXJkZWZ0YWI3MjBccGFy\n\t\t\t\t\t\t\tZGlybmF0dXJhbFxwYXJ0\n\t\t\t\t\t\t\taWdodGVuZmFjdG9yMAoK\n\t\t\t\t\t\t\tXGYxXGIwIFxjZjAgVGhp\n\t\t\t\t\t\t\tcyBtYWNybyB3aWxsIG9w\n\t\t\t\t\t\t\tZW4gYSBVUkwgaW4gYSB7\n\t\t\t\t\t\t\tXGZpZWxke1wqXGZsZGlu\n\t\t\t\t\t\t\tc3R7SFlQRVJMSU5LICJo\n\t\t\t\t\t\t\tdHRwczovL3d3dy5hcHBs\n\t\t\t\t\t\t\tZS5jb20vc2FmYXJpLyJ9\n\t\t\t\t\t\t\tfXtcZmxkcnNsdCBTYWZh\n\t\t\t\t\t\t\tcml9fSxcZXhwbmQwXGV4\n\t\t\t\t\t\t\tcG5kdHcwXGtlcm5pbmcw\n\t\t\t\t\t\t\tClwnYTB7XGZpZWxke1wq\n\t\t\t\t\t\t\tXGZsZGluc3R7SFlQRVJM\n\t\t\t\t\t\t\tSU5LICJodHRwczovL2Fy\n\t\t\t\t\t\t\tYy5uZXQvIn19e1xmbGRy\n\t\t\t\t\t\t\tc2x0IFxjZjMgXHVsIFx1\n\t\t\t\t\t\t\tbGMzIEFyY319XGtlcm5p\n\t\t\t\t\t\t\tbmcxXGV4cG5kMFxleHBu\n\t\t\t\t\t\t\tZHR3MCAsIHtcZmllbGR7\n\t\t\t\t\t\t\tXCpcZmxkaW5zdHtIWVBF\n\t\t\t\t\t\t\tUkxJTksgImh0dHBzOi8v\n\t\t\t\t\t\t\td3d3Lmdvb2dsZS5jb20v\n\t\t\t\t\t\t\tY2hyb21lLyJ9fXtcZmxk\n\t\t\t\t\t\t\tcnNsdCBDaHJvbWV9fSwg\n\t\t\t\t\t\t\te1xmaWVsZHtcKlxmbGRp\n\t\t\t\t\t\t\tbnN0e0hZUEVSTElOSyAi\n\t\t\t\t\t\t\taHR0cHM6Ly9icmF2ZS5j\n\t\t\t\t\t\t\tb20vIn19e1xmbGRyc2x0\n\t\t\t\t\t\t\tIEJyYXZlfX0sIHtcZmll\n\t\t\t\t\t\t\tbGR7XCpcZmxkaW5zdHtI\n\t\t\t\t\t\t\tWVBFUkxJTksgImh0dHBz\n\t\t\t\t\t\t\tOi8vd3d3Lm1pY3Jvc29m\n\t\t\t\t\t\t\tdC5jb20vZW4tdXMvZWRn\n\t\t\t\t\t\t\tZS8ifX17XGZsZHJzbHQg\n\t\t\t\t\t\t\tRWRnZX19LCBvciB7XGZp\n\t\t\t\t\t\t\tZWxke1wqXGZsZGluc3R7\n\t\t\t\t\t\t\tSFlQRVJMSU5LICJodHRw\n\t\t\t\t\t\t\tczovL3ZpdmFsZGkuY29t\n\t\t\t\t\t\t\tIn19e1xmbGRyc2x0IFZp\n\t\t\t\t\t\t\tdmFsZGl9fSB0YWIuIElm\n\t\t\t\t\t\t\tIHRoZSBVUkwgaXMgYWxy\n\t\t\t\t\t\t\tZWFkeSBvcGVuIGluIGEg\n\t\t\t\t\t\t\tdGFiLCB0aGVuIHRoZSB0\n\t\t\t\t\t\t\tYWIgd2lsbCBiZSBzZWxl\n\t\t\t\t\t\t\tY3RlZC4gVGhlIG1hY3Jv\n\t\t\t\t\t\t\tIGluY2x1ZGVzIHNvbWUg\n\t\t\t\t\t\t\tYWR2YW5jZWQgZmVhdHVy\n\t\t\t\t\t\t\tZXMgd2hpY2ggYXJlIGRp\n\t\t\t\t\t\t\tc2N1c3NlZCBiZWxvdy4K\n\t\t\t\t\t\t\tXGYwXGIgXGNmMiBcClxw\n\t\t\t\t\t\t\tYXJkXHBhcmRlZnRhYjU2\n\t\t\t\t\t\t\tMFxzbGxlYWRpbmcyMFxw\n\t\t\t\t\t\t\tYXJ0aWdodGVuZmFjdG9y\n\t\t\t\t\t\t\tMApcY2YyIFwKXHBhcmRc\n\t\t\t\t\t\t\tcGFyZGVmdGFiNTYwXHNs\n\t\t\t\t\t\t\tbGVhZGluZzIwXHBhcnRp\n\t\t\t\t\t\t\tZ2h0ZW5mYWN0b3IwCgpc\n\t\t\t\t\t\t\tZjFcYjAgXGNmNCBcZXhw\n\t\t\t\t\t\t\tbmQwXGV4cG5kdHcwXGtl\n\t\t\t\t\t\t\tcm5pbmcwClRoZSBtYWNy\n\t\t\t\t\t\t\tbyBtdXN0IGJlIHRyaWdn\n\t\t\t\t\t\t\tZXJlZCBhbmQgdGhlIApc\n\t\t\t\t\t\t\tZjJcaVxiIFxjZjQgYnJv\n\t\t\t\t\t\t\td3NlciBpbmZvcm1hdGlv\n\t\t\t\t\t\t\tbgpcZjFcaTBcYjAgXGNm\n\t\t\t\t\t\t\tNCAgbXVzdCBiZSBzdXBw\n\t\t\t\t\t\t\tbGllZCB2aWEgdGhlIG1h\n\t\t\t\t\t\t\tY3JvIHtcZmllbGR7XCpc\n\t\t\t\t\t\t\tZmxkaW5zdHtIWVBFUkxJ\n\t\t\t\t\t\t\tTksgImh0dHBzOi8vd2lr\n\t\t\t\t\t\t\taS5rZXlib2FyZG1hZXN0\n\t\t\t\t\t\t\tcm8uY29tL3Rva2VuL1Ry\n\t\t\t\t\t\t\taWdnZXJWYWx1ZSJ9fXtc\n\t\t\t\t\t\t\tZmxkcnNsdCBcY2Y0ICVU\n\t\t\t\t\t\t\tcmlnZ2VyVmFsdWUlfX0u\n\t\t\t\t\t\t\tIFRoaXMgY2FuIGJlIGRv\n\t\t\t\t\t\t\tbmUgZnJvbSBhbm90aGVy\n\t\t\t\t\t\t\tIG1hY3JvIHVzaW5nIHRo\n\t\t\t\t\t\t\tZSB7XGZpZWxke1wqXGZs\n\t\t\t\t\t\t\tZGluc3R7SFlQRVJMSU5L\n\t\t\t\t\t\t\tICJodHRwczovL3dpa2ku\n\t\t\t\t\t\t\ta2V5Ym9hcmRtYWVzdHJv\n\t\t\t\t\t\t\tLmNvbS9hY3Rpb24vRXhl\n\t\t\t\t\t\t\tY3V0ZV9hX01hY3JvIn19\n\t\t\t\t\t\t\te1xmbGRyc2x0IFxjZjUg\n\t\t\t\t\t\t\tRXhlY3V0ZSBhIE1hY3Jv\n\t\t\t\t\t\t\tfX0gYWN0aW9uIG9yIGFu\n\t\t\t\t\t\t\tb3RoZXIgbWFjT1MgYXBw\n\t\t\t\t\t\t\tbGljYXRpb24gdmlhIEFw\n\t\t\t\t\t\t\tcGxlU2NyaXB0IChlLmcu\n\t\t\t\t\t\t\tLCB7XGZpZWxke1wqXGZs\n\t\t\t\t\t\t\tZGluc3R7SFlQRVJMSU5L\n\t\t\t\t\t\t\tICJodHRwczovL3d3dy5h\n\t\t\t\t\t\t\tbGZyZWRhcHAuY29tL2hl\n\t\t\t\t\t\t\tbHAvd29ya2Zsb3dzL2Fj\n\t\t\t\t\t\t\tdGlvbnMvcnVuLXNjcmlw\n\t\t\t\t\t\t\tdC8ifX17XGZsZHJzbHQg\n\t\t\t\t\t\t\tXGNmNSBBbGZyZWR9fSBh\n\t\t\t\t\t\t\tbmQge1xmaWVsZHtcKlxm\n\t\t\t\t\t\t\tbGRpbnN0e0hZUEVSTElO\n\t\t\t\t\t\t\tSyAiaHR0cHM6Ly9idW5j\n\t\t\t\t\t\t\taGFwcC5jby9kb2NzL2J1\n\t\t\t\t\t\t\tbmNoLWZpbGVzL3Njcmlw\n\t\t\t\t\t\t\tdHMvYXBwbGVzY3JpcHQv\n\t\t\t\t\t\t\tIn19e1xmbGRyc2x0IFxj\n\t\t\t\t\t\t\tZjUgQnVuY2h9fSkgdXNp\n\t\t\t\t\t\t\tbmcgdGhpcyB0ZW1wbGF0\n\t\t\t\t\t\t\tZTpcClxwYXJkXHBhcmRl\n\t\t\t\t\t\t\tZnRhYjcyMFxwYXJ0aWdo\n\t\t\t\t\t\t\tdGVuZmFjdG9yMApcY2Y2\n\t\t\t\t\t\t\tIFxjYjcgXAotLSBBY3Rp\n\t\t\t\t\t\t\tdmF0ZSwgUmVsb2FkLCBv\n\t\t\t\t\t\t\tciBPcGVuIEJyb3dzZXIg\n\t\t\t\t\t\t\tVGFiXApcCnByb3BlcnR5\n\t\t\t\t\t\t\tIHRoZVAgOiAiClxmMlxp\n\t\t\t\t\t\t\tXGIgXGNmNCBcY2IxIGJy\n\t\t\t\t\t\t\tb3dzZXIgaW5mb3JtYXRp\n\t\t\t\t\t\t\tb24KXGYxXGkwXGIwIFxj\n\t\t\t\t\t\t\tZjYgXGNiNyAiXApcCnRl\n\t\t\t\t\t\t\tbGwgYXBwbGljYXRpb24g\n\t\t\t\t\t\t\tIktleWJvYXJkIE1hZXN0\n\t\t\t\t\t\t\tcm8gRW5naW5lIlwKCWRv\n\t\t\t\t\t\t\tIHNjcmlwdCAiRjk5M0RB\n\t\t\t\t\t\t\tQkItOEUxMC00MUMxLTlD\n\t\t\t\t\t\t\tQTctOTdDQTc0RTZGOUYw\n\t\t\t\t\t\t\tIiB3aXRoIHBhcmFtZXRl\n\t\t\t\t\t\t\tciB0aGVQXAplbmQgdGVs\n\t\t\t\t\t\t\tbFwKXApccGFyZFxwYXJk\n\t\t\t\t\t\t\tZWZ0YWI1NjBcc2xsZWFk\n\t\t\t\t\t\t\taW5nMjBccGFydGlnaHRl\n\t\t\t\t\t\t\tbmZhY3RvcjAKXGNmMCBc\n\t\t\t\t\t\t\tY2IxIFxrZXJuaW5nMVxl\n\t\t\t\t\t\t\teHBuZDBcZXhwbmR0dzAg\n\t\t\t\t\t\t\tVGhpcyBtYWNybyBjYW4g\n\t\t\t\t\t\t\tYmUgcnVuIGluIHRocmVl\n\t\t\t\t\t\t\tIG1vZGVzIGRlcGVuZGlu\n\t\t\t\t\t\t\tZyBvbiB0aGUgZm9ybWF0\n\t\t\t\t\t\t\tIG9mIHRoZSAKXGYyXGlc\n\t\t\t\t\t\t\tYiBcY2Y0IFxleHBuZDBc\n\t\t\t\t\t\t\tZXhwbmR0dzBca2Vybmlu\n\t\t\t\t\t\t\tZzAKYnJvd3NlciBpbmZv\n\t\t\t\t\t\t\tcm1hdGlvbgpcZjFcaTBc\n\t\t\t\t\t\t\tYjAgXGNmNCAuXGNmMCBc\n\t\t\t\t\t\t\ta2VybmluZzFcZXhwbmQw\n\t\t\t\t\t\t\tXGV4cG5kdHcwIFwKXApc\n\t\t\t\t\t\t\tcGFyZFxwYXJkZWZ0YWI1\n\t\t\t\t\t\t\tNjBcc2xsZWFkaW5nMjBc\n\t\t\t\t\t\t\tcGFydGlnaHRlbmZhY3Rv\n\t\t\t\t\t\t\tcjAKClxmMFxiIFxjZjAg\n\t\t\t\t\t\t\tTW9kZSAxClxmMVxiMCA6\n\t\t\t\t\t\t\tIFRoZSAKXGYyXGlcYiBc\n\t\t\t\t\t\t\tY2Y0IFxleHBuZDBcZXhw\n\t\t\t\t\t\t\tbmR0dzBca2VybmluZzAK\n\t\t\t\t\t\t\tYnJvd3NlciBpbmZvcm1h\n\t\t\t\t\t\t\tdGlvbgpcZjFcaTBcYjAg\n\t\t\t\t\t\t\tXGNmNCAgaXMgc3BlY2lm\n\t\t\t\t\t\t\taWVkIGFzIGEgc2luZ2xl\n\t\t\t\t\t\t\tIFVSTC4gRm9yIGV4YW1w\n\t\t\t\t\t\t\tbGU6XGNmMCBca2Vybmlu\n\t\t\t\t\t\t\tZzFcZXhwbmQwXGV4cG5k\n\t\t\t\t\t\t\tdHcwIFwKXApccGFyZFxw\n\t\t\t\t\t\t\tYXJkZWZ0YWI1NjBcc2xs\n\t\t\t\t\t\t\tZWFkaW5nMjBccGFydGln\n\t\t\t\t\t\t\taHRlbmZhY3RvcjAKClxm\n\t\t\t\t\t\t\tM1xmczI0IFxjZjAgaHR0\n\t\t\t\t\t\t\tcHM6Ly9mb3J1bS5rZXli\n\t\t\t\t\t\t\tb2FyZG1hZXN0cm8uY29t\n\t\t\t\t\t\t\tL2xhdGVzdApcZjFcZnMy\n\t\t\t\t\t\t\tNiBcClwKXHBhcmRccGFy\n\t\t\t\t\t\t\tZGVmdGFiNTYwXHNsbGVh\n\t\t\t\t\t\t\tZGluZzIwXHBhcnRpZ2h0\n\t\t\t\t\t\t\tZW5mYWN0b3IwCgpcZjBc\n\t\t\t\t\t\t\tYiBcY2YwIE1vZGUgMgpc\n\t\t\t\t\t\t\tZjFcYjAgOiBUaGUgClxm\n\t\t\t\t\t\t\tMlxpXGIgXGNmNCBcZXhw\n\t\t\t\t\t\t\tbmQwXGV4cG5kdHcwXGtl\n\t\t\t\t\t\t\tcm5pbmcwCmJyb3dzZXIg\n\t\t\t\t\t\t\taW5mb3JtYXRpb24KXGYx\n\t\t\t\t\t\t\tXGkwXGIwIFxjZjQgIGlz\n\t\t\t\t\t\t\tIHNwZWNpZmllZCBhcyBh\n\t\t\t\t\t\t\tIHNpbmdsZSBjaGFyYWN0\n\t\t\t\t\t\t\tZXIgZm9yIHRoZSBicm93\n\t\t\t\t\t\t\tc2VyIChzIFNhZmFyaSwg\n\t\t\t\t\t\t\tYSBBcmMsIGMgQ2hyb21l\n\t\t\t\t\t\t\tLCBiIEJyYXZlLCBlIEVk\n\t\t\t\t\t\t\tZ2UsIHYgVml2YWxkaSks\n\t\t\t\t\t\t\tIGEgY29sb24sIGFuZCBh\n\t\t\t\t\t\t\tIFVSTC4gRm9yIGV4YW1w\n\t\t\t\t\t\t\tbGVcY2YwIFxrZXJuaW5n\n\t\t\t\t\t\t\tMVxleHBuZDBcZXhwbmR0\n\t\t\t\t\t\t\tdzAgXApcClxwYXJkXHBh\n\t\t\t\t\t\t\tcmRlZnRhYjU2MFxzbGxl\n\t\t\t\t\t\t\tYWRpbmcyMFxwYXJ0aWdo\n\t\t\t\t\t\t\tdGVuZmFjdG9yMAoKXGYz\n\t\t\t\t\t\t\tXGZzMjQgXGNmMCBhOmh0\n\t\t\t\t\t\t\tdHBzOi8vZm9ydW0ua2V5\n\t\t\t\t\t\t\tYm9hcmRtYWVzdHJvLmNv\n\t\t\t\t\t\t\tbS9sYXRlc3QKXGYxXGZz\n\t\t\t\t\t\t\tMjYgXApcClxwYXJkXHBh\n\t\t\t\t\t\t\tcmRlZnRhYjU2MFxzbGxl\n\t\t\t\t\t\t\tYWRpbmcyMFxwYXJ0aWdo\n\t\t\t\t\t\t\tdGVuZmFjdG9yMAoKXGYw\n\t\t\t\t\t\t\tXGIgXGNmMCBNb2RlIDMK\n\t\t\t\t\t\t\tXGYxXGIwIDogVGhlIApc\n\t\t\t\t\t\t\tZjJcaVxiIFxjZjQgXGV4\n\t\t\t\t\t\t\tcG5kMFxleHBuZHR3MFxr\n\t\t\t\t\t\t\tZXJuaW5nMApicm93c2Vy\n\t\t\t\t\t\t\tIGluZm9ybWF0aW9uClxm\n\t\t\t\t\t\t\tMVxpMFxiMCBcY2Y0ICBp\n\t\t\t\t\t\t\tcyBzcGVjaWZpZWQgYXMg\n\t\t\t\t\t\t\tSlNPTi5cY2YwIFxrZXJu\n\t\t\t\t\t\t\taW5nMVxleHBuZDBcZXhw\n\t\t\t\t\t\t\tbmR0dzAgXApcClxwYXJk\n\t\t\t\t\t\t\tXHBhcmRlZnRhYjU2MFxz\n\t\t\t\t\t\t\tbGxlYWRpbmcyMFxwYXJ0\n\t\t\t\t\t\t\taWdodGVuZmFjdG9yMAoK\n\t\t\t\t\t\t\tXGYzXGZzMjQgXGNmMCBc\n\t\t\t\t\t\t\te1wKCSJCcm93c2VyIjog\n\t\t\t\t\t\t\tIlNhZmFyaXxBcmN8Q2hy\n\t\t\t\t\t\t\tb21lfEJyYXZlfEVkZ2V8\n\t\t\t\t\t\t\tVml2YWxkaSIsXAoJIlVy\n\t\t\t\t\t\t\tbCI6ICJodHRwczovL2Zv\n\t\t\t\t\t\t\tcnVtLmtleWJvYXJkbWFl\n\t\t\t\t\t\t\tc3Ryby5jb20vbGF0ZXN0\n\t\t\t\t\t\t\tIixcCgkiVXJsUGF0dGVy\n\t\t\t\t\t\t\tbiI6ICJodHRwczovL2Zv\n\t\t\t\t\t\t\tcnVtXFxcXC5rZXlib2Fy\n\t\t\t\t\t\t\tZG1hZXN0cm9cXFxcLmNv\n\t\t\t\t\t\t\tbS4qIixcCgkiUmVwbGFj\n\t\t\t\t\t\t\tZU1hdGNoZWRVcmwiOiAw\n\t\t\t\t\t\t\tfDEsXAoJIlJlbG9hZFRh\n\t\t\t\t\t\t\tYiI6IDB8MSxcCgkiTmV3\n\t\t\t\t\t\t\tV2luZG93SWZOb3RGb3Vu\n\t\t\t\t\t\t\tZCI6IDB8MVwKXH0KXGYx\n\t\t\t\t\t\t\tXGZzMjYgXApcCgpcZjNc\n\t\t\t\t\t\t\tZnMyNCAiVXJsIgpcZjFc\n\t\t\t\t\t\t\tZnMyNiAgaXMgdGhlIG9u\n\t\t\t\t\t\t\tbHkgcmVxdWlyZWQga2V5\n\t\t\t\t\t\t\tLlwKXApOb3RlOiBJbiBK\n\t\t\t\t\t\t\tU09OLCBkb3VibGUgYmFj\n\t\t\t\t\t\t\ta3NsYXNoZXMgKApcZjNc\n\t\t\t\t\t\t\tZnMyNCBcXFxcClxmMVxm\n\t\t\t\t\t\t\tczI2ICkgYXJlIHJlcXVp\n\t\t\t\t\t\t\tcmVkIHRvIGVzY2FwZSBj\n\t\t\t\t\t\t\taGFyYWN0ZXJzIGluIApc\n\t\t\t\t\t\t\tZjNcZnMyNCAiVXJsUGF0\n\t\t\t\t\t\t\tdGVybiIKXGYxXGZzMjYg\n\t\t\t\t\t\t\tLlwKXApEZWZhdWx0IHZh\n\t\t\t\t\t\t\tbHVlcyBmb3IgdGhlIG90\n\t\t\t\t\t\t\taGVyIGtleXM6XApcCgkK\n\t\t\t\t\t\t\tXGYzXGZzMjQgIkJyb3dz\n\t\t\t\t\t\t\tZXIiOiAKXGYwXGJcZnMy\n\t\t\t\t\t\t\tNiBsb2NhbF9Ccm93c2Vy\n\t\t\t\t\t\t\tX2RlZmF1bHQKXGYxXGIw\n\t\t\t\t\t\t\tIFwKXAoJClxmM1xmczI0\n\t\t\t\t\t\t\tICJVcmxQYXR0ZXJuIjog\n\t\t\t\t\t\t\tClxmMVxmczI2IHRoZSB2\n\t\t\t\t\t\t\tYWx1ZSBvZiAKXGYzXGZz\n\t\t\t\t\t\t\tMjQgIlVybCIKXGYxXGZz\n\t\t\t\t\t\t\tMjYgXApcCgkKXGYzXGZz\n\t\t\t\t\t\t\tMjQgIlJlcGxhY2VNYXRj\n\t\t\t\t\t\t\taGVkVXJsIjogClxmMFxi\n\t\t\t\t\t\t\tXGZzMjYgbG9jYWxfUmVw\n\t\t\t\t\t\t\tbGFjZU1hdGNoZWRVcmxf\n\t\t\t\t\t\t\tZGVmYXVsdApcZjFcYjAg\n\t\t\t\t\t\t\tXAoJXAoJClxmM1xmczI0\n\t\t\t\t\t\t\tICJSZWxvYWRUYWIiOiAK\n\t\t\t\t\t\t\tXGYwXGJcZnMyNiBsb2Nh\n\t\t\t\t\t\t\tbF9SZWxvYWRUYWJfZGVm\n\t\t\t\t\t\t\tYXVsdApcZjFcYjAgXApc\n\t\t\t\t\t\t\tCgkKXGYzXGZzMjQgIk5l\n\t\t\t\t\t\t\td1dpbmRvd0lmTm90Rm91\n\t\t\t\t\t\t\tbmQiOiAKXGYwXGJcZnMy\n\t\t\t\t\t\t\tNiBsb2NhbF9OZXdXaW5k\n\t\t\t\t\t\t\tb3dJZk5vdEZvdW5kX2Rl\n\t\t\t\t\t\t\tZmF1bHQKXGYxXGIwIFwK\n\t\t\t\t\t\t\tXApJZiBhbiBleGlzdGlu\n\t\t\t\t\t\t\tZyBicm93c2VyIHRhYiBt\n\t\t\t\t\t\t\tYXRjaGVzIApcZjNcZnMy\n\t\t\t\t\t\t\tNCAiVXJsUGF0dGVybiIK\n\t\t\t\t\t\t\tXGYxXGZzMjYgICh1c2lu\n\t\t\t\t\t\t\tZyBSZWd1bGFyIEV4cHJl\n\t\t\t\t\t\t\tc3Npb25zKSwgdGhlbiBp\n\t\t\t\t\t\t\tdCB3aWxsIGJlIGFjdGl2\n\t\t\t\t\t\t\tYXRlZDsgb3RoZXJ3aXNl\n\t\t\t\t\t\t\tIGEgbmV3IHRhYiB3aWxs\n\t\t\t\t\t\t\tIGJlIG9wZW5lZCB0byAK\n\t\t\t\t\t\t\tXGYzXGZzMjQgIlVybCIK\n\t\t\t\t\t\t\tXGYxXGZzMjYgLiBcClwK\n\t\t\t\t\t\t\tSWYgClxmM1xmczI0ICJS\n\t\t\t\t\t\t\tZXBsYWNlTWF0Y2hlZFVy\n\t\t\t\t\t\t\tbCIKXGYxXGZzMjYgIGlz\n\t\t\t\t\t\t\tIDEsIHRoZW4gYW4gYWN0\n\t\t\t\t\t\t\taXZhdGVkIHRhYiB3aWxs\n\t\t\t\t\t\t\tIGJlIGNoYW5nZWQgdG8g\n\t\t\t\t\t\t\tClxmM1xmczI0ICJVcmwi\n\t\t\t\t\t\t\tClxmMVxmczI2IC4gT3Ro\n\t\t\t\t\t\t\tZXJ3aXNlLCB0aGUgClxm\n\t\t\t\t\t\t\tM1xmczI0ICJVcmwiClxm\n\t\t\t\t\t\t\tMVxmczI2ICB3aWxsIG5v\n\t\t\t\t\t\t\tdCBiZSBjaGFuZ2VkLCBo\n\t\t\t\t\t\t\tb3dldmVyLCB0aGUgcGFn\n\t\t\t\t\t\t\tZSB3aWxsIGJlIHJlbG9h\n\t\t\t\t\t\t\tZGVkIGlmIApcZjNcZnMy\n\t\t\t\t\t\t\tNCAiUmVsb2FkVGFiIgpc\n\t\t\t\t\t\t\tZjFcZnMyNiAgaXMgMS5c\n\t\t\t\t\t\t\tClwKSWYgYSBtYXRjaGlu\n\t\t\t\t\t\t\tZyB0YWIgaXMgbm90IGZv\n\t\t\t\t\t\t\tdW5kLCB0aGVuIGEgbmV3\n\t\t\t\t\t\t\tIGJyb3dzZXIgdGFiICgK\n\t\t\t\t\t\t\tXGYzXGZzMjQgIk5ld1dp\n\t\t\t\t\t\t\tbmRvd0lmTm90Rm91bmQi\n\t\t\t\t\t\t\tClxmMVxmczI2ICA9IDAp\n\t\t\t\t\t\t\tIG9yIGEgbmV3IGJyb3dz\n\t\t\t\t\t\t\tZXIgd2luZG93ICgKXGYz\n\t\t\t\t\t\t\tXGZzMjQgIk5ld1dpbmRv\n\t\t\t\t\t\t\td0lmTm90Rm91bmQiClxm\n\t\t\t\t\t\t\tMVxmczI2ICA9IDEpIHdp\n\t\t\t\t\t\t\tbGwgYmUgb3BlbmVkLlwK\n\t\t\t\t\t\t\tXApccGFyZFxwYXJkZWZ0\n\t\t\t\t\t\t\tYWI1NjBcc2xsZWFkaW5n\n\t\t\t\t\t\t\tMjBccGFydGlnaHRlbmZh\n\t\t\t\t\t\t\tY3RvcjAKClxmMFxiIFxj\n\t\t\t\t\t\t\tZjIgU0VUVElOR1NcClxw\n\t\t\t\t\t\t\tYXJkXHBhcmRlZnRhYjU2\n\t\t\t\t\t\t\tMFxzbGxlYWRpbmcyMFxw\n\t\t\t\t\t\t\tYXJ0aWdodGVuZmFjdG9y\n\t\t\t\t\t\t\tMApcY2YwIFxleHBuZDBc\n\t\t\t\t\t\t\tZXhwbmR0dzBca2Vybmlu\n\t\t\t\t\t\t\tZzAKbG9jYWxfQnJvd3Nl\n\t\t\t\t\t\t\tcl9kZWZhdWx0ClxmMVxi\n\t\t\t\t\t\t\tMCAgOiBca2VybmluZzFc\n\t\t\t\t\t\t\tZXhwbmQwXGV4cG5kdHcw\n\t\t\t\t\t\t\tIHRoZSBicm93c2VyIChT\n\t\t\t\t\t\t\tYWZhcml8QXJjfENocm9t\n\t\t\t\t\t\t\tZXxCcmF2ZXxFZGdlfFZp\n\t\t\t\t\t\t\tdmFsZGkpIHRoYXQgd2ls\n\t\t\t\t\t\t\tbCBiZSB1c2VkIGlmIGl0\n\t\t\t\t\t\t\tIG5vIHNwZWNpZmllZC4g\n\t\t\t\t\t\t\tVGhlIGRlZmF1bHQgaXMg\n\t\t\t\t\t\t\tU2FmYXJpLlwKClxmMFxi\n\t\t\t\t\t\t\tIFxleHBuZDBcZXhwbmR0\n\t\t\t\t\t\t\tdzBca2VybmluZzAKbG9j\n\t\t\t\t\t\t\tYWxfUmVwbGFjZU1hdGNo\n\t\t\t\t\t\t\tZWRVcmxfZGVmYXVsdApc\n\t\t\t\t\t\t\tZjFcYjAgIDogMHwxXAoK\n\t\t\t\t\t\t\tXGYwXGIgbG9jYWxfUmVs\n\t\t\t\t\t\t\tb2FkVGFiX2RlZmF1bHQK\n\t\t\t\t\t\t\tXGYxXGIwICA6IDB8MVwK\n\t\t\t\t\t\t\tClxmMFxiIGxvY2FsX05l\n\t\t\t\t\t\t\td1dpbmRvd0lmTm90Rm91\n\t\t\t\t\t\t\tbmRfZGVmYXVsdApcZjFc\n\t\t\t\t\t\t\tYjAgIDogMHwxClxmMFxi\n\t\t\t\t\t\t\tIFxjZjIgXGtlcm5pbmcx\n\t\t\t\t\t\t\tXGV4cG5kMFxleHBuZHR3\n\t\t\t\t\t\t\tMCBcClwKSU1QTEVNRU5U\n\t\t\t\t\t\t\tQVRJT04gTk9URVNcClxw\n\t\t\t\t\t\t\tYXJkXHBhcmRlZnRhYjU2\n\t\t\t\t\t\t\tMFxzbGxlYWRpbmcyMFxw\n\t\t\t\t\t\t\tYXJ0aWdodGVuZmFjdG9y\n\t\t\t\t\t\t\tMAoKXGYxXGIwIFxjZjAg\n\t\t\t\t\t\t\tVGhpcyBtYWNybyBjb3Vs\n\t\t\t\t\t\t\tZCBiZSBlYXNpbHkgbW9k\n\t\t\t\t\t\t\taWZpZWQgdG8gYWNjb21t\n\t\t\t\t\t\t\tb2RhdGUgYW55IGJyb3dz\n\t\t\t\t\t\t\tZXIgdGhhdCBpbmNsdWRl\n\t\t\t\t\t\t\tcyB0aGUgQXBwbGVTY3Jp\n\t\t\t\t\t\t\tcHQgClxmNFxpIFNhZmFy\n\t\t\t\t\t\t\taSBzdWl0ClxmMVxpMCAg\n\t\t\t\t\t\t\tb3IgClxmNFxpIENocm9t\n\t\t\t\t\t\t\taXVtIFN1aXRlClxmMVxp\n\t\t\t\t\t\t\tMCAuIEZvciBtb3JlIGlu\n\t\t\t\t\t\t\tZm9ybWF0aW9uIHJlZmVy\n\t\t\t\t\t\t\tIHRvIHRoZSBBcHBsZVNj\n\t\t\t\t\t\t\tcmlwdCBjb2RlIHdpdGhp\n\t\t\t\t\t\t\tbiB0aGlzIG1hY3JvLlwK\n\t\t\t\t\t\t\tXHBhcmRccGFyZGVmdGFi\n\t\t\t\t\t\t\tNTYwXHNsbGVhZGluZzIw\n\t\t\t\t\t\t\tXHBhcnRpZ2h0ZW5mYWN0\n\t\t\t\t\t\t\tb3IwCgpcZjBcYiBcY2Yy\n\t\t\t\t\t\t\tIFwKQUNLTk9XTEVER0VN\n\t\t\t\t\t\t\tRU5UU1wKXHBhcmRccGFy\n\t\t\t\t\t\t\tZGVmdGFiNTYwXHNsbGVh\n\t\t\t\t\t\t\tZGluZzIwXHBhcnRpZ2h0\n\t\t\t\t\t\t\tZW5mYWN0b3IwCgpcZjFc\n\t\t\t\t\t\t\tYjAgXGNmMCBhKSBUaGlz\n\t\t\t\t\t\t\tIG1hY3JvIHdhcyBpbnNw\n\t\t\t\t\t\t\taXJlZCBieSB7XGZpZWxk\n\t\t\t\t\t\t\te1wqXGZsZGluc3R7SFlQ\n\t\t\t\t\t\t\tRVJMSU5LICJodHRwczov\n\t\t\t\t\t\t\tL2ZvcnVtLmtleWJvYXJk\n\t\t\t\t\t\t\tbWFlc3Ryby5jb20vdC9t\n\t\t\t\t\t\t\tYWNyby1vci1wbHVnaW4t\n\t\t\t\t\t\t\tb3Blbi1vci1yZWZyZXNo\n\t\t\t\t\t\t\tLWEtdXJsLWluLWEtdGFi\n\t\t\t\t\t\t\tLXNhZmFyaS1jaHJvbWUv\n\t\t\t\t\t\t\tNTkzOCJ9fXtcZmxkcnNs\n\t\t\t\t\t\t\tdCBPcGVuIG9yIFJlZnJl\n\t\t\t\t\t\t\tc2ggYSBVUkwgaW4gYSBU\n\t\t\t\t\t\t\tYWIgKFN1Yi1NYWNybyl9\n\t\t\t\t\t\t\tfSBieVxleHBuZDBcZXhw\n\t\t\t\t\t\t\tbmR0dzBca2VybmluZzAK\n\t\t\t\t\t\t\tXCdhMHtcZmllbGR7XCpc\n\t\t\t\t\t\t\tZmxkaW5zdHtIWVBFUkxJ\n\t\t\t\t\t\t\tTksgImh0dHBzOi8vZm9y\n\t\t\t\t\t\t\tdW0ua2V5Ym9hcmRtYWVz\n\t\t\t\t\t\t\tdHJvLmNvbS91L0RhblRo\n\t\t\t\t\t\t\tb21hcy9zdW1tYXJ5In19\n\t\t\t\t\t\t\te1xmbGRyc2x0IFxjZjgg\n\t\t\t\t\t\t\tXHVsIFx1bGM4IEBEYW5U\n\t\t\t\t\t\t\taG9tYXN9fS4gClxmMFxi\n\t\t\t\t\t\t\tIFxrZXJuaW5nMVxleHBu\n\t\t\t\t\t\t\tZDBcZXhwbmR0dzAgQWN0\n\t\t\t\t\t\t\taXZhdGUsIFJlbG9hZCwg\n\t\t\t\t\t\t\tb3IgT3BlbiBCcm93c2Vy\n\t\t\t\t\t\t\tIFRhYgpcZjFcYjAgIGlu\n\t\t\t\t\t\t\tY2x1ZGVzIHNvbWUgb3Zl\n\t\t\t\t\t\t\tcmxhcHBpbmcgZmVhdHVy\n\t\t\t\t\t\t\tZXMuXApiKSBUaGlzIG1h\n\t\t\t\t\t\t\tY3JvIHVzZXMgdGhlIEFw\n\t\t\t\t\t\t\tcGxlU2NyaXB0IHtcZmll\n\t\t\t\t\t\t\tbGR7XCpcZmxkaW5zdHtI\n\t\t\t\t\t\t\tWVBFUkxJTksgImh0dHBz\n\t\t\t\t\t\t\tOi8vZm9ydW0ua2V5Ym9h\n\t\t\t\t\t\t\tcmRtYWVzdHJvLmNvbS90\n\t\t\t\t\t\t\tL2F1dG9tYXRpbmctdGhl\n\t\t\t\t\t\t\tLWtleWJvYXJkLW1hZXN0\n\t\t\t\t\t\t\tcm8tZWRpdG9yLXdpdGgt\n\t\t\t\t\t\t\tYXBwbGVzY3JpcHQvNDE4\n\t\t\t\t\t\t\tNC81MyJ9fXtcZmxkcnNs\n\t\t\t\t\t\t\tdCBcY2Y5IFNlbGVjdCBG\n\t\t\t\t\t\t\taXJzdCBBY3Rpb24gb2Yg\n\t\t\t\t\t\t\tQ3VycmVudCBNYWNyb319\n\t\t\t\t\t\t\tXGNmOSAgYnlcY2YwIFxl\n\t\t\t\t\t\t\teHBuZDBcZXhwbmR0dzBc\n\t\t\t\t\t\t\ta2VybmluZzAKXCdhMHtc\n\t\t\t\t\t\t\tZmllbGR7XCpcZmxkaW5z\n\t\t\t\t\t\t\tdHtIWVBFUkxJTksgImh0\n\t\t\t\t\t\t\tdHBzOi8vZm9ydW0ua2V5\n\t\t\t\t\t\t\tYm9hcmRtYWVzdHJvLmNv\n\t\t\t\t\t\t\tbS91L2Njc3RvbmUvc3Vt\n\t\t\t\t\t\t\tbWFyeSJ9fXtcZmxkcnNs\n\t\t\t\t\t\t\tdCBcY2Y4IFx1bCBcdWxj\n\t\t\t\t\t\t\tOCBAY2NzdG9uZX19LlwK\n\t\t\t\t\t\t\tXHBhcmRccGFyZGVmdGFi\n\t\t\t\t\t\t\tNTYwXHNsbGVhZGluZzIw\n\t\t\t\t\t\t\tXHBhcnRpZ2h0ZW5mYWN0\n\t\t\t\t\t\t\tb3IwCgpcZjBcYiBcY2Yy\n\t\t\t\t\t\t\tIFxrZXJuaW5nMVxleHBu\n\t\t\t\t\t\t\tZDBcZXhwbmR0dzAgXApU\n\t\t\t\t\t\t\tRVNURUQgV0lUSFwKXHBh\n\t\t\t\t\t\t\tcmRcdHg1NjBcdHgxMTIw\n\t\t\t\t\t\t\tXHR4MTY4MFx0eDIyNDBc\n\t\t\t\t\t\t\tdHgyODAwXHR4MzM2MFx0\n\t\t\t\t\t\t\teDM5MjBcdHg0NDgwXHR4\n\t\t\t\t\t\t\tNTA0MFx0eDU2MDBcdHg2\n\t\t\t\t\t\t\tMTYwXHR4NjcyMFxwYXJk\n\t\t\t\t\t\t\taXJuYXR1cmFsXHBhcnRp\n\t\t\t\t\t\t\tZ2h0ZW5mYWN0b3IwCgpc\n\t\t\t\t\t\t\tZjFcYjAgXGNmMCBcJzk1\n\t\t\t\t\t\t\tIEtleWJvYXJkIE1hZXN0\n\t\t\t\t\t\t\tcm8gMTEuMC4yXApcJzk1\n\t\t\t\t\t\t\tIFNvbm9tYSAxNC4zLjEg\n\t\t\t\t\t\t\tKDIzRDYwKS9NYWNCb29r\n\t\t\t\t\t\t\tUHJvMTgsMlwKXCc5NSBT\n\t\t\t\t\t\t\tb25vbWEgMTQuMy4xICgy\n\t\t\t\t\t\t\tM0Q2MCkvVmFyaWFibGVN\n\t\t\t\t\t\t\tYWNCb29rUHJvMTYsMVwK\n\t\t\t\t\t\t\tXCc5NSBNb2phdmUgMTAu\n\t\t\t\t\t\t\tMTQuMTYvTWFjbWluaTYs\n\t\t\t\t\t\t\tMlwKXCc5NSBIaWdoIFNp\n\t\t\t\t\t\t\tZXJyYSAxMC4xMy42L2lN\n\t\t\t\t\t\t\tYWMxMSwxNDQ1XApccGFy\n\t\t\t\t\t\t\tZFxwYXJkZWZ0YWI1NjBc\n\t\t\t\t\t\t\tc2xsZWFkaW5nMjBccGFy\n\t\t\t\t\t\t\tdGlnaHRlbmZhY3RvcjAK\n\t\t\t\t\t\t\tXGNmMCBcClxwYXJkXHBh\n\t\t\t\t\t\t\tcmRlZnRhYjU2MFxzbGxl\n\t\t\t\t\t\t\tYWRpbmcyMFxwYXJ0aWdo\n\t\t\t\t\t\t\tdGVuZmFjdG9yMAoKXGYw\n\t\t\t\t\t\t\tXGIgXGNmMiBWRVJTSU9O\n\t\t\t\t\t\t\tIEhJU1RPUlkKXGYxXGIw\n\t\t\t\t\t\t\tIFxjZjAgXApccGFyZFxw\n\t\t\t\t\t\t\tYXJkZWZ0YWI1NjBcc2xs\n\t\t\t\t\t\t\tZWFkaW5nMjBccGFydGln\n\t\t\t\t\t\t\taHRlbmZhY3RvcjAKClxm\n\t\t\t\t\t\t\tMFxiIFxjZjAgMS4wIApc\n\t\t\t\t\t\t\tZjFcYjAgaW5pdGlhbCB2\n\t\t\t\t\t\t\tZXJzaW9uXAoKXGYwXGIg\n\t\t\t\t\t\t\tXAoyLjAKXGYxXGIwIFwK\n\t\t\t\t\t\t\tYSkgQWRkZWQgc3VwcG9y\n\t\t\t\t\t\t\tdCBmb3IgdGhlIHtcZmll\n\t\t\t\t\t\t\tbGR7XCpcZmxkaW5zdHtI\n\t\t\t\t\t\t\tWVBFUkxJTksgImh0dHBz\n\t\t\t\t\t\t\tOi8vdml2YWxkaS5jb20i\n\t\t\t\t\t\t\tfX17XGZsZHJzbHQgVml2\n\t\t\t\t\t\t\tYWxkaX19IGJyb3dzZXIg\n\t\t\t\t\t\t\td2hpY2ggaW5jbHVkZXMg\n\t\t\t\t\t\t\tdGhlIEFwcGxlU2NyaXB0\n\t\t\t\t\t\t\tIApcZjRcaSBDaHJvbWl1\n\t\t\t\t\t\t\tbSBTdWl0ZQpcZjFcaTAg\n\t\t\t\t\t\t\tLlwKXApiKSBBZGRlZCBh\n\t\t\t\t\t\t\tbiBlcnJvciBtZXNzYWdl\n\t\t\t\t\t\t\tIGlmIHRoZSAKXGYzXGZz\n\t\t\t\t\t\t\tMjQgIkJyb3dzZXIiClxm\n\t\t\t\t\t\t\tMVxmczI2ICBpcyBpbXBy\n\t\t\t\t\t\t\tb3Blcmx5IHNwZWNpZmll\n\t\t\t\t\t\t\tZC5cClwKYykgV2hlbiBj\n\t\t\t\t\t\t\taGFuZ2luZyBKU09OIGlu\n\t\t\t\t\t\t\tIGFcZXhwbmQwXGV4cG5k\n\t\t\t\t\t\t\tdHcwXGtlcm5pbmcwClwn\n\t\t\t\t\t\t\tYTB7XGZpZWxke1wqXGZs\n\t\t\t\t\t\t\tZGluc3R7SFlQRVJMSU5L\n\t\t\t\t\t\t\tICJodHRwczovL3dpa2ku\n\t\t\t\t\t\t\ta2V5Ym9hcmRtYWVzdHJv\n\t\t\t\t\t\t\tLmNvbS9hY3Rpb24vU2V0\n\t\t\t\t\t\t\tX1ZhcmlhYmxlX3RvX1Rl\n\t\t\t\t\t\t\teHQifX17XGZsZHJzbHQg\n\t\t\t\t\t\t\tXGNmMyBcdWwgXHVsYzMg\n\t\t\t\t\t\t\tU2V0IFZhcmlhYmxlIHRv\n\t\t\t\t\t\t\tIFRleHR9fVwnYTBhY3Rp\n\t\t\t\t\t\t\tb24sIHRoZSBLTSBFZGl0\n\t\t\t\t\t\t\tb3Igc29tZXRpbWVzIGF1\n\t\t\t\t\t\t\tdG9tYXRpY2FsbHkgY29u\n\t\t\t\t\t\t\tdmVydHMgClxmNFxpIGR1\n\t\t\t\t\t\t\tbWIgZG91YmxlIHF1b3Rl\n\t\t\t\t\t\t\tcwpcZjFcaTAgIHRvIApc\n\t\t\t\t\t\t\tZjRcaSBzbWFydCBkb3Vi\n\t\t\t\t\t\t\tbGUgcXVvdGVzLgpcZjFc\n\t\t\t\t\t\t\taTAgIFRoaXMgY2FuIGVh\n\t\t\t\t\t\t\tc2lseSBnbyB1bmRldGVj\n\t\t\t\t\t\t\tdGVkIGJ5IGEgdXNlci4g\n\t\t\t\t\t\t\tVGh1cywgdGhpcyBtYWNy\n\t\t\t\t\t\t\tbyBub3cgY29udmVydHMg\n\t\t\t\t\t\t\tYWxsIApcZjRcaSBzbWFy\n\t\t\t\t\t\t\tdCBkb3VibGUgcXVvdGVz\n\t\t\t\t\t\t\tClxmMVxpMCAgdG8gClxm\n\t\t\t\t\t\t\tNFxpIGR1bWIgZG91Ymxl\n\t\t\t\t\t\t\tIHF1b3RlcwpcZjFcaTAg\n\t\t\t\t\t\t\tLlwKXApkKSBJbiB0aGlz\n\t\t\t\t\t\t\tIGhlYWRlciBjb21tZW50\n\t\t\t\t\t\t\tLCAKXGYzXGZzMjQgXGtl\n\t\t\t\t\t\t\tcm5pbmcxXGV4cG5kMFxl\n\t\t\t\t\t\t\teHBuZHR3MCAiVXJsUGF0\n\t\t\t\t\t\t\tdGVybiIKXGYxXGZzMjYg\n\t\t\t\t\t\t\tXGV4cG5kMFxleHBuZHR3\n\t\t\t\t\t\t\tMFxrZXJuaW5nMAogaXMg\n\t\t\t\t\t\t\tbm93IHNob3duIGFzIApc\n\t\t\t\t\t\t\tZjNcZnMyNCBca2Vybmlu\n\t\t\t\t\t\t\tZzFcZXhwbmQwXGV4cG5k\n\t\t\t\t\t\t\tdHcwICJodHRwczovL2Zv\n\t\t\t\t\t\t\tcnVtXFxcXC5rZXlib2Fy\n\t\t\t\t\t\t\tZG1hZXN0cm9cXFxcLmNv\n\t\t\t\t\t\t\tbS4qIgpcZjFcZnMyNiBc\n\t\t\t\t\t\t\tZXhwbmQwXGV4cG5kdHcw\n\t\t\t\t\t\t\tXGtlcm5pbmcwCiB3aXRo\n\t\t\t\t\t\t\tIHRoZSBkb3RzIHByb3Bl\n\t\t\t\t\t\t\tcmx5IGVzY2FwZWQgd2l0\n\t\t\t\t\t\t\taCB0d28gYmFja3NsYXNo\n\t\t\t\t\t\t\tZXMgKApcZjNcZnMyNCBc\n\t\t\t\t\t\t\tXFxcLgpcZjFcZnMyNiAp\n\t\t\t\t\t\t\tIGJlY2F1c2UgdHdvIGJh\n\t\t\t\t\t\t\tY2tzbGFzaGVzIGFyZSBy\n\t\t\t\t\t\t\tZXF1aXJlZCBpbiB0ZXh0\n\t\t\t\t\t\t\tIHdpdGhpbiBKU09OLlwK\n\t\t\t\t\t\t\tXAplKSBUaGUgS2V5Ym9h\n\t\t\t\t\t\t\tcmQgTWFlc3RybyBFbmdp\n\t\t\t\t\t\t\tbmUgY29udmVydHMgClxm\n\t\t\t\t\t\t\tM1xmczI0IFxcXFwKXGYx\n\t\t\t\t\t\t\tXGZzMjYgIHRvIApcZjNc\n\t\t\t\t\t\t\tZnMyNCBcXApcZjFcZnMy\n\t\t\t\t\t\t\tNiAgaW4gdGV4dCB0aGF0\n\t\t\t\t\t\t\tIGlzIHBhc3NlZCB1c2lu\n\t\t\t\t\t\t\tZyAKXGY0XGkgV2l0aCBQ\n\t\t\t\t\t\t\tYXJhbWV0ZXIgClxmMVxp\n\t\t\t\t\t\t\tMCB3aXRoaW4gdGhlIHtc\n\t\t\t\t\t\t\tZmllbGR7XCpcZmxkaW5z\n\t\t\t\t\t\t\tdHtIWVBFUkxJTksgImh0\n\t\t\t\t\t\t\tdHBzOi8vd2lraS5rZXli\n\t\t\t\t\t\t\tb2FyZG1hZXN0cm8uY29t\n\t\t\t\t\t\t\tL2FjdGlvbi9FeGVjdXRl\n\t\t\t\t\t\t\tX2FfTWFjcm8ifX17XGZs\n\t\t\t\t\t\t\tZHJzbHQgXGNmMyBcdWwg\n\t\t\t\t\t\t\tXHVsYzMgRXhlY3V0ZSBh\n\t\t\t\t\t\t\tIE1hY3JvfX0gYWN0aW9u\n\t\t\t\t\t\t\tLiBUaHVzLCB0aGlzIG1h\n\t\t\t\t\t\t\tY3JvIGNvbnZlcnRzIGFs\n\t\t\t\t\t\t\tbCAKXGYzXGZzMjQgXFwK\n\t\t\t\t\t\t\tXGYxXGZzMjYgIHRvIApc\n\t\t\t\t\t\t\tZjNcZnMyNCBcXFxcClxm\n\t\t\t\t\t\t\tMVxmczI2ICB0byBhZGQg\n\t\t\t\t\t\t\tYmFjayB0aGUgc2Vjb25k\n\t\t\t\t\t\t\tIApcZjNcZnMyNCBcXApc\n\t\t\t\t\t\t\tZjFcZnMyNiAgc28gdGhh\n\t\t\t\t\t\t\tdCB0aGUgSlNPTiByZW1h\n\t\t\t\t\t\t\taW5zIHZhbGlkIHdpdGhp\n\t\t\t\t\t\t\tbiB0aGlzIG1hY3JvLlwK\n\t\t\t\t\t\t\tXApmKSBCVUcgRklYOiBX\n\t\t\t\t\t\t\taGVuIApcZjNcZnMyNCBc\n\t\t\t\t\t\t\ta2VybmluZzFcZXhwbmQw\n\t\t\t\t\t\t\tXGV4cG5kdHcwICJSZXBs\n\t\t\t\t\t\t\tYWNlTWF0Y2hlZFVybCIK\n\t\t\t\t\t\t\tXGYxXGZzMjYgID0gMSBh\n\t\t\t\t\t\t\tbmRcZXhwbmQwXGV4cG5k\n\t\t\t\t\t\t\tdHcwXGtlcm5pbmcwCiAK\n\t\t\t\t\t\t\tXGYzXGZzMjQgXGtlcm5p\n\t\t\t\t\t\t\tbmcxXGV4cG5kMFxleHBu\n\t\t\t\t\t\t\tZHR3MCAiUmVsb2FkVGFi\n\t\t\t\t\t\t\tIgpcZjFcZnMyNiAgPSAw\n\t\t\t\t\t\t\tLFxleHBuZDBcZXhwbmR0\n\t\t\t\t\t\t\tdzBca2VybmluZzAKIHRo\n\t\t\t\t\t\t\tZSB3ZWJwYWdlIHdpbGwg\n\t\t\t\t\t\t\tbm8gbG9uZ2VyIGJlIHJl\n\t\t\t\t\t\t\tZnJlc2hlZCB3aGVuIHRo\n\t\t\t\t\t\t\tZSBicm93c2VyIHRhYiBV\n\t\t\t\t\t\t\tUkwgClxmNFxpIGV4YWN0\n\t\t\t\t\t\t\tbHkgbWF0Y2hlcwpcZjFc\n\t\t\t\t\t\t\taTAgIApcZjNcZnMyNCBc\n\t\t\t\t\t\t\ta2VybmluZzFcZXhwbmQw\n\t\t\t\t\t\t\tXGV4cG5kdHcwICJVcmwi\n\t\t\t\t\t\t\tClxmMVxmczI2IC5cClwK\n\t\t\t\t\t\t\tClxmMFxiIDMuMFwKXHBh\n\t\t\t\t\t\t\tcmRccGFyZGVmdGFiNTYw\n\t\t\t\t\t\t\tXHNsbGVhZGluZzIwXHBh\n\t\t\t\t\t\t\tcnRpZ2h0ZW5mYWN0b3Iw\n\t\t\t\t\t\t\tCgpcZjFcYjAgXGNmMCBh\n\t\t\t\t\t\t\tKSBBZGRlZCBhbiBlcnJv\n\t\t\t\t\t\t\tciBtZXNzYWdlIGlmIHRo\n\t\t\t\t\t\t\tZSBjYWxsaW5nIG1hY3Jv\n\t\t\t\t\t\t\tIHVzZXMgClxmMFxiIE1v\n\t\t\t\t\t\t\tZGUgMgpcZjFcYjAgIChK\n\t\t\t\t\t\t\tU09OKSwgYnV0IHRoZSAK\n\t\t\t\t\t\t\tXGYzXGZzMjQgIlVybCIK\n\t\t\t\t\t\t\tXGYxXGZzMjYgIGlzIG5v\n\t\t\t\t\t\t\tdCBzcGVjaWZpZWQgb3Ig\n\t\t\t\t\t\t\tdGhlIEpTT04gaW5jbHVk\n\t\t\t\t\t\t\tZXMgYSBzeW50YXggZXJy\n\t\t\t\t\t\t\tb3IuXApcCmIpIEltcHJv\n\t\t\t\t\t\t\tdmVkIHRoZSBlcnJvciBt\n\t\t\t\t\t\t\tZXNzYWdlIGlmIHRoaXMg\n\t\t\t\t\t\t\tbWFjcm8gaXMgcnVuIGRp\n\t\t\t\t\t\t\tcmVjdGx5IG9yIHRoZVxl\n\t\t\t\t\t\t\teHBuZDBcZXhwbmR0dzBc\n\t\t\t\t\t\t\ta2VybmluZzAKXCdhMHtc\n\t\t\t\t\t\t\tZmllbGR7XCpcZmxkaW5z\n\t\t\t\t\t\t\tdHtIWVBFUkxJTksgImh0\n\t\t\t\t\t\t\tdHBzOi8vd2lraS5rZXli\n\t\t\t\t\t\t\tb2FyZG1hZXN0cm8uY29t\n\t\t\t\t\t\t\tL2FjdGlvbi9FeGVjdXRl\n\t\t\t\t\t\t\tX2FfTWFjcm8ifX17XGZs\n\t\t\t\t\t\t\tZHJzbHQgXGNmMyBcdWwg\n\t\t\t\t\t\t\tXHVsYzMgRXhlY3V0ZSBh\n\t\t\t\t\t\t\tIE1hY3JvfX1cJ2EwXGtl\n\t\t\t\t\t\t\tcm5pbmcxXGV4cG5kMFxl\n\t\t\t\t\t\t\teHBuZHR3MCBhY3Rpb24g\n\t\t\t\t\t\t\tZG9lcyBub3QgaW5jbHVk\n\t\t\t\t\t\t\tZSBhIApcZjBcYiBXaXRo\n\t\t\t\t\t\t\tIFBhcmFtZXRlcgpcZjFc\n\t\t\t\t\t\t\tYjAgIHZhbHVlLgpcZjBc\n\t\t\t\t\t\t\tYiBcClwKClxmMVxiMCBj\n\t\t\t\t\t\t\tKSBcZXhwbmQwXGV4cG5k\n\t\t\t\t\t\t\tdHcwXGtlcm5pbmcwCkJV\n\t\t\t\t\t\t\tRyBGSVg6IFdoZW4gClxm\n\t\t\t\t\t\t\tM1xmczI0IFxrZXJuaW5n\n\t\t\t\t\t\t\tMVxleHBuZDBcZXhwbmR0\n\t\t\t\t\t\t\tdzAgIlVybFBhdHRlcm4i\n\t\t\t\t\t\t\tClxmMVxmczI2ICBcZXhw\n\t\t\t\t\t\t\tbmQwXGV4cG5kdHcwXGtl\n\t\t\t\t\t\t\tcm5pbmcwCmlzIG5vdCBz\n\t\t\t\t\t\t\tcGVjaWZpZWQsIHRoZSBt\n\t\t\t\t\t\t\tYWNybyBzZXRzIGl0IHRv\n\t\t\t\t\t\t\tIApcZjNcZnMyNCBca2Vy\n\t\t\t\t\t\t\tbmluZzFcZXhwbmQwXGV4\n\t\t\t\t\t\t\tcG5kdHcwICJVcmwiClxm\n\t\t\t\t\t\t\tMVxmczI2IC5cZXhwbmQw\n\t\t\t\t\t\t\tXGV4cG5kdHcwXGtlcm5p\n\t\t\t\t\t\t\tbmcwCiBJdCBub3cgcHJv\n\t\t\t\t\t\t\tcGVybHkgZXNjYXBlcyBh\n\t\t\t\t\t\t\tbGwgc3BlY2lhbCByZWdl\n\t\t\t\t\t\t\teCBjaGFyYWN0ZXJzIHdo\n\t\t\t\t\t\t\tZW4gc2V0dGluZyAKXGYz\n\t\t\t\t\t\t\tXGZzMjQgXGtlcm5pbmcx\n\t\t\t\t\t\t\tXGV4cG5kMFxleHBuZHR3\n\t\t\t\t\t\t\tMCAiVXJsUGF0dGVybiIK\n\t\t\t\t\t\t\tXGYxXGZzMjYgLlwKXApc\n\t\t\t\t\t\t\tcGFyZFxwYXJkZWZ0YWI1\n\t\t\t\t\t\t\tNjBcc2xsZWFkaW5nMjBc\n\t\t\t\t\t\t\tcGFydGlnaHRlbmZhY3Rv\n\t\t\t\t\t\t\tcjAKClxmMFxiIFxjZjAg\n\t\t\t\t\t\t\tMy4xIFwKXHBhcmRccGFy\n\t\t\t\t\t\t\tZGVmdGFiNTYwXHNsbGVh\n\t\t\t\t\t\t\tZGluZzIwXHBhcnRpZ2h0\n\t\t\t\t\t\t\tZW5mYWN0b3IwCgpcZjFc\n\t\t\t\t\t\t\tYjAgXGNmMCBhKSBJbiBi\n\t\t\t\t\t\t\tcm93c2VyIEFwcGxlU2Ny\n\t\t\t\t\t\t\taXB0cywgY2hhbmdlZCBy\n\t\t\t\t\t\t\tZWZlcmVuY2VzIHRvIApc\n\t\t\t\t\t\t\tZjJcaVxiIHdpbmRvdyAx\n\t\t\t\t\t\t\tClxmMVxpMFxiMCAgdG8g\n\t\t\t\t\t\t\tClxmMlxpXGIgZnJvbnQg\n\t\t\t\t\t\t\td2luZG93ClxmMVxpMFxi\n\t\t\t\t\t\t\tMCAuIFRoZSAKXGYyXGlc\n\t\t\t\t\t\t\tYiB3aW5kb3cgMQpcZjFc\n\t\t\t\t\t\t\taTBcYjAgIHJlZmVyZW5j\n\t\t\t\t\t\t\tZSBzb21ldGltZXMgY2F1\n\t\t\t\t\t\t\tc2VkIGFuIGVycm9yIGZv\n\t\t\t\t\t\t\tciBzb21lIHVzZXJzLgpc\n\t\t\t\t\t\t\tZjBcYiBcClxwYXJkXHBh\n\t\t\t\t\t\t\tcmRlZnRhYjU2MFxzbGxl\n\t\t\t\t\t\t\tYWRpbmcyMFxwYXJ0aWdo\n\t\t\t\t\t\t\tdGVuZmFjdG9yMAoKXGYx\n\t\t\t\t\t\t\tXGIwIFxjZjAgXGV4cG5k\n\t\t\t\t\t\t\tMFxleHBuZHR3MFxrZXJu\n\t\t\t\t\t\t\taW5nMApcCmIpIEJVRyBG\n\t\t\t\t\t\t\tSVg6IFRoZSBlbWJlZGRl\n\t\t\t\t\t\t\tZCBicm93c2VyIEFwcGxl\n\t\t\t\t\t\t\tU2NyaXB0cyBzY2FuIHRo\n\t\t\t\t\t\t\tZSBvcGVuIHRhYnMgaW4g\n\t\t\t\t\t\t\tZWFjaCB3aW5kb3cuIFdo\n\t\t\t\t\t\t\taWxlIHNlYXJjaGluZyBm\n\t\t\t\t\t\t\tb3IgYSBtYXRjaCB3aXRo\n\t\t\t\t\t\t\tIHRoZSBzcGVjaWZpZWQg\n\t\t\t\t\t\t\tClxmM1xmczI0IFxrZXJu\n\t\t\t\t\t\t\taW5nMVxleHBuZDBcZXhw\n\t\t\t\t\t\t\tbmR0dzAgIlVybCIKXGYx\n\t\t\t\t\t\t\tXGZzMjYgXGV4cG5kMFxl\n\t\t\t\t\t\t\teHBuZHR3MFxrZXJuaW5n\n\t\t\t\t\t\t\tMAosIHRoZSBzY3JpcHRz\n\t\t\t\t\t\t\tIHJlbW92ZSBhIHRyYWls\n\t\t\t\t\t\t\taW5nIHNsYXNoIGluIGVh\n\t\t\t\t\t\t\tY2ggdGFiIFVSTC4gVGhl\n\t\t\t\t\t\t\tIG1hY3JvIG5vdyBzaW1p\n\t\t\t\t\t\t\tbGFybHkgcmVtb3ZlcyBh\n\t\t\t\t\t\t\tIHRyYWlsaW5nIHNsYXNo\n\t\t\t\t\t\t\tIGZyb20gdGhlIHNwZWNp\n\t\t\t\t\t\t\tZmllZCAKXGYzXGZzMjQg\n\t\t\t\t\t\t\tXGtlcm5pbmcxXGV4cG5k\n\t\t\t\t\t\t\tMFxleHBuZHR3MCAiVXJs\n\t\t\t\t\t\t\tIgpcZjFcZnMyNiBcZXhw\n\t\t\t\t\t\t\tbmQwXGV4cG5kdHcwXGtl\n\t\t\t\t\t\t\tcm5pbmcwCi5cClwKXHBh\n\t\t\t\t\t\t\tcmRccGFyZGVmdGFiNTYw\n\t\t\t\t\t\t\tXHNsbGVhZGluZzIwXHBh\n\t\t\t\t\t\t\tcnRpZ2h0ZW5mYWN0b3Iw\n\t\t\t\t\t\t\tCgpcZjBcYiBcY2YwIDMu\n\t\t\t\t\t\t\tMgpcZjFcYjAgIEJVRyBG\n\t\t\t\t\t\t\tSVg6IFRoZSAKXGYwXGIg\n\t\t\t\t\t\t\tQnJhdmUgQnJvd3NlciAK\n\t\t\t\t\t\t\tXGYxXGIwIEFwcGxlU2Ny\n\t\t\t\t\t\t\taXB0IGhhZCBhbiBleHRy\n\t\t\t\t\t\t\tYW5lb3VzIGNoYXJhY3Rl\n\t\t\t\t\t\t\tciBhdCB0aGUgZW5kIHRo\n\t\t\t\t\t\t\tYXQgcHJldmVudGVkIHBy\n\t\t\t\t\t\t\tb3BlciBleGVjdXRpb24u\n\t\t\t\t\t\t\tXApcCgpcZjBcYiA0LjAg\n\t\t\t\t\t\t\tXApccGFyZFxwYXJkZWZ0\n\t\t\t\t\t\t\tYWI1NjBcc2xsZWFkaW5n\n\t\t\t\t\t\t\tMjBccGFydGlnaHRlbmZh\n\t\t\t\t\t\t\tY3RvcjAKClxmMVxiMCBc\n\t\t\t\t\t\t\tY2YwIGEpIEFkZGVkIHN1\n\t\t\t\t\t\t\tcHBvcnQgZm9yIHtcZmll\n\t\t\t\t\t\t\tbGR7XCpcZmxkaW5zdHtI\n\t\t\t\t\t\t\tWVBFUkxJTksgImh0dHBz\n\t\t\t\t\t\t\tOi8vYXJjLm5ldC8ifX17\n\t\t\t\t\t\t\tXGZsZHJzbHQgXGNmMyBc\n\t\t\t\t\t\t\tdWwgXHVsYzMgQXJjfX0u\n\t\t\t\t\t\t\tXApcCmIpIEFkZGVkIGEg\n\t\t\t\t\t\t\tdGhpcmQgClxmNFxpIHRy\n\t\t\t\t\t\t\taWdnZXIKXGYxXGkwICAK\n\t\t\t\t\t\t\tXGYwXGIgTW9kZQpcZjFc\n\t\t\t\t\t\t\tYjAgOiAKXGY1XGlcZnMy\n\t\t\t\t\t\t\tNCB4ClxmM1xpMCA6VVJM\n\t\t\t\t\t\t\tClxmMVxmczI2ICwgd2hl\n\t\t\t\t\t\t\tcmUgClxmNVxpXGZzMjQg\n\t\t\t\t\t\t\teApcZjFcaTBcZnMyNiAg\n\t\t\t\t\t\t\taXMgYSBzaW5nbGUgY2hh\n\t\t\t\t\t\t\tcmFjdGVyIChjYXNlIGlu\n\t\t\t\t\t\t\tc2Vuc2l0aXZlKSB1c2Vk\n\t\t\t\t\t\t\tIHRvIHNwZWNpZnkgdGhl\n\t\t\t\t\t\t\tIGJyb3dzZXIsIGkuZS4s\n\t\t\t\t\t\t\tIHRoZSBmaXJzdCBsZXR0\n\t\t\t\t\t\t\tZXIgb2Ygb25lIG9mIHRo\n\t\t\t\t\t\t\tZSBzdXBwb3J0ZWQgYnJv\n\t\t\t\t\t\t\td3NlcnM6IApcZjBcYiBT\n\t\t\t\t\t\t\tClxmMVxiMCBhZmFyaSxc\n\t\t\t\t\t\t\tJ2EwClxmMFxiIEEKXGYx\n\t\t\t\t\t\t\tXGIwIHJjLCAKXGYwXGIg\n\t\t\t\t\t\t\tQwpcZjFcYjAgaHJvbWUs\n\t\t\t\t\t\t\tIApcZjBcYiBCClxmMVxi\n\t\t\t\t\t\t\tMCByYXZlLCAKXGYwXGIg\n\t\t\t\t\t\t\tRQpcZjFcYjAgZGdlLCBv\n\t\t\t\t\t\t\tciAKXGYwXGIgVgpcZjFc\n\t\t\t\t\t\t\tYjAgaXZhbGRpXApcCmMp\n\t\t\t\t\t\t\tIEFkZGVkIHRoZSBzZXR0\n\t\t\t\t\t\t\taW5ncyAKXGYwXGIgbG9j\n\t\t\t\t\t\t\tYWxfQnJvd3Nlcl9kZWZh\n\t\t\t\t\t\t\tdWx0ClxmMVxiMCAsIApc\n\t\t\t\t\t\t\tZjBcYiBsb2NhbF9SZXBs\n\t\t\t\t\t\t\tYWNlTWF0Y2hlZFVybF9k\n\t\t\t\t\t\t\tZWZhdWx0ClxmMVxiMCAs\n\t\t\t\t\t\t\tIApcZjBcYiBsb2NhbF9S\n\t\t\t\t\t\t\tZWxvYWRUYWJfZGVmYXVs\n\t\t\t\t\t\t\tdApcZjFcYjAgLCBhbmQg\n\t\t\t\t\t\t\tClxmMFxiIGxvY2FsX05l\n\t\t\t\t\t\t\td1dpbmRvd0lmTm90Rm91\n\t\t\t\t\t\t\tbmRfZGVmYXVsdApcZjFc\n\t\t\t\t\t\t\tYjAgLlxrZXJuaW5nMVxl\n\t\t\t\t\t\t\teHBuZDBcZXhwbmR0dzAg\n\t\t\t\t\t\t\tXApcClRoZSBsYXRlc3Qg\n\t\t\t\t\t\t\tdmVyc2lvbiBvZiB0aGlz\n\t\t\t\t\t\t\tIG1hY3JvIGlzIGF2YWls\n\t\t\t\t\t\t\tYWJsZSBvbiB0aGUge1xm\n\t\t\t\t\t\t\taWVsZHtcKlxmbGRpbnN0\n\t\t\t\t\t\t\te0hZUEVSTElOSyAiaHR0\n\t\t\t\t\t\t\tcHM6Ly9mb3J1bS5rZXli\n\t\t\t\t\t\t\tb2FyZG1hZXN0cm8uY29t\n\t\t\t\t\t\t\tIn19e1xmbGRyc2x0IFxj\n\t\t\t\t\t\t\tZjEwIEtleWJvYXJkIE1h\n\t\t\t\t\t\t\tZXN0cm8gRm9ydW19fS59\n\t\t\t\t\t\t\tAQAAACMAAAABAAAABwAA\n\t\t\t\t\t\t\tAFRYVC5ydGYQAAAAN2vy\n\t\t\t\t\t\t\tZbYBAAAAAAAAAAAAAA==\n\t\t\t\t\t\t\t41E4D515-C065-4C24-9859-EA2479C52CC9\n\t\t\t\t\t\t\t",
+			"ActionColor": "Magenta",
+			"ActionUID": 15466066
+		},
+		{
+			"MacroActionType": "Group",
+			"ActionName": "SETTINGS",
+			"Actions": [
+				{
+					"MacroActionType": "SetVariableToText",
+					"Text": "Chrome",
+					"Variable": "local_Browser_default",
+					"ActionColor": "Orange",
+					"ActionUID": 15723264
+				},
+				{
+					"MacroActionType": "SetVariableToCalculation",
+					"Text": "0",
+					"UseFormat": false,
+					"Variable": "local_ReplaceMatchedUrl_default",
+					"ActionColor": "Orange",
+					"ActionUID": 15723539
+				},
+				{
+					"MacroActionType": "SetVariableToCalculation",
+					"Text": "0",
+					"UseFormat": false,
+					"Variable": "local_ReloadTab_default",
+					"ActionColor": "Orange",
+					"ActionUID": 15723540
+				},
+				{
+					"MacroActionType": "SetVariableToCalculation",
+					"Text": "0",
+					"UseFormat": false,
+					"Variable": "local_NewWindowIfNotFound_default",
+					"ActionColor": "Orange",
+					"ActionUID": 15723541
+				}
+			],
+			"TimeOutAbortsMacro": true,
+			"ActionColor": "Purple",
+			"ActionUID": 15723723
+		},
+		{
+			"MacroActionType": "Group",
+			"ActionName": "Check %TriggerValue%",
+			"ActionUID": 15466067,
+			"IsDisclosed": false,
+			"Actions": [
+				{
+					"MacroActionType": "IfThenElse",
+					"ActionUID": 15466068,
+					"ActionColor": "Yellow",
+					"TimeOutAbortsMacro": true,
+					"ElseActions": [
+						{
+							"MacroActionType": "Comment",
+							"Title": "",
+							"ActionName": "Intentionally Blank",
+							"IsDisclosed": false,
+							"StyledText": "\n\t\t\t\t\t\t\t\t41E4D515-C065-4C24-9859-EA2479C52CC9\n\t\t\t\t\t\t\t\tcnRmZAAAAAAD\n\t\t\t\t\t\t\t\tAAAAAgAAAAcA\n\t\t\t\t\t\t\t\tAABUWFQucnRm\n\t\t\t\t\t\t\t\tAQAAAC5uAAAA\n\t\t\t\t\t\t\t\tKwAAAAEAAABm\n\t\t\t\t\t\t\t\tAAAAe1xydGYx\n\t\t\t\t\t\t\t\tXGFuc2lcYW5z\n\t\t\t\t\t\t\t\taWNwZzEyNTJc\n\t\t\t\t\t\t\t\tY29jb2FydGYx\n\t\t\t\t\t\t\t\tNDA0XGNvY29h\n\t\t\t\t\t\t\t\tc3VicnRmNDcw\n\t\t\t\t\t\t\t\tCntcZm9udHRi\n\t\t\t\t\t\t\t\tbH0Ke1xjb2xv\n\t\t\t\t\t\t\t\tcnRibDtccmVk\n\t\t\t\t\t\t\t\tMjU1XGdyZWVu\n\t\t\t\t\t\t\t\tMjU1XGJsdWUy\n\t\t\t\t\t\t\t\tNTU7fQp9AQAA\n\t\t\t\t\t\t\t\tACMAAAABAAAA\n\t\t\t\t\t\t\t\tBwAAAFRYVC5y\n\t\t\t\t\t\t\t\tdGYQAAAAd3Kj\n\t\t\t\t\t\t\t\tV7YBAAAAAAAA\n\t\t\t\t\t\t\t\tAAAAAA==\n\t\t\t\t\t\t\t\t\t\t\t41E4D515-C065-4C24-9859-EA2479C52CC9\n\t\t\t\t\t\t\t\t",
+							"ActionUID": 15466078
+						}
+					],
+					"Conditions": {
+						"ConditionListMatch": "All",
+						"ConditionList": [
+							{
+								"ConditionType": "Text",
+								"TextValue": "",
+								"Text": "%TriggerValue%",
+								"TextConditionType": "IsEmpty"
+							}
+						]
+					},
+					"ThenActions": [
+						{
+							"MacroActionType": "IfThenElse",
+							"ActionUID": 15466069,
+							"ActionColor": "Green",
+							"TimeOutAbortsMacro": true,
+							"ElseActions": [
+								{
+									"MacroActionType": "SetVariableToText",
+									"Variable": "local_Message",
+									"Text": "The 𝗪𝗶𝘁𝗵 𝗣𝗮𝗿𝗮𝗺𝗲𝘁𝗲𝗿 field in the 𝗘𝘅𝗲𝗰𝘂𝘁𝗲 𝗠𝗮𝗰𝗿𝗼 action must include a single URL or JSON (that includes \"Url”).\n\nFor more information, see the “%ExecutingThisMacro%” header comment.",
+									"ActionUID": 15466071
+								}
+							],
+							"Conditions": {
+								"ConditionListMatch": "All",
+								"ConditionList": [
+									{
+										"ConditionType": "Text",
+										"TextValue": "%ExecutingMacro%",
+										"Text": "%ExecutingThisMacro%",
+										"TextConditionType": "Is"
+									}
+								]
+							},
+							"ThenActions": [
+								{
+									"MacroActionType": "SetVariableToText",
+									"Variable": "local_Message",
+									"Text": "This macro must be triggered using another macro or another program (using AppleScript). \n\nFor more information, see the header comment in the macro.",
+									"ActionUID": 15466070
+								}
+							]
+						},
+						{
+							"MacroActionType": "SetNextEngineWindow",
+							"Action": "CenterWindow",
+							"ActionUID": 15466072,
+							"IsDisclosed": false,
+							"HorizontalExpression": "125",
+							"WidthExpression": "300",
+							"VerticalExpression": "125",
+							"HeightExpression": "300"
+						},
+						{
+							"MacroActionType": "PromptForUserInput",
+							"Title": "",
+							"Prompt": "%Variable%local_Message%",
+							"ActionUID": 15466073,
+							"TimeOutAbortsMacro": true,
+							"Buttons": [
+								{
+									"Button": "View Header Comment/",
+									"Cancel": false
+								},
+								{
+									"Button": "Cancel/.",
+									"Cancel": true
+								}
+							],
+							"Variables": []
+						},
+						{
+							"MacroActionType": "Group",
+							"ActionName": "Select this macro and select the top action",
+							"ActionUID": 15466074,
+							"IsDisclosed": false,
+							"Actions": [
+								{
+									"MacroActionType": "OpenURL",
+									"ActionName": "Go to Macro",
+									"ActionUID": 15466075,
+									"TimeOutAbortsMacro": false,
+									"IsDefaultApplication": true,
+									"TimeOutPeriod": 2,
+									"StopOnFailure": true,
+									"NotifyOnTimeOut": true,
+									"URL": "keyboardmaestro://m=F993DABB-8E10-41C1-9CA7-97CA74E6F9F0"
+								},
+								{
+									"MacroActionType": "ExecuteAppleScript",
+									"IncludedVariables": [
+										"9999"
+									],
+									"TrimResults": true,
+									"IncludeStdErr": false,
+									"ActionUID": 15466076,
+									"UseText": true,
+									"TrimResultsNew": true,
+									"TimeOutAbortsMacro": true,
+									"Path": "",
+									"DisplayKind": "None",
+									"HonourFailureSettings": true,
+									"Text": "--------------------------------------------------------\n# Auth: Christopher Stone\n# dCre: 2019/06/30 23:41\n# dMod: 2021/10/09 20:28\n# Appl: Keyboard Maestro & System Events\n# Task: Select First Action of Current Macro\n#     : Scroll if necessary.\n# Libs: None\n# Osax: None\n# Tags: @Applescript, @Script, @System_Events, @Keyboard_Maestro, @Select, @Name, @Field\n--------------------------------------------------------\n\ntell application \"Keyboard Maestro\" to set kmVersion to version\n\nif kmVersion starts with \"9.\" then\n   # Keyboard Maestro v9.x.\n   tell application \"System Events\"\n      tell application process \"Keyboard Maestro\"\n         tell (first window whose subrole is \"AXStandardWindow\")\n            tell group 1\n               tell splitter group 1\n                  tell scroll area 3\n                     \n                     tell scroll bar 1\n                        try\n                           set value to 0\n                        end try\n                     end tell\n                     \n                  end tell\n               end tell\n            end tell\n         end tell\n      end tell\n   end tell\n   \nelse if kmVersion starts with \"10.\" then\n   \n   # Keyboard Maestro v10.x.\n   tell application \"System Events\"\n      tell application process \"Keyboard Maestro\"\n         tell (first window whose subrole is \"AXStandardWindow\")\n            tell group 6\n               tell splitter group 1\n                  tell scroll area 3\n                     tell scroll bar 1\n                        try\n                           set value to 0\n                        end try\n                     end tell\n                  end tell\n               end tell\n            end tell\n         end tell\n      end tell\n   end tell\n   \nend if\n\n--------------------------------------------------------\n\ntell application \"Keyboard Maestro\"\n   \n   set selectedMacroList to selected macros\n   \n   if length of selectedMacroList = 0 then\n      error \"No macros are selected!\"\n      \n   else if length of selectedMacroList = 1 then\n      set currentMacro to item 1 of selectedMacroList\n      \n   else if length of selectedMacroList > 1 then\n      error \"Too many macros are selected!\"\n      \n   end if\n   \n   select the first action of the currentMacro\n   \nend tell\n\n--------------------------------------------------------\n\n(* CHANGE NOTES:\n\n   - 2021/09/30 01:39\n      - Added descriminator for KM 9 and KM 10.\n      \n*)\n\n--------------------------------------------------------"
+								}
+							],
+							"TimeOutAbortsMacro": true,
+							"ActionColor": "Purple"
+						},
+						{
+							"MacroActionType": "Cancel",
+							"IsDisclosed": false,
+							"Action": "CancelThisMacro",
+							"ActionUID": 15466077
+						}
+					]
+				}
+			],
+			"TimeOutAbortsMacro": true,
+			"ActionColor": "Purple"
+		},
+		{
+			"MacroActionType": "Group",
+			"ActionName": "Process %TriggerValue% : single value or JSON",
+			"ActionUID": 15723254,
+			"IsDisclosed": false,
+			"Actions": [
+				{
+					"MacroActionType": "SetVariableToText",
+					"Variable": "local_TriggerValue",
+					"Text": "%TriggerValue%",
+					"ActionUID": 15723474
+				},
+				{
+					"MacroActionType": "IfThenElse",
+					"ActionUID": 15466080,
+					"ActionColor": "Yellow",
+					"ElseActions": [
+						{
+							"MacroActionType": "SetVariableToText",
+							"Variable": "local_J",
+							"Text": "%TriggerValue%",
+							"ActionUID": 15723241
+						},
+						{
+							"MacroActionType": "SearchReplace",
+							"Search": "“|”",
+							"Source": "Variable",
+							"Variable": "local_J",
+							"Action": "CaseSensitiveRegEx",
+							"ActionUID": 15723242,
+							"Replace": "\"",
+							"Which": "All"
+						},
+						{
+							"MacroActionType": "SearchReplace",
+							"Search": "\\\\",
+							"Source": "Variable",
+							"Variable": "local_J",
+							"Action": "CaseSensitiveRegEx",
+							"ActionUID": 15723243,
+							"Replace": "\\\\\\\\",
+							"Which": "All"
+						},
+						{
+							"MacroActionType": "SetVariableToText",
+							"Variable": "local_Browser",
+							"Text": "%JSONValue%local_J.Browser%",
+							"ActionUID": 15723244
+						},
+						{
+							"MacroActionType": "SetVariableToText",
+							"Variable": "local_Url",
+							"Text": "%JSONValue%local_J.Url%",
+							"ActionUID": 15723245
+						},
+						{
+							"MacroActionType": "IfThenElse",
+							"ActionUID": 15723246,
+							"ActionColor": "Green",
+							"TimeOutAbortsMacro": true,
+							"ElseActions": [
+								{
+									"MacroActionType": "Comment",
+									"Title": "",
+									"ActionName": "Intentionally Blank",
+									"IsDisclosed": false,
+									"StyledText": "\n\t\t\t\t\t\t\t\t41E4D515-C065-4C24-9859-EA2479C52CC9\n\t\t\t\t\t\t\t\tcnRmZAAAAAAD\n\t\t\t\t\t\t\t\tAAAAAgAAAAcA\n\t\t\t\t\t\t\t\tAABUWFQucnRm\n\t\t\t\t\t\t\t\tAQAAAC5uAAAA\n\t\t\t\t\t\t\t\tKwAAAAEAAABm\n\t\t\t\t\t\t\t\tAAAAe1xydGYx\n\t\t\t\t\t\t\t\tXGFuc2lcYW5z\n\t\t\t\t\t\t\t\taWNwZzEyNTJc\n\t\t\t\t\t\t\t\tY29jb2FydGYx\n\t\t\t\t\t\t\t\tNDA0XGNvY29h\n\t\t\t\t\t\t\t\tc3VicnRmNDcw\n\t\t\t\t\t\t\t\tCntcZm9udHRi\n\t\t\t\t\t\t\t\tbH0Ke1xjb2xv\n\t\t\t\t\t\t\t\tcnRibDtccmVk\n\t\t\t\t\t\t\t\tMjU1XGdyZWVu\n\t\t\t\t\t\t\t\tMjU1XGJsdWUy\n\t\t\t\t\t\t\t\tNTU7fQp9AQAA\n\t\t\t\t\t\t\t\tACMAAAABAAAA\n\t\t\t\t\t\t\t\tBwAAAFRYVC5y\n\t\t\t\t\t\t\t\tdGYQAAAAd3Kj\n\t\t\t\t\t\t\t\tV7YBAAAAAAAA\n\t\t\t\t\t\t\t\tAAAAAA==\n\t\t\t\t\t\t\t\t\t\t\t\t\t41E4D515-C065-4C24-9859-EA2479C52CC9\n\t\t\t\t\t\t\t\t",
+									"ActionUID": 15723249
+								}
+							],
+							"Conditions": {
+								"ConditionListMatch": "All",
+								"ConditionList": [
+									{
+										"ConditionType": "Variable",
+										"VariableValue": "value",
+										"Variable": "local_Url",
+										"VariableConditionType": "IsEmpty"
+									}
+								]
+							},
+							"ThenActions": [
+								{
+									"MacroActionType": "SetNextEngineWindow",
+									"Action": "CenterWindow",
+									"ActionUID": 15723247,
+									"IsDisclosed": false,
+									"HorizontalExpression": "125",
+									"WidthExpression": "300",
+									"VerticalExpression": "125",
+									"HeightExpression": "300"
+								},
+								{
+									"MacroActionType": "PromptForUserInput",
+									"Title": "%ExecutingMacro%",
+									"Prompt": "“Url” not specified and/or there is a JSON syntax error:\n%Variable%local_J%",
+									"ActionUID": 15723248,
+									"ActionColor": "Purple",
+									"TimeOutAbortsMacro": true,
+									"Buttons": [
+										{
+											"Button": "OK/",
+											"Cancel": true
+										}
+									],
+									"Variables": []
+								}
+							]
+						},
+						{
+							"MacroActionType": "SetVariableToText",
+							"Variable": "local_UrlPattern",
+							"Text": "%JSONValue%local_J.UrlPattern%",
+							"ActionUID": 15723250
+						},
+						{
+							"MacroActionType": "SetVariableToText",
+							"Variable": "local_ReplaceMatchedUrl",
+							"Text": "%JSONValue%local_J.ReplaceMatchedUrl%",
+							"ActionUID": 15723251
+						},
+						{
+							"MacroActionType": "SetVariableToText",
+							"Variable": "local_ReloadTab",
+							"Text": "%JSONValue%local_J.ReloadTab%",
+							"ActionUID": 15723252
+						},
+						{
+							"MacroActionType": "SetVariableToText",
+							"Variable": "local_NewWindowIfNotFound",
+							"Text": "%JSONValue%local_J.NewWindowIfNotFound%",
+							"ActionUID": 15723253
+						}
+					],
+					"TimeOutAbortsMacro": true,
+					"Conditions": {
+						"ConditionListMatch": "All",
+						"ConditionList": [
+							{
+								"ConditionType": "Variable",
+								"VariableValue": "^\\{",
+								"Variable": "local_TriggerValue",
+								"VariableConditionType": "DoesNotMatch"
+							}
+						]
+					},
+					"ElseActionListDisclosed": false,
+					"ThenActions": [
+						{
+							"MacroActionType": "IfThenElse",
+							"ActionUID": 15723268,
+							"ActionColor": "Green",
+							"TimeOutAbortsMacro": true,
+							"ElseActions": [
+								{
+									"MacroActionType": "SetVariableToText",
+									"Variable": "local_Url",
+									"Text": "%TriggerValue%",
+									"ActionUID": 15723236
+								}
+							],
+							"Conditions": {
+								"ConditionListMatch": "All",
+								"ConditionList": [
+									{
+										"ConditionType": "Variable",
+										"VariableValue": "^.:",
+										"Variable": "local_TriggerValue",
+										"VariableConditionType": "Matches"
+									}
+								]
+							},
+							"ThenActions": [
+								{
+									"MacroActionType": "SearchRegEx",
+									"Search": "(.):(.+)",
+									"Source": "Variable",
+									"Action": "IgnoreCaseRegEx",
+									"Variable": "local_TriggerValue",
+									"Captures": [
+										"",
+										"local_BrowserAbbreviation",
+										"local_Url"
+									],
+									"ActionUID": 15723272
+								},
+								{
+									"MacroActionType": "Switch",
+									"CaseEntries": [
+										{
+											"Actions": [
+												{
+													"MacroActionType": "SetVariableToText",
+													"Variable": "local_Browser",
+													"Text": "Safari",
+													"ActionUID": 15723287
+												}
+											],
+											"ConditionType": "Matches",
+											"TestValue": "[sS]"
+										},
+										{
+											"Actions": [
+												{
+													"MacroActionType": "SetVariableToText",
+													"Variable": "local_Browser",
+													"Text": "Arc",
+													"ActionUID": 15723289
+												}
+											],
+											"ConditionType": "Matches",
+											"TestValue": "[aA]"
+										},
+										{
+											"Actions": [
+												{
+													"MacroActionType": "SetVariableToText",
+													"Variable": "local_Browser",
+													"Text": "Chrome",
+													"ActionUID": 15723290
+												}
+											],
+											"ConditionType": "Matches",
+											"TestValue": "[cC]"
+										},
+										{
+											"Actions": [
+												{
+													"MacroActionType": "SetVariableToText",
+													"Variable": "local_Browser",
+													"Text": "Brave",
+													"ActionUID": 15723291
+												}
+											],
+											"ConditionType": "Matches",
+											"TestValue": "[bB]"
+										},
+										{
+											"Actions": [
+												{
+													"MacroActionType": "SetVariableToText",
+													"Variable": "local_Browser",
+													"Text": "Edge",
+													"ActionUID": 15723292
+												}
+											],
+											"ConditionType": "Matches",
+											"TestValue": "[eE]"
+										},
+										{
+											"Actions": [
+												{
+													"MacroActionType": "SetVariableToText",
+													"Variable": "local_Browser",
+													"Text": "Vivaldi",
+													"ActionUID": 15723293
+												}
+											],
+											"ConditionType": "Matches",
+											"TestValue": "[vV]"
+										},
+										{
+											"Actions": [
+												{
+													"MacroActionType": "SetNextEngineWindow",
+													"Action": "CenterWindow",
+													"ActionUID": 15723298,
+													"IsDisclosed": false,
+													"HorizontalExpression": "125",
+													"WidthExpression": "300",
+													"VerticalExpression": "125",
+													"HeightExpression": "300"
+												},
+												{
+													"MacroActionType": "PromptForUserInput",
+													"Title": "%ExecutingMacro%",
+													"Prompt": "Invalid Browser Abbreviation: %Variable%local_BrowserAbbreviation%\n\nValid values: s (Safari), a (Arc), c (Chrome), b (Brave), e (Edge), v (Vivaldi)",
+													"ActionUID": 15723299,
+													"ActionColor": "Purple",
+													"TimeOutAbortsMacro": true,
+													"Buttons": [
+														{
+															"Button": "OK/",
+															"Cancel": true
+														}
+													],
+													"Variables": []
+												}
+											],
+											"ConditionType": "Otherwise",
+											"TestValue": ""
+										}
+									],
+									"Source": "Variable",
+									"Variable": "local_BrowserAbbreviation",
+									"ActionColor": "Yellow",
+									"ActionUID": 15723279
+								}
+							]
+						},
+						{
+							"MacroActionType": "IfThenElse",
+							"ActionUID": 15723237,
+							"ActionColor": "Green",
+							"TimeOutAbortsMacro": true,
+							"ElseActions": [
+								{
+									"MacroActionType": "Comment",
+									"Title": "",
+									"ActionName": "Intentionally Blank",
+									"IsDisclosed": false,
+									"StyledText": "\n\t\t\t\t\t\t\t\t41E4D515-C065-4C24-9859-EA2479C52CC9\n\t\t\t\t\t\t\t\tcnRmZAAAAAAD\n\t\t\t\t\t\t\t\tAAAAAgAAAAcA\n\t\t\t\t\t\t\t\tAABUWFQucnRm\n\t\t\t\t\t\t\t\tAQAAAC5uAAAA\n\t\t\t\t\t\t\t\tKwAAAAEAAABm\n\t\t\t\t\t\t\t\tAAAAe1xydGYx\n\t\t\t\t\t\t\t\tXGFuc2lcYW5z\n\t\t\t\t\t\t\t\taWNwZzEyNTJc\n\t\t\t\t\t\t\t\tY29jb2FydGYx\n\t\t\t\t\t\t\t\tNDA0XGNvY29h\n\t\t\t\t\t\t\t\tc3VicnRmNDcw\n\t\t\t\t\t\t\t\tCntcZm9udHRi\n\t\t\t\t\t\t\t\tbH0Ke1xjb2xv\n\t\t\t\t\t\t\t\tcnRibDtccmVk\n\t\t\t\t\t\t\t\tMjU1XGdyZWVu\n\t\t\t\t\t\t\t\tMjU1XGJsdWUy\n\t\t\t\t\t\t\t\tNTU7fQp9AQAA\n\t\t\t\t\t\t\t\tACMAAAABAAAA\n\t\t\t\t\t\t\t\tBwAAAFRYVC5y\n\t\t\t\t\t\t\t\tdGYQAAAAd3Kj\n\t\t\t\t\t\t\t\tV7YBAAAAAAAA\n\t\t\t\t\t\t\t\tAAAAAA==\n\t\t\t\t\t\t\t\t\t\t\t\t\t41E4D515-C065-4C24-9859-EA2479C52CC9\n\t\t\t\t\t\t\t\t",
+									"ActionUID": 15723240
+								}
+							],
+							"Conditions": {
+								"ConditionListMatch": "All",
+								"ConditionList": [
+									{
+										"ConditionType": "Variable",
+										"VariableValue": "value",
+										"Variable": "local_Url",
+										"VariableConditionType": "IsEmpty"
+									}
+								]
+							},
+							"ThenActions": [
+								{
+									"MacroActionType": "SetNextEngineWindow",
+									"Action": "CenterWindow",
+									"ActionUID": 15723238,
+									"IsDisclosed": false,
+									"HorizontalExpression": "125",
+									"WidthExpression": "300",
+									"VerticalExpression": "125",
+									"HeightExpression": "300"
+								},
+								{
+									"MacroActionType": "PromptForUserInput",
+									"Title": "%ExecutingMacro%",
+									"Prompt": "“Url” not specified!",
+									"ActionUID": 15723239,
+									"ActionColor": "Purple",
+									"TimeOutAbortsMacro": true,
+									"Buttons": [
+										{
+											"Button": "OK/",
+											"Cancel": true
+										}
+									],
+									"Variables": []
+								}
+							]
+						}
+					]
+				}
+			],
+			"TimeOutAbortsMacro": true,
+			"ActionColor": "Purple"
+		},
+		{
+			"MacroActionType": "Group",
+			"ActionName": "Apply defaults values and escape special characters",
+			"ActionUID": 15466079,
+			"IsDisclosed": false,
+			"Actions": [
+				{
+					"MacroActionType": "IfThenElse",
+					"ActionUID": 15466099,
+					"ActionColor": "Yellow",
+					"TimeOutAbortsMacro": true,
+					"ElseActions": [
+						{
+							"MacroActionType": "Comment",
+							"Title": "",
+							"ActionName": "Intentionally Blank",
+							"IsDisclosed": false,
+							"StyledText": "\n\t\t\t\t\t\t\t\t41E4D515-C065-4C24-9859-EA2479C52CC9\n\t\t\t\t\t\t\t\tcnRmZAAAAAAD\n\t\t\t\t\t\t\t\tAAAAAgAAAAcA\n\t\t\t\t\t\t\t\tAABUWFQucnRm\n\t\t\t\t\t\t\t\tAQAAAC5uAAAA\n\t\t\t\t\t\t\t\tKwAAAAEAAABm\n\t\t\t\t\t\t\t\tAAAAe1xydGYx\n\t\t\t\t\t\t\t\tXGFuc2lcYW5z\n\t\t\t\t\t\t\t\taWNwZzEyNTJc\n\t\t\t\t\t\t\t\tY29jb2FydGYx\n\t\t\t\t\t\t\t\tNDA0XGNvY29h\n\t\t\t\t\t\t\t\tc3VicnRmNDcw\n\t\t\t\t\t\t\t\tCntcZm9udHRi\n\t\t\t\t\t\t\t\tbH0Ke1xjb2xv\n\t\t\t\t\t\t\t\tcnRibDtccmVk\n\t\t\t\t\t\t\t\tMjU1XGdyZWVu\n\t\t\t\t\t\t\t\tMjU1XGJsdWUy\n\t\t\t\t\t\t\t\tNTU7fQp9AQAA\n\t\t\t\t\t\t\t\tACMAAAABAAAA\n\t\t\t\t\t\t\t\tBwAAAFRYVC5y\n\t\t\t\t\t\t\t\tdGYQAAAAd3Kj\n\t\t\t\t\t\t\t\tV7YBAAAAAAAA\n\t\t\t\t\t\t\t\tAAAAAA==\n\t\t\t\t\t\t\t\t\t\t\t41E4D515-C065-4C24-9859-EA2479C52CC9\n\t\t\t\t\t\t\t\t",
+							"ActionUID": 15466101
+						}
+					],
+					"Conditions": {
+						"ConditionListMatch": "All",
+						"ConditionList": [
+							{
+								"ConditionType": "Variable",
+								"VariableValue": "value",
+								"Variable": "local_Browser",
+								"VariableConditionType": "IsEmpty"
+							}
+						]
+					},
+					"ThenActions": [
+						{
+							"MacroActionType": "SetVariableToText",
+							"Variable": "local_Browser",
+							"Text": "%Variable%local_Browser_default%",
+							"ActionUID": 15466100
+						}
+					]
+				},
+				{
+					"MacroActionType": "SearchReplace",
+					"Search": "/$",
+					"Source": "Variable",
+					"Variable": "local_Url",
+					"Action": "CaseSensitiveRegEx",
+					"ActionUID": 15466102,
+					"Replace": "",
+					"Which": "All"
+				},
+				{
+					"MacroActionType": "IfThenElse",
+					"ActionUID": 15466103,
+					"ActionColor": "Yellow",
+					"TimeOutAbortsMacro": true,
+					"ElseActions": [
+						{
+							"MacroActionType": "Comment",
+							"Title": "",
+							"ActionName": "Intentionally Blank",
+							"IsDisclosed": false,
+							"StyledText": "\n\t\t\t\t\t\t\t\t41E4D515-C065-4C24-9859-EA2479C52CC9\n\t\t\t\t\t\t\t\tcnRmZAAAAAAD\n\t\t\t\t\t\t\t\tAAAAAgAAAAcA\n\t\t\t\t\t\t\t\tAABUWFQucnRm\n\t\t\t\t\t\t\t\tAQAAAC5uAAAA\n\t\t\t\t\t\t\t\tKwAAAAEAAABm\n\t\t\t\t\t\t\t\tAAAAe1xydGYx\n\t\t\t\t\t\t\t\tXGFuc2lcYW5z\n\t\t\t\t\t\t\t\taWNwZzEyNTJc\n\t\t\t\t\t\t\t\tY29jb2FydGYx\n\t\t\t\t\t\t\t\tNDA0XGNvY29h\n\t\t\t\t\t\t\t\tc3VicnRmNDcw\n\t\t\t\t\t\t\t\tCntcZm9udHRi\n\t\t\t\t\t\t\t\tbH0Ke1xjb2xv\n\t\t\t\t\t\t\t\tcnRibDtccmVk\n\t\t\t\t\t\t\t\tMjU1XGdyZWVu\n\t\t\t\t\t\t\t\tMjU1XGJsdWUy\n\t\t\t\t\t\t\t\tNTU7fQp9AQAA\n\t\t\t\t\t\t\t\tACMAAAABAAAA\n\t\t\t\t\t\t\t\tBwAAAFRYVC5y\n\t\t\t\t\t\t\t\tdGYQAAAAd3Kj\n\t\t\t\t\t\t\t\tV7YBAAAAAAAA\n\t\t\t\t\t\t\t\tAAAAAA==\n\t\t\t\t\t\t\t\t\t\t\t41E4D515-C065-4C24-9859-EA2479C52CC9\n\t\t\t\t\t\t\t\t",
+							"ActionUID": 15466106
+						}
+					],
+					"Conditions": {
+						"ConditionListMatch": "All",
+						"ConditionList": [
+							{
+								"ConditionType": "Variable",
+								"VariableValue": "value",
+								"Variable": "local_UrlPattern",
+								"VariableConditionType": "IsEmpty"
+							}
+						]
+					},
+					"ThenActions": [
+						{
+							"MacroActionType": "SetVariableToText",
+							"Variable": "local_UrlPattern",
+							"Text": "%Variable%local_Url%",
+							"ActionUID": 15466104
+						},
+						{
+							"MacroActionType": "SearchReplace",
+							"ActionName": "REPLACE Regex:  Escape RegEx Meta Characters",
+							"Search": "([.*+?^=!:${}()|\\[\\]\\/\\\\])",
+							"Source": "Variable",
+							"Action": "IgnoreCaseRegEx",
+							"ActionUID": 15466105,
+							"Variable": "local_UrlPattern",
+							"Which": "All",
+							"Replace": "\\\\$1"
+						}
+					]
+				},
+				{
+					"MacroActionType": "SearchReplace",
+					"Search": "/$",
+					"Source": "Variable",
+					"Variable": "local_UrlPattern",
+					"Action": "CaseSensitiveRegEx",
+					"ActionUID": 15466107,
+					"Replace": "",
+					"Which": "All"
+				},
+				{
+					"MacroActionType": "SearchReplace",
+					"Search": "\\\\$",
+					"Source": "Variable",
+					"Variable": "local_UrlPattern",
+					"Action": "CaseSensitiveRegEx",
+					"ActionUID": 15466108,
+					"Replace": "",
+					"Which": "All"
+				},
+				{
+					"MacroActionType": "IfThenElse",
+					"ActionUID": 15466109,
+					"ActionColor": "Yellow",
+					"TimeOutAbortsMacro": true,
+					"ElseActions": [
+						{
+							"MacroActionType": "Comment",
+							"Title": "",
+							"ActionName": "Intentionally Blank",
+							"IsDisclosed": false,
+							"StyledText": "\n\t\t\t\t\t\t\t\t41E4D515-C065-4C24-9859-EA2479C52CC9\n\t\t\t\t\t\t\t\tcnRmZAAAAAAD\n\t\t\t\t\t\t\t\tAAAAAgAAAAcA\n\t\t\t\t\t\t\t\tAABUWFQucnRm\n\t\t\t\t\t\t\t\tAQAAAC5uAAAA\n\t\t\t\t\t\t\t\tKwAAAAEAAABm\n\t\t\t\t\t\t\t\tAAAAe1xydGYx\n\t\t\t\t\t\t\t\tXGFuc2lcYW5z\n\t\t\t\t\t\t\t\taWNwZzEyNTJc\n\t\t\t\t\t\t\t\tY29jb2FydGYx\n\t\t\t\t\t\t\t\tNDA0XGNvY29h\n\t\t\t\t\t\t\t\tc3VicnRmNDcw\n\t\t\t\t\t\t\t\tCntcZm9udHRi\n\t\t\t\t\t\t\t\tbH0Ke1xjb2xv\n\t\t\t\t\t\t\t\tcnRibDtccmVk\n\t\t\t\t\t\t\t\tMjU1XGdyZWVu\n\t\t\t\t\t\t\t\tMjU1XGJsdWUy\n\t\t\t\t\t\t\t\tNTU7fQp9AQAA\n\t\t\t\t\t\t\t\tACMAAAABAAAA\n\t\t\t\t\t\t\t\tBwAAAFRYVC5y\n\t\t\t\t\t\t\t\tdGYQAAAAd3Kj\n\t\t\t\t\t\t\t\tV7YBAAAAAAAA\n\t\t\t\t\t\t\t\tAAAAAA==\n\t\t\t\t\t\t\t\t\t\t\t41E4D515-C065-4C24-9859-EA2479C52CC9\n\t\t\t\t\t\t\t\t",
+							"ActionUID": 15466111
+						}
+					],
+					"Conditions": {
+						"ConditionListMatch": "All",
+						"ConditionList": [
+							{
+								"ConditionType": "Variable",
+								"VariableValue": "value",
+								"Variable": "local_ReplaceMatchedUrl",
+								"VariableConditionType": "IsEmpty"
+							}
+						]
+					},
+					"ThenActions": [
+						{
+							"MacroActionType": "SetVariableToCalculation",
+							"UseFormat": false,
+							"Variable": "local_ReplaceMatchedUrl",
+							"Text": "local_ReplaceMatchedUrl_default",
+							"ActionUID": 15466110
+						}
+					]
+				},
+				{
+					"MacroActionType": "IfThenElse",
+					"ActionUID": 15466112,
+					"ActionColor": "Yellow",
+					"TimeOutAbortsMacro": true,
+					"ElseActions": [
+						{
+							"MacroActionType": "Comment",
+							"Title": "",
+							"ActionName": "Intentionally Blank",
+							"IsDisclosed": false,
+							"StyledText": "\n\t\t\t\t\t\t\t\t41E4D515-C065-4C24-9859-EA2479C52CC9\n\t\t\t\t\t\t\t\tcnRmZAAAAAAD\n\t\t\t\t\t\t\t\tAAAAAgAAAAcA\n\t\t\t\t\t\t\t\tAABUWFQucnRm\n\t\t\t\t\t\t\t\tAQAAAC5uAAAA\n\t\t\t\t\t\t\t\tKwAAAAEAAABm\n\t\t\t\t\t\t\t\tAAAAe1xydGYx\n\t\t\t\t\t\t\t\tXGFuc2lcYW5z\n\t\t\t\t\t\t\t\taWNwZzEyNTJc\n\t\t\t\t\t\t\t\tY29jb2FydGYx\n\t\t\t\t\t\t\t\tNDA0XGNvY29h\n\t\t\t\t\t\t\t\tc3VicnRmNDcw\n\t\t\t\t\t\t\t\tCntcZm9udHRi\n\t\t\t\t\t\t\t\tbH0Ke1xjb2xv\n\t\t\t\t\t\t\t\tcnRibDtccmVk\n\t\t\t\t\t\t\t\tMjU1XGdyZWVu\n\t\t\t\t\t\t\t\tMjU1XGJsdWUy\n\t\t\t\t\t\t\t\tNTU7fQp9AQAA\n\t\t\t\t\t\t\t\tACMAAAABAAAA\n\t\t\t\t\t\t\t\tBwAAAFRYVC5y\n\t\t\t\t\t\t\t\tdGYQAAAAd3Kj\n\t\t\t\t\t\t\t\tV7YBAAAAAAAA\n\t\t\t\t\t\t\t\tAAAAAA==\n\t\t\t\t\t\t\t\t\t\t\t41E4D515-C065-4C24-9859-EA2479C52CC9\n\t\t\t\t\t\t\t\t",
+							"ActionUID": 15466114
+						}
+					],
+					"Conditions": {
+						"ConditionListMatch": "All",
+						"ConditionList": [
+							{
+								"ConditionType": "Variable",
+								"VariableValue": "value",
+								"Variable": "local_ReloadTab",
+								"VariableConditionType": "IsEmpty"
+							}
+						]
+					},
+					"ThenActions": [
+						{
+							"MacroActionType": "SetVariableToCalculation",
+							"UseFormat": false,
+							"Variable": "local_ReloadTab",
+							"Text": "local_ReloadTab_default",
+							"ActionUID": 15466113
+						}
+					]
+				},
+				{
+					"MacroActionType": "IfThenElse",
+					"ActionUID": 15466115,
+					"ActionColor": "Yellow",
+					"TimeOutAbortsMacro": true,
+					"ElseActions": [
+						{
+							"MacroActionType": "Comment",
+							"Title": "",
+							"ActionName": "Intentionally Blank",
+							"IsDisclosed": false,
+							"StyledText": "\n\t\t\t\t\t\t\t\t41E4D515-C065-4C24-9859-EA2479C52CC9\n\t\t\t\t\t\t\t\tcnRmZAAAAAAD\n\t\t\t\t\t\t\t\tAAAAAgAAAAcA\n\t\t\t\t\t\t\t\tAABUWFQucnRm\n\t\t\t\t\t\t\t\tAQAAAC5uAAAA\n\t\t\t\t\t\t\t\tKwAAAAEAAABm\n\t\t\t\t\t\t\t\tAAAAe1xydGYx\n\t\t\t\t\t\t\t\tXGFuc2lcYW5z\n\t\t\t\t\t\t\t\taWNwZzEyNTJc\n\t\t\t\t\t\t\t\tY29jb2FydGYx\n\t\t\t\t\t\t\t\tNDA0XGNvY29h\n\t\t\t\t\t\t\t\tc3VicnRmNDcw\n\t\t\t\t\t\t\t\tCntcZm9udHRi\n\t\t\t\t\t\t\t\tbH0Ke1xjb2xv\n\t\t\t\t\t\t\t\tcnRibDtccmVk\n\t\t\t\t\t\t\t\tMjU1XGdyZWVu\n\t\t\t\t\t\t\t\tMjU1XGJsdWUy\n\t\t\t\t\t\t\t\tNTU7fQp9AQAA\n\t\t\t\t\t\t\t\tACMAAAABAAAA\n\t\t\t\t\t\t\t\tBwAAAFRYVC5y\n\t\t\t\t\t\t\t\tdGYQAAAAd3Kj\n\t\t\t\t\t\t\t\tV7YBAAAAAAAA\n\t\t\t\t\t\t\t\tAAAAAA==\n\t\t\t\t\t\t\t\t\t\t\t41E4D515-C065-4C24-9859-EA2479C52CC9\n\t\t\t\t\t\t\t\t",
+							"ActionUID": 15466117
+						}
+					],
+					"Conditions": {
+						"ConditionListMatch": "All",
+						"ConditionList": [
+							{
+								"ConditionType": "Variable",
+								"VariableValue": "value",
+								"Variable": "local_NewWindowIfNotFound",
+								"VariableConditionType": "IsEmpty"
+							}
+						]
+					},
+					"ThenActions": [
+						{
+							"MacroActionType": "SetVariableToCalculation",
+							"UseFormat": false,
+							"Variable": "local_NewWindowIfNotFound",
+							"Text": "local_NewWindowIfNotFound_default",
+							"ActionUID": 15466116
+						}
+					]
+				}
+			],
+			"TimeOutAbortsMacro": true,
+			"ActionColor": "Purple"
+		},
+		{
+			"MacroActionType": "Group",
+			"ActionName": "Open URL",
+			"Actions": [
+				{
+					"MacroActionType": "Switch",
+					"CaseEntries": [
+						{
+							"Actions": [
+								{
+									"MacroActionType": "ExecuteAppleScript",
+									"IncludedVariables": [
+										"9999"
+									],
+									"TrimResults": true,
+									"IncludeStdErr": false,
+									"ActionUID": 15723503,
+									"UseText": true,
+									"TrimResultsNew": true,
+									"TimeOutAbortsMacro": true,
+									"Path": "",
+									"DisplayKind": "None",
+									"HonourFailureSettings": true,
+									"Text": "use AppleScript version \"2.4\" -- Yosemite (10.10) or later\nuse scripting additions\nuse framework \"Foundation\"\n\n### Requires Keyboard Maestro 8.0.3+ ###\nset kmInst to system attribute \"KMINSTANCE\"\ntell application \"Keyboard Maestro Engine\"\n\tset kmUrl to getvariable \"local_Url\" instance kmInst\n\tset kmUrlPattern to getvariable \"local_UrlPattern\" instance kmInst\n\tset kmReplaceMatchedUrl to getvariable \"local_ReplaceMatchedUrl\" instance kmInst\n\tset kmReloadTab to getvariable \"local_ReloadTab\" instance kmInst\n\tset kmNewWindowIfNotFound to getvariable \"local_NewWindowIfNotFound\" instance kmInst\nend tell\n\nproperty NSRegularExpressionSearch : a reference to 1024\n\nif kmUrlPattern ends with \"/\" then set kmUrlPattern to text 1 thru -2 of kmUrlPattern\n\n-- Includes AppleScript 'Safari suite'\n\ntell application \"Safari\"\n\tactivate\n\trepeat with theWindow in windows\n\t\tset tabIndex to 0\n\t\trepeat with theTab in tabs of theWindow\n\t\t\tset tabIndex to tabIndex + 1\n\t\t\tset theTabURL to URL of theTab\n\t\t\tif theTabURL is not missing value then\n\t\t\t\tif theTabURL ends with \"/\" then set theTabURL to text 1 thru -2 of theTabURL\n\t\t\t\tif (my regexMatch:theTabURL withPattern:kmUrlPattern) then\n\t\t\t\t\ttell theWindow\n\t\t\t\t\t\tset current tab to tab tabIndex\n\t\t\t\t\t\tset index to 1\n\t\t\t\t\tend tell\n\t\t\t\t\ttell application \"System Events\" to tell process \"Safari\"\n\t\t\t\t\t\tperform action \"AXRaise\" of front window\n\t\t\t\t\tend tell\n\t\t\t\t\tif kmReplaceMatchedUrl is \"1\" and theTabURL ≠ kmUrl then\n\t\t\t\t\t\tset URL of document 1 to kmUrl\n\t\t\t\t\telse if kmReloadTab is \"1\" then\n\t\t\t\t\t\tset URL of document 1 to theTabURL\n\t\t\t\t\tend if\n\t\t\t\t\treturn\n\t\t\t\tend if\n\t\t\tend if\n\t\tend repeat\n\tend repeat\n\tif kmNewWindowIfNotFound is \"1\" then\n\t\tmake new document at end of documents with properties {URL:kmUrl}\n\telse\n\t\topen location kmUrl\n\tend if\nend tell\n\non regexMatch:theText withPattern:thePattern\n\tset thePattern to \"^\" & thePattern & \"$\"\n\tset theText to current application's NSString's stringWithString:theText\n\tset theRange to theText's rangeOfString:thePattern options:NSRegularExpressionSearch\n\treturn (|length| of result) > 0\nend regexMatch:withPattern:"
+								}
+							],
+							"ConditionType": "Is",
+							"TestValue": "Safari"
+						},
+						{
+							"Actions": [
+								{
+									"MacroActionType": "ExecuteAppleScript",
+									"IncludedVariables": [
+										"9999"
+									],
+									"TrimResults": true,
+									"Variable": "local_Return",
+									"IncludeStdErr": false,
+									"ActionUID": 15723174,
+									"UseText": true,
+									"TrimResultsNew": true,
+									"TimeOutAbortsMacro": true,
+									"Path": "",
+									"DisplayKind": "Variable",
+									"HonourFailureSettings": true,
+									"Text": "use AppleScript version \"2.4\" -- Yosemite (10.10) or later\ruse scripting additions\ruse framework \"Foundation\"\r\r### Requires Keyboard Maestro 8.0.3+ ###\rset kmInst to system attribute \"KMINSTANCE\"\rtell application \"Keyboard Maestro Engine\"\r\tset kmUrl to getvariable \"local_Url\" instance kmInst\r\tset kmUrlPattern to getvariable \"local_UrlPattern\" instance kmInst\r\tset kmReplaceMatchedUrl to getvariable \"local_ReplaceMatchedUrl\" instance kmInst\r\tset kmReloadTab to getvariable \"local_ReloadTab\" instance kmInst\rend tell\r\rproperty NSRegularExpressionSearch : a reference to 1024\r\rif kmUrlPattern ends with \"/\" then set kmUrlPattern to text 1 thru -2 of kmUrlPattern\r\rtell application \"Arc\"\r\tactivate\r\trepeat with theWindow in every window\r\t\tset tabIndex to 0\r\t\trepeat with theTab in every tab of theWindow\r\t\t\tset tabIndex to tabIndex + 1\r\t\t\tset theTabURL to URL of theTab\r\t\t\tif theTabURL is not missing value then\r\t\t\t\tif theTabURL ends with \"/\" then set theTabURL to text 1 thru -2 of theTabURL\r\t\t\t\tif (my regexMatch:theTabURL withPattern:kmUrlPattern) then\r\t\t\t\t\ttell theWindow\r\t\t\t\t\t\ttell tab tabIndex of theWindow to select\r\t\t\t\t\t\tif kmReplaceMatchedUrl is \"1\" and theTabURL ≠ kmUrl then\r\t\t\t\t\t\t\tset URL of theTab to kmUrl\r\t\t\t\t\t\t\treturn 1\r\t\t\t\t\t\telse if kmReloadTab is \"1\" then\r\t\t\t\t\t\t\ttell theTab to reload\r\t\t\t\t\t\t\treturn 2\r\t\t\t\t\t\tend if\r\t\t\t\t\t\treturn 3\r\t\t\t\t\tend tell\r\t\t\t\tend if\r\t\t\tend if\r\t\tend repeat\r\tend repeat\r\tmake new tab with properties {URL:kmUrl}\r\treturn 4\rend tell\r\ron regexMatch:theText withPattern:thePattern\r\tset thePattern to \"^\" & thePattern & \"$\"\r\tset theText to current application's NSString's stringWithString:theText\r\tset theRange to theText's rangeOfString:thePattern options:NSRegularExpressionSearch\r\treturn (|length| of result) > 0\rend regexMatch:withPattern:\r\r"
+								},
+								{
+									"MacroActionType": "IfThenElse",
+									"ActionUID": 15723208,
+									"ActionColor": "Green",
+									"TimeOutAbortsMacro": true,
+									"ElseActions": [
+										{
+											"MacroActionType": "Comment",
+											"Title": "",
+											"ActionName": "Intentionally Blank",
+											"IsDisclosed": false,
+											"StyledText": "\n\t\t\t\t\t\t\t\t41E4D515-C065-4C24-9859-EA2479C52CC9\n\t\t\t\t\t\t\t\tcnRmZAAAAAAD\n\t\t\t\t\t\t\t\tAAAAAgAAAAcA\n\t\t\t\t\t\t\t\tAABUWFQucnRm\n\t\t\t\t\t\t\t\tAQAAAC5uAAAA\n\t\t\t\t\t\t\t\tKwAAAAEAAABm\n\t\t\t\t\t\t\t\tAAAAe1xydGYx\n\t\t\t\t\t\t\t\tXGFuc2lcYW5z\n\t\t\t\t\t\t\t\taWNwZzEyNTJc\n\t\t\t\t\t\t\t\tY29jb2FydGYx\n\t\t\t\t\t\t\t\tNDA0XGNvY29h\n\t\t\t\t\t\t\t\tc3VicnRmNDcw\n\t\t\t\t\t\t\t\tCntcZm9udHRi\n\t\t\t\t\t\t\t\tbH0Ke1xjb2xv\n\t\t\t\t\t\t\t\tcnRibDtccmVk\n\t\t\t\t\t\t\t\tMjU1XGdyZWVu\n\t\t\t\t\t\t\t\tMjU1XGJsdWUy\n\t\t\t\t\t\t\t\tNTU7fQp9AQAA\n\t\t\t\t\t\t\t\tACMAAAABAAAA\n\t\t\t\t\t\t\t\tBwAAAFRYVC5y\n\t\t\t\t\t\t\t\tdGYQAAAAd3Kj\n\t\t\t\t\t\t\t\tV7YBAAAAAAAA\n\t\t\t\t\t\t\t\tAAAAAA==\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t41E4D515-C065-4C24-9859-EA2479C52CC9\n\t\t\t\t\t\t\t\t",
+											"ActionUID": 15723219
+										}
+									],
+									"Conditions": {
+										"ConditionListMatch": "All",
+										"ConditionList": [
+											{
+												"ConditionType": "Variable",
+												"VariableValue": "4",
+												"Variable": "local_Return",
+												"VariableConditionType": "Equal"
+											},
+											{
+												"ConditionType": "Variable",
+												"VariableValue": "1",
+												"Variable": "local_NewWindowIfNotFound",
+												"VariableConditionType": "IsNot"
+											}
+										]
+									},
+									"ThenActions": [
+										{
+											"MacroActionType": "SimulateKeystroke",
+											"ActionUID": 15723215,
+											"ReleaseAll": false,
+											"TargetApplication": {},
+											"TargetingType": "Front",
+											"KeyCode": 31,
+											"Modifiers": 256
+										}
+									]
+								}
+							],
+							"ConditionType": "Is",
+							"TestValue": "Arc"
+						},
+						{
+							"Actions": [
+								{
+									"MacroActionType": "ExecuteAppleScript",
+									"IncludedVariables": [
+										"9999"
+									],
+									"TrimResults": true,
+									"IncludeStdErr": false,
+									"ActionUID": 15723506,
+									"UseText": true,
+									"TrimResultsNew": true,
+									"TimeOutAbortsMacro": true,
+									"Path": "",
+									"DisplayKind": "None",
+									"HonourFailureSettings": true,
+									"Text": "use AppleScript version \"2.4\" -- Yosemite (10.10) or later\ruse scripting additions\ruse framework \"Foundation\"\r\r### Requires Keyboard Maestro 8.0.3+ ###\rset kmInst to system attribute \"KMINSTANCE\"\rtell application \"Keyboard Maestro Engine\"\r\tset kmUrl to getvariable \"local_Url\" instance kmInst\r\tset kmUrlPattern to getvariable \"local_UrlPattern\" instance kmInst\r\tset kmReplaceMatchedUrl to getvariable \"local_ReplaceMatchedUrl\" instance kmInst\r\tset kmReloadTab to getvariable \"local_ReloadTab\" instance kmInst\r\tset kmNewWindowIfNotFound to getvariable \"local_NewWindowIfNotFound\" instance kmInst\rend tell\r\rproperty NSRegularExpressionSearch : a reference to 1024\r\rif kmUrlPattern ends with \"/\" then set kmUrlPattern to text 1 thru -2 of kmUrlPattern\r\r-- Includes AppleScript 'Chromium Suite'\r\rtell application \"Google Chrome\"\r\tactivate\r\trepeat with theWindow in windows\r\t\tset tabIndex to 0\r\t\trepeat with theTab in tabs of theWindow\r\t\t\tset tabIndex to tabIndex + 1\r\t\t\tset theTabURL to URL of theTab\r\t\t\tif theTabURL is not missing value then\r\t\t\t\tif theTabURL ends with \"/\" then set theTabURL to text 1 thru -2 of theTabURL\r\t\t\t\tif (my regexMatch:theTabURL withPattern:kmUrlPattern) then\r\t\t\t\t\ttell theWindow\r\t\t\t\t\t\tset active tab index to tabIndex\r\t\t\t\t\t\tset index to 1\r\t\t\t\t\tend tell\r\t\t\t\t\ttell application \"System Events\" to tell process \"Google Chrome\"\r\t\t\t\t\t\tperform action \"AXRaise\" of front window\r\t\t\t\t\tend tell\r\t\t\t\t\ttell active tab of front window\r\t\t\t\t\t\tif kmReplaceMatchedUrl is \"1\" and theTabURL ≠ kmUrl then\r\t\t\t\t\t\t\tset URL to kmUrl\r\t\t\t\t\t\telse if kmReloadTab is \"1\" then\r\t\t\t\t\t\t\treload\r\t\t\t\t\t\tend if\r\t\t\t\t\tend tell\r\t\t\t\t\treturn\r\t\t\t\tend if\r\t\t\tend if\r\t\tend repeat\r\tend repeat\r\tif kmNewWindowIfNotFound is \"1\" then\r\t\tmake new window\r\tend if\r\topen location kmUrl\rend tell\r\ron regexMatch:theText withPattern:thePattern\r\tset thePattern to \"^\" & thePattern & \"$\"\r\tset theText to current application's NSString's stringWithString:theText\r\tset theRange to theText's rangeOfString:thePattern options:NSRegularExpressionSearch\r\treturn (|length| of result) > 0\rend regexMatch:withPattern:"
+								}
+							],
+							"ConditionType": "Is",
+							"TestValue": "Chrome"
+						},
+						{
+							"Actions": [
+								{
+									"MacroActionType": "ExecuteAppleScript",
+									"IncludedVariables": [
+										"9999"
+									],
+									"TrimResults": true,
+									"IncludeStdErr": false,
+									"ActionUID": 15723502,
+									"UseText": true,
+									"TrimResultsNew": true,
+									"TimeOutAbortsMacro": true,
+									"Path": "",
+									"DisplayKind": "None",
+									"HonourFailureSettings": true,
+									"Text": "use AppleScript version \"2.4\" -- Yosemite (10.10) or later\ruse scripting additions\ruse framework \"Foundation\"\r\r### Requires Keyboard Maestro 8.0.3+ ###\rset kmInst to system attribute \"KMINSTANCE\"\rtell application \"Keyboard Maestro Engine\"\r\tset kmUrl to getvariable \"local_Url\" instance kmInst\r\tset kmUrlPattern to getvariable \"local_UrlPattern\" instance kmInst\r\tset kmReplaceMatchedUrl to getvariable \"local_ReplaceMatchedUrl\" instance kmInst\r\tset kmReloadTab to getvariable \"local_ReloadTab\" instance kmInst\r\tset kmNewWindowIfNotFound to getvariable \"local_NewWindowIfNotFound\" instance kmInst\rend tell\r\rproperty NSRegularExpressionSearch : a reference to 1024\r\rif kmUrlPattern ends with \"/\" then set kmUrlPattern to text 1 thru -2 of kmUrlPattern\r\r-- Includes AppleScript 'Chromium Suite'\r\rtell application \"Brave Browser\"\r\tactivate\r\trepeat with theWindow in windows\r\t\tset tabIndex to 0\r\t\trepeat with theTab in tabs of theWindow\r\t\t\tset tabIndex to tabIndex + 1\r\t\t\tset theTabURL to URL of theTab\r\t\t\tif theTabURL is not missing value then\r\t\t\t\tif theTabURL ends with \"/\" then set theTabURL to text 1 thru -2 of theTabURL\r\t\t\t\tif (my regexMatch:theTabURL withPattern:kmUrlPattern) then\r\t\t\t\t\ttell theWindow\r\t\t\t\t\t\tset active tab index to tabIndex\r\t\t\t\t\t\tset index to 1\r\t\t\t\t\tend tell\r\t\t\t\t\ttell application \"System Events\" to tell process \"Brave Browser\"\r\t\t\t\t\t\tperform action \"AXRaise\" of front window\r\t\t\t\t\tend tell\r\t\t\t\t\ttell active tab of front window\r\t\t\t\t\t\tif kmReplaceMatchedUrl is \"1\" and theTabURL ≠ kmUrl then\r\t\t\t\t\t\t\tset URL to kmUrl\r\t\t\t\t\t\telse if kmReloadTab is \"1\" then\r\t\t\t\t\t\t\treload\r\t\t\t\t\t\tend if\r\t\t\t\t\tend tell\r\t\t\t\t\treturn\r\t\t\t\tend if\r\t\t\tend if\r\t\tend repeat\r\tend repeat\r\tif kmNewWindowIfNotFound is \"1\" then\r\t\tmake new window\r\tend if\r\topen location kmUrl\rend tell\r\ron regexMatch:theText withPattern:thePattern\r\tset thePattern to \"^\" & thePattern & \"$\"\r\tset theText to current application's NSString's stringWithString:theText\r\tset theRange to theText's rangeOfString:thePattern options:NSRegularExpressionSearch\r\treturn (|length| of result) > 0\rend regexMatch:withPattern:"
+								}
+							],
+							"ConditionType": "Is",
+							"TestValue": "Brave"
+						},
+						{
+							"Actions": [
+								{
+									"MacroActionType": "ExecuteAppleScript",
+									"IncludedVariables": [
+										"9999"
+									],
+									"TrimResults": true,
+									"IncludeStdErr": false,
+									"ActionUID": 15723521,
+									"UseText": true,
+									"TrimResultsNew": true,
+									"TimeOutAbortsMacro": true,
+									"Path": "",
+									"DisplayKind": "None",
+									"HonourFailureSettings": true,
+									"Text": "use AppleScript version \"2.4\" -- Yosemite (10.10) or later\ruse scripting additions\ruse framework \"Foundation\"\r\r### Requires Keyboard Maestro 8.0.3+ ###\rset kmInst to system attribute \"KMINSTANCE\"\rtell application \"Keyboard Maestro Engine\"\r\tset kmUrl to getvariable \"local_Url\" instance kmInst\r\tset kmUrlPattern to getvariable \"local_UrlPattern\" instance kmInst\r\tset kmReplaceMatchedUrl to getvariable \"local_ReplaceMatchedUrl\" instance kmInst\r\tset kmReloadTab to getvariable \"local_ReloadTab\" instance kmInst\r\tset kmNewWindowIfNotFound to getvariable \"local_NewWindowIfNotFound\" instance kmInst\rend tell\r\rproperty NSRegularExpressionSearch : a reference to 1024\r\rif kmUrlPattern ends with \"/\" then set kmUrlPattern to text 1 thru -2 of kmUrlPattern\r\r-- Includes AppleScript 'Chromium Suite'\r\rtell application \"Microsoft Edge\"\r\tactivate\r\trepeat with theWindow in windows\r\t\tset tabIndex to 0\r\t\trepeat with theTab in tabs of theWindow\r\t\t\tset tabIndex to tabIndex + 1\r\t\t\tset theTabURL to URL of theTab\r\t\t\tif theTabURL is not missing value then\r\t\t\t\tif theTabURL ends with \"/\" then set theTabURL to text 1 thru -2 of theTabURL\r\t\t\t\tif (my regexMatch:theTabURL withPattern:kmUrlPattern) then\r\t\t\t\t\ttell theWindow\r\t\t\t\t\t\tset active tab index to tabIndex\r\t\t\t\t\t\tset index to 1\r\t\t\t\t\tend tell\r\t\t\t\t\ttell application \"System Events\" to tell process \"Microsoft Edge\"\r\t\t\t\t\t\tperform action \"AXRaise\" of front window\r\t\t\t\t\tend tell\r\t\t\t\t\ttell active tab of front window\r\t\t\t\t\t\tif kmReplaceMatchedUrl is \"1\" and theTabURL ≠ kmUrl then\r\t\t\t\t\t\t\tset URL to kmUrl\r\t\t\t\t\t\telse if kmReloadTab is \"1\" then\r\t\t\t\t\t\t\treload\r\t\t\t\t\t\tend if\r\t\t\t\t\tend tell\r\t\t\t\t\treturn\r\t\t\t\tend if\r\t\t\tend if\r\t\tend repeat\r\tend repeat\r\tif kmNewWindowIfNotFound is \"1\" then\r\t\tmake new window\r\tend if\r\topen location kmUrl\rend tell\r\ron regexMatch:theText withPattern:thePattern\r\tset thePattern to \"^\" & thePattern & \"$\"\r\tset theText to current application's NSString's stringWithString:theText\r\tset theRange to theText's rangeOfString:thePattern options:NSRegularExpressionSearch\r\treturn (|length| of result) > 0\rend regexMatch:withPattern:"
+								}
+							],
+							"ConditionType": "Is",
+							"TestValue": "Edge"
+						},
+						{
+							"Actions": [
+								{
+									"MacroActionType": "ExecuteAppleScript",
+									"IncludedVariables": [
+										"9999"
+									],
+									"TrimResults": true,
+									"IncludeStdErr": false,
+									"ActionUID": 15723522,
+									"UseText": true,
+									"TrimResultsNew": true,
+									"TimeOutAbortsMacro": true,
+									"Path": "",
+									"DisplayKind": "None",
+									"HonourFailureSettings": true,
+									"Text": "use AppleScript version \"2.4\" -- Yosemite (10.10) or later\ruse scripting additions\ruse framework \"Foundation\"\r\r### Requires Keyboard Maestro 8.0.3+ ###\rset kmInst to system attribute \"KMINSTANCE\"\rtell application \"Keyboard Maestro Engine\"\r\tset kmUrl to getvariable \"local_Url\" instance kmInst\r\tset kmUrlPattern to getvariable \"local_UrlPattern\" instance kmInst\r\tset kmReplaceMatchedUrl to getvariable \"local_ReplaceMatchedUrl\" instance kmInst\r\tset kmReloadTab to getvariable \"local_ReloadTab\" instance kmInst\r\tset kmNewWindowIfNotFound to getvariable \"local_NewWindowIfNotFound\" instance kmInst\rend tell\r\rproperty NSRegularExpressionSearch : a reference to 1024\r\rif kmUrlPattern ends with \"/\" then set kmUrlPattern to text 1 thru -2 of kmUrlPattern\r\r-- Includes AppleScript 'Chromium Suite'\r\rtell application \"Vivaldi\"\r\tactivate\r\trepeat with theWindow in windows\r\t\tset tabIndex to 0\r\t\trepeat with theTab in tabs of theWindow\r\t\t\tset tabIndex to tabIndex + 1\r\t\t\tset theTabURL to URL of theTab\r\t\t\tif theTabURL is not missing value then\r\t\t\t\tif theTabURL ends with \"/\" then set theTabURL to text 1 thru -2 of theTabURL\r\t\t\t\tif (my regexMatch:theTabURL withPattern:kmUrlPattern) then\r\t\t\t\t\ttell theWindow\r\t\t\t\t\t\tset active tab index to tabIndex\r\t\t\t\t\t\tset index to 1\r\t\t\t\t\tend tell\r\t\t\t\t\ttell application \"System Events\" to tell process \"Vivaldi\"\r\t\t\t\t\t\tperform action \"AXRaise\" of front window\r\t\t\t\t\tend tell\r\t\t\t\t\ttell active tab of front window\r\t\t\t\t\t\tif kmReplaceMatchedUrl is \"1\" and theTabURL ≠ kmUrl then\r\t\t\t\t\t\t\tset URL to kmUrl\r\t\t\t\t\t\telse if kmReloadTab is \"1\" then\r\t\t\t\t\t\t\treload\r\t\t\t\t\t\tend if\r\t\t\t\t\tend tell\r\t\t\t\t\treturn\r\t\t\t\tend if\r\t\t\tend if\r\t\tend repeat\r\tend repeat\r\tif kmNewWindowIfNotFound is \"1\" then\r\t\tmake new window\r\tend if\r\topen location kmUrl\rend tell\r\ron regexMatch:theText withPattern:thePattern\r\tset thePattern to \"^\" & thePattern & \"$\"\r\tset theText to current application's NSString's stringWithString:theText\r\tset theRange to theText's rangeOfString:thePattern options:NSRegularExpressionSearch\r\treturn (|length| of result) > 0\rend regexMatch:withPattern:"
+								}
+							],
+							"ConditionType": "Is",
+							"TestValue": "Vivaldi"
+						},
+						{
+							"Actions": [
+								{
+									"MacroActionType": "PromptForUserInput",
+									"Title": "%ExecutingMacro%",
+									"Prompt": "Error occurred. The \"Browser\" was improperly specified: %Variable%local_Browser%\n\nFor more information, see the header comment in: %ExecutingThisMacro%",
+									"ActionUID": 15466125,
+									"TimeOutAbortsMacro": true,
+									"Buttons": [
+										{
+											"Button": "View Header Comment/",
+											"Cancel": false
+										},
+										{
+											"Button": "Cancel/.",
+											"Cancel": true
+										}
+									],
+									"Variables": []
+								},
+								{
+									"MacroActionType": "Group",
+									"ActionName": "Select this macro and select the top action",
+									"ActionUID": 15466126,
+									"IsDisclosed": false,
+									"Actions": [
+										{
+											"MacroActionType": "OpenURL",
+											"ActionName": "Go to Macro",
+											"ActionUID": 15466127,
+											"TimeOutAbortsMacro": false,
+											"IsDefaultApplication": true,
+											"TimeOutPeriod": 2,
+											"StopOnFailure": true,
+											"NotifyOnTimeOut": true,
+											"URL": "keyboardmaestro://m=F993DABB-8E10-41C1-9CA7-97CA74E6F9F0"
+										},
+										{
+											"MacroActionType": "ExecuteAppleScript",
+											"IncludedVariables": [
+												"9999"
+											],
+											"TrimResults": true,
+											"IncludeStdErr": false,
+											"ActionUID": 15466128,
+											"UseText": true,
+											"TrimResultsNew": true,
+											"TimeOutAbortsMacro": true,
+											"Path": "",
+											"DisplayKind": "None",
+											"HonourFailureSettings": true,
+											"Text": "--------------------------------------------------------\n# Auth: Christopher Stone\n# dCre: 2019/06/30 23:41\n# dMod: 2021/10/09 20:28\n# Appl: Keyboard Maestro & System Events\n# Task: Select First Action of Current Macro\n#     : Scroll if necessary.\n# Libs: None\n# Osax: None\n# Tags: @Applescript, @Script, @System_Events, @Keyboard_Maestro, @Select, @Name, @Field\n--------------------------------------------------------\n\ntell application \"Keyboard Maestro\" to set kmVersion to version\n\nif kmVersion starts with \"9.\" then\n   # Keyboard Maestro v9.x.\n   tell application \"System Events\"\n      tell application process \"Keyboard Maestro\"\n         tell (first window whose subrole is \"AXStandardWindow\")\n            tell group 1\n               tell splitter group 1\n                  tell scroll area 3\n                     \n                     tell scroll bar 1\n                        try\n                           set value to 0\n                        end try\n                     end tell\n                     \n                  end tell\n               end tell\n            end tell\n         end tell\n      end tell\n   end tell\n   \nelse if kmVersion starts with \"10.\" then\n   \n   # Keyboard Maestro v10.x.\n   tell application \"System Events\"\n      tell application process \"Keyboard Maestro\"\n         tell (first window whose subrole is \"AXStandardWindow\")\n            tell group 6\n               tell splitter group 1\n                  tell scroll area 3\n                     tell scroll bar 1\n                        try\n                           set value to 0\n                        end try\n                     end tell\n                  end tell\n               end tell\n            end tell\n         end tell\n      end tell\n   end tell\n   \nend if\n\n--------------------------------------------------------\n\ntell application \"Keyboard Maestro\"\n   \n   set selectedMacroList to selected macros\n   \n   if length of selectedMacroList = 0 then\n      error \"No macros are selected!\"\n      \n   else if length of selectedMacroList = 1 then\n      set currentMacro to item 1 of selectedMacroList\n      \n   else if length of selectedMacroList > 1 then\n      error \"Too many macros are selected!\"\n      \n   end if\n   \n   select the first action of the currentMacro\n   \nend tell\n\n--------------------------------------------------------\n\n(* CHANGE NOTES:\n\n   - 2021/09/30 01:39\n      - Added descriminator for KM 9 and KM 10.\n      \n*)\n\n--------------------------------------------------------"
+										}
+									],
+									"TimeOutAbortsMacro": true,
+									"ActionColor": "Purple"
+								}
+							],
+							"ConditionType": "Otherwise",
+							"TestValue": ""
+						}
+					],
+					"Source": "Variable",
+					"Variable": "local_Browser",
+					"ActionColor": "Yellow",
+					"ActionUID": 15466119
+				}
+			],
+			"TimeOutAbortsMacro": true,
+			"ActionColor": "Purple",
+			"ActionUID": 15466118
+		}
+	],
+	"Name": "Activate, Reload, or Open Browser Tab ",
+	"CustomIconData": "KMEC=Rounded=KMCOLOR:247,247,247,255=safari=86=0=0=3=KMCOLOR:25,25,25,255"
+}

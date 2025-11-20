@@ -1,0 +1,33 @@
+{
+	"UID": "13516AF6-AB39-43AA-B440-EC2B8FEBC53A",
+	"CreationDate": 629940502.926812,
+	"ModificationDate": 632094036.059609,
+	"Triggers": [
+		{
+			"KeyCode": 19,
+			"MacroTriggerType": "HotKey",
+			"Modifiers": 6912,
+			"FireType": "Pressed"
+		}
+	],
+	"IsActive": false,
+	"Actions": [
+		{
+			"MacroActionType": "ExecuteAppleScript",
+			"IncludedVariables": [
+				"9999"
+			],
+			"TrimResults": true,
+			"IncludeStdErr": false,
+			"ActionUID": 1438,
+			"UseText": true,
+			"TrimResultsNew": true,
+			"TimeOutAbortsMacro": true,
+			"Path": "",
+			"DisplayKind": "None",
+			"HonourFailureSettings": true,
+			"Text": "property stopVideo : \"Stop Share\"\rproperty startVideo : \"Start Share\"\r\rif application \"zoom.us\" is running then\r\ttell application \"System Events\"\r\t\ttell application process \"zoom.us\"\r\t\t\tif exists (menu item stopVideo of menu 1 of menu bar item \"Meeting\" of menu bar 1) then\r\t\t\t\tclick menu item stopVideo of menu 1 of menu bar item \"Meeting\" of menu bar 1\r\t\t\telse\r\t\t\t\tclick menu item startVideo of menu 1 of menu bar item \"Meeting\" of menu bar 1\r\t\t\tend if\r\t\tend tell\r\tend tell\rend if"
+		}
+	],
+	"Name": "Toggle Sharing"
+}

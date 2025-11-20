@@ -1,0 +1,78 @@
+{
+	"UID": "99F45D03-DFE3-4936-B0AA-5595A8FA4321",
+	"CreationDate": 626160174.389467,
+	"ModificationDate": 632008277.57841,
+	"Triggers": [
+		{
+			"KeyCode": 18,
+			"MacroTriggerType": "HotKey",
+			"Modifiers": 6912,
+			"FireType": "Pressed"
+		}
+	],
+	"IsActive": false,
+	"Actions": [
+		{
+			"MacroActionType": "IfThenElse",
+			"ActionUID": 1434,
+			"ElseActions": [],
+			"TimeOutAbortsMacro": true,
+			"IsActive": false,
+			"Conditions": {
+				"ConditionListMatch": "All",
+				"ConditionList": [
+					{
+						"Application": {
+							"BundleIdentifier": "us.zoom.xos",
+							"Name": "zoom",
+							"NewFile": "/Applications/zoom.us.app"
+						},
+						"ApplicationConditionType": "Running",
+						"ConditionType": "Application"
+					}
+				]
+			},
+			"ThenActions": [
+				{
+					"MacroActionType": "ActivateApplication",
+					"ActionUID": 1435,
+					"ReopenWindows": false,
+					"AllWindows": true,
+					"TimeOutAbortsMacro": true,
+					"AlreadyActivatedActionType": "Normal",
+					"Application": {
+						"BundleIdentifier": "us.zoom.xos",
+						"Name": "zoom",
+						"NewFile": "/Applications/zoom.us.app"
+					}
+				},
+				{
+					"MacroActionType": "SimulateKeystroke",
+					"ActionUID": 1436,
+					"ReleaseAll": false,
+					"TargetApplication": {},
+					"TargetingType": "Front",
+					"KeyCode": 0,
+					"Modifiers": 768
+				}
+			]
+		},
+		{
+			"MacroActionType": "ExecuteAppleScript",
+			"IncludedVariables": [
+				"9999"
+			],
+			"TrimResults": true,
+			"IncludeStdErr": false,
+			"ActionUID": 1437,
+			"UseText": true,
+			"TrimResultsNew": true,
+			"TimeOutAbortsMacro": true,
+			"Path": "",
+			"DisplayKind": "None",
+			"HonourFailureSettings": true,
+			"Text": "property stopVideo : \"Stop Video\"\rproperty startVideo : \"Start Video\"\r\rif application \"zoom.us\" is running then\r\ttell application \"System Events\"\r\t\ttell application process \"zoom.us\"\r\t\t\tif exists (menu item stopVideo of menu 1 of menu bar item \"Meeting\" of menu bar 1) then\r\t\t\t\tclick menu item stopVideo of menu 1 of menu bar item \"Meeting\" of menu bar 1\r\t\t\telse\r\t\t\t\tclick menu item startVideo of menu 1 of menu bar item \"Meeting\" of menu bar 1\r\t\t\tend if\r\t\tend tell\r\tend tell\rend if"
+		}
+	],
+	"Name": "Toggle Video Zoom"
+}

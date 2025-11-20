@@ -1,0 +1,81 @@
+{
+	"CreationDate": 504914603.047044,
+	"UID": "4033E1C8-E93D-409F-A563-370D3490992C",
+	"Name": "w: DuckDuckGo",
+	"Triggers": [],
+	"ModificationDate": 568499969.358415,
+	"Actions": [
+		{
+			"MacroActionType": "IfThenElse",
+			"ElseActions": [
+				{
+					"MacroActionType": "ExecuteAppleScript",
+					"IncludedVariables": [
+						"9999"
+					],
+					"TrimResults": true,
+					"StopOnFailure": false,
+					"IncludeStdErr": true,
+					"ActionUID": 739,
+					"UseText": true,
+					"TrimResultsNew": true,
+					"TimeOutAbortsMacro": true,
+					"Path": "",
+					"DisplayKind": "None",
+					"HonourFailureSettings": true,
+					"Text": "------------------------------------------------------------------------------\n# Auth: Christopher Stone\n# dCre: 2017/01/06 19:04\n# dMod: 2017/03/06 17:40\n# Appl: Safari\n# Task: Serially switch between tabs having the same domain (or other filter text in the URL) in the front window.\n#     : 2017/03/06 – Now opens a new tab if the urlFilterText isn't found.\n# Libs: None\n# Osax: None\n# Tags: @Applescript, @Script, @Safari, @Serially, @Switch, @Tabs, @Domain, @Filter, @Front, @Window\n# Vers: 2.0\n------------------------------------------------------------------------------\n\nset urlFilterText to \"duckduckgo.com\"\nset urlToFetch to \"\"\n\ntell application \"Safari\"\n\ttell front window\n\t\tset filteredTabIndexList to index of tabs where its URL contains urlFilterText\n\t\tset currentTabIndex to index of current tab\n\t\t\t\n\t\t\t\t\t\n\t\tif currentTabIndex is in filteredTabIndexList and currentTabIndex ≠ (last item of filteredTabIndexList) then\n\t\t\tset listItemOffset to getListItemOffset(filteredTabIndexList, currentTabIndex) of me\n\t\t\tset current tab to tab (item (listItemOffset + 1) of filteredTabIndexList)\n\t\telse\n\t\t\tset current tab to tab (item 1 of filteredTabIndexList)\n\t\tend if\n\t\t\n\tend tell\nend tell\n\n------------------------------------------------------------------------------\n--» HANDLERS\n------------------------------------------------------------------------------\non getListItemOffset(theList, listItemValue)\n\tif listItemValue is not in theList then error \"getListItemOffset():  “listItemValue” is not in “theList”!\"\n\trepeat with listItemNum from 1 to (length of theList)\n\t\tif (item listItemNum of theList) = listItemValue then\n\t\t\treturn listItemNum\n\t\tend if\n\tend repeat\nend getListItemOffset\n------------------------------------------------------------------------------",
+					"NotifyOnFailure": false
+				}
+			],
+			"Conditions": {
+				"ConditionListMatch": "All",
+				"ConditionList": [
+					{
+						"Application": {
+							"BundleIdentifier": "com.apple.Safari",
+							"Name": "Safari",
+							"NewFile": "/Applications/Safari.app"
+						},
+						"ApplicationConditionType": "NotActive",
+						"ConditionType": "Application"
+					}
+				]
+			},
+			"ThenActions": [
+				{
+					"MacroActionType": "ActivateApplication",
+					"ActionUID": 737,
+					"ReopenWindows": false,
+					"AllWindows": true,
+					"TimeOutAbortsMacro": true,
+					"AlreadyActivatedActionType": "Normal",
+					"Application": {
+						"BundleIdentifier": "com.apple.Safari",
+						"Name": "Safari",
+						"NewFile": "/Applications/Safari.app"
+					}
+				},
+				{
+					"MacroActionType": "ExecuteAppleScript",
+					"IncludedVariables": [
+						"9999"
+					],
+					"TrimResults": true,
+					"StopOnFailure": false,
+					"IncludeStdErr": true,
+					"ActionUID": 738,
+					"UseText": true,
+					"TrimResultsNew": true,
+					"TimeOutAbortsMacro": true,
+					"Path": "",
+					"DisplayKind": "None",
+					"HonourFailureSettings": true,
+					"Text": "------------------------------------------------------------------------------\n# Auth: Christopher Stone\n# dCre: 2017/01/06 19:04\n# dMod: 2017/03/06 17:40\n# Appl: Safari\n# Task: Serially switch between tabs having the same domain (or other filter text in the URL) in the front window.\n#     : 2017/03/06 – Now opens a new tab if the urlFilterText isn't found.\n# Libs: None\n# Osax: None\n# Tags: @Applescript, @Script, @Safari, @Serially, @Switch, @Tabs, @Domain, @Filter, @Front, @Window\n# Vers: 2.0\n------------------------------------------------------------------------------\n\nset urlFilterText to \"duckduckgo.com\"\nset urlToFetch to \"\"\n\ntell application \"Safari\"\n\ttell front window\n\t\tset filteredTabIndexList to index of tabs where its URL contains urlFilterText\n\t\tset currentTabIndex to index of current tab\n\t\t\t\n\t\t\t\t\t\n\t\tif currentTabIndex is in filteredTabIndexList and currentTabIndex ≠ (last item of filteredTabIndexList) then\n\t\t\tset listItemOffset to getListItemOffset(filteredTabIndexList, currentTabIndex) of me\n\t\t\tset current tab to tab (item (listItemOffset + 1) of filteredTabIndexList)\n\t\telse\n\t\t\tset current tab to tab (item 1 of filteredTabIndexList)\n\t\tend if\n\t\t\n\tend tell\nend tell\n\n------------------------------------------------------------------------------\n--» HANDLERS\n------------------------------------------------------------------------------\non getListItemOffset(theList, listItemValue)\n\tif listItemValue is not in theList then error \"getListItemOffset():  “listItemValue” is not in “theList”!\"\n\trepeat with listItemNum from 1 to (length of theList)\n\t\tif (item listItemNum of theList) = listItemValue then\n\t\t\treturn listItemNum\n\t\tend if\n\tend repeat\nend getListItemOffset\n------------------------------------------------------------------------------",
+					"NotifyOnFailure": false
+				}
+			],
+			"TimeOutAbortsMacro": true,
+			"ActionUID": 736
+		}
+	]
+}

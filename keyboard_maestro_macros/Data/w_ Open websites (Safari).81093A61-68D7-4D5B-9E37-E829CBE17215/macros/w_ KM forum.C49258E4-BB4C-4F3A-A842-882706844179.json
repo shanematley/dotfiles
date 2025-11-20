@@ -1,0 +1,81 @@
+{
+	"CreationDate": 504914603.047044,
+	"UID": "C49258E4-BB4C-4F3A-A842-882706844179",
+	"Name": "w: KM forum",
+	"Triggers": [],
+	"ModificationDate": 576677915.833213,
+	"Actions": [
+		{
+			"MacroActionType": "IfThenElse",
+			"ElseActions": [
+				{
+					"MacroActionType": "ExecuteAppleScript",
+					"IncludedVariables": [
+						"9999"
+					],
+					"TrimResults": true,
+					"StopOnFailure": false,
+					"IncludeStdErr": true,
+					"ActionUID": 883,
+					"UseText": true,
+					"TrimResultsNew": true,
+					"TimeOutAbortsMacro": true,
+					"Path": "",
+					"DisplayKind": "None",
+					"HonourFailureSettings": true,
+					"Text": "set urlFilterText to \"forum.keyboardmaestro.com\"\rset urlToFetch to \"https://forum.keyboardmaestro.com/latest\"\r\rtell application \"Safari\"\r\ttell front window\r\t\tset filteredTabIndexList to index of tabs where its URL contains urlFilterText\r\t\tset currentTabIndex to index of current tab\r\t\t\r\t\tif filteredTabIndexList = {} then -- New\r\t\t\t\r\t\t\tset tabURL to URL of current tab\r\t\t\t\r\t\t\ttry\r\t\t\t\ttabURL -- will be undefine if blank\r\t\t\t\tmake new tab at end of tabs with properties {URL:urlToFetch}\r\t\t\t\tset current tab to last tab\r\t\t\ton error\r\t\t\t\t# Tab is blank, so we'll just use it.\r\t\t\t\tset its current tab's URL to urlToFetch\r\t\t\tend try\r\t\t\t\r\t\t\treturn\r\t\t\t\r\t\tend if\r\t\t\r\t\tif currentTabIndex is in filteredTabIndexList and currentTabIndex ≠ (last item of filteredTabIndexList) then\r\t\t\tset listItemOffset to getListItemOffset(filteredTabIndexList, currentTabIndex) of me\r\t\t\tset current tab to tab (item (listItemOffset + 1) of filteredTabIndexList)\r\t\telse\r\t\t\tset current tab to tab (item 1 of filteredTabIndexList)\r\t\tend if\r\t\t\r\tend tell\rend tell\r\r------------------------------------------------------------------------------\r--» HANDLERS\r------------------------------------------------------------------------------\ron getListItemOffset(theList, listItemValue)\r\tif listItemValue is not in theList then error \"getListItemOffset():  “listItemValue” is not in “theList”!\"\r\trepeat with listItemNum from 1 to (length of theList)\r\t\tif (item listItemNum of theList) = listItemValue then\r\t\t\treturn listItemNum\r\t\tend if\r\tend repeat\rend getListItemOffset\r------------------------------------------------------------------------------",
+					"NotifyOnFailure": false
+				}
+			],
+			"Conditions": {
+				"ConditionListMatch": "All",
+				"ConditionList": [
+					{
+						"Application": {
+							"BundleIdentifier": "com.apple.Safari",
+							"Name": "Safari",
+							"NewFile": "/Applications/Safari.app"
+						},
+						"ApplicationConditionType": "NotActive",
+						"ConditionType": "Application"
+					}
+				]
+			},
+			"ThenActions": [
+				{
+					"MacroActionType": "ActivateApplication",
+					"ActionUID": 881,
+					"ReopenWindows": false,
+					"AllWindows": true,
+					"TimeOutAbortsMacro": true,
+					"AlreadyActivatedActionType": "Normal",
+					"Application": {
+						"BundleIdentifier": "com.apple.Safari",
+						"Name": "Safari",
+						"NewFile": "/Applications/Safari.app"
+					}
+				},
+				{
+					"MacroActionType": "ExecuteAppleScript",
+					"IncludedVariables": [
+						"9999"
+					],
+					"TrimResults": true,
+					"StopOnFailure": false,
+					"IncludeStdErr": true,
+					"ActionUID": 882,
+					"UseText": true,
+					"TrimResultsNew": true,
+					"TimeOutAbortsMacro": true,
+					"Path": "",
+					"DisplayKind": "None",
+					"HonourFailureSettings": true,
+					"Text": "set urlFilterText to \"forum.keyboardmaestro.com\"\rset urlToFetch to \"https://forum.keyboardmaestro.com/latest\"\r\rtell application \"Safari\"\r\ttell front window\r\t\tset filteredTabIndexList to index of tabs where its URL contains urlFilterText\r\t\tset currentTabIndex to index of current tab\r\t\t\r\t\tif filteredTabIndexList = {} then -- New\r\t\t\t\r\t\t\tset tabURL to URL of current tab\r\t\t\t\r\t\t\ttry\r\t\t\t\ttabURL -- will be undefine if blank\r\t\t\t\tmake new tab at end of tabs with properties {URL:urlToFetch}\r\t\t\t\tset current tab to last tab\r\t\t\ton error\r\t\t\t\t# Tab is blank, so we'll just use it.\r\t\t\t\tset its current tab's URL to urlToFetch\r\t\t\tend try\r\t\t\t\r\t\t\treturn\r\t\t\t\r\t\tend if\r\t\t\r\t\tif currentTabIndex is in filteredTabIndexList and currentTabIndex ≠ (last item of filteredTabIndexList) then\r\t\t\tset listItemOffset to getListItemOffset(filteredTabIndexList, currentTabIndex) of me\r\t\t\tset current tab to tab (item (listItemOffset + 1) of filteredTabIndexList)\r\t\telse\r\t\t\tset current tab to tab (item 1 of filteredTabIndexList)\r\t\tend if\r\t\t\r\tend tell\rend tell\r\r------------------------------------------------------------------------------\r--» HANDLERS\r------------------------------------------------------------------------------\ron getListItemOffset(theList, listItemValue)\r\tif listItemValue is not in theList then error \"getListItemOffset():  “listItemValue” is not in “theList”!\"\r\trepeat with listItemNum from 1 to (length of theList)\r\t\tif (item listItemNum of theList) = listItemValue then\r\t\t\treturn listItemNum\r\t\tend if\r\tend repeat\rend getListItemOffset\r------------------------------------------------------------------------------",
+					"NotifyOnFailure": false
+				}
+			],
+			"TimeOutAbortsMacro": true,
+			"ActionUID": 880
+		}
+	]
+}

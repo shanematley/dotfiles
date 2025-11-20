@@ -1,0 +1,22 @@
+{
+	"AddToMacroPalette": false,
+	"Modifiers": 0,
+	"CreationDate": 625728081.290821,
+	"AddToStatusMenu": false,
+	"UID": "AD64A5B6-03C0-4D82-A32E-7AE77390BCED",
+	"Name": "Shane's General",
+	"PaletteUnderMouse": false,
+	"Targeting": {
+		"Targeting": "Excluded",
+		"TargetingApps": [
+			{
+				"BundleIdentifier": "com.edovia.screens4.mac",
+				"Name": "Screens 4"
+			}
+		]
+	},
+	"Macros": [],
+	"ToggleMacroUID": "90C9E178-D40A-4187-981B-C5C32ACFAD3C",
+	"Activate": "Normal",
+	"KeyCode": 32767
+}

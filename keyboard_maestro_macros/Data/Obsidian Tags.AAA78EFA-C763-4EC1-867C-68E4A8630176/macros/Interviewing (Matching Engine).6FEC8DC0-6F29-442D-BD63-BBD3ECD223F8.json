@@ -1,0 +1,22 @@
+{
+	"CreationDate": 701669794.000139,
+	"UID": "6FEC8DC0-6F29-442D-BD63-BBD3ECD223F8",
+	"Name": "Interviewing (Matching Engine)",
+	"Triggers": [
+		{
+			"KeyCode": 46,
+			"MacroTriggerType": "HotKey",
+			"Modifiers": 0,
+			"FireType": "Pressed"
+		}
+	],
+	"ModificationDate": 711330928.315323,
+	"Actions": [
+		{
+			"MacroActionType": "InsertText",
+			"Action": "ByPasting",
+			"Text": "#Interviewing/MatchingEngine",
+			"ActionUID": 13638
+		}
+	]
+}

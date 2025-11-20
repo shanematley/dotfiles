@@ -1,0 +1,22 @@
+{
+	"CreationDate": 711330759.747214,
+	"UID": "518D7F10-105D-4B25-BA96-248066C5A6FA",
+	"Name": "Due",
+	"Triggers": [
+		{
+			"KeyCode": 32,
+			"MacroTriggerType": "HotKey",
+			"Modifiers": 0,
+			"FireType": "Pressed"
+		}
+	],
+	"ModificationDate": 711330774.133521,
+	"Actions": [
+		{
+			"MacroActionType": "InsertText",
+			"Action": "ByPasting",
+			"Text": "@due(%|%)",
+			"ActionUID": 14400
+		}
+	]
+}

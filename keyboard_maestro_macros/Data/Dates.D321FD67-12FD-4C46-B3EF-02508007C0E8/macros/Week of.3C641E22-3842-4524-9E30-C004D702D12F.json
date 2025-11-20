@@ -1,0 +1,39 @@
+{
+	"CreationDate": 634424117.058672,
+	"UID": "3C641E22-3842-4524-9E30-C004D702D12F",
+	"Name": "Week of",
+	"Triggers": [
+		{
+			"KeyCode": 13,
+			"MacroTriggerType": "HotKey",
+			"Modifiers": 0,
+			"FireType": "Pressed"
+		}
+	],
+	"ModificationDate": 634425694.18831,
+	"Actions": [
+		{
+			"MacroActionType": "ExecuteJavaScriptForAutomation",
+			"IncludedVariables": [
+				"9999"
+			],
+			"TrimResults": true,
+			"UseModernSyntax": false,
+			"IncludeStdErr": false,
+			"ActionUID": 1957,
+			"UseText": true,
+			"TrimResultsNew": true,
+			"TimeOutAbortsMacro": true,
+			"Path": "",
+			"DisplayKind": "Pasting",
+			"HonourFailureSettings": true,
+			"Text": "var today = new Date();\nvar day = today.getDay(), diff = today.getDate() - day + (day == 0? -6:1);\nvar monday = new Date(today.setDate(diff));\nvar friday = new Date();\nfriday.setDate(monday.getDate() + 4);\nvar results = new Intl.DateTimeFormat('en-AU', {day: 'numeric', month: 'short'}).format(friday) + \" \" + monday.getYear() + \" \" + monday.getMonth();\n\nvar kme = Application(\"Keyboard Maestro Engine\");\nkme.setvariable('Week Text', { to: results });"
+		},
+		{
+			"MacroActionType": "InsertText",
+			"Action": "ByPasting",
+			"Text": "%Variable%Week Text%",
+			"ActionUID": 1958
+		}
+	]
+}

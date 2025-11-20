@@ -1,0 +1,22 @@
+{
+	"CreationDate": 711330718.404087,
+	"UID": "D46EF85C-35CD-4DEF-8860-1AF96E3C85F9",
+	"Name": "Today",
+	"Triggers": [
+		{
+			"KeyCode": 17,
+			"MacroTriggerType": "HotKey",
+			"Modifiers": 0,
+			"FireType": "Pressed"
+		}
+	],
+	"ModificationDate": 733825771.764768,
+	"Actions": [
+		{
+			"MacroActionType": "InsertText",
+			"Action": "ByPasting",
+			"Text": "@due(%ICUDateTime%yyyy-MM-dd%)",
+			"ActionUID": 14399
+		}
+	]
+}

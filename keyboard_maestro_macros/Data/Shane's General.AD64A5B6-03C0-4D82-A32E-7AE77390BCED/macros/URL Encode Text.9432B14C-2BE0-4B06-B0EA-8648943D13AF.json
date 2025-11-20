@@ -1,0 +1,33 @@
+{
+	"CreationDate": 728349162.521904,
+	"UID": "9432B14C-2BE0-4B06-B0EA-8648943D13AF",
+	"Name": "URL Encode Text",
+	"Triggers": [],
+	"ModificationDate": 728349323.421084,
+	"Actions": [
+		{
+			"MacroActionType": "ClipboardSwitcherMacroAction",
+			"TimeOutAbortsMacro": true,
+			"Name": "A205DDC4-5371-48EE-B689-32FD34AAE8D1",
+			"Action": "Copy",
+			"RedundandDisplayName": "km",
+			"ActionUID": 15556
+		},
+		{
+			"MacroActionType": "Filter",
+			"NamedClipboardName": "A205DDC4-5371-48EE-B689-32FD34AAE8D1",
+			"Source": "NamedClipboard",
+			"RedundandDisplayName": "km",
+			"Action": "PercentEncodeForURL",
+			"ActionUID": 15557
+		},
+		{
+			"MacroActionType": "ClipboardSwitcherMacroAction",
+			"TimeOutAbortsMacro": true,
+			"Name": "A205DDC4-5371-48EE-B689-32FD34AAE8D1",
+			"Action": "Paste",
+			"RedundandDisplayName": "km",
+			"ActionUID": 15558
+		}
+	]
+}

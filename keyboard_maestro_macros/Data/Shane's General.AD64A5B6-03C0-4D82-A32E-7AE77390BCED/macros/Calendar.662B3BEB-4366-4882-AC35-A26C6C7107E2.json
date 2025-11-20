@@ -1,0 +1,85 @@
+{
+	"CreationDate": 588048499.158903,
+	"UID": "662B3BEB-4366-4882-AC35-A26C6C7107E2",
+	"Name": "Calendar",
+	"Triggers": [
+		{
+			"KeyCode": 26,
+			"MacroTriggerType": "HotKey",
+			"Modifiers": 768,
+			"FireType": "Pressed"
+		}
+	],
+	"ModificationDate": 763541161.206489,
+	"Actions": [
+		{
+			"MacroActionType": "IfThenElse",
+			"ElseActions": [
+				{
+					"MacroActionType": "HideSpecificApp",
+					"ActionUID": 5154,
+					"Application": {
+						"BundleIdentifier": "com.microsoft.Outlook",
+						"Name": "Microsoft Outlook",
+						"NewFile": "/Applications/Microsoft Outlook.app"
+					}
+				}
+			],
+			"Conditions": {
+				"ConditionListMatch": "Any",
+				"ConditionList": [
+					{
+						"Application": {
+							"BundleIdentifier": "com.microsoft.Outlook",
+							"Name": "Microsoft Outlook",
+							"NewFile": "/Applications/Microsoft Outlook.app"
+						},
+						"ApplicationConditionType": "NotActive",
+						"ConditionType": "Application"
+					},
+					{
+						"Application": {
+							"BundleIdentifier": "com.microsoft.Outlook",
+							"Name": "Microsoft Outlook",
+							"NewFile": "/Applications/Microsoft Outlook.app"
+						},
+						"ApplicationConditionType": "Hidden",
+						"ConditionType": "Application"
+					}
+				]
+			},
+			"ThenActions": [
+				{
+					"MacroActionType": "ActivateApplication",
+					"ActionUID": 1415,
+					"ReopenWindows": true,
+					"AllWindows": true,
+					"TimeOutAbortsMacro": true,
+					"AlreadyActivatedActionType": "Normal",
+					"Application": {
+						"BundleIdentifier": "com.microsoft.Outlook",
+						"Name": "Microsoft Outlook",
+						"NewFile": "/Applications/Microsoft Outlook.app"
+					}
+				},
+				{
+					"MacroActionType": "SelectMenuItem",
+					"TargetingType": "Specific",
+					"TargetApplication": {
+						"BundleIdentifier": "com.microsoft.Outlook",
+						"Name": "Microsoft Outlook",
+						"NewFile": "/Applications/Microsoft Outlook.app"
+					},
+					"Menu": [
+						"View",
+						"Go To",
+						"Calendar"
+					],
+					"ActionUID": 19947
+				}
+			],
+			"TimeOutAbortsMacro": true,
+			"ActionUID": 5153
+		}
+	]
+}

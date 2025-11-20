@@ -1,0 +1,22 @@
+{
+	"CreationDate": 504473135.935753,
+	"UID": "DB912556-0C94-4370-9225-8800C7D97CE0",
+	"Name": "←",
+	"Triggers": [
+		{
+			"KeyCode": 37,
+			"MacroTriggerType": "HotKey",
+			"Modifiers": 4096,
+			"FireType": "Pressed"
+		}
+	],
+	"ModificationDate": 538747284.486985,
+	"Actions": [
+		{
+			"MacroActionType": "InsertText",
+			"Action": "ByPasting",
+			"Text": "←",
+			"ActionUID": 1473
+		}
+	]
+}

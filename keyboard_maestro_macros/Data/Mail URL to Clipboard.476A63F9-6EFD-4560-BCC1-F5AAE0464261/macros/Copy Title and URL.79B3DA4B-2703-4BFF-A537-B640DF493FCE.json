@@ -1,0 +1,32 @@
+{
+	"CreationDate": 770791587.114183,
+	"UID": "79B3DA4B-2703-4BFF-A537-B640DF493FCE",
+	"Name": "Copy Title and URL",
+	"Triggers": [
+		{
+			"KeyCode": 17,
+			"MacroTriggerType": "HotKey",
+			"Modifiers": 0,
+			"FireType": "Pressed"
+		}
+	],
+	"ModificationDate": 770791608.506016,
+	"Actions": [
+		{
+			"MacroActionType": "ExecuteAppleScript",
+			"IncludedVariables": [
+				"9999"
+			],
+			"TrimResults": true,
+			"IncludeStdErr": false,
+			"ActionUID": 16455913,
+			"UseText": true,
+			"TrimResultsNew": true,
+			"TimeOutAbortsMacro": true,
+			"Path": "",
+			"DisplayKind": "None",
+			"HonourFailureSettings": true,
+			"Text": "on run\r\tif application \"Mail\" is running then\r\t\tset theQuery to \"{query}\"\r\t\tset theFormat to (system attribute \"format\")\r\t\ttell application \"Mail\"\r\t\t\tset _sel to get selection\r\t\t\tset _links to {}\r\t\t\trepeat with _msg in _sel\r\t\t\t\tset _messageURL to \"message://%3c\" & _msg's message id & \"%3e\"\r\t\t\t\tset _mySubject to the subject of _msg\r\t\t\t\tset _myMarkdownLink to _mySubject & \" - \" & _messageURL\r\t\t\t\tset end of _links to _myMarkdownLink\r\t\t\tend repeat\r\t\t\t\r\t\t\tset AppleScript's text item delimiters to return\r\t\t\tset the clipboard to (_links as string)\r\t\t\t\r\t\t\tset myCount to count of _sel\r\t\t\tif myCount is not 0 then\r\t\t\t\tdisplay notification \"Copied \" & myCount & \" URLs to the clipboard\" with title \"Copy Mail URLs\"\r\t\t\telse\r\t\t\t\tdisplay notification \"No Mail messages selected\"\r\t\t\tend if\r\t\tend tell\r\tend if\rend run"
+		}
+	]
+}

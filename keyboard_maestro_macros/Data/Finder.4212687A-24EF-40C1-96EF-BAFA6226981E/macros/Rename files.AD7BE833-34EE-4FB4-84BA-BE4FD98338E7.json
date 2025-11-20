@@ -1,0 +1,26 @@
+{
+	"CreationDate": 533067791.550983,
+	"UID": "AD7BE833-34EE-4FB4-84BA-BE4FD98338E7",
+	"Name": "Rename files",
+	"Triggers": [
+		{
+			"KeyCode": 15,
+			"MacroTriggerType": "HotKey",
+			"Modifiers": 4096,
+			"FireType": "Pressed"
+		}
+	],
+	"ModificationDate": 568495321.859591,
+	"Actions": [
+		{
+			"MacroActionType": "SelectMenuItem",
+			"TargetingType": "Front",
+			"TargetApplication": {},
+			"Menu": [
+				"File",
+				"^Rename"
+			],
+			"ActionUID": 251
+		}
+	]
+}

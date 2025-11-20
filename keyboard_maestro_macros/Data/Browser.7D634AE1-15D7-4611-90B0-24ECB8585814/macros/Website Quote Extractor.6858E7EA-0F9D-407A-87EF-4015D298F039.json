@@ -1,0 +1,166 @@
+{
+	"UID": "6858E7EA-0F9D-407A-87EF-4015D298F039",
+	"CreationDate": 785238268.994409,
+	"ModificationDate": 785303850.545181,
+	"Triggers": [
+		{
+			"ReturnsValue": true,
+			"MacroTriggerType": "Subroutine",
+			"Parameters": []
+		}
+	],
+	"IsActive": false,
+	"Actions": [
+		{
+			"MacroActionType": "SetVariableToText",
+			"ActionName": "Enable (1)/Disable (0) Debug",
+			"Variable": "KM_DEBUG",
+			"Text": "0",
+			"ActionUID": 16458783
+		},
+		{
+			"MacroActionType": "Group",
+			"Actions": [
+				{
+					"MacroActionType": "ExecuteShellScript",
+					"ActionName": "Debug—Print files found",
+					"IncludedVariables": [
+						"9999"
+					],
+					"TrimResults": true,
+					"Source": "Nothing",
+					"IncludeStdErr": false,
+					"ActionUID": 15813113,
+					"UseText": true,
+					"TrimResultsNew": true,
+					"TimeOutAbortsMacro": true,
+					"Path": "",
+					"DisplayKind": "Window",
+					"HonourFailureSettings": true,
+					"Text": "#!/bin/bash\n\ncat <<EOF\nLooking in the following directories:\n\n$KMVAR_WebsiteQuoteExtractorDirs\n\nFiles found:\n\nEOF\n\nIFS=$'\\n' read -r -d '' -a DIRS <<< \"$KMVAR_WebsiteQuoteExtractorDirs\"\n\nfor d in \"${DIRS[@]}\"; do\n  if [[ -d \"$d\" ]]; then\n    echo \"- In '$d':\"\n    ls \"$d\"/*.js | sed 's/^/  - /'\n  else\n    echo \"  - $d is not a directory\"\n  fi\ndone"
+				},
+				{
+					"MacroActionType": "Cancel",
+					"ActionUID": 16458779,
+					"Action": "CancelThisMacro"
+				}
+			],
+			"TimeOutAbortsMacro": true,
+			"IsActive": false,
+			"ActionUID": 16458778
+		},
+		{
+			"MacroActionType": "ExecuteShellScript",
+			"IncludedVariables": [
+				"9999"
+			],
+			"TrimResults": true,
+			"Source": "Nothing",
+			"Variable": "WebsiteExtractorBundle",
+			"IncludeStdErr": false,
+			"ActionUID": 16458775,
+			"UseText": true,
+			"TrimResultsNew": true,
+			"TimeOutAbortsMacro": true,
+			"Path": "",
+			"DisplayKind": "Variable",
+			"HonourFailureSettings": true,
+			"Text": "#!/bin/bash\n\nIFS=$'\\n' read -r -d '' -a DIRS <<< \"$KMVAR_WebsiteQuoteExtractorDirs\"\n\nfor d in \"${DIRS[@]}\"; do\n  if [[ -d \"$d\" ]]; then\n    cat \"$d\"/*.js\n  else\n    echo \"$d is not a directory\" >&2\n  fi\ndone"
+		},
+		{
+			"MacroActionType": "Group",
+			"Actions": [
+				{
+					"MacroActionType": "ExecuteShellScript",
+					"ActionName": "Debug—Print files found",
+					"IncludedVariables": [
+						"9999"
+					],
+					"TrimResults": true,
+					"Source": "Nothing",
+					"IncludeStdErr": false,
+					"ActionUID": 16458781,
+					"UseText": true,
+					"TrimResultsNew": true,
+					"TimeOutAbortsMacro": true,
+					"Path": "",
+					"DisplayKind": "Window",
+					"HonourFailureSettings": true,
+					"Text": "#!/bin/bash\n\necho \"$KMVAR_WebsiteExtractorBundle\""
+				},
+				{
+					"MacroActionType": "Cancel",
+					"ActionUID": 16458782,
+					"Action": "CancelThisMacro"
+				}
+			],
+			"TimeOutAbortsMacro": true,
+			"IsActive": false,
+			"ActionUID": 16458780
+		},
+		{
+			"MacroActionType": "ExecuteJavaScript",
+			"IncludedVariables": [
+				"9999"
+			],
+			"TrimResults": true,
+			"Variable": "Local_PageInfoJson",
+			"UseModernSyntax": true,
+			"IncludeStdErr": false,
+			"ActionUID": 15813109,
+			"UseText": true,
+			"TrimResultsNew": true,
+			"WebBrowser": "Front Browser",
+			"TimeOutAbortsMacro": true,
+			"Path": "",
+			"DisplayKind": "Variable",
+			"HonourFailureSettings": true,
+			"Text": "// Query into the shadow DOM. Vaguely equivalent to `document.querySelector` for shadow DOM.\nfunction queryDeep(selector, root = document) {\n  const direct = root.querySelector(selector);\n  if (direct) return direct;\n  for (const el of root.querySelectorAll(\"*\")) {\n    if (el.shadowRoot) {\n      const found = queryDeep(selector, el.shadowRoot);\n      if (found) return found;\n    }\n  }\n  return null;\n}\n\nfunction logDebug(...msg) {\n  if (!(kmvar.KM_DEBUG && kmvar.KM_DEBUG == \"1\")) return;\n\n  const now = new Date().toISOString().replace(\"T\", \" \").replace(\"Z\", \"\");\n  const line = `Website Quote Extractor [${now}]\\n `;\n\n  console.log(line, ...msg);\n}\n\nwindow.WebsiteQuoteExtractors = {\n  modules: [],\n\n  register(mod) {\n    this.modules.push(mod);\n  },\n\n  run() {\n    for (const mod of this.modules) {\n      try {\n        if (mod.matches()) {\n          return mod.extract();\n        }\n      } catch (e) {\n        return {\n          error: e.message,\n          extractor: mod.name,\n        };\n      }\n    }\n    return { error: \"No matching extractor found\" };\n  },\n};\n\neval(kmvar.WebsiteExtractorBundle);\n\n// Add default last\nWebsiteQuoteExtractors.register({\n  name: \"Default\",\n  matches: () => true,\n  extract: () => ({\n    content: \"\",\n    title: document.title,\n    url: location.href,\n  }),\n});\n\nconst { url: href, content, title, error } = WebsiteQuoteExtractors.run();\n\nlogDebug(\"title=\", title);\nlogDebug(\"href=\", href);\nlogDebug(\"content=\", content);\nlogDebug(\"error=\", error);\n\nif (error) {\n  return JSON.stringify({ error: error });\n}\n\nconst url = new URL(document.location.href);\n\n// Specialise for certain websites\n\nfunction escapeMarkdownTitle(title) {\n  return title.replace(/[\\[\\]]/g, \"\");\n}\n\nfunction escapeMarkdownUrl(url) {\n  // encodeURI preserves valid URI characters like /, :, and ? but encodes others\n  return (\n    encodeURI(url)\n      // explicitly encode parentheses which are valid in URIs but break Markdown\n      .replace(/\\(/g, \"%28\")\n      .replace(/\\)/g, \"%29\")\n  );\n}\n\nfunction makeMarkdownQuote(ref, url, content) {\n  const markdownLink = `[${ref}](${url})`;\n  const markdownQuote =\n    markdownLink +\n    \":\\n\\n\" +\n    content\n      .split(\"\\n\")\n      .map((line) => \"> \" + line)\n      .join(\"\\n\");\n  return markdownQuote;\n}\n\nconst myResult = {\n  title: title,\n  titleAndUrl: `${title} - ${href}`,\n  originalTitle: document.title,\n  originalUrl: document.location.href,\n  url: href,\n  host: url.host,\n  path: url.pathname,\n  query: url.search,\n  markdownLink: `[${escapeMarkdownTitle(title)}](${escapeMarkdownUrl(url)})`,\n  quoteContent: content,\n  markdownQuote: content\n    ? makeMarkdownQuote(\n        escapeMarkdownTitle(title),\n        escapeMarkdownUrl(href),\n        content\n      )\n    : null,\n};\n\nlogDebug(myResult);\n\nreturn JSON.stringify(myResult);\n"
+		},
+		{
+			"MacroActionType": "IfThenElse",
+			"ElseActions": [],
+			"Conditions": {
+				"ConditionListMatch": "All",
+				"ConditionList": [
+					{
+						"ScriptConditionType": "Is",
+						"ScriptResult": "true",
+						"ScriptConditionSourceType": "JavaScriptText",
+						"ScriptTerminationStatus": 0,
+						"ScriptText": "return !!JSON.parse(kmvar.Local_PageInfoJson).error",
+						"UseModernSyntax": true,
+						"Path": "",
+						"ConditionType": "Script",
+						"IncludedVariables": [
+							"Local_PageInfoJson"
+						]
+					}
+				]
+			},
+			"ThenActions": [
+				{
+					"MacroActionType": "Alert",
+					"Title": "Website Quote Extractor Error",
+					"SoundPath": "",
+					"TimeOutAbortsMacro": true,
+					"Text": "Error: %JSONValue%Local_PageInfoJson.error%",
+					"ActionUID": 16458785
+				},
+				{
+					"MacroActionType": "Cancel",
+					"ActionUID": 16458791,
+					"Action": "CancelThisMacro"
+				}
+			],
+			"TimeOutAbortsMacro": true,
+			"ActionUID": 16458784
+		},
+		{
+			"MacroActionType": "Return",
+			"ActionUID": 15813110,
+			"Text": "%Variable%Local_PageInfoJson%"
+		}
+	],
+	"Name": "Website Quote Extractor"
+}

@@ -1,0 +1,68 @@
+{
+	"UID": "5E9CCB6C-3EAB-4FA5-9158-555EC6DEB044",
+	"CreationDate": 588050339.198945,
+	"ModificationDate": 718521200.049211,
+	"Triggers": [
+		{
+			"KeyCode": 41,
+			"MacroTriggerType": "HotKey",
+			"Modifiers": 256,
+			"FireType": "Pressed"
+		},
+		{
+			"KeyCode": 41,
+			"MacroTriggerType": "HotKey",
+			"Modifiers": 768,
+			"FireType": "Pressed"
+		}
+	],
+	"IsActive": false,
+	"Actions": [
+		{
+			"MacroActionType": "IfThenElse",
+			"ElseActions": [
+				{
+					"MacroActionType": "HideSpecificApp",
+					"ActionUID": 1418,
+					"Application": {
+						"BundleIdentifier": "io.alacritty",
+						"Name": "Alacritty",
+						"NewFile": "~/repos/alacritty/target/release/osx/Alacritty.app"
+					}
+				}
+			],
+			"Conditions": {
+				"ConditionListMatch": "All",
+				"ConditionList": [
+					{
+						"Application": {
+							"BundleIdentifier": "io.alacritty",
+							"Name": "Alacritty",
+							"NewFile": "~/repos/alacritty/target/release/osx/Alacritty.app"
+						},
+						"ApplicationConditionType": "RunningButNotActive",
+						"ConditionType": "Application"
+					}
+				]
+			},
+			"ThenActions": [
+				{
+					"MacroActionType": "ActivateApplication",
+					"ActionUID": 1417,
+					"ReopenWindows": false,
+					"AllWindows": true,
+					"TimeOutAbortsMacro": true,
+					"AlreadyActivatedActionType": "Normal",
+					"Application": {
+						"BundleIdentifier": "io.alacritty",
+						"Name": "Alacritty",
+						"NewFile": "~/repos/alacritty/target/release/osx/Alacritty.app"
+					}
+				}
+			],
+			"TimeOutAbortsMacro": true,
+			"ActionUID": 1416
+		}
+	],
+	"Name": "Alacritty"
+}

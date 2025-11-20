@@ -1,0 +1,24 @@
+{
+	"AddToMacroPalette": false,
+	"AddToStatusMenu": false,
+	"CreationDate": 763539838.841221,
+	"Modifiers": 0,
+	"PaletteUnderMouse": false,
+	"Name": "Outlook",
+	"UID": "3D31DF25-C404-4A4D-A65F-30937FB4EA11",
+	"Targeting": {
+		"Targeting": "Included",
+		"TargetingApps": [
+			{
+				"BundleIdentifier": "com.microsoft.Outlook",
+				"Name": "Microsoft Outlook",
+				"NewFile": "/Applications/Microsoft Outlook.app"
+			}
+		]
+	},
+	"Macros": [],
+	"ToggleMacroUID": "C593B342-D081-4C57-974D-812EA5EBD9CD",
+	"Activate": "Normal",
+	"KeyCode": 32767,
+	"DisplayToggle": false
+}

@@ -1,0 +1,42 @@
+{
+	"CreationDate": 496929369.79344,
+	"UID": "1729CA7C-BC34-4487-9C6B-5AAED6F1C612",
+	"Name": "Copy path",
+	"Triggers": [
+		{
+			"KeyCode": 5,
+			"MacroTriggerType": "HotKey",
+			"Modifiers": 4096,
+			"FireType": "Pressed"
+		}
+	],
+	"ModificationDate": 568495317.666621,
+	"Actions": [
+		{
+			"MacroActionType": "ExecuteAppleScript",
+			"IncludedVariables": [
+				"9999"
+			],
+			"TrimResults": true,
+			"StopOnFailure": false,
+			"IncludeStdErr": true,
+			"ActionUID": 244,
+			"UseText": true,
+			"TrimResultsNew": true,
+			"TimeOutAbortsMacro": true,
+			"Path": "",
+			"DisplayKind": "None",
+			"HonourFailureSettings": true,
+			"Text": "  tell application \"Finder\"\n\tset theItems to selection\n\tset filePath to (POSIX path of (the selection as alias))\n  end tell\n  set the clipboard to filePath",
+			"NotifyOnFailure": false
+		},
+		{
+			"MacroActionType": "PlaySound",
+			"DeviceID": "DEFAULT",
+			"Path": "/System/Library/Sounds/Submarine.aiff",
+			"TimeOutAbortsMacro": true,
+			"Volume": 67,
+			"ActionUID": 245
+		}
+	]
+}

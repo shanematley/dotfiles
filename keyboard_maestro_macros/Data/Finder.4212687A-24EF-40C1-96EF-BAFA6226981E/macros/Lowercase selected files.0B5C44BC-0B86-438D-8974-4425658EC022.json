@@ -1,0 +1,34 @@
+{
+	"CreationDate": 495926799.075285,
+	"UID": "0B5C44BC-0B86-438D-8974-4425658EC022",
+	"Name": "Lowercase selected files ",
+	"Triggers": [
+		{
+			"KeyCode": 34,
+			"MacroTriggerType": "HotKey",
+			"Modifiers": 4096,
+			"FireType": "Pressed"
+		}
+	],
+	"ModificationDate": 568495319.336049,
+	"Actions": [
+		{
+			"MacroActionType": "ExecuteAppleScript",
+			"IncludedVariables": [
+				"9999"
+			],
+			"TrimResults": true,
+			"StopOnFailure": false,
+			"IncludeStdErr": true,
+			"ActionUID": 247,
+			"UseText": true,
+			"TrimResultsNew": true,
+			"TimeOutAbortsMacro": true,
+			"Path": "",
+			"DisplayKind": "None",
+			"HonourFailureSettings": true,
+			"Text": "use framework \"Foundation\"\n\ntell application \"Finder\"\n   set finderSelectionList to the selection as alias list -- most important change (faster than Finder references)\n   repeat with theItem in finderSelectionList\n      set name of theItem to (lowercaseString() of (current application's NSString's stringWithString:(theItem's name))) as text -- improve clarity of what is coerced to text\n   end repeat\nend tell",
+			"NotifyOnFailure": false
+		}
+	]
+}

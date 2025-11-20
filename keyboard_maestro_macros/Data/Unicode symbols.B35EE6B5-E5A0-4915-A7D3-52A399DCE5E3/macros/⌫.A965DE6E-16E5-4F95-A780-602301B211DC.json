@@ -1,0 +1,22 @@
+{
+	"CreationDate": 504473135.935753,
+	"UID": "A965DE6E-16E5-4F95-A780-602301B211DC",
+	"Name": "⌫",
+	"Triggers": [
+		{
+			"KeyCode": 37,
+			"MacroTriggerType": "HotKey",
+			"Modifiers": 0,
+			"FireType": "Pressed"
+		}
+	],
+	"ModificationDate": 532780425.783192,
+	"Actions": [
+		{
+			"MacroActionType": "InsertText",
+			"Action": "ByPasting",
+			"Text": "⌫",
+			"ActionUID": 1472
+		}
+	]
+}
