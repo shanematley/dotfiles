@@ -1,0 +1,28 @@
+{
+	"CreationDate": 558265082.64001,
+	"UID": "2C7EA13B-97A6-4F95-B932-442696C2154E",
+	"Name": "Paste clipboard as code inline",
+	"Triggers": [
+		{
+			"KeyCode": 3,
+			"MacroTriggerType": "HotKey",
+			"Modifiers": 4096,
+			"FireType": "Pressed"
+		}
+	],
+	"ModificationDate": 563816976.954453,
+	"Actions": [
+		{
+			"MacroActionType": "Filter",
+			"Source": "Clipboard",
+			"Action": "TrimWhitespace",
+			"ActionUID": 4038
+		},
+		{
+			"MacroActionType": "InsertText",
+			"Action": "ByPasting",
+			"Text": "`%SystemClipboard%` ",
+			"ActionUID": 4039
+		}
+	]
+}

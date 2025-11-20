@@ -1,0 +1,29 @@
+{
+	"AddToMacroPalette": false,
+	"AddToStatusMenu": false,
+	"CreationDate": 769418116.367558,
+	"Modifiers": 768,
+	"PaletteUnderMouse": false,
+	"Name": "Browser URL to Clipboard",
+	"UID": "A27A6AA5-FE36-4B4F-BDC8-90710631B983",
+	"Targeting": {
+		"Targeting": "Included",
+		"TargetingApps": [
+			{
+				"BundleIdentifier": "com.google.Chrome",
+				"Name": "Google Chrome",
+				"NewFile": "/Applications/Google Chrome.app"
+			},
+			{
+				"BundleIdentifier": "com.apple.Safari",
+				"Name": "Safari",
+				"NewFile": "/System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app"
+			}
+		]
+	},
+	"Macros": [],
+	"ToggleMacroUID": "55A94FE0-601E-4B91-8491-D4082A98FF67",
+	"Activate": "OnceWithPalette",
+	"KeyCode": 8,
+	"DisplayToggle": false
+}

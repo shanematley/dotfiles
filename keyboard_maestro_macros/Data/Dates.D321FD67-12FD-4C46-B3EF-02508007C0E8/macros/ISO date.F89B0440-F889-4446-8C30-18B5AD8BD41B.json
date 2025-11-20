@@ -1,0 +1,22 @@
+{
+	"CreationDate": 701581375.737712,
+	"UID": "F89B0440-F889-4446-8C30-18B5AD8BD41B",
+	"Name": "ISO date",
+	"Triggers": [
+		{
+			"KeyCode": 34,
+			"MacroTriggerType": "HotKey",
+			"Modifiers": 0,
+			"FireType": "Pressed"
+		}
+	],
+	"ModificationDate": 701581407.889762,
+	"Actions": [
+		{
+			"MacroActionType": "InsertText",
+			"Action": "ByPasting",
+			"Text": "%ICUDateTime%yyyy-MM-dd%",
+			"ActionUID": 13256
+		}
+	]
+}

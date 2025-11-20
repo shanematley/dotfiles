@@ -1,0 +1,22 @@
+{
+	"CreationDate": 524612485.211827,
+	"UID": "BBC85C89-BA6E-457C-B100-7BC98AA73FFE",
+	"Name": "Time",
+	"Triggers": [
+		{
+			"KeyCode": 17,
+			"MacroTriggerType": "HotKey",
+			"Modifiers": 0,
+			"FireType": "Pressed"
+		}
+	],
+	"ModificationDate": 568499384.620848,
+	"Actions": [
+		{
+			"MacroActionType": "InsertText",
+			"Action": "ByPasting",
+			"Text": "%ShortTime%",
+			"ActionUID": 1956
+		}
+	]
+}

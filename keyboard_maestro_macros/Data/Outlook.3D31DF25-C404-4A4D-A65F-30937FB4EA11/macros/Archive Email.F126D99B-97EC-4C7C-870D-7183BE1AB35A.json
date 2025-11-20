@@ -1,0 +1,30 @@
+{
+	"CreationDate": 763539861.11505,
+	"UID": "F126D99B-97EC-4C7C-870D-7183BE1AB35A",
+	"Name": "Archive Email",
+	"Triggers": [
+		{
+			"KeyCode": 0,
+			"MacroTriggerType": "HotKey",
+			"Modifiers": 4352,
+			"FireType": "Pressed"
+		}
+	],
+	"ModificationDate": 763539909.703888,
+	"Actions": [
+		{
+			"MacroActionType": "SelectMenuItem",
+			"TargetingType": "Specific",
+			"TargetApplication": {
+				"BundleIdentifier": "com.microsoft.Outlook",
+				"Name": "Microsoft Outlook",
+				"NewFile": "/Applications/Microsoft Outlook.app"
+			},
+			"Menu": [
+				"Message",
+				"Archive"
+			],
+			"ActionUID": 19948
+		}
+	]
+}

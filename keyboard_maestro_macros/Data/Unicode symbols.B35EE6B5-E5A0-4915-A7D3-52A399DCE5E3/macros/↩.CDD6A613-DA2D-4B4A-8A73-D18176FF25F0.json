@@ -1,0 +1,22 @@
+{
+	"CreationDate": 504473135.935753,
+	"UID": "CDD6A613-DA2D-4B4A-8A73-D18176FF25F0",
+	"Name": "↩",
+	"Triggers": [
+		{
+			"KeyCode": 15,
+			"MacroTriggerType": "HotKey",
+			"Modifiers": 0,
+			"FireType": "Pressed"
+		}
+	],
+	"ModificationDate": 546427393.744958,
+	"Actions": [
+		{
+			"MacroActionType": "InsertText",
+			"Action": "ByPasting",
+			"Text": "↩",
+			"ActionUID": 1476
+		}
+	]
+}

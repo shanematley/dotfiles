@@ -1,0 +1,26 @@
+{
+	"CreationDate": 785061705.524445,
+	"UID": "08673699-A6A8-4F76-958F-E4AD3B0221FA",
+	"Name": "Copy Title and URL",
+	"Triggers": [
+		{
+			"KeyCode": 17,
+			"MacroTriggerType": "HotKey",
+			"Modifiers": 0,
+			"FireType": "Pressed"
+		}
+	],
+	"ModificationDate": 785289485.134008,
+	"Actions": [
+		{
+			"MacroActionType": "ExecuteSubroutine",
+			"ResultVariable": "",
+			"MacroUID": "98121C9E-87EC-47A5-8262-39217CCB2F46",
+			"Parameters": [
+				"titleAndUrl"
+			],
+			"TimeOutAbortsMacro": true,
+			"ActionUID": 15812968
+		}
+	]
+}

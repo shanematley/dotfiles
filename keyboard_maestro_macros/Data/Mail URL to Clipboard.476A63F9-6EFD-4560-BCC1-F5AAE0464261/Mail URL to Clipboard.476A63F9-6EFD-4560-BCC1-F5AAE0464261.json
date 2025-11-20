@@ -1,0 +1,24 @@
+{
+	"AddToMacroPalette": false,
+	"AddToStatusMenu": false,
+	"CreationDate": 701672894.508011,
+	"Modifiers": 2816,
+	"PaletteUnderMouse": false,
+	"Name": "Mail URL to Clipboard",
+	"UID": "476A63F9-6EFD-4560-BCC1-F5AAE0464261",
+	"Targeting": {
+		"Targeting": "Included",
+		"TargetingApps": [
+			{
+				"BundleIdentifier": "com.apple.mail",
+				"Name": "Mail",
+				"NewFile": "/System/Applications/Mail.app"
+			}
+		]
+	},
+	"Macros": [],
+	"ToggleMacroUID": "F4B3C349-423F-4233-9FFF-F46990CC78CF",
+	"Activate": "OnceWithPalette",
+	"KeyCode": 8,
+	"DisplayToggle": false
+}

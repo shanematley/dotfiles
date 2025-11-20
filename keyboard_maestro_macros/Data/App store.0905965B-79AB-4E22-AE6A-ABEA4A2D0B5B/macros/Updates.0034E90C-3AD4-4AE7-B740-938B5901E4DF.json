@@ -1,0 +1,25 @@
+{
+	"CreationDate": 496859093.24576,
+	"UID": "0034E90C-3AD4-4AE7-B740-938B5901E4DF",
+	"Name": "Updates",
+	"Triggers": [
+		{
+			"KeyCode": 14,
+			"MacroTriggerType": "HotKey",
+			"Modifiers": 4096,
+			"FireType": "Pressed"
+		}
+	],
+	"ModificationDate": 630284293.97403,
+	"Actions": [
+		{
+			"MacroActionType": "SimulateKeystroke",
+			"ActionUID": 4041,
+			"ReleaseAll": false,
+			"TargetApplication": {},
+			"TargetingType": "Front",
+			"KeyCode": 28,
+			"Modifiers": 256
+		}
+	]
+}

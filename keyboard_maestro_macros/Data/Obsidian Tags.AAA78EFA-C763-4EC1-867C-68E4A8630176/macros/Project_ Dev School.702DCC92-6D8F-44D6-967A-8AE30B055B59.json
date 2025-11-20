@@ -1,0 +1,22 @@
+{
+	"CreationDate": 727319324.817078,
+	"UID": "702DCC92-6D8F-44D6-967A-8AE30B055B59",
+	"Name": "Project: Dev School",
+	"Triggers": [
+		{
+			"KeyCode": 14,
+			"MacroTriggerType": "HotKey",
+			"Modifiers": 0,
+			"FireType": "Pressed"
+		}
+	],
+	"ModificationDate": 727319406.84581,
+	"Actions": [
+		{
+			"MacroActionType": "InsertText",
+			"Action": "ByPasting",
+			"Text": "@project(Dev School)",
+			"ActionUID": 15166
+		}
+	]
+}

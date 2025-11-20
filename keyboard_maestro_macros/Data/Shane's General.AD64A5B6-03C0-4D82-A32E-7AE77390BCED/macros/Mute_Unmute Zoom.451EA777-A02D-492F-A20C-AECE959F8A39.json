@@ -1,0 +1,78 @@
+{
+	"UID": "451EA777-A02D-492F-A20C-AECE959F8A39",
+	"CreationDate": 625720735.855036,
+	"ModificationDate": 632008243.425106,
+	"Triggers": [
+		{
+			"KeyCode": 0,
+			"MacroTriggerType": "HotKey",
+			"Modifiers": 4864,
+			"FireType": "Pressed"
+		}
+	],
+	"IsActive": false,
+	"Actions": [
+		{
+			"MacroActionType": "IfThenElse",
+			"ActionUID": 1422,
+			"ElseActions": [],
+			"TimeOutAbortsMacro": true,
+			"IsActive": false,
+			"Conditions": {
+				"ConditionListMatch": "All",
+				"ConditionList": [
+					{
+						"Application": {
+							"BundleIdentifier": "us.zoom.xos",
+							"Name": "zoom",
+							"NewFile": "/Applications/zoom.us.app"
+						},
+						"ApplicationConditionType": "Running",
+						"ConditionType": "Application"
+					}
+				]
+			},
+			"ThenActions": [
+				{
+					"MacroActionType": "ActivateApplication",
+					"ActionUID": 1423,
+					"ReopenWindows": false,
+					"AllWindows": true,
+					"TimeOutAbortsMacro": true,
+					"AlreadyActivatedActionType": "Normal",
+					"Application": {
+						"BundleIdentifier": "us.zoom.xos",
+						"Name": "zoom",
+						"NewFile": "/Applications/zoom.us.app"
+					}
+				},
+				{
+					"MacroActionType": "SimulateKeystroke",
+					"ActionUID": 1424,
+					"ReleaseAll": false,
+					"TargetApplication": {},
+					"TargetingType": "Front",
+					"KeyCode": 0,
+					"Modifiers": 768
+				}
+			]
+		},
+		{
+			"MacroActionType": "ExecuteAppleScript",
+			"IncludedVariables": [
+				"9999"
+			],
+			"TrimResults": true,
+			"IncludeStdErr": false,
+			"ActionUID": 1425,
+			"UseText": true,
+			"TrimResultsNew": true,
+			"TimeOutAbortsMacro": true,
+			"Path": "",
+			"DisplayKind": "None",
+			"HonourFailureSettings": true,
+			"Text": "property muteAudio : \"Mute audio\"\nproperty unmuteAudio : \"Unmute audio\"\n\nif application \"zoom.us\" is running then\n\ttell application \"System Events\"\n\t\ttell application process \"zoom.us\"\n\t\t\tif exists (menu item muteAudio of menu 1 of menu bar item \"Meeting\" of menu bar 1) then\n\t\t\t\tclick menu item muteAudio of menu 1 of menu bar item \"Meeting\" of menu bar 1\n\t\t\telse\n\t\t\t\tclick menu item unmuteAudio of menu 1 of menu bar item \"Meeting\" of menu bar 1\n\t\t\tend if\n\t\tend tell\n\tend tell\nend if"
+		}
+	],
+	"Name": "Mute/Unmute Zoom"
+}

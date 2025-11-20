@@ -1,0 +1,24 @@
+{
+	"AddToMacroPalette": false,
+	"Modifiers": 4864,
+	"CreationDate": 524521335.841239,
+	"AddToStatusMenu": false,
+	"Name": "Unicode symbols",
+	"PaletteUnderMouse": false,
+	"UID": "B35EE6B5-E5A0-4915-A7D3-52A399DCE5E3",
+	"Theme": {
+		"Opacity": 100,
+		"UseTrigger": true,
+		"UseIcon": false,
+		"UseDefaultInstead": false,
+		"Size": 21
+	},
+	"Targeting": {
+		"Targeting": "All",
+		"TargetingApps": []
+	},
+	"Macros": [],
+	"ToggleMacroUID": "D2683D9F-7AA4-4126-AAA1-3A5DCFE31970",
+	"Activate": "OnceWithPalette",
+	"KeyCode": 32
+}

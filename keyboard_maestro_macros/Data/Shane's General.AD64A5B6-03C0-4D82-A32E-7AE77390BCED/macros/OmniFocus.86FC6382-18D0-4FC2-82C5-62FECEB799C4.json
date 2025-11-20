@@ -1,0 +1,58 @@
+{
+	"CreationDate": 630283148.368224,
+	"UID": "86FC6382-18D0-4FC2-82C5-62FECEB799C4",
+	"Name": "OmniFocus",
+	"Triggers": [
+		{
+			"KeyCode": 23,
+			"MacroTriggerType": "HotKey",
+			"Modifiers": 6912,
+			"FireType": "Pressed"
+		}
+	],
+	"ModificationDate": 630401498.238969,
+	"Actions": [
+		{
+			"MacroActionType": "IfThenElse",
+			"ElseActions": [
+				{
+					"MacroActionType": "HideSpecificApp",
+					"ActionUID": 1442,
+					"Application": {
+						"BundleIdentifier": "com.omnigroup.OmniFocus3",
+						"Name": "OmniFocus"
+					}
+				}
+			],
+			"Conditions": {
+				"ConditionListMatch": "All",
+				"ConditionList": [
+					{
+						"Application": {
+							"BundleIdentifier": "com.omnigroup.OmniFocus3",
+							"Name": "OmniFocus"
+						},
+						"ApplicationConditionType": "NotActive",
+						"ConditionType": "Application"
+					}
+				]
+			},
+			"ThenActions": [
+				{
+					"MacroActionType": "ActivateApplication",
+					"ActionUID": 1441,
+					"ReopenWindows": true,
+					"AllWindows": true,
+					"TimeOutAbortsMacro": true,
+					"AlreadyActivatedActionType": "Normal",
+					"Application": {
+						"BundleIdentifier": "com.omnigroup.OmniFocus3",
+						"Name": "OmniFocus"
+					}
+				}
+			],
+			"TimeOutAbortsMacro": true,
+			"ActionUID": 1440
+		}
+	]
+}

@@ -1,0 +1,22 @@
+{
+	"CreationDate": 524612485.211827,
+	"UID": "A26EDFB8-1338-4D81-AA36-95CB421BA5E3",
+	"Name": "Long time",
+	"Triggers": [
+		{
+			"KeyCode": 31,
+			"MacroTriggerType": "HotKey",
+			"Modifiers": 0,
+			"FireType": "Pressed"
+		}
+	],
+	"ModificationDate": 568499380.149133,
+	"Actions": [
+		{
+			"MacroActionType": "InsertText",
+			"Action": "ByPasting",
+			"Text": "%LongTime%",
+			"ActionUID": 1954
+		}
+	]
+}

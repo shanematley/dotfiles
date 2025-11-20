@@ -1,0 +1,22 @@
+{
+	"CreationDate": 524612485.211827,
+	"UID": "9F041D82-52A2-4473-A991-BE26D227B20B",
+	"Name": "Long date",
+	"Triggers": [
+		{
+			"KeyCode": 37,
+			"MacroTriggerType": "HotKey",
+			"Modifiers": 0,
+			"FireType": "Pressed"
+		}
+	],
+	"ModificationDate": 568499378.468588,
+	"Actions": [
+		{
+			"MacroActionType": "InsertText",
+			"Action": "ByPasting",
+			"Text": "%LongDate%",
+			"ActionUID": 1952
+		}
+	]
+}

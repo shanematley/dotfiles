@@ -1,0 +1,64 @@
+{
+	"CreationDate": 640112180.731037,
+	"UID": "C6A6D598-33CD-468C-B414-FFBC59F35C4C",
+	"Name": "Copy and Stream to Marked",
+	"Triggers": [
+		{
+			"KeyCode": 40,
+			"MacroTriggerType": "HotKey",
+			"Modifiers": 4352,
+			"FireType": "Pressed"
+		}
+	],
+	"ModificationDate": 701657921.086807,
+	"Actions": [
+		{
+			"MacroActionType": "Comment",
+			"Title": "Info",
+			"StyledText": "\n\t\t\t\t\t\t\t41E4D515-C065-4C24-9859-EA2479C52CC9\n\t\t\t\t\t\t\tcnRmZAAAAAADAAAAAgAA\n\t\t\t\t\t\t\tAAcAAABUWFQucnRmAQAA\n\t\t\t\t\t\t\tAC4OAgAAKwAAAAEAAAAG\n\t\t\t\t\t\t\tAgAAe1xydGYxXGFuc2lc\n\t\t\t\t\t\t\tYW5zaWNwZzEyNTJcY29j\n\t\t\t\t\t\t\tb2FydGYyNTgwClxjb2Nv\n\t\t\t\t\t\t\tYXRleHRzY2FsaW5nMFxj\n\t\t\t\t\t\t\tb2NvYXBsYXRmb3JtMHtc\n\t\t\t\t\t\t\tZm9udHRibFxmMFxmc3dp\n\t\t\t\t\t\t\tc3NcZmNoYXJzZXQwIEhl\n\t\t\t\t\t\t\tbHZldGljYTt9CntcY29s\n\t\t\t\t\t\t\tb3J0Ymw7XHJlZDI1NVxn\n\t\t\t\t\t\t\tcmVlbjI1NVxibHVlMjU1\n\t\t\t\t\t\t\tO1xyZWQwXGdyZWVuMFxi\n\t\t\t\t\t\t\tbHVlMDt9CntcKlxleHBh\n\t\t\t\t\t\t\tbmRlZGNvbG9ydGJsOztc\n\t\t\t\t\t\t\tY3NzcmdiXGMwXGMwXGMw\n\t\t\t\t\t\t\tXGM4NDcwNlxjbmFtZSBj\n\t\t\t\t\t\t\tb250cm9sVGV4dENvbG9y\n\t\t\t\t\t\t\tO30KXHBhcmRcdHg1NjBc\n\t\t\t\t\t\t\tdHgxMTIwXHR4MTY4MFx0\n\t\t\t\t\t\t\teDIyNDBcdHgyODAwXHR4\n\t\t\t\t\t\t\tMzM2MFx0eDM5MjBcdHg0\n\t\t\t\t\t\t\tNDgwXHR4NTA0MFx0eDU2\n\t\t\t\t\t\t\tMDBcdHg2MTYwXHR4Njcy\n\t\t\t\t\t\t\tMFxwYXJkaXJuYXR1cmFs\n\t\t\t\t\t\t\tXHBhcnRpZ2h0ZW5mYWN0\n\t\t\t\t\t\t\tb3IwCgpcZjBcZnMyNiBc\n\t\t\t\t\t\t\tY2YyIFRoaXMgbWFjcm8g\n\t\t\t\t\t\t\td2FzIGRldmVsb3BlZCBi\n\t\t\t\t\t\t\teSBCcnVubyBDb250ZSwg\n\t\t\t\t\t\t\tMjAyMVwKXApSZXF1aXJl\n\t\t\t\t\t\t\tcyBNYXJrZWQgMi5hcHAs\n\t\t\t\t\t\t\tIGF2YWlsYWJsZSBvbiB0\n\t\t\t\t\t\t\taGUgTWFjIEFwcCBTdG9y\n\t\t\t\t\t\t\tZSwgU2V0YXBwLCBvciB2\n\t\t\t\t\t\t\taWEgaHR0cHM6Ly9tYXJr\n\t\t\t\t\t\t\tZWQyYXBwLmNvbX0BAAAA\n\t\t\t\t\t\t\tIwAAAAEAAAAHAAAAVFhU\n\t\t\t\t\t\t\tLnJ0ZhAAAACFOXtgtgEA\n\t\t\t\t\t\t\tAAAAAAAAAAAA\n\t\t\t\t\t\t\t41E4D515-C065-4C24-9859-EA2479C52CC9\n\t\t\t\t\t\t\t",
+			"ActionUID": 1649
+		},
+		{
+			"MacroActionType": "SimulateKeystroke",
+			"ActionUID": 1650,
+			"ReleaseAll": false,
+			"TargetApplication": {},
+			"TargetingType": "Front",
+			"KeyCode": 8,
+			"Modifiers": 256
+		},
+		{
+			"MacroActionType": "ExecuteShellScript",
+			"IncludedVariables": [
+				"9999"
+			],
+			"TrimResults": true,
+			"Source": "Clipboard",
+			"IncludeStdErr": false,
+			"ActionUID": 1651,
+			"UseText": false,
+			"TrimResultsNew": true,
+			"TimeOutAbortsMacro": true,
+			"Path": "~/bin/stream_to_marked2.sh",
+			"DisplayKind": "None",
+			"HonourFailureSettings": true,
+			"Text": "#!/usr/bin/env python3\n# -*- coding: utf-8 -*-\n\nimport sys\n\ndef stream_to_marked(data):\n\tfrom AppKit import NSPasteboard\n\tpb = NSPasteboard.pasteboardWithName_(\"mkStreamingPreview\")\n\tpb.clearContents()\n\tpb.setString_forType_(data, 'public.utf8-plain-text')\n\nd = [  ]\nfor line in sys.stdin:\n\td.append(line)\nstream_to_marked(\"\\n\".join(d))\n\n"
+		},
+		{
+			"MacroActionType": "ExecuteAppleScript",
+			"IncludedVariables": [
+				"9999"
+			],
+			"TrimResults": true,
+			"IncludeStdErr": false,
+			"ActionUID": 1652,
+			"UseText": true,
+			"TrimResultsNew": true,
+			"TimeOutAbortsMacro": true,
+			"Path": "",
+			"DisplayKind": "None",
+			"HonourFailureSettings": true,
+			"Text": "tell application \"Marked 2\"\r\tset l to name of every document\r\tif (l does not contain \"Streaming Preview__marked2.streamingpreview.mktransient\") then\r\t\tdo shell script \"open x-marked://stream/\"\r\tend if\rend tell"
+		}
+	]
+}

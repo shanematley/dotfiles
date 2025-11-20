@@ -1,0 +1,18 @@
+{
+	"AddToMacroPalette": false,
+	"Modifiers": 0,
+	"CreationDate": 632715896.061384,
+	"AddToStatusMenu": false,
+	"PaletteUnderMouse": false,
+	"CustomIconData": "KMEP-DebuggerCancel",
+	"Name": "⋮misc",
+	"UID": "607B5071-4094-424D-BCD9-9B52E8BE3A26",
+	"Targeting": {
+		"Targeting": "All",
+		"TargetingApps": []
+	},
+	"Macros": [],
+	"ToggleMacroUID": "C161FF60-EFE1-4DB0-A776-C899360198EC",
+	"Activate": "Normal",
+	"KeyCode": 32767
+}

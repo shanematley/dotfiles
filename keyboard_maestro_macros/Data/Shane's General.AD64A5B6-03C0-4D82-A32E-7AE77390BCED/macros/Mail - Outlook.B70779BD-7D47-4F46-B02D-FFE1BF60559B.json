@@ -1,0 +1,176 @@
+{
+	"UID": "B70779BD-7D47-4F46-B02D-FFE1BF60559B",
+	"CreationDate": 763542207.372009,
+	"ModificationDate": 763542445.234892,
+	"Triggers": [
+		{
+			"KeyCode": 28,
+			"MacroTriggerType": "HotKey",
+			"Modifiers": 768,
+			"FireType": "Pressed"
+		}
+	],
+	"IsActive": false,
+	"Actions": [
+		{
+			"MacroActionType": "IfThenElse",
+			"ElseActions": [
+				{
+					"MacroActionType": "IfThenElse",
+					"ElseActions": [
+						{
+							"MacroActionType": "IfThenElse",
+							"ElseActions": [
+								{
+									"MacroActionType": "HideSpecificApp",
+									"ActionUID": 20346,
+									"Application": {
+										"BundleIdentifier": "com.microsoft.Outlook",
+										"Name": "Microsoft Outlook",
+										"NewFile": "/Applications/Microsoft Outlook.app"
+									}
+								}
+							],
+							"Conditions": {
+								"ConditionListMatch": "All",
+								"ConditionList": [
+									{
+										"Application": {
+											"BundleIdentifier": "com.microsoft.Outlook",
+											"Name": "Microsoft Outlook",
+											"NewFile": "/Applications/Microsoft Outlook.app"
+										},
+										"ConditionType": "FrontWindow",
+										"IsFrontApplication": false,
+										"FrontWindowConditionType": "DoesNotExist"
+									}
+								]
+							},
+							"ThenActions": [
+								{
+									"MacroActionType": "Group",
+									"Actions": [
+										{
+											"MacroActionType": "ActivateApplication",
+											"ActionUID": 20351,
+											"ReopenWindows": true,
+											"AllWindows": true,
+											"TimeOutAbortsMacro": true,
+											"AlreadyActivatedActionType": "Normal",
+											"Application": {
+												"BundleIdentifier": "com.microsoft.Outlook",
+												"Name": "Microsoft Outlook",
+												"NewFile": "/Applications/Microsoft Outlook.app"
+											}
+										},
+										{
+											"MacroActionType": "SelectMenuItem",
+											"TargetingType": "Specific",
+											"TargetApplication": {
+												"BundleIdentifier": "com.microsoft.Outlook",
+												"Name": "Microsoft Outlook",
+												"NewFile": "/Applications/Microsoft Outlook.app"
+											},
+											"Menu": [
+												"View",
+												"Go To",
+												"Mail"
+											],
+											"ActionUID": 20352
+										}
+									],
+									"TimeOutAbortsMacro": true,
+									"ActionUID": 20348
+								}
+							],
+							"TimeOutAbortsMacro": true,
+							"ActionUID": 20344
+						}
+					],
+					"Conditions": {
+						"ConditionListMatch": "All",
+						"ConditionList": [
+							{
+								"Application": {
+									"BundleIdentifier": "com.microsoft.Outlook",
+									"Name": "Microsoft Outlook",
+									"NewFile": "/Applications/Microsoft Outlook.app"
+								},
+								"ConditionType": "FrontWindow",
+								"IsFrontApplication": false,
+								"FrontWindowConditionType": "Exists"
+							}
+						]
+					},
+					"ThenActions": [
+						{
+							"MacroActionType": "HideSpecificApp",
+							"ActionUID": 20343,
+							"Application": {
+								"BundleIdentifier": "com.microsoft.Outlook",
+								"Name": "Microsoft Outlook",
+								"NewFile": "/Applications/Microsoft Outlook.app"
+							}
+						}
+					],
+					"TimeOutAbortsMacro": true,
+					"ActionUID": 20342
+				}
+			],
+			"Conditions": {
+				"ConditionListMatch": "Any",
+				"ConditionList": [
+					{
+						"Application": {
+							"BundleIdentifier": "com.microsoft.Outlook",
+							"Name": "Microsoft Outlook",
+							"NewFile": "/Applications/Microsoft Outlook.app"
+						},
+						"ApplicationConditionType": "NotActive",
+						"ConditionType": "Application"
+					}
+				]
+			},
+			"ThenActions": [
+				{
+					"MacroActionType": "Group",
+					"Actions": [
+						{
+							"MacroActionType": "ActivateApplication",
+							"ActionUID": 20339,
+							"ReopenWindows": true,
+							"AllWindows": true,
+							"TimeOutAbortsMacro": true,
+							"AlreadyActivatedActionType": "Normal",
+							"Application": {
+								"BundleIdentifier": "com.microsoft.Outlook",
+								"Name": "Microsoft Outlook",
+								"NewFile": "/Applications/Microsoft Outlook.app"
+							}
+						},
+						{
+							"MacroActionType": "SelectMenuItem",
+							"TargetingType": "Specific",
+							"TargetApplication": {
+								"BundleIdentifier": "com.microsoft.Outlook",
+								"Name": "Microsoft Outlook",
+								"NewFile": "/Applications/Microsoft Outlook.app"
+							},
+							"Menu": [
+								"View",
+								"Go To",
+								"Mail"
+							],
+							"ActionUID": 20345
+						}
+					],
+					"TimeOutAbortsMacro": true,
+					"ActionUID": 20347
+				}
+			],
+			"TimeOutAbortsMacro": true,
+			"ActionUID": 20338
+		}
+	],
+	"Name": "Mail - Outlook"
+}

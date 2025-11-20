@@ -1,0 +1,29 @@
+{
+	"AddToMacroPalette": false,
+	"AddToStatusMenu": false,
+	"CreationDate": 701669306.996745,
+	"Modifiers": 4864,
+	"PaletteUnderMouse": false,
+	"Name": "Obsidian Tags",
+	"UID": "AAA78EFA-C763-4EC1-867C-68E4A8630176",
+	"Theme": {
+		"UseIcon": false,
+		"UseDefaultInstead": false,
+		"UseTrigger": true
+	},
+	"Targeting": {
+		"Targeting": "Included",
+		"TargetingApps": [
+			{
+				"BundleIdentifier": "md.obsidian",
+				"Name": "Obsidian",
+				"NewFile": "/Applications/Obsidian.app"
+			}
+		]
+	},
+	"Macros": [],
+	"ToggleMacroUID": "2B74F57B-27D8-46EE-987E-F38F97A9279A",
+	"Activate": "OnceWithPalette",
+	"KeyCode": 17,
+	"DisplayToggle": false
+}

@@ -1,0 +1,33 @@
+{
+	"UID": "C43F4E61-CF81-47E0-A997-0B9CEE23FA0E",
+	"CreationDate": 630223481.238835,
+	"ModificationDate": 632094073.284795,
+	"Triggers": [
+		{
+			"KeyCode": 21,
+			"MacroTriggerType": "HotKey",
+			"Modifiers": 6912,
+			"FireType": "Pressed"
+		}
+	],
+	"IsActive": false,
+	"Actions": [
+		{
+			"MacroActionType": "ExecuteAppleScript",
+			"IncludedVariables": [
+				"9999"
+			],
+			"TrimResults": true,
+			"IncludeStdErr": false,
+			"ActionUID": 1439,
+			"UseText": true,
+			"TrimResultsNew": true,
+			"TimeOutAbortsMacro": true,
+			"Path": "",
+			"DisplayKind": "None",
+			"HonourFailureSettings": true,
+			"Text": "property stopVideo : \"Exit Minimal View\"\rproperty startVideo : \"Enter Minimal View\"\r\rif application \"zoom.us\" is running then\r\ttell application \"System Events\"\r\t\ttell application process \"zoom.us\"\r\t\t\tif exists (menu item stopVideo of menu 1 of menu bar item \"Meeting\" of menu bar 1) then\r\t\t\t\tclick menu item stopVideo of menu 1 of menu bar item \"Meeting\" of menu bar 1\r\t\t\telse\r\t\t\t\tclick menu item startVideo of menu 1 of menu bar item \"Meeting\" of menu bar 1\r\t\t\tend if\r\t\tend tell\r\tend tell\rend if"
+		}
+	],
+	"Name": "Toggle Zoom Mini-Player"
+}

@@ -1,0 +1,115 @@
+{
+	"CreationDate": 589480340.20556,
+	"UID": "D8F39A06-BB45-4E09-A6BF-C7EAE26FF9D1",
+	"Name": "OmniFocus | Quick Entry",
+	"Triggers": [
+		{
+			"KeyCode": 49,
+			"MacroTriggerType": "HotKey",
+			"Modifiers": 6144,
+			"FireType": "Pressed"
+		}
+	],
+	"ModificationDate": 763597128.522075,
+	"Actions": [
+		{
+			"MacroActionType": "Comment",
+			"Title": "OVERVIEW",
+			"StyledText": "\n\t\t\t\t\t\t\t41E4D515-C065-4C24-9859-EA2479C52CC9\n\t\t\t\t\t\t\tcnRmZAAAAAADAAAAAgAA\n\t\t\t\t\t\t\tAAcAAABUWFQucnRmAQAA\n\t\t\t\t\t\t\tAC6sAgAAKwAAAAEAAACk\n\t\t\t\t\t\t\tAgAAe1xydGYxXGFuc2lc\n\t\t\t\t\t\t\tYW5zaWNwZzEyNTJcY29j\n\t\t\t\t\t\t\tb2FydGYyODIxClxjb2Nv\n\t\t\t\t\t\t\tYXRleHRzY2FsaW5nMFxj\n\t\t\t\t\t\t\tb2NvYXBsYXRmb3JtMHtc\n\t\t\t\t\t\t\tZm9udHRibFxmMFxmc3dp\n\t\t\t\t\t\t\tc3NcZmNoYXJzZXQwIEhl\n\t\t\t\t\t\t\tbHZldGljYTtcZjFcZm5p\n\t\t\t\t\t\t\tbFxmY2hhcnNldDAgTHVj\n\t\t\t\t\t\t\taWRhR3JhbmRlO30Ke1xj\n\t\t\t\t\t\t\tb2xvcnRibDtccmVkMjU1\n\t\t\t\t\t\t\tXGdyZWVuMjU1XGJsdWUy\n\t\t\t\t\t\t\tNTU7XHJlZDBcZ3JlZW4w\n\t\t\t\t\t\t\tXGJsdWUwO30Ke1wqXGV4\n\t\t\t\t\t\t\tcGFuZGVkY29sb3J0Ymw7\n\t\t\t\t\t\t\tO1xjc3NyZ2JcYzBcYzBc\n\t\t\t\t\t\t\tYzBcYzg0NzA2XGNuYW1l\n\t\t\t\t\t\t\tIGNvbnRyb2xUZXh0Q29s\n\t\t\t\t\t\t\tb3I7fQpccGFyZFx0eDU2\n\t\t\t\t\t\t\tMFx0eDExMjBcdHgxNjgw\n\t\t\t\t\t\t\tXHR4MjI0MFx0eDI4MDBc\n\t\t\t\t\t\t\tdHgzMzYwXHR4MzkyMFx0\n\t\t\t\t\t\t\teDQ0ODBcdHg1MDQwXHR4\n\t\t\t\t\t\t\tNTYwMFx0eDYxNjBcdHg2\n\t\t\t\t\t\t\tNzIwXHBhcmRpcm5hdHVy\n\t\t\t\t\t\t\tYWxccGFydGlnaHRlbmZh\n\t\t\t\t\t\t\tY3RvcjAKClxmMFxmczI2\n\t\t\t\t\t\t\tIFxjZjIgT3BlbnMgUXVp\n\t\t\t\t\t\t\tY2sgRW50cnkuIElmIE9t\n\t\t\t\t\t\t\tbmlGb2N1cyBpc25cJzky\n\t\t\t\t\t\t\tdCBydW5uaW5nLCBsYXVu\n\t\t\t\t\t\t\tY2ggT21uaUZvY3VzIGJl\n\t\t\t\t\t\t\tZm9yZSBhY3RpdmF0aW5n\n\t\t\t\t\t\t\tIFF1aWNrIEVudHJ5LiBU\n\t\t\t\t\t\t\taGlzIG1hY3JvIGFzc3Vt\n\t\t\t\t\t\t\tZXMgdGhlIFF1aWNrIEVu\n\t\t\t\t\t\t\tdHJ5IGtleWJvYXJkIHNo\n\t\t\t\t\t\t\tb3J0Y3V0cyBpZiAKXGYx\n\t\t\t\t\t\t\tIFx1YzBcdTg5NjMgXHU4\n\t\t\t\t\t\t\tOTk3IApcZjAgU3BhY2Uu\n\t\t\t\t\t\t\tIEl0IHdpbGwgbmVlZCB0\n\t\t\t\t\t\t\tbyBiZSBtb2RpZmllZCBp\n\t\t\t\t\t\t\tZiB5b3VcJzkycmUgdXNp\n\t\t\t\t\t\t\tbmcgYSBkaWZmZXJlbnQg\n\t\t\t\t\t\t\ta2V5Ym9hcmQgc2hvcnRj\n\t\t\t\t\t\t\tdXQufQEAAAAjAAAAAQAA\n\t\t\t\t\t\t\tAAcAAABUWFQucnRmEAAA\n\t\t\t\t\t\t\tAKy80Ge2AQAAAAAAAAAA\n\t\t\t\t\t\t\tAAA=\n\t\t\t\t\t\t\t41E4D515-C065-4C24-9859-EA2479C52CC9\n\t\t\t\t\t\t\t",
+			"ActionColor": "Purple",
+			"ActionUID": 14989850
+		},
+		{
+			"MacroActionType": "IfThenElse",
+			"ElseActions": [
+				{
+					"MacroActionType": "Comment",
+					"Title": "OmniFocus is Running",
+					"StyledText": "\n\t\t\t\t\t\t\t\t41E4D515-C065-4C24-9859-EA2479C52CC9\n\t\t\t\t\t\t\t\tcnRmZAAAAAAD\n\t\t\t\t\t\t\t\tAAAAAgAAAAcA\n\t\t\t\t\t\t\t\tAABUWFQucnRm\n\t\t\t\t\t\t\t\tAQAAAC6mAQAA\n\t\t\t\t\t\t\t\tKwAAAAEAAACe\n\t\t\t\t\t\t\t\tAQAAe1xydGYx\n\t\t\t\t\t\t\t\tXGFuc2lcYW5z\n\t\t\t\t\t\t\t\taWNwZzEyNTJc\n\t\t\t\t\t\t\t\tY29jb2FydGYx\n\t\t\t\t\t\t\t\tNjcxXGNvY29h\n\t\t\t\t\t\t\t\tc3VicnRmNjAw\n\t\t\t\t\t\t\t\tCntcZm9udHRi\n\t\t\t\t\t\t\t\tbFxmMFxmc3dp\n\t\t\t\t\t\t\t\tc3NcZmNoYXJz\n\t\t\t\t\t\t\t\tZXQwIEhlbHZl\n\t\t\t\t\t\t\t\tdGljYTt9Cntc\n\t\t\t\t\t\t\t\tY29sb3J0Ymw7\n\t\t\t\t\t\t\t\tXHJlZDI1NVxn\n\t\t\t\t\t\t\t\tcmVlbjI1NVxi\n\t\t\t\t\t\t\t\tbHVlMjU1O1xy\n\t\t\t\t\t\t\t\tZWQwXGdyZWVu\n\t\t\t\t\t\t\t\tMFxibHVlMDt9\n\t\t\t\t\t\t\t\tCntcKlxleHBh\n\t\t\t\t\t\t\t\tbmRlZGNvbG9y\n\t\t\t\t\t\t\t\tdGJsOztcY3Nz\n\t\t\t\t\t\t\t\tcmdiXGMwXGMw\n\t\t\t\t\t\t\t\tXGMwXGM4NDcw\n\t\t\t\t\t\t\t\tNlxjbmFtZSBj\n\t\t\t\t\t\t\t\tb250cm9sVGV4\n\t\t\t\t\t\t\t\tdENvbG9yO30K\n\t\t\t\t\t\t\t\tXHBhcmRcdHg1\n\t\t\t\t\t\t\t\tNjBcdHgxMTIw\n\t\t\t\t\t\t\t\tXHR4MTY4MFx0\n\t\t\t\t\t\t\t\teDIyNDBcdHgy\n\t\t\t\t\t\t\t\tODAwXHR4MzM2\n\t\t\t\t\t\t\t\tMFx0eDM5MjBc\n\t\t\t\t\t\t\t\tdHg0NDgwXHR4\n\t\t\t\t\t\t\t\tNTA0MFx0eDU2\n\t\t\t\t\t\t\t\tMDBcdHg2MTYw\n\t\t\t\t\t\t\t\tXHR4NjcyMFxw\n\t\t\t\t\t\t\t\tYXJkaXJuYXR1\n\t\t\t\t\t\t\t\tcmFsXHBhcnRp\n\t\t\t\t\t\t\t\tZ2h0ZW5mYWN0\n\t\t\t\t\t\t\t\tb3IwCgpcZjBc\n\t\t\t\t\t\t\t\tZnMyNiBcY2Yy\n\t\t\t\t\t\t\t\tIERvZXNuXCc5\n\t\t\t\t\t\t\t\tMnQgZG8gYW55\n\t\t\t\t\t\t\t\tdGhpbmcgaWYg\n\t\t\t\t\t\t\t\tT21uaUZvY3Vz\n\t\t\t\t\t\t\t\tIGlzIGFscmVh\n\t\t\t\t\t\t\t\tZHkgcnVubmlu\n\t\t\t\t\t\t\t\tZy59AQAAACMA\n\t\t\t\t\t\t\t\tAAABAAAABwAA\n\t\t\t\t\t\t\t\tAFRYVC5ydGYQ\n\t\t\t\t\t\t\t\tAAAAZopyXbYB\n\t\t\t\t\t\t\t\tAAAAAAAAAAAA\n\t\t\t\t\t\t\t\tAA==\n\t\t\t\t\t\t\t\t\t41E4D515-C065-4C24-9859-EA2479C52CC9\n\t\t\t\t\t\t\t\t",
+					"ActionColor": "Purple",
+					"ActionUID": 1093
+				}
+			],
+			"Conditions": {
+				"ConditionListMatch": "All",
+				"ConditionList": [
+					{
+						"Application": {
+							"BundleIdentifier": "com.omnigroup.OmniFocus4",
+							"Name": "OmniFocus",
+							"NewFile": "/Applications/OmniFocus.app"
+						},
+						"ApplicationConditionType": "NotRunning",
+						"ConditionType": "Application"
+					}
+				]
+			},
+			"ThenActions": [
+				{
+					"MacroActionType": "Comment",
+					"Title": "OmniFocus Isn't Running",
+					"StyledText": "\n\t\t\t\t\t\t\t\t41E4D515-C065-4C24-9859-EA2479C52CC9\n\t\t\t\t\t\t\t\tcnRmZAAAAAAD\n\t\t\t\t\t\t\t\tAAAAAgAAAAcA\n\t\t\t\t\t\t\t\tAABUWFQucnRm\n\t\t\t\t\t\t\t\tAQAAAC4rAgAA\n\t\t\t\t\t\t\t\tKwAAAAEAAAAj\n\t\t\t\t\t\t\t\tAgAAe1xydGYx\n\t\t\t\t\t\t\t\tXGFuc2lcYW5z\n\t\t\t\t\t\t\t\taWNwZzEyNTJc\n\t\t\t\t\t\t\t\tY29jb2FydGYy\n\t\t\t\t\t\t\t\tODIxClxjb2Nv\n\t\t\t\t\t\t\t\tYXRleHRzY2Fs\n\t\t\t\t\t\t\t\taW5nMFxjb2Nv\n\t\t\t\t\t\t\t\tYXBsYXRmb3Jt\n\t\t\t\t\t\t\t\tMHtcZm9udHRi\n\t\t\t\t\t\t\t\tbFxmMFxmc3dp\n\t\t\t\t\t\t\t\tc3NcZmNoYXJz\n\t\t\t\t\t\t\t\tZXQwIEhlbHZl\n\t\t\t\t\t\t\t\tdGljYTt9Cntc\n\t\t\t\t\t\t\t\tY29sb3J0Ymw7\n\t\t\t\t\t\t\t\tXHJlZDI1NVxn\n\t\t\t\t\t\t\t\tcmVlbjI1NVxi\n\t\t\t\t\t\t\t\tbHVlMjU1O1xy\n\t\t\t\t\t\t\t\tZWQwXGdyZWVu\n\t\t\t\t\t\t\t\tMFxibHVlMDt9\n\t\t\t\t\t\t\t\tCntcKlxleHBh\n\t\t\t\t\t\t\t\tbmRlZGNvbG9y\n\t\t\t\t\t\t\t\tdGJsOztcY3Nz\n\t\t\t\t\t\t\t\tcmdiXGMwXGMw\n\t\t\t\t\t\t\t\tXGMwXGM4NDcw\n\t\t\t\t\t\t\t\tNlxjbmFtZSBj\n\t\t\t\t\t\t\t\tb250cm9sVGV4\n\t\t\t\t\t\t\t\tdENvbG9yO30K\n\t\t\t\t\t\t\t\tXHBhcmRcdHg1\n\t\t\t\t\t\t\t\tNjBcdHgxMTIw\n\t\t\t\t\t\t\t\tXHR4MTY4MFx0\n\t\t\t\t\t\t\t\teDIyNDBcdHgy\n\t\t\t\t\t\t\t\tODAwXHR4MzM2\n\t\t\t\t\t\t\t\tMFx0eDM5MjBc\n\t\t\t\t\t\t\t\tdHg0NDgwXHR4\n\t\t\t\t\t\t\t\tNTA0MFx0eDU2\n\t\t\t\t\t\t\t\tMDBcdHg2MTYw\n\t\t\t\t\t\t\t\tXHR4NjcyMFxw\n\t\t\t\t\t\t\t\tYXJkaXJuYXR1\n\t\t\t\t\t\t\t\tcmFsXHBhcnRp\n\t\t\t\t\t\t\t\tZ2h0ZW5mYWN0\n\t\t\t\t\t\t\t\tb3IwCgpcZjBc\n\t\t\t\t\t\t\t\tZnMyNiBcY2Yy\n\t\t\t\t\t\t\t\tIElmIE9tbmlG\n\t\t\t\t\t\t\t\tb2N1cyBpc25c\n\t\t\t\t\t\t\t\tJzkydCBydW5u\n\t\t\t\t\t\t\t\taW5nLCBsYXVu\n\t\t\t\t\t\t\t\tY2ggT21uaUZv\n\t\t\t\t\t\t\t\tY3VzLCB3YWl0\n\t\t\t\t\t\t\t\tIGZvciBpdCB0\n\t\t\t\t\t\t\t\tbyBzdGFydCB1\n\t\t\t\t\t\t\t\tcCwgc3dpdGNo\n\t\t\t\t\t\t\t\tIGJhY2sgdG8g\n\t\t\t\t\t\t\t\tdGhlICBhcHAg\n\t\t\t\t\t\t\t\tdGhhdCB3YXMg\n\t\t\t\t\t\t\t\tcnVubmluZyB3\n\t\t\t\t\t\t\t\taGVuIHRoaXMg\n\t\t\t\t\t\t\t\tbWFjcm8gd2Fz\n\t\t\t\t\t\t\t\tIHRyaWdnZXJl\n\t\t\t\t\t\t\t\tZCBhbmQgYWN0\n\t\t\t\t\t\t\t\taXZhdGUgUXVp\n\t\t\t\t\t\t\t\tY2sgRW50cnku\n\t\t\t\t\t\t\t\tfQEAAAAjAAAA\n\t\t\t\t\t\t\t\tAQAAAAcAAABU\n\t\t\t\t\t\t\t\tWFQucnRmEAAA\n\t\t\t\t\t\t\t\tAIVJ02e2AQAA\n\t\t\t\t\t\t\t\tAAAAAAAAAAA=\n\t\t\t\t\t\t\t\t\t41E4D515-C065-4C24-9859-EA2479C52CC9\n\t\t\t\t\t\t\t\t",
+					"ActionColor": "Purple",
+					"ActionUID": 14989851
+				},
+				{
+					"MacroActionType": "ActivateApplication",
+					"ActionUID": 16455916,
+					"ReopenWindows": false,
+					"AllWindows": false,
+					"TimeOutAbortsMacro": true,
+					"AlreadyActivatedActionType": "Normal",
+					"Application": {
+						"BundleIdentifier": "com.omnigroup.OmniFocus4",
+						"Name": "OmniFocus",
+						"NewFile": "/Applications/OmniFocus.app"
+					}
+				},
+				{
+					"MacroActionType": "PauseUntil",
+					"Conditions": {
+						"ConditionListMatch": "All",
+						"ConditionList": [
+							{
+								"Application": {
+									"BundleIdentifier": "com.omnigroup.OmniFocus4",
+									"Name": "OmniFocus",
+									"NewFile": "/Applications/OmniFocus.app"
+								},
+								"ApplicationConditionType": "Running",
+								"ConditionType": "Application"
+							},
+							{
+								"MenuConditionType": "IsEnabled",
+								"ConditionType": "Menu",
+								"MenuConditionSelectionType": "Is",
+								"MenuModifiers": 256,
+								"MenuShortcut": "C",
+								"MenuTitle": "Show Quick Entry"
+							}
+						]
+					},
+					"TimeOutAbortsMacro": true,
+					"ActionUID": 16455917
+				},
+				{
+					"MacroActionType": "SwitchToLastApplication",
+					"IsDisclosed": false,
+					"TimeOutAbortsMacro": true,
+					"ActionUID": 16455918
+				},
+				{
+					"MacroActionType": "SimulateKeystroke",
+					"ActionUID": 14989849,
+					"ReleaseAll": false,
+					"TargetApplication": {},
+					"TargetingType": "Front",
+					"KeyCode": 49,
+					"Modifiers": 6144
+				}
+			],
+			"TimeOutAbortsMacro": true,
+			"ActionUID": 16455915
+		}
+	]
+}

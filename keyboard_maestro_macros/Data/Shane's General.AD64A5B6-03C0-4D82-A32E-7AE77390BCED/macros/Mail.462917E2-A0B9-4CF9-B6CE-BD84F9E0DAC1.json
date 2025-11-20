@@ -1,0 +1,161 @@
+{
+	"CreationDate": 616565121.880568,
+	"UID": "462917E2-A0B9-4CF9-B6CE-BD84F9E0DAC1",
+	"Name": "Mail",
+	"Triggers": [
+		{
+			"KeyCode": 28,
+			"MacroTriggerType": "HotKey",
+			"Modifiers": 768,
+			"FireType": "Pressed"
+		}
+	],
+	"ModificationDate": 700877925.996966,
+	"Actions": [
+		{
+			"MacroActionType": "IfThenElse",
+			"ElseActions": [
+				{
+					"MacroActionType": "IfThenElse",
+					"ElseActions": [
+						{
+							"MacroActionType": "IfThenElse",
+							"ElseActions": [],
+							"Conditions": {
+								"ConditionListMatch": "All",
+								"ConditionList": [
+									{
+										"Application": {
+											"BundleIdentifier": "com.apple.mail",
+											"Name": "Mail",
+											"NewFile": "/System/Applications/Mail.app"
+										},
+										"ConditionType": "FrontWindow",
+										"IsFrontApplication": false,
+										"FrontWindowConditionType": "DoesNotExist"
+									}
+								]
+							},
+							"ThenActions": [
+								{
+									"MacroActionType": "SelectMenuItem",
+									"TargetingType": "Specific",
+									"TargetApplication": {
+										"BundleIdentifier": "com.apple.mail",
+										"Name": "Mail",
+										"NewFile": "/System/Applications/Mail.app"
+									},
+									"Menu": [
+										"Mailbox",
+										"Go to Favourite Mailbox",
+										"Inbox"
+									],
+									"ActionUID": 1433
+								}
+							],
+							"TimeOutAbortsMacro": true,
+							"ActionUID": 1432
+						}
+					],
+					"Conditions": {
+						"ConditionListMatch": "All",
+						"ConditionList": [
+							{
+								"Application": {
+									"BundleIdentifier": "com.apple.mail",
+									"Name": "Mail",
+									"NewFile": "/System/Applications/Mail.app"
+								},
+								"ConditionType": "FrontWindow",
+								"IsFrontApplication": false,
+								"FrontWindowConditionType": "Exists"
+							}
+						]
+					},
+					"ThenActions": [
+						{
+							"MacroActionType": "HideSpecificApp",
+							"ActionUID": 1431,
+							"Application": {
+								"BundleIdentifier": "com.apple.mail",
+								"Name": "Mail",
+								"NewFile": "/System/Applications/Mail.app"
+							}
+						}
+					],
+					"TimeOutAbortsMacro": true,
+					"ActionUID": 1430
+				}
+			],
+			"Conditions": {
+				"ConditionListMatch": "Any",
+				"ConditionList": [
+					{
+						"Application": {
+							"BundleIdentifier": "com.apple.mail",
+							"Name": "Mail",
+							"NewFile": "/System/Applications/Mail.app"
+						},
+						"ApplicationConditionType": "NotActive",
+						"ConditionType": "Application"
+					}
+				]
+			},
+			"ThenActions": [
+				{
+					"MacroActionType": "ActivateApplication",
+					"ActionUID": 1427,
+					"ReopenWindows": true,
+					"AllWindows": true,
+					"TimeOutAbortsMacro": true,
+					"AlreadyActivatedActionType": "Normal",
+					"Application": {
+						"BundleIdentifier": "com.apple.mail",
+						"Name": "Mail",
+						"NewFile": "/System/Applications/Mail.app"
+					}
+				},
+				{
+					"MacroActionType": "IfThenElse",
+					"ElseActions": [],
+					"Conditions": {
+						"ConditionListMatch": "All",
+						"ConditionList": [
+							{
+								"Application": {
+									"BundleIdentifier": "com.apple.mail",
+									"Name": "Mail",
+									"NewFile": "/System/Applications/Mail.app"
+								},
+								"ConditionType": "FrontWindow",
+								"IsFrontApplication": false,
+								"FrontWindowConditionType": "DoesNotExist"
+							}
+						]
+					},
+					"ThenActions": [
+						{
+							"MacroActionType": "SelectMenuItem",
+							"TargetingType": "Specific",
+							"TargetApplication": {
+								"BundleIdentifier": "com.apple.mail",
+								"Name": "Mail",
+								"NewFile": "/System/Applications/Mail.app"
+							},
+							"Menu": [
+								"Mailbox",
+								"Go to Favourite Mailbox",
+								"Inbox"
+							],
+							"ActionUID": 1429
+						}
+					],
+					"TimeOutAbortsMacro": true,
+					"ActionUID": 1428
+				}
+			],
+			"TimeOutAbortsMacro": true,
+			"ActionUID": 1426
+		}
+	]
+}

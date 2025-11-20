@@ -1,0 +1,35 @@
+{
+	"CreationDate": 502057960.041612,
+	"UID": "63D777E8-0484-408A-BE6B-BA7F1CFE1C2F",
+	"Name": "Open files in VS Code",
+	"Triggers": [
+		{
+			"KeyCode": 9,
+			"MacroTriggerType": "HotKey",
+			"Modifiers": 4096,
+			"FireType": "Pressed"
+		}
+	],
+	"ModificationDate": 783914982.224277,
+	"Actions": [
+		{
+			"MacroActionType": "ExecuteJavaScriptForAutomation",
+			"IncludedVariables": [
+				"9999"
+			],
+			"TrimResults": true,
+			"StopOnFailure": false,
+			"IncludeStdErr": true,
+			"UseModernSyntax": false,
+			"ActionUID": 252,
+			"UseText": true,
+			"TrimResultsNew": true,
+			"TimeOutAbortsMacro": true,
+			"Path": "",
+			"DisplayKind": "Window",
+			"HonourFailureSettings": true,
+			"Text": "(function () {\n    'use strict';\n\n    var a = Application.currentApplication(),\n        sa = (a.includeStandardAdditions = true, a),\n        strCMD = Application(\"Finder\")\n        .selection()\n        .reduce(function (a, x) {\n            return a + '/opt/homebrew/bin/code \"' + x.url()\n                .slice(7) + '\"\\n';\n        }, '');\n\n\n    //return strCMD\n    sa.doShellScript(strCMD);\n\n    Application('Visual Studio Code')\n        .activate();\n})();",
+			"NotifyOnFailure": false
+		}
+	]
+}

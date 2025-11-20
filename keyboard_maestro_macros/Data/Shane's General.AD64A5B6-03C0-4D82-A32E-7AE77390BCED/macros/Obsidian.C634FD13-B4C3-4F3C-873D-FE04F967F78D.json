@@ -1,0 +1,61 @@
+{
+	"CreationDate": 622536713.846314,
+	"UID": "C634FD13-B4C3-4F3C-873D-FE04F967F78D",
+	"Name": "Obsidian",
+	"Triggers": [
+		{
+			"KeyCode": 25,
+			"MacroTriggerType": "HotKey",
+			"Modifiers": 768,
+			"FireType": "Pressed"
+		}
+	],
+	"ModificationDate": 624960778.728586,
+	"Actions": [
+		{
+			"MacroActionType": "IfThenElse",
+			"ElseActions": [
+				{
+					"MacroActionType": "HideSpecificApp",
+					"ActionUID": 1421,
+					"Application": {
+						"BundleIdentifier": "md.obsidian",
+						"Name": "Obsidian",
+						"NewFile": "/Applications/Obsidian.app"
+					}
+				}
+			],
+			"Conditions": {
+				"ConditionListMatch": "All",
+				"ConditionList": [
+					{
+						"Application": {
+							"BundleIdentifier": "md.obsidian",
+							"Name": "Obsidian",
+							"NewFile": "/Applications/Obsidian.app"
+						},
+						"ApplicationConditionType": "NotActive",
+						"ConditionType": "Application"
+					}
+				]
+			},
+			"ThenActions": [
+				{
+					"MacroActionType": "ActivateApplication",
+					"ActionUID": 1420,
+					"ReopenWindows": false,
+					"AllWindows": true,
+					"TimeOutAbortsMacro": true,
+					"AlreadyActivatedActionType": "Normal",
+					"Application": {
+						"BundleIdentifier": "md.obsidian",
+						"Name": "Obsidian",
+						"NewFile": "/Applications/Obsidian.app"
+					}
+				}
+			],
+			"TimeOutAbortsMacro": true,
+			"ActionUID": 1419
+		}
+	]
+}

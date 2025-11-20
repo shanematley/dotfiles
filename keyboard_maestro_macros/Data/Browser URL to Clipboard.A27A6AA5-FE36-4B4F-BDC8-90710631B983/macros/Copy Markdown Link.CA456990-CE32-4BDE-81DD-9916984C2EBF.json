@@ -1,0 +1,32 @@
+{
+	"CreationDate": 784984066.088951,
+	"UID": "CA456990-CE32-4BDE-81DD-9916984C2EBF",
+	"Name": "Copy Markdown Link",
+	"Triggers": [
+		{
+			"KeyCode": 46,
+			"MacroTriggerType": "HotKey",
+			"Modifiers": 0,
+			"FireType": "Pressed"
+		},
+		{
+			"KeyCode": 8,
+			"MacroTriggerType": "HotKey",
+			"Modifiers": 0,
+			"FireType": "Pressed"
+		}
+	],
+	"ModificationDate": 785303884.250776,
+	"Actions": [
+		{
+			"MacroActionType": "ExecuteSubroutine",
+			"ResultVariable": "",
+			"MacroUID": "98121C9E-87EC-47A5-8262-39217CCB2F46",
+			"Parameters": [
+				"markdownLink"
+			],
+			"TimeOutAbortsMacro": true,
+			"ActionUID": 15812906
+		}
+	]
+}

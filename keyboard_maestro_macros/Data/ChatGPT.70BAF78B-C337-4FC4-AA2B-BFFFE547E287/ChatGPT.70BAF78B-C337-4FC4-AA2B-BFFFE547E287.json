@@ -1,0 +1,25 @@
+{
+	"AddToMacroPalette": false,
+	"AddToStatusMenu": false,
+	"CreationDate": 756705902.876602,
+	"Modifiers": 0,
+	"Name": "ChatGPT",
+	"PaletteUnderMouse": false,
+	"CustomIconData": "KMEP-GenericApplication-/Applications/ChatGPT.app",
+	"UID": "70BAF78B-C337-4FC4-AA2B-BFFFE547E287",
+	"Targeting": {
+		"Targeting": "Included",
+		"TargetingApps": [
+			{
+				"BundleIdentifier": "com.openai.chat",
+				"Name": "ChatGPT",
+				"NewFile": "/Applications/ChatGPT.app"
+			}
+		]
+	},
+	"Macros": [],
+	"ToggleMacroUID": "C48D0885-11BF-43CF-9455-F7907DE24A52",
+	"Activate": "Normal",
+	"KeyCode": 32767,
+	"DisplayToggle": false
+}

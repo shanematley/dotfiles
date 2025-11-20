@@ -1,0 +1,22 @@
+{
+	"CreationDate": 701669529.884998,
+	"UID": "2A5BBCEF-D67E-40BC-AA96-F69361B39AF1",
+	"Name": "Interviewing",
+	"Triggers": [
+		{
+			"KeyCode": 34,
+			"MacroTriggerType": "HotKey",
+			"Modifiers": 0,
+			"FireType": "Pressed"
+		}
+	],
+	"ModificationDate": 711330920.974786,
+	"Actions": [
+		{
+			"MacroActionType": "InsertText",
+			"Action": "ByPasting",
+			"Text": "#Interviewing",
+			"ActionUID": 13633
+		}
+	]
+}

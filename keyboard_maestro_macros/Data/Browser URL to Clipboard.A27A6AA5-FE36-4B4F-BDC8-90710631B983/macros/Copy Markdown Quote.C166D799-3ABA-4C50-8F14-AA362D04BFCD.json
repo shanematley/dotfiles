@@ -1,0 +1,26 @@
+{
+	"CreationDate": 785061763.075137,
+	"UID": "C166D799-3ABA-4C50-8F14-AA362D04BFCD",
+	"Name": "Copy Markdown Quote",
+	"Triggers": [
+		{
+			"KeyCode": 12,
+			"MacroTriggerType": "HotKey",
+			"Modifiers": 0,
+			"FireType": "Pressed"
+		}
+	],
+	"ModificationDate": 785289481.729755,
+	"Actions": [
+		{
+			"MacroActionType": "ExecuteSubroutine",
+			"ResultVariable": "",
+			"MacroUID": "98121C9E-87EC-47A5-8262-39217CCB2F46",
+			"Parameters": [
+				"markdownQuote"
+			],
+			"TimeOutAbortsMacro": true,
+			"ActionUID": 15812971
+		}
+	]
+}

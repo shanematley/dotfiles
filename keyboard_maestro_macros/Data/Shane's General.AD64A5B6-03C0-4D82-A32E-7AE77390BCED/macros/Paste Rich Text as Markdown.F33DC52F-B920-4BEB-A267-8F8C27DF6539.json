@@ -1,0 +1,40 @@
+{
+	"CreationDate": 701564149.649396,
+	"UID": "F33DC52F-B920-4BEB-A267-8F8C27DF6539",
+	"Name": "Paste Rich Text as Markdown",
+	"Triggers": [],
+	"ModificationDate": 701569868.849563,
+	"Actions": [
+		{
+			"MacroActionType": "ExecuteShellScript",
+			"IncludedVariables": [
+				"9999"
+			],
+			"TrimResults": true,
+			"Source": "Nothing",
+			"Variable": "markdownText",
+			"IncludeStdErr": false,
+			"ActionUID": 12876,
+			"UseText": true,
+			"TrimResultsNew": true,
+			"TimeOutAbortsMacro": true,
+			"Path": "",
+			"DisplayKind": "Variable",
+			"HonourFailureSettings": true,
+			"Text": "#!/bin/bash\npbpaste -Prefer public.rtf | /usr/local/bin/pandoc --from=rtf -t 'markdown_strict+pipe_tables+backtick_code_blocks+autolink_bare_uris+space_in_atx_header+task_lists+blank_before_header+lists_without_preceding_blankline' --markdown-headings=atx --reference-links --tab-stop=2"
+		},
+		{
+			"MacroActionType": "SetClipboardToText",
+			"JustDisplay": false,
+			"Text": "%Variable%markdownText%",
+			"ActionUID": 12881
+		},
+		{
+			"MacroActionType": "CutCopyPaste",
+			"IsDisclosed": false,
+			"TimeOutAbortsMacro": true,
+			"Action": "Paste",
+			"ActionUID": 12880
+		}
+	]
+}
