@@ -1,0 +1,775 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>Activate</key>
+		<string>Normal</string>
+		<key>CreationDate</key>
+		<real>783914477.93805003</real>
+		<key>CustomIconData</key>
+		<data>
+		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
+		AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAC2Rlc2MAAAEI
+		AAAAb2RzY20AAAF4AAAFnGNwcnQAAAcUAAAAOHd0cHQAAAdMAAAAFHJYWVoA
+		AAdgAAAAFGdYWVoAAAd0AAAAFGJYWVoAAAeIAAAAFHJUUkMAAAecAAAADmNo
+		YWQAAAesAAAALGJUUkMAAAecAAAADmdUUkMAAAecAAAADmRlc2MAAAAAAAAA
+		FEdlbmVyaWMgUkdCIFByb2ZpbGUAAAAAAAAAAAAAABRHZW5lcmljIFJHQiBQ
+		cm9maWxlAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+		AAAAAAAAAAAAAABtbHVjAAAAAAAAAB8AAAAMc2tTSwAAACgAAAGEZGFESwAA
+		AC4AAAGsY2FFUwAAACQAAAHadmlWTgAAACQAAAH+cHRCUgAAACYAAAIidWtV
+		QQAAACoAAAJIZnJGVQAAACgAAAJyaHVIVQAAACgAAAKaemhUVwAAABYAAALC
+		bmJOTwAAACYAAALYY3NDWgAAACIAAAL+aGVJTAAAAB4AAAMgaXRJVAAAACgA
+		AAM+cm9STwAAACQAAANmZGVERQAAACwAAAOKa29LUgAAABYAAAO2c3ZTRQAA
+		ACYAAALYemhDTgAAABYAAAPMamFKUAAAABoAAAPiZWxHUgAAACIAAAP8cHRQ
+		TwAAACYAAAQebmxOTAAAACgAAAREZXNFUwAAACYAAAQedGhUSAAAACQAAARs
+		dHJUUgAAACIAAASQZmlGSQAAACgAAASyaHJIUgAAACgAAATacGxQTAAAACwA
+		AAUCcnVSVQAAACIAAAUuYXJFRwAAACYAAAVQZW5VUwAAACYAAAV2AFYBYQBl
+		AG8AYgBlAGMAbgD9ACAAUgBHAEIAIABwAHIAbwBmAGkAbABHAGUAbgBlAHIA
+		ZQBsACAAUgBHAEIALQBiAGUAcwBrAHIAaQB2AGUAbABzAGUAUABlAHIAZgBp
+		AGwAIABSAEcAQgAgAGcAZQBuAOgAcgBpAGMAQx6lAHUAIABoAOwAbgBoACAA
+		UgBHAEIAIABDAGgAdQBuAGcAUABlAHIAZgBpAGwAIABSAEcAQgAgAEcAZQBu
+		AOkAcgBpAGMAbwQXBDAEMwQwBDsETAQ9BDgEOQAgBD8EQAQ+BEQEMAQ5BDsA
+		IABSAEcAQgBQAHIAbwBmAGkAbAAgAGcA6QBuAOkAcgBpAHEAdQBlACAAUgBW
+		AEIAwQBsAHQAYQBsAOEAbgBvAHMAIABSAEcAQgAgAHAAcgBvAGYAaQBskBp1
+		KAAgAFIARwBCACCCcl9pY8+P8ABHAGUAbgBlAHIAaQBzAGsAIABSAEcAQgAt
+		AHAAcgBvAGYAaQBsAE8AYgBlAGMAbgD9ACAAUgBHAEIAIABwAHIAbwBmAGkA
+		bAXkBegF1QXkBdkF3AAgAFIARwBCACAF2wXcBdwF2QBQAHIAbwBmAGkAbABv
+		ACAAUgBHAEIAIABnAGUAbgBlAHIAaQBjAG8AUAByAG8AZgBpAGwAIABSAEcA
+		QgAgAGcAZQBuAGUAcgBpAGMAQQBsAGwAZwBlAG0AZQBpAG4AZQBzACAAUgBH
+		AEIALQBQAHIAbwBmAGkAbMd8vBgAIABSAEcAQgAg1QS4XNMMx3xmbpAaACAA
+		UgBHAEIAIGPPj/Blh072TgCCLAAgAFIARwBCACAw1zDtMNUwoTCkMOsDkwO1
+		A70DuQO6A8wAIAPAA8EDvwPGA68DuwAgAFIARwBCAFAAZQByAGYAaQBsACAA
+		UgBHAEIAIABnAGUAbgDpAHIAaQBjAG8AQQBsAGcAZQBtAGUAZQBuACAAUgBH
+		AEIALQBwAHIAbwBmAGkAZQBsDkIOGw4jDkQOHw4lDkwAIABSAEcAQgAgDhcO
+		MQ5IDicORA4bAEcAZQBuAGUAbAAgAFIARwBCACAAUAByAG8AZgBpAGwAaQBZ
+		AGwAZQBpAG4AZQBuACAAUgBHAEIALQBwAHIAbwBmAGkAaQBsAGkARwBlAG4A
+		ZQByAGkBDQBrAGkAIABSAEcAQgAgAHAAcgBvAGYAaQBsAFUAbgBpAHcAZQBy
+		AHMAYQBsAG4AeQAgAHAAcgBvAGYAaQBsACAAUgBHAEIEHgQxBEkEOAQ5ACAE
+		PwRABD4ERAQ4BDsETAAgAFIARwBCBkUGRAZBACAGKgY5BjEGSgZBACAAUgBH
+		AEIAIAYnBkQGOQYnBkUARwBlAG4AZQByAGkAYwAgAFIARwBCACAAUAByAG8A
+		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
+		AAAAJAAAAf5wdEJSAAAAJgAAAiJ1a1VBAAAAKgAAAkhmckZVAAAAKAAAAnJo
+		dUhVAAAAKAAAApp6aFRXAAAAFgAAAsJuYk5PAAAAJgAAAthjc0NaAAAAIgAA
+		Av5oZUlMAAAAHgAAAyBpdElUAAAAKAAAAz5yb1JPAAAAJAAAA2ZkZURFAAAA
+		LAAAA4prb0tSAAAAFgAAA7ZzdlNFAAAAJgAAAth6aENOAAAAFgAAA8xqYUpQ
+		AAAAGgAAA+JlbEdSAAAAIgAAA/xwdFBPAAAAJgAABB5ubE5MAAAAKAAABERl
+		c0VTAAAAJgAABB50aFRIAAAAJAAABGx0clRSAAAAIgAABJBmaUZJAAAAKAAA
+		BLJockhSAAAAKAAABNpwbFBMAAAALAAABQJydVJVAAAAIgAABS5hckVHAAAA
+		JgAABVBlblVTAAAAJgAABXYAVgFhAGUAbwBiAGUAYwBuAP0AIABSAEcAQgAg
+		AHAAcgBvAGYAaQBsAEcAZQBuAGUAcgBlAGwAIABSAEcAQgAtAGIAZQBzAGsA
+		cgBpAHYAZQBsAHMAZQBQAGUAcgBmAGkAbAAgAFIARwBCACAAZwBlAG4A6ABy
+		AGkAYwBDHqUAdQAgAGgA7ABuAGgAIABSAEcAQgAgAEMAaAB1AG4AZwBQAGUA
+		cgBmAGkAbAAgAFIARwBCACAARwBlAG4A6QByAGkAYwBvBBcEMAQzBDAEOwRM
+		BD0EOAQ5ACAEPwRABD4ERAQwBDkEOwAgAFIARwBCAFAAcgBvAGYAaQBsACAA
+		ZwDpAG4A6QByAGkAcQB1AGUAIABSAFYAQgDBAGwAdABhAGwA4QBuAG8AcwAg
+		AFIARwBCACAAcAByAG8AZgBpAGyQGnUoACAAUgBHAEIAIIJyX2ljz4/wAEcA
+		ZQBuAGUAcgBpAHMAawAgAFIARwBCAC0AcAByAG8AZgBpAGwATwBiAGUAYwBu
+		AP0AIABSAEcAQgAgAHAAcgBvAGYAaQBsBeQF6AXVBeQF2QXcACAAUgBHAEIA
+		IAXbBdwF3AXZAFAAcgBvAGYAaQBsAG8AIABSAEcAQgAgAGcAZQBuAGUAcgBp
+		AGMAbwBQAHIAbwBmAGkAbAAgAFIARwBCACAAZwBlAG4AZQByAGkAYwBBAGwA
+		bABnAGUAbQBlAGkAbgBlAHMAIABSAEcAQgAtAFAAcgBvAGYAaQBsx3y8GAAg
+		AFIARwBCACDVBLhc0wzHfGZukBoAIABSAEcAQgAgY8+P8GWHTvZOAIIsACAA
+		UgBHAEIAIDDXMO0w1TChMKQw6wOTA7UDvQO5A7oDzAAgA8ADwQO/A8YDrwO7
+		ACAAUgBHAEIAUABlAHIAZgBpAGwAIABSAEcAQgAgAGcAZQBuAOkAcgBpAGMA
+		bwBBAGwAZwBlAG0AZQBlAG4AIABSAEcAQgAtAHAAcgBvAGYAaQBlAGwOQg4b
+		DiMORA4fDiUOTAAgAFIARwBCACAOFw4xDkgOJw5EDhsARwBlAG4AZQBsACAA
+		UgBHAEIAIABQAHIAbwBmAGkAbABpAFkAbABlAGkAbgBlAG4AIABSAEcAQgAt
+		AHAAcgBvAGYAaQBpAGwAaQBHAGUAbgBlAHIAaQENAGsAaQAgAFIARwBCACAA
+		cAByAG8AZgBpAGwAVQBuAGkAdwBlAHIAcwBhAGwAbgB5ACAAcAByAG8AZgBp
+		AGwAIABSAEcAQgQeBDEESQQ4BDkAIAQ/BEAEPgREBDgEOwRMACAAUgBHAEIG
+		RQZEBkEAIAYqBjkGMQZKBkEAIABSAEcAQgAgBicGRAY5BicGRQBHAGUAbgBl
+		AHIAaQBjACAAUgBHAEIAIABQAHIAbwBmAGkAbABldGV4dAAAAABDb3B5cmln
+		aHQgMjAwNyBBcHBsZSBJbmMuLCBhbGwgcmlnaHRzIHJlc2VydmVkLgBYWVog
+		AAAAAAAA81IAAQAAAAEWz1hZWiAAAAAAAAB0TQAAPe4AAAPQWFlaIAAAAAAA
+		AFp1AACscwAAFzRYWVogAAAAAAAAKBoAABWfAAC4NmN1cnYAAAAAAAAAAQHN
+		AABzZjMyAAAAAAABDEIAAAXe///zJgAAB5IAAP2R///7ov///aMAAAPcAADA
+		bIAAIFA4JBYNB4RCYVC4ZDQAAYEAgDEwC/n+/37Do1C4oASODQcTygCwcVBI
+		BwMKog/wC3Hy+2qrXo8VSuno81oAIu/43CAiAwGEkaGQ2mSkCgaVAHA33F4K
+		BYmAH5A1M9XkpDs6HManq/X6857EgIlw8HlQYgKDSm7wA/oE/IyAbhBZ5S4m
+		BAADgFS0683gpDa7XGYJ5GIYFh2GSYdx2I1mX1S7KkArcBhMIQA8h8QgAAgT
+		FwY+FaAXw9W8AAGArwCgVAiurXeTlszH0s4YNTsMVKISGGy0ZEFpxqCQ6AF2
+		d0iAGC8QbD5YACIJ3UACODynAny5wACAYAgApVQ/VUXDk9yvCwEQEgO2UDxc
+		ERmI2Jki6A/OhAgRwA+njYIIBIEgkABHCcSYAAse5OAAAgDqWZRoH6Z4ciqe
+		waJ4tqDgEIJHh2ZYIhUCAZH6e58gAJgDCyABSGIFIAHyfR7J0gYDAMCIAFEM
+		BRgADp9E0zsGgAZBoH8ZodiqeobQutyDhsO4ZFUDoig0KsYRKEoKBOqRujAA
+		BaGKtiHogLIgtaQAaDEAB+nqcQAAMBallGVZ+FML47nuLaGA4HYNCoHBAhnO
+		R7qmiyphICQTAAB5/BoAB8H2iAggkUAACEAplTS1AAAKBKICaMh7ieWpfn2W
+		SGL2AICtwGRTg9KQpn2etBn+qcL0Sr4AEUEJqwOAy6gYiBTFYfpWC+Ox7Cyf
+		ipqmjQCgWAoIBoN4XE2DYgAyKh/u8qR9IENAJmi6gMLYf59O8UhYH2U42kCf
+		A0nkeh/ninqEO8AU9A0KQNB+DYrhEDZ9BGNIJG4fZvHCfxsFWWx+YUYB+Fqg
+		SnXniaBAGiACSWfqnVrimO49jyAgAA8BAAADAAAAAQAQAAABAQADAAAAAQAQ
+		AAABAgADAAAABAAAKtIBAwADAAAAAQAFAAABBgADAAAAAQACAAABEQAEAAAA
+		AQAAJ44BEgADAAAAAQABAAABFQADAAAAAQAEAAABFgADAAAAAQAQAAABFwAE
+		AAAAAQAAAooBHAADAAAAAQABAAABPQADAAAAAQACAAABUgADAAAAAQABAAAB
+		UwADAAAABAAAKtqHcwAHAAAH2AAAKuIAAAAAAAgACAAIAAgAAQABAAEAAQAA
+		B9hhcHBsAiAAAG1udHJSR0IgWFlaIAfZAAIAGQALABoAC2Fjc3BBUFBMAAAA
+		AGFwcGwAAAAAAAAAAAAAAAAAAAAAAAD21gABAAAAANMtYXBwbAAAAAAAAAAA
+		AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAC2Rlc2MA
+		AAEIAAAAb2RzY20AAAF4AAAFnGNwcnQAAAcUAAAAOHd0cHQAAAdMAAAAFHJY
+		WVoAAAdgAAAAFGdYWVoAAAd0AAAAFGJYWVoAAAeIAAAAFHJUUkMAAAecAAAA
+		DmNoYWQAAAesAAAALGJUUkMAAAecAAAADmdUUkMAAAecAAAADmRlc2MAAAAA
+		AAAAFEdlbmVyaWMgUkdCIFByb2ZpbGUAAAAAAAAAAAAAABRHZW5lcmljIFJH
+		QiBQcm9maWxlAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+		AAAAAAAAAAAAAAAAAABtbHVjAAAAAAAAAB8AAAAMc2tTSwAAACgAAAGEZGFE
+		SwAAAC4AAAGsY2FFUwAAACQAAAHadmlWTgAAACQAAAH+cHRCUgAAACYAAAIi
+		dWtVQQAAACoAAAJIZnJGVQAAACgAAAJyaHVIVQAAACgAAAKaemhUVwAAABYA
+		AALCbmJOTwAAACYAAALYY3NDWgAAACIAAAL+aGVJTAAAAB4AAAMgaXRJVAAA
+		ACgAAAM+cm9STwAAACQAAANmZGVERQAAACwAAAOKa29LUgAAABYAAAO2c3ZT
+		RQAAACYAAALYemhDTgAAABYAAAPMamFKUAAAABoAAAPiZWxHUgAAACIAAAP8
+		cHRQTwAAACYAAAQebmxOTAAAACgAAAREZXNFUwAAACYAAAQedGhUSAAAACQA
+		AARsdHJUUgAAACIAAASQZmlGSQAAACgAAASyaHJIUgAAACgAAATacGxQTAAA
+		ACwAAAUCcnVSVQAAACIAAAUuYXJFRwAAACYAAAVQZW5VUwAAACYAAAV2AFYB
+		YQBlAG8AYgBlAGMAbgD9ACAAUgBHAEIAIABwAHIAbwBmAGkAbABHAGUAbgBl
+		AHIAZQBsACAAUgBHAEIALQBiAGUAcwBrAHIAaQB2AGUAbABzAGUAUABlAHIA
+		ZgBpAGwAIABSAEcAQgAgAGcAZQBuAOgAcgBpAGMAQx6lAHUAIABoAOwAbgBo
+		ACAAUgBHAEIAIABDAGgAdQBuAGcAUABlAHIAZgBpAGwAIABSAEcAQgAgAEcA
+		ZQBuAOkAcgBpAGMAbwQXBDAEMwQwBDsETAQ9BDgEOQAgBD8EQAQ+BEQEMAQ5
+		BDsAIABSAEcAQgBQAHIAbwBmAGkAbAAgAGcA6QBuAOkAcgBpAHEAdQBlACAA
+		UgBWAEIAwQBsAHQAYQBsAOEAbgBvAHMAIABSAEcAQgAgAHAAcgBvAGYAaQBs
+		kBp1KAAgAFIARwBCACCCcl9pY8+P8ABHAGUAbgBlAHIAaQBzAGsAIABSAEcA
+		QgAtAHAAcgBvAGYAaQBsAE8AYgBlAGMAbgD9ACAAUgBHAEIAIABwAHIAbwBm
+		AGkAbAXkBegF1QXkBdkF3AAgAFIARwBCACAF2wXcBdwF2QBQAHIAbwBmAGkA
+		bABvACAAUgBHAEIAIABnAGUAbgBlAHIAaQBjAG8AUAByAG8AZgBpAGwAIABS
+		AEcAQgAgAGcAZQBuAGUAcgBpAGMAQQBsAGwAZwBlAG0AZQBpAG4AZQBzACAA
+		UgBHAEIALQBQAHIAbwBmAGkAbMd8vBgAIABSAEcAQgAg1QS4XNMMx3xmbpAa
+		ACAAUgBHAEIAIGPPj/Blh072TgCCLAAgAFIARwBCACAw1zDtMNUwoTCkMOsD
+		kwO1A70DuQO6A8wAIAPAA8EDvwPGA68DuwAgAFIARwBCAFAAZQByAGYAaQBs
+		ACAAUgBHAEIAIABnAGUAbgDpAHIAaQBjAG8AQQBsAGcAZQBtAGUAZQBuACAA
+		UgBHAEIALQBwAHIAbwBmAGkAZQBsDkIOGw4jDkQOHw4lDkwAIABSAEcAQgAg
+		DhcOMQ5IDicORA4bAEcAZQBuAGUAbAAgAFIARwBCACAAUAByAG8AZgBpAGwA
+		aQBZAGwAZQBpAG4AZQBuACAAUgBHAEIALQBwAHIAbwBmAGkAaQBsAGkARwBl
+		AG4AZQByAGkBDQBrAGkAIABSAEcAQgAgAHAAcgBvAGYAaQBsAFUAbgBpAHcA
+		ZQByAHMAYQBsAG4AeQAgAHAAcgBvAGYAaQBsACAAUgBHAEIEHgQxBEkEOAQ5
+		ACAEPwRABD4ERAQ4BDsETAAgAFIARwBCBkUGRAZBACAGKgY5BjEGSgZBACAA
+		UgBHAEIAIAYnBkQGOQYnBkUARwBlAG4AZQByAGkAYwAgAFIARwBCACAAUABy
+		AG8AZgBpAGwAZXRleHQAAAAAQ29weXJpZ2h0IDIwMDcgQXBwbGUgSW5jLiwg
+		YWxsIHJpZ2h0cyByZXNlcnZlZC4AWFlaIAAAAAAAAPNSAAEAAAABFs9YWVog
+		AAAAAAAAdE0AAD3uAAAD0FhZWiAAAAAAAABadQAArHMAABc0WFlaIAAAAAAA
+		ACgaAAAVnwAAuDZjdXJ2AAAAAAAAAAEBzQAAc2YzMgAAAAAAAQxCAAAF3v//
+		8yYAAAeSAAD9kf//+6L///2jAAAD3AAAwGw=
+		</data>
+		<key>Macros</key>
+		<array>
+			<dict>
+				<key>Actions</key>
+				<array>
+					<dict>
+						<key>ActionName</key>
+						<string>Enable (1)/Disable (0) Debug</string>
+						<key>ActionUID</key>
+						<integer>16458783</integer>
+						<key>MacroActionType</key>
+						<string>SetVariableToText</string>
+						<key>Text</key>
+						<string>0</string>
+						<key>Variable</key>
+						<string>KM_DEBUG</string>
+					</dict>
+					<dict>
+						<key>ActionUID</key>
+						<integer>16458778</integer>
+						<key>Actions</key>
+						<array>
+							<dict>
+								<key>ActionName</key>
+								<string>Debug—Print files found</string>
+								<key>ActionUID</key>
+								<integer>15813113</integer>
+								<key>DisplayKind</key>
+								<string>Window</string>
+								<key>HonourFailureSettings</key>
+								<true/>
+								<key>IncludeStdErr</key>
+								<false/>
+								<key>IncludedVariables</key>
+								<array>
+									<string>9999</string>
+								</array>
+								<key>MacroActionType</key>
+								<string>ExecuteShellScript</string>
+								<key>Path</key>
+								<string></string>
+								<key>Source</key>
+								<string>Nothing</string>
+								<key>Text</key>
+								<string>#!/bin/bash
+
+cat &lt;&lt;EOF
+Looking in the following directories:
+
+$KMVAR_WebsiteQuoteExtractorDirs
+
+Files found:
+
+EOF
+
+IFS=$'\n' read -r -d '' -a DIRS &lt;&lt;&lt; "$KMVAR_WebsiteQuoteExtractorDirs"
+
+for d in "${DIRS[@]}"; do
+  if [[ -d "$d" ]]; then
+    echo "- In '$d':"
+    ls "$d"/*.js | sed 's/^/  - /'
+  else
+    echo "  - $d is not a directory"
+  fi
+done</string>
+								<key>TimeOutAbortsMacro</key>
+								<true/>
+								<key>TrimResults</key>
+								<true/>
+								<key>TrimResultsNew</key>
+								<true/>
+								<key>UseText</key>
+								<true/>
+							</dict>
+							<dict>
+								<key>Action</key>
+								<string>CancelThisMacro</string>
+								<key>ActionUID</key>
+								<integer>16458779</integer>
+								<key>MacroActionType</key>
+								<string>Cancel</string>
+							</dict>
+						</array>
+						<key>IsActive</key>
+						<false/>
+						<key>MacroActionType</key>
+						<string>Group</string>
+						<key>TimeOutAbortsMacro</key>
+						<true/>
+					</dict>
+					<dict>
+						<key>ActionUID</key>
+						<integer>16458775</integer>
+						<key>DisplayKind</key>
+						<string>Variable</string>
+						<key>HonourFailureSettings</key>
+						<true/>
+						<key>IncludeStdErr</key>
+						<false/>
+						<key>IncludedVariables</key>
+						<array>
+							<string>9999</string>
+						</array>
+						<key>MacroActionType</key>
+						<string>ExecuteShellScript</string>
+						<key>Path</key>
+						<string></string>
+						<key>Source</key>
+						<string>Nothing</string>
+						<key>Text</key>
+						<string>#!/bin/bash
+
+IFS=$'\n' read -r -d '' -a DIRS &lt;&lt;&lt; "$KMVAR_WebsiteQuoteExtractorDirs"
+
+for d in "${DIRS[@]}"; do
+  if [[ -d "$d" ]]; then
+    cat "$d"/*.js
+  else
+    echo "$d is not a directory" &gt;&amp;2
+  fi
+done</string>
+						<key>TimeOutAbortsMacro</key>
+						<true/>
+						<key>TrimResults</key>
+						<true/>
+						<key>TrimResultsNew</key>
+						<true/>
+						<key>UseText</key>
+						<true/>
+						<key>Variable</key>
+						<string>WebsiteExtractorBundle</string>
+					</dict>
+					<dict>
+						<key>ActionUID</key>
+						<integer>16458780</integer>
+						<key>Actions</key>
+						<array>
+							<dict>
+								<key>ActionName</key>
+								<string>Debug—Print files found</string>
+								<key>ActionUID</key>
+								<integer>16458781</integer>
+								<key>DisplayKind</key>
+								<string>Window</string>
+								<key>HonourFailureSettings</key>
+								<true/>
+								<key>IncludeStdErr</key>
+								<false/>
+								<key>IncludedVariables</key>
+								<array>
+									<string>9999</string>
+								</array>
+								<key>MacroActionType</key>
+								<string>ExecuteShellScript</string>
+								<key>Path</key>
+								<string></string>
+								<key>Source</key>
+								<string>Nothing</string>
+								<key>Text</key>
+								<string>#!/bin/bash
+
+echo "$KMVAR_WebsiteExtractorBundle"</string>
+								<key>TimeOutAbortsMacro</key>
+								<true/>
+								<key>TrimResults</key>
+								<true/>
+								<key>TrimResultsNew</key>
+								<true/>
+								<key>UseText</key>
+								<true/>
+							</dict>
+							<dict>
+								<key>Action</key>
+								<string>CancelThisMacro</string>
+								<key>ActionUID</key>
+								<integer>16458782</integer>
+								<key>MacroActionType</key>
+								<string>Cancel</string>
+							</dict>
+						</array>
+						<key>IsActive</key>
+						<false/>
+						<key>MacroActionType</key>
+						<string>Group</string>
+						<key>TimeOutAbortsMacro</key>
+						<true/>
+					</dict>
+					<dict>
+						<key>ActionUID</key>
+						<integer>15813109</integer>
+						<key>DisplayKind</key>
+						<string>Variable</string>
+						<key>HonourFailureSettings</key>
+						<true/>
+						<key>IncludeStdErr</key>
+						<false/>
+						<key>IncludedVariables</key>
+						<array>
+							<string>9999</string>
+						</array>
+						<key>MacroActionType</key>
+						<string>ExecuteJavaScript</string>
+						<key>Path</key>
+						<string></string>
+						<key>Text</key>
+						<string>// Query into the shadow DOM. Vaguely equivalent to `document.querySelector` for shadow DOM.
+function queryDeep(selector, root = document) {
+  const direct = root.querySelector(selector);
+  if (direct) return direct;
+  for (const el of root.querySelectorAll("*")) {
+    if (el.shadowRoot) {
+      const found = queryDeep(selector, el.shadowRoot);
+      if (found) return found;
+    }
+  }
+  return null;
+}
+
+function logDebug(...msg) {
+  if (!(kmvar.KM_DEBUG &amp;&amp; kmvar.KM_DEBUG == "1")) return;
+
+  const now = new Date().toISOString().replace("T", " ").replace("Z", "");
+  const line = `Website Quote Extractor [${now}]\n `;
+
+  console.log(line, ...msg);
+}
+
+window.WebsiteQuoteExtractors = {
+  modules: [],
+
+  register(mod) {
+    this.modules.push(mod);
+  },
+
+  run() {
+    for (const mod of this.modules) {
+      try {
+        if (mod.matches()) {
+          return mod.extract();
+        }
+      } catch (e) {
+        return {
+          error: e.message,
+          extractor: mod.name,
+        };
+      }
+    }
+    return { error: "No matching extractor found" };
+  },
+};
+
+eval(kmvar.WebsiteExtractorBundle);
+
+// Add default last
+WebsiteQuoteExtractors.register({
+  name: "Default",
+  matches: () =&gt; true,
+  extract: () =&gt; ({
+    content: "",
+    title: document.title,
+    url: location.href,
+  }),
+});
+
+const { url: href, content, title, error } = WebsiteQuoteExtractors.run();
+
+logDebug("title=", title);
+logDebug("href=", href);
+logDebug("content=", content);
+logDebug("error=", error);
+
+if (error) {
+  return JSON.stringify({ error: error });
+}
+
+const url = new URL(document.location.href);
+
+// Specialise for certain websites
+
+function escapeMarkdownTitle(title) {
+  return title.replace(/[\[\]]/g, "");
+}
+
+function escapeMarkdownUrl(url) {
+  // encodeURI preserves valid URI characters like /, :, and ? but encodes others
+  return (
+    encodeURI(url)
+      // explicitly encode parentheses which are valid in URIs but break Markdown
+      .replace(/\(/g, "%28")
+      .replace(/\)/g, "%29")
+  );
+}
+
+function makeMarkdownQuote(ref, url, content) {
+  const markdownLink = `[${ref}](${url})`;
+  const markdownQuote =
+    markdownLink +
+    ":\n\n" +
+    content
+      .split("\n")
+      .map((line) =&gt; "&gt; " + line)
+      .join("\n");
+  return markdownQuote;
+}
+
+const myResult = {
+  title: title,
+  titleAndUrl: `${title} - ${href}`,
+  originalTitle: document.title,
+  originalUrl: document.location.href,
+  url: href,
+  host: url.host,
+  path: url.pathname,
+  query: url.search,
+  markdownLink: `[${escapeMarkdownTitle(title)}](${escapeMarkdownUrl(url)})`,
+  quoteContent: content,
+  markdownQuote: content
+    ? makeMarkdownQuote(
+        escapeMarkdownTitle(title),
+        escapeMarkdownUrl(href),
+        content
+      )
+    : null,
+};
+
+logDebug(myResult);
+
+return JSON.stringify(myResult);
+</string>
+						<key>TimeOutAbortsMacro</key>
+						<true/>
+						<key>TrimResults</key>
+						<true/>
+						<key>TrimResultsNew</key>
+						<true/>
+						<key>UseModernSyntax</key>
+						<true/>
+						<key>UseText</key>
+						<true/>
+						<key>Variable</key>
+						<string>Local_PageInfoJson</string>
+						<key>WebBrowser</key>
+						<string>Front Browser</string>
+					</dict>
+					<dict>
+						<key>ActionUID</key>
+						<integer>16458784</integer>
+						<key>Conditions</key>
+						<dict>
+							<key>ConditionList</key>
+							<array>
+								<dict>
+									<key>ConditionType</key>
+									<string>Script</string>
+									<key>IncludedVariables</key>
+									<array>
+										<string>Local_PageInfoJson</string>
+									</array>
+									<key>Path</key>
+									<string></string>
+									<key>ScriptConditionSourceType</key>
+									<string>JavaScriptText</string>
+									<key>ScriptConditionType</key>
+									<string>Is</string>
+									<key>ScriptResult</key>
+									<string>true</string>
+									<key>ScriptTerminationStatus</key>
+									<integer>0</integer>
+									<key>ScriptText</key>
+									<string>return !!JSON.parse(kmvar.Local_PageInfoJson).error</string>
+									<key>UseModernSyntax</key>
+									<true/>
+								</dict>
+							</array>
+							<key>ConditionListMatch</key>
+							<string>All</string>
+						</dict>
+						<key>ElseActions</key>
+						<array/>
+						<key>MacroActionType</key>
+						<string>IfThenElse</string>
+						<key>ThenActions</key>
+						<array>
+							<dict>
+								<key>ActionUID</key>
+								<integer>16458785</integer>
+								<key>MacroActionType</key>
+								<string>Alert</string>
+								<key>SoundPath</key>
+								<string></string>
+								<key>Text</key>
+								<string>Error: %JSONValue%Local_PageInfoJson.error%</string>
+								<key>TimeOutAbortsMacro</key>
+								<true/>
+								<key>Title</key>
+								<string>Website Quote Extractor Error</string>
+							</dict>
+							<dict>
+								<key>Action</key>
+								<string>CancelThisMacro</string>
+								<key>ActionUID</key>
+								<integer>16458791</integer>
+								<key>MacroActionType</key>
+								<string>Cancel</string>
+							</dict>
+						</array>
+						<key>TimeOutAbortsMacro</key>
+						<true/>
+					</dict>
+					<dict>
+						<key>ActionUID</key>
+						<integer>15813110</integer>
+						<key>MacroActionType</key>
+						<string>Return</string>
+						<key>Text</key>
+						<string>%Variable%Local_PageInfoJson%</string>
+					</dict>
+				</array>
+				<key>CreationDate</key>
+				<real>785238268.99440897</real>
+				<key>IsActive</key>
+				<false/>
+				<key>ModificationDate</key>
+				<real>785303850.54518104</real>
+				<key>Name</key>
+				<string>Website Quote Extractor</string>
+				<key>Triggers</key>
+				<array>
+					<dict>
+						<key>MacroTriggerType</key>
+						<string>Subroutine</string>
+						<key>Parameters</key>
+						<array/>
+						<key>ReturnsValue</key>
+						<true/>
+					</dict>
+				</array>
+				<key>UID</key>
+				<string>6858E7EA-0F9D-407A-87EF-4015D298F039</string>
+			</dict>
+		</array>
+		<key>Name</key>
+		<string>Browser</string>
+		<key>Targeting</key>
+		<dict>
+			<key>Targeting</key>
+			<string>Included</string>
+			<key>TargetingApps</key>
+			<array>
+				<dict>
+					<key>BundleIdentifier</key>
+					<string>com.google.Chrome</string>
+					<key>Name</key>
+					<string>Google Chrome</string>
+					<key>NewFile</key>
+					<string>/Applications/Google Chrome.app</string>
+				</dict>
+				<dict>
+					<key>BundleIdentifier</key>
+					<string>com.apple.Safari</string>
+					<key>Name</key>
+					<string>Safari</string>
+					<key>NewFile</key>
+					<string>/System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app</string>
+				</dict>
+			</array>
+		</dict>
+		<key>ToggleMacroUID</key>
+		<string>DE0A7CB1-655D-4036-A8B7-5862ADF47608</string>
+		<key>UID</key>
+		<string>7D634AE1-15D7-4611-90B0-24ECB8585814</string>
+	</dict>
+</array>
+</plist>
