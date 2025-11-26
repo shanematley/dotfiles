@@ -10,7 +10,7 @@
 		<key>AddToStatusMenu</key>
 		<false/>
 		<key>CreationDate</key>
-		<real>769418116.367558</real>
+		<real>784957469.74467802</real>
 		<key>DisplayToggle</key>
 		<false/>
 		<key>KeyCode</key>
@@ -22,14 +22,15 @@
 				<array>
 					<dict>
 						<key>ActionUID</key>
-						<integer>15812971</integer>
+						<integer>16459302</integer>
 						<key>MacroActionType</key>
 						<string>ExecuteSubroutine</string>
 						<key>MacroUID</key>
 						<string>98121C9E-87EC-47A5-8262-39217CCB2F46</string>
 						<key>Parameters</key>
 						<array>
-							<string>markdownQuote</string>
+							<string>htmlLink</string>
+							<string>1</string>
 						</array>
 						<key>ResultVariable</key>
 						<string></string>
@@ -38,34 +39,44 @@
 					</dict>
 				</array>
 				<key>CreationDate</key>
-				<real>785061763.07513702</real>
+				<real>785885758.62661505</real>
 				<key>ModificationDate</key>
-				<real>785289481.72975504</real>
+				<real>785885898.67566895</real>
 				<key>Name</key>
-				<string>Copy Markdown Quote</string>
+				<string>Copy HTML Link</string>
 				<key>Triggers</key>
 				<array>
 					<dict>
 						<key>FireType</key>
 						<string>Pressed</string>
 						<key>KeyCode</key>
-						<integer>12</integer>
+						<integer>8</integer>
 						<key>MacroTriggerType</key>
 						<string>HotKey</string>
 						<key>Modifiers</key>
-						<integer>0</integer>
+						<integer>2048</integer>
+					</dict>
+					<dict>
+						<key>FireType</key>
+						<string>Pressed</string>
+						<key>KeyCode</key>
+						<integer>46</integer>
+						<key>MacroTriggerType</key>
+						<string>HotKey</string>
+						<key>Modifiers</key>
+						<integer>2048</integer>
 					</dict>
 				</array>
 				<key>UID</key>
-				<string>C166D799-3ABA-4C50-8F14-AA362D04BFCD</string>
+				<string>B7E41F45-DC14-4780-9C58-5FDAE4FC56FE</string>
 			</dict>
 		</array>
 		<key>Modifiers</key>
-		<integer>768</integer>
+		<integer>2816</integer>
 		<key>Name</key>
 		<string>Browser URL to Clipboard</string>
 		<key>PaletteUnderMouse</key>
-		<false/>
+		<true/>
 		<key>Targeting</key>
 		<dict>
 			<key>Targeting</key>
@@ -91,9 +102,9 @@
 			</array>
 		</dict>
 		<key>ToggleMacroUID</key>
-		<string>55A94FE0-601E-4B91-8491-D4082A98FF67</string>
+		<string>C3BDE31D-CB60-4633-9C40-1EAB8D5E90F8</string>
 		<key>UID</key>
-		<string>A27A6AA5-FE36-4B4F-BDC8-90710631B983</string>
+		<string>4D097845-3115-46E2-9F0A-F289635C5CEA</string>
 	</dict>
 	<dict>
 		<key>Activate</key>
@@ -103,7 +114,393 @@
 		<key>AddToStatusMenu</key>
 		<false/>
 		<key>CreationDate</key>
-		<real>769418116.367558</real>
+		<real>784957469.74467802</real>
+		<key>DisplayToggle</key>
+		<false/>
+		<key>KeyCode</key>
+		<integer>8</integer>
+		<key>Macros</key>
+		<array>
+			<dict>
+				<key>Actions</key>
+				<array>
+					<dict>
+						<key>ActionUID</key>
+						<integer>16459240</integer>
+						<key>MacroActionType</key>
+						<string>ExecuteSubroutine</string>
+						<key>MacroUID</key>
+						<string>98121C9E-87EC-47A5-8262-39217CCB2F46</string>
+						<key>Parameters</key>
+						<array>
+							<string>htmlQuote</string>
+							<string>1</string>
+						</array>
+						<key>ResultVariable</key>
+						<string></string>
+						<key>TimeOutAbortsMacro</key>
+						<true/>
+					</dict>
+				</array>
+				<key>CreationDate</key>
+				<real>785831853.69927299</real>
+				<key>ModificationDate</key>
+				<real>785831927.24769402</real>
+				<key>Name</key>
+				<string>Copy HTML Quote</string>
+				<key>Triggers</key>
+				<array>
+					<dict>
+						<key>FireType</key>
+						<string>Pressed</string>
+						<key>KeyCode</key>
+						<integer>12</integer>
+						<key>MacroTriggerType</key>
+						<string>HotKey</string>
+						<key>Modifiers</key>
+						<integer>2048</integer>
+					</dict>
+				</array>
+				<key>UID</key>
+				<string>53BA010B-4FD7-4737-B4BE-EA1B8F532CF0</string>
+			</dict>
+		</array>
+		<key>Modifiers</key>
+		<integer>2816</integer>
+		<key>Name</key>
+		<string>Browser URL to Clipboard</string>
+		<key>PaletteUnderMouse</key>
+		<true/>
+		<key>Targeting</key>
+		<dict>
+			<key>Targeting</key>
+			<string>Included</string>
+			<key>TargetingApps</key>
+			<array>
+				<dict>
+					<key>BundleIdentifier</key>
+					<string>com.google.Chrome</string>
+					<key>Name</key>
+					<string>Google Chrome</string>
+					<key>NewFile</key>
+					<string>/Applications/Google Chrome.app</string>
+				</dict>
+				<dict>
+					<key>BundleIdentifier</key>
+					<string>com.apple.Safari</string>
+					<key>Name</key>
+					<string>Safari</string>
+					<key>NewFile</key>
+					<string>/System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app</string>
+				</dict>
+			</array>
+		</dict>
+		<key>ToggleMacroUID</key>
+		<string>C3BDE31D-CB60-4633-9C40-1EAB8D5E90F8</string>
+		<key>UID</key>
+		<string>4D097845-3115-46E2-9F0A-F289635C5CEA</string>
+	</dict>
+	<dict>
+		<key>Activate</key>
+		<string>OnceWithPalette</string>
+		<key>AddToMacroPalette</key>
+		<false/>
+		<key>AddToStatusMenu</key>
+		<false/>
+		<key>CreationDate</key>
+		<real>784957469.74467802</real>
+		<key>DisplayToggle</key>
+		<false/>
+		<key>KeyCode</key>
+		<integer>8</integer>
+		<key>Macros</key>
+		<array>
+			<dict>
+				<key>Actions</key>
+				<array>
+					<dict>
+						<key>ActionUID</key>
+						<integer>15813001</integer>
+						<key>MacroActionType</key>
+						<string>ExecuteSubroutine</string>
+						<key>MacroUID</key>
+						<string>98121C9E-87EC-47A5-8262-39217CCB2F46</string>
+						<key>Parameters</key>
+						<array>
+							<string>url</string>
+							<string>0</string>
+						</array>
+						<key>ResultVariable</key>
+						<string></string>
+						<key>TimeOutAbortsMacro</key>
+						<true/>
+					</dict>
+				</array>
+				<key>CreationDate</key>
+				<real>785062177.229159</real>
+				<key>ModificationDate</key>
+				<real>785831931.22005904</real>
+				<key>Name</key>
+				<string>Copy URL</string>
+				<key>Triggers</key>
+				<array>
+					<dict>
+						<key>FireType</key>
+						<string>Pressed</string>
+						<key>KeyCode</key>
+						<integer>32</integer>
+						<key>MacroTriggerType</key>
+						<string>HotKey</string>
+						<key>Modifiers</key>
+						<integer>0</integer>
+					</dict>
+				</array>
+				<key>UID</key>
+				<string>79781F31-0CE6-4C1F-8D32-B1A9EE649747</string>
+			</dict>
+		</array>
+		<key>Modifiers</key>
+		<integer>2816</integer>
+		<key>Name</key>
+		<string>Browser URL to Clipboard</string>
+		<key>PaletteUnderMouse</key>
+		<true/>
+		<key>Targeting</key>
+		<dict>
+			<key>Targeting</key>
+			<string>Included</string>
+			<key>TargetingApps</key>
+			<array>
+				<dict>
+					<key>BundleIdentifier</key>
+					<string>com.google.Chrome</string>
+					<key>Name</key>
+					<string>Google Chrome</string>
+					<key>NewFile</key>
+					<string>/Applications/Google Chrome.app</string>
+				</dict>
+				<dict>
+					<key>BundleIdentifier</key>
+					<string>com.apple.Safari</string>
+					<key>Name</key>
+					<string>Safari</string>
+					<key>NewFile</key>
+					<string>/System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app</string>
+				</dict>
+			</array>
+		</dict>
+		<key>ToggleMacroUID</key>
+		<string>C3BDE31D-CB60-4633-9C40-1EAB8D5E90F8</string>
+		<key>UID</key>
+		<string>4D097845-3115-46E2-9F0A-F289635C5CEA</string>
+	</dict>
+	<dict>
+		<key>Activate</key>
+		<string>OnceWithPalette</string>
+		<key>AddToMacroPalette</key>
+		<false/>
+		<key>AddToStatusMenu</key>
+		<false/>
+		<key>CreationDate</key>
+		<real>784957469.74467802</real>
+		<key>DisplayToggle</key>
+		<false/>
+		<key>KeyCode</key>
+		<integer>8</integer>
+		<key>Macros</key>
+		<array>
+			<dict>
+				<key>Actions</key>
+				<array>
+					<dict>
+						<key>ActionUID</key>
+						<integer>15812968</integer>
+						<key>MacroActionType</key>
+						<string>ExecuteSubroutine</string>
+						<key>MacroUID</key>
+						<string>98121C9E-87EC-47A5-8262-39217CCB2F46</string>
+						<key>Parameters</key>
+						<array>
+							<string>titleAndUrl</string>
+							<string>0</string>
+						</array>
+						<key>ResultVariable</key>
+						<string></string>
+						<key>TimeOutAbortsMacro</key>
+						<true/>
+					</dict>
+				</array>
+				<key>CreationDate</key>
+				<real>785061705.52444506</real>
+				<key>ModificationDate</key>
+				<real>785831929.67415702</real>
+				<key>Name</key>
+				<string>Copy Title and URL</string>
+				<key>Triggers</key>
+				<array>
+					<dict>
+						<key>FireType</key>
+						<string>Pressed</string>
+						<key>KeyCode</key>
+						<integer>17</integer>
+						<key>MacroTriggerType</key>
+						<string>HotKey</string>
+						<key>Modifiers</key>
+						<integer>0</integer>
+					</dict>
+				</array>
+				<key>UID</key>
+				<string>08673699-A6A8-4F76-958F-E4AD3B0221FA</string>
+			</dict>
+		</array>
+		<key>Modifiers</key>
+		<integer>2816</integer>
+		<key>Name</key>
+		<string>Browser URL to Clipboard</string>
+		<key>PaletteUnderMouse</key>
+		<true/>
+		<key>Targeting</key>
+		<dict>
+			<key>Targeting</key>
+			<string>Included</string>
+			<key>TargetingApps</key>
+			<array>
+				<dict>
+					<key>BundleIdentifier</key>
+					<string>com.google.Chrome</string>
+					<key>Name</key>
+					<string>Google Chrome</string>
+					<key>NewFile</key>
+					<string>/Applications/Google Chrome.app</string>
+				</dict>
+				<dict>
+					<key>BundleIdentifier</key>
+					<string>com.apple.Safari</string>
+					<key>Name</key>
+					<string>Safari</string>
+					<key>NewFile</key>
+					<string>/System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app</string>
+				</dict>
+			</array>
+		</dict>
+		<key>ToggleMacroUID</key>
+		<string>C3BDE31D-CB60-4633-9C40-1EAB8D5E90F8</string>
+		<key>UID</key>
+		<string>4D097845-3115-46E2-9F0A-F289635C5CEA</string>
+	</dict>
+	<dict>
+		<key>Activate</key>
+		<string>OnceWithPalette</string>
+		<key>AddToMacroPalette</key>
+		<false/>
+		<key>AddToStatusMenu</key>
+		<false/>
+		<key>CreationDate</key>
+		<real>784957469.74467802</real>
+		<key>DisplayToggle</key>
+		<false/>
+		<key>KeyCode</key>
+		<integer>8</integer>
+		<key>Macros</key>
+		<array>
+			<dict>
+				<key>Actions</key>
+				<array>
+					<dict>
+						<key>ActionUID</key>
+						<integer>15812906</integer>
+						<key>MacroActionType</key>
+						<string>ExecuteSubroutine</string>
+						<key>MacroUID</key>
+						<string>98121C9E-87EC-47A5-8262-39217CCB2F46</string>
+						<key>Parameters</key>
+						<array>
+							<string>markdownLink</string>
+							<string>0</string>
+						</array>
+						<key>ResultVariable</key>
+						<string></string>
+						<key>TimeOutAbortsMacro</key>
+						<true/>
+					</dict>
+				</array>
+				<key>CreationDate</key>
+				<real>784984066.08895099</real>
+				<key>ModificationDate</key>
+				<real>785831923.55149806</real>
+				<key>Name</key>
+				<string>Copy Markdown Link</string>
+				<key>Triggers</key>
+				<array>
+					<dict>
+						<key>FireType</key>
+						<string>Pressed</string>
+						<key>KeyCode</key>
+						<integer>46</integer>
+						<key>MacroTriggerType</key>
+						<string>HotKey</string>
+						<key>Modifiers</key>
+						<integer>0</integer>
+					</dict>
+					<dict>
+						<key>FireType</key>
+						<string>Pressed</string>
+						<key>KeyCode</key>
+						<integer>8</integer>
+						<key>MacroTriggerType</key>
+						<string>HotKey</string>
+						<key>Modifiers</key>
+						<integer>0</integer>
+					</dict>
+				</array>
+				<key>UID</key>
+				<string>CA456990-CE32-4BDE-81DD-9916984C2EBF</string>
+			</dict>
+		</array>
+		<key>Modifiers</key>
+		<integer>2816</integer>
+		<key>Name</key>
+		<string>Browser URL to Clipboard</string>
+		<key>PaletteUnderMouse</key>
+		<true/>
+		<key>Targeting</key>
+		<dict>
+			<key>Targeting</key>
+			<string>Included</string>
+			<key>TargetingApps</key>
+			<array>
+				<dict>
+					<key>BundleIdentifier</key>
+					<string>com.google.Chrome</string>
+					<key>Name</key>
+					<string>Google Chrome</string>
+					<key>NewFile</key>
+					<string>/Applications/Google Chrome.app</string>
+				</dict>
+				<dict>
+					<key>BundleIdentifier</key>
+					<string>com.apple.Safari</string>
+					<key>Name</key>
+					<string>Safari</string>
+					<key>NewFile</key>
+					<string>/System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app</string>
+				</dict>
+			</array>
+		</dict>
+		<key>ToggleMacroUID</key>
+		<string>C3BDE31D-CB60-4633-9C40-1EAB8D5E90F8</string>
+		<key>UID</key>
+		<string>4D097845-3115-46E2-9F0A-F289635C5CEA</string>
+	</dict>
+	<dict>
+		<key>Activate</key>
+		<string>OnceWithPalette</string>
+		<key>AddToMacroPalette</key>
+		<false/>
+		<key>AddToStatusMenu</key>
+		<false/>
+		<key>CreationDate</key>
+		<real>784957469.74467802</real>
 		<key>DisplayToggle</key>
 		<false/>
 		<key>KeyCode</key>
@@ -238,23 +635,169 @@
 					</dict>
 					<dict>
 						<key>ActionUID</key>
-						<integer>15812892</integer>
-						<key>JustDisplay</key>
-						<false/>
+						<integer>16459246</integer>
+						<key>Conditions</key>
+						<dict>
+							<key>ConditionList</key>
+							<array>
+								<dict>
+									<key>ConditionType</key>
+									<string>Variable</string>
+									<key>Variable</key>
+									<string>Local_IsHtml</string>
+									<key>VariableConditionType</key>
+									<string>Is</string>
+									<key>VariableValue</key>
+									<string>1</string>
+								</dict>
+							</array>
+							<key>ConditionListMatch</key>
+							<string>All</string>
+						</dict>
+						<key>ElseActions</key>
+						<array>
+							<dict>
+								<key>ActionUID</key>
+								<integer>16459249</integer>
+								<key>JustDisplay</key>
+								<false/>
+								<key>MacroActionType</key>
+								<string>SetClipboardToText</string>
+								<key>Text</key>
+								<string>%Variable%Local_FieldValue%</string>
+							</dict>
+							<dict>
+								<key>Action</key>
+								<string>DisplayBriefly</string>
+								<key>ActionUID</key>
+								<integer>16459252</integer>
+								<key>MacroActionType</key>
+								<string>InsertText</string>
+								<key>Text</key>
+								<string>Copied text %Variable%Local_JsonField%: %SystemClipboard%</string>
+							</dict>
+						</array>
 						<key>MacroActionType</key>
-						<string>SetClipboardToText</string>
-						<key>Text</key>
-						<string>%Variable%Local_FieldValue%</string>
-					</dict>
-					<dict>
-						<key>Action</key>
-						<string>DisplayBriefly</string>
-						<key>ActionUID</key>
-						<integer>15812893</integer>
-						<key>MacroActionType</key>
-						<string>InsertText</string>
-						<key>Text</key>
-						<string>Copied %Variable%Local_JsonField%: %SystemClipboard%</string>
+						<string>IfThenElse</string>
+						<key>ThenActions</key>
+						<array>
+							<dict>
+								<key>ActionUID</key>
+								<integer>15812892</integer>
+								<key>JustDisplay</key>
+								<false/>
+								<key>MacroActionType</key>
+								<string>SetClipboardToText</string>
+								<key>StyledText</key>
+								<data>
+								cnRmZAAAAAAD
+								AAAAAgAAAAcA
+								AABUWFQucnRm
+								AQAAAC6cAQAA
+								KwAAAAEAAACU
+								AQAAe1xydGYx
+								XGFuc2lcYW5z
+								aWNwZzEyNTJc
+								Y29jb2FydGYy
+								ODIyClxjb2Nv
+								YXRleHRzY2Fs
+								aW5nMFxjb2Nv
+								YXBsYXRmb3Jt
+								MHtcZm9udHRi
+								bFxmMFxmc3dp
+								c3NcZmNoYXJz
+								ZXQwIEhlbHZl
+								dGljYTt9Cntc
+								Y29sb3J0Ymw7
+								XHJlZDI1NVxn
+								cmVlbjI1NVxi
+								bHVlMjU1O1xy
+								ZWQwXGdyZWVu
+								MFxibHVlMDt9
+								CntcKlxleHBh
+								bmRlZGNvbG9y
+								dGJsOztcY3Nz
+								cmdiXGMwXGMw
+								XGMwXGM4NDcw
+								NlxjbmFtZSBj
+								b250cm9sVGV4
+								dENvbG9yO30K
+								XHBhcmRcdHg1
+								NjBcdHgxMTIw
+								XHR4MTY4MFx0
+								eDIyNDBcdHgy
+								ODAwXHR4MzM2
+								MFx0eDM5MjBc
+								dHg0NDgwXHR4
+								NTA0MFx0eDU2
+								MDBcdHg2MTYw
+								XHR4NjcyMFxw
+								YXJkaXJuYXR1
+								cmFsXHBhcnRp
+								Z2h0ZW5mYWN0
+								b3IwCgpcZjBc
+								ZnMyNiBcY2Yy
+								ICVWYXJpYWJs
+								ZSVMb2NhbF9G
+								aWVsZFZhbHVl
+								JX0BAAAAIwAA
+								AAEAAAAHAAAA
+								VFhULnJ0ZhAA
+								AAC/oCZptgEA
+								AAAAAAAAAAAA
+								</data>
+								<key>Text</key>
+								<string>%Variable%Local_FieldValue%</string>
+							</dict>
+							<dict>
+								<key>ActionUID</key>
+								<integer>16459263</integer>
+								<key>DisplayKind</key>
+								<string>Window</string>
+								<key>HonourFailureSettings</key>
+								<true/>
+								<key>IncludeStdErr</key>
+								<false/>
+								<key>IncludedVariables</key>
+								<array>
+									<string>9999</string>
+								</array>
+								<key>MacroActionType</key>
+								<string>ExecuteShellScript</string>
+								<key>Path</key>
+								<string></string>
+								<key>Source</key>
+								<string>Nothing</string>
+								<key>Text</key>
+								<string>#!/usr/bin/env zsh
+
+if command -v pandoc &amp;&gt;/dev/null; then
+  echo "$KMVAR_Local_FieldValue" | pandoc -f html -t rtf -s | pbcopy  
+else
+  echo "$KMVAR_Local_FieldValue" | textutil -stdin -format html -convert rtf -stdout | pbcopy
+fi</string>
+								<key>TimeOutAbortsMacro</key>
+								<true/>
+								<key>TrimResults</key>
+								<true/>
+								<key>TrimResultsNew</key>
+								<true/>
+								<key>UseText</key>
+								<true/>
+							</dict>
+							<dict>
+								<key>Action</key>
+								<string>DisplayBriefly</string>
+								<key>ActionUID</key>
+								<integer>15812893</integer>
+								<key>MacroActionType</key>
+								<string>InsertText</string>
+								<key>Text</key>
+								<string>Copied HTML %Variable%Local_JsonField%: %SystemClipboard%</string>
+							</dict>
+						</array>
+						<key>TimeOutAbortsMacro</key>
+						<true/>
 					</dict>
 				</array>
 				<key>CreationDate</key>
@@ -262,7 +805,7 @@
 				<key>IsActive</key>
 				<false/>
 				<key>ModificationDate</key>
-				<real>785238952.90184402</real>
+				<real>785834530.75697601</real>
 				<key>Name</key>
 				<string>Copy Requested Field</string>
 				<key>Triggers</key>
@@ -273,6 +816,7 @@
 						<key>Parameters</key>
 						<array>
 							<string>Local_JsonField</string>
+							<string>Local_IsHtml</string>
 						</array>
 						<key>ReturnsValue</key>
 						<false/>
@@ -283,11 +827,11 @@
 			</dict>
 		</array>
 		<key>Modifiers</key>
-		<integer>768</integer>
+		<integer>2816</integer>
 		<key>Name</key>
 		<string>Browser URL to Clipboard</string>
 		<key>PaletteUnderMouse</key>
-		<false/>
+		<true/>
 		<key>Targeting</key>
 		<dict>
 			<key>Targeting</key>
@@ -313,9 +857,9 @@
 			</array>
 		</dict>
 		<key>ToggleMacroUID</key>
-		<string>55A94FE0-601E-4B91-8491-D4082A98FF67</string>
+		<string>C3BDE31D-CB60-4633-9C40-1EAB8D5E90F8</string>
 		<key>UID</key>
-		<string>A27A6AA5-FE36-4B4F-BDC8-90710631B983</string>
+		<string>4D097845-3115-46E2-9F0A-F289635C5CEA</string>
 	</dict>
 	<dict>
 		<key>Activate</key>
@@ -325,7 +869,7 @@
 		<key>AddToStatusMenu</key>
 		<false/>
 		<key>CreationDate</key>
-		<real>769418116.367558</real>
+		<real>784957469.74467802</real>
 		<key>DisplayToggle</key>
 		<false/>
 		<key>KeyCode</key>
@@ -337,14 +881,15 @@
 				<array>
 					<dict>
 						<key>ActionUID</key>
-						<integer>15812968</integer>
+						<integer>15812971</integer>
 						<key>MacroActionType</key>
 						<string>ExecuteSubroutine</string>
 						<key>MacroUID</key>
 						<string>98121C9E-87EC-47A5-8262-39217CCB2F46</string>
 						<key>Parameters</key>
 						<array>
-							<string>titleAndUrl</string>
+							<string>markdownQuote</string>
+							<string>0</string>
 						</array>
 						<key>ResultVariable</key>
 						<string></string>
@@ -353,18 +898,18 @@
 					</dict>
 				</array>
 				<key>CreationDate</key>
-				<real>785061705.52444506</real>
+				<real>785061763.07513702</real>
 				<key>ModificationDate</key>
-				<real>785289485.13400805</real>
+				<real>785831925.44959497</real>
 				<key>Name</key>
-				<string>Copy Title and URL</string>
+				<string>Copy Markdown Quote</string>
 				<key>Triggers</key>
 				<array>
 					<dict>
 						<key>FireType</key>
 						<string>Pressed</string>
 						<key>KeyCode</key>
-						<integer>17</integer>
+						<integer>12</integer>
 						<key>MacroTriggerType</key>
 						<string>HotKey</string>
 						<key>Modifiers</key>
@@ -372,15 +917,15 @@
 					</dict>
 				</array>
 				<key>UID</key>
-				<string>08673699-A6A8-4F76-958F-E4AD3B0221FA</string>
+				<string>C166D799-3ABA-4C50-8F14-AA362D04BFCD</string>
 			</dict>
 		</array>
 		<key>Modifiers</key>
-		<integer>768</integer>
+		<integer>2816</integer>
 		<key>Name</key>
 		<string>Browser URL to Clipboard</string>
 		<key>PaletteUnderMouse</key>
-		<false/>
+		<true/>
 		<key>Targeting</key>
 		<dict>
 			<key>Targeting</key>
@@ -406,205 +951,9 @@
 			</array>
 		</dict>
 		<key>ToggleMacroUID</key>
-		<string>55A94FE0-601E-4B91-8491-D4082A98FF67</string>
+		<string>C3BDE31D-CB60-4633-9C40-1EAB8D5E90F8</string>
 		<key>UID</key>
-		<string>A27A6AA5-FE36-4B4F-BDC8-90710631B983</string>
-	</dict>
-	<dict>
-		<key>Activate</key>
-		<string>OnceWithPalette</string>
-		<key>AddToMacroPalette</key>
-		<false/>
-		<key>AddToStatusMenu</key>
-		<false/>
-		<key>CreationDate</key>
-		<real>769418116.367558</real>
-		<key>DisplayToggle</key>
-		<false/>
-		<key>KeyCode</key>
-		<integer>8</integer>
-		<key>Macros</key>
-		<array>
-			<dict>
-				<key>Actions</key>
-				<array>
-					<dict>
-						<key>ActionUID</key>
-						<integer>15812906</integer>
-						<key>MacroActionType</key>
-						<string>ExecuteSubroutine</string>
-						<key>MacroUID</key>
-						<string>98121C9E-87EC-47A5-8262-39217CCB2F46</string>
-						<key>Parameters</key>
-						<array>
-							<string>markdownLink</string>
-						</array>
-						<key>ResultVariable</key>
-						<string></string>
-						<key>TimeOutAbortsMacro</key>
-						<true/>
-					</dict>
-				</array>
-				<key>CreationDate</key>
-				<real>784984066.08895099</real>
-				<key>ModificationDate</key>
-				<real>785303884.25077605</real>
-				<key>Name</key>
-				<string>Copy Markdown Link</string>
-				<key>Triggers</key>
-				<array>
-					<dict>
-						<key>FireType</key>
-						<string>Pressed</string>
-						<key>KeyCode</key>
-						<integer>46</integer>
-						<key>MacroTriggerType</key>
-						<string>HotKey</string>
-						<key>Modifiers</key>
-						<integer>0</integer>
-					</dict>
-					<dict>
-						<key>FireType</key>
-						<string>Pressed</string>
-						<key>KeyCode</key>
-						<integer>8</integer>
-						<key>MacroTriggerType</key>
-						<string>HotKey</string>
-						<key>Modifiers</key>
-						<integer>0</integer>
-					</dict>
-				</array>
-				<key>UID</key>
-				<string>CA456990-CE32-4BDE-81DD-9916984C2EBF</string>
-			</dict>
-		</array>
-		<key>Modifiers</key>
-		<integer>768</integer>
-		<key>Name</key>
-		<string>Browser URL to Clipboard</string>
-		<key>PaletteUnderMouse</key>
-		<false/>
-		<key>Targeting</key>
-		<dict>
-			<key>Targeting</key>
-			<string>Included</string>
-			<key>TargetingApps</key>
-			<array>
-				<dict>
-					<key>BundleIdentifier</key>
-					<string>com.google.Chrome</string>
-					<key>Name</key>
-					<string>Google Chrome</string>
-					<key>NewFile</key>
-					<string>/Applications/Google Chrome.app</string>
-				</dict>
-				<dict>
-					<key>BundleIdentifier</key>
-					<string>com.apple.Safari</string>
-					<key>Name</key>
-					<string>Safari</string>
-					<key>NewFile</key>
-					<string>/System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app</string>
-				</dict>
-			</array>
-		</dict>
-		<key>ToggleMacroUID</key>
-		<string>55A94FE0-601E-4B91-8491-D4082A98FF67</string>
-		<key>UID</key>
-		<string>A27A6AA5-FE36-4B4F-BDC8-90710631B983</string>
-	</dict>
-	<dict>
-		<key>Activate</key>
-		<string>OnceWithPalette</string>
-		<key>AddToMacroPalette</key>
-		<false/>
-		<key>AddToStatusMenu</key>
-		<false/>
-		<key>CreationDate</key>
-		<real>769418116.367558</real>
-		<key>DisplayToggle</key>
-		<false/>
-		<key>KeyCode</key>
-		<integer>8</integer>
-		<key>Macros</key>
-		<array>
-			<dict>
-				<key>Actions</key>
-				<array>
-					<dict>
-						<key>ActionUID</key>
-						<integer>15813001</integer>
-						<key>MacroActionType</key>
-						<string>ExecuteSubroutine</string>
-						<key>MacroUID</key>
-						<string>98121C9E-87EC-47A5-8262-39217CCB2F46</string>
-						<key>Parameters</key>
-						<array>
-							<string>url</string>
-						</array>
-						<key>ResultVariable</key>
-						<string></string>
-						<key>TimeOutAbortsMacro</key>
-						<true/>
-					</dict>
-				</array>
-				<key>CreationDate</key>
-				<real>785062177.229159</real>
-				<key>ModificationDate</key>
-				<real>785289486.32094002</real>
-				<key>Name</key>
-				<string>Copy URL</string>
-				<key>Triggers</key>
-				<array>
-					<dict>
-						<key>FireType</key>
-						<string>Pressed</string>
-						<key>KeyCode</key>
-						<integer>32</integer>
-						<key>MacroTriggerType</key>
-						<string>HotKey</string>
-						<key>Modifiers</key>
-						<integer>0</integer>
-					</dict>
-				</array>
-				<key>UID</key>
-				<string>79781F31-0CE6-4C1F-8D32-B1A9EE649747</string>
-			</dict>
-		</array>
-		<key>Modifiers</key>
-		<integer>768</integer>
-		<key>Name</key>
-		<string>Browser URL to Clipboard</string>
-		<key>PaletteUnderMouse</key>
-		<false/>
-		<key>Targeting</key>
-		<dict>
-			<key>Targeting</key>
-			<string>Included</string>
-			<key>TargetingApps</key>
-			<array>
-				<dict>
-					<key>BundleIdentifier</key>
-					<string>com.google.Chrome</string>
-					<key>Name</key>
-					<string>Google Chrome</string>
-					<key>NewFile</key>
-					<string>/Applications/Google Chrome.app</string>
-				</dict>
-				<dict>
-					<key>BundleIdentifier</key>
-					<string>com.apple.Safari</string>
-					<key>Name</key>
-					<string>Safari</string>
-					<key>NewFile</key>
-					<string>/System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app</string>
-				</dict>
-			</array>
-		</dict>
-		<key>ToggleMacroUID</key>
-		<string>55A94FE0-601E-4B91-8491-D4082A98FF67</string>
-		<key>UID</key>
-		<string>A27A6AA5-FE36-4B4F-BDC8-90710631B983</string>
+		<string>4D097845-3115-46E2-9F0A-F289635C5CEA</string>
 	</dict>
 </array>
 </plist>
