@@ -7,6 +7,8 @@
 		<string>Normal</string>
 		<key>CreationDate</key>
 		<real>784952336.96028996</real>
+		<key>CustomIconData</key>
+		<string>KMEP-GenericNetwork</string>
 		<key>Macros</key>
 		<array>
 			<dict>
@@ -272,8 +274,9 @@ WebsiteQuoteExtractors.register({
   }),
 });
 
-const { url: href, content, title, error } = WebsiteQuoteExtractors.run();
+const { url: href, content, title, id, error } = WebsiteQuoteExtractors.run();
 
+logDebug("id=", id);
 logDebug("title=", title);
 logDebug("href=", href);
 logDebug("content=", content);
@@ -370,6 +373,7 @@ blockquote p {
 const myResult = {
   title: title,
   titleAndUrl: `${title} - ${href}`,
+  id: id,
   originalTitle: document.title,
   originalUrl: document.location.href,
   url: href,
@@ -489,7 +493,7 @@ return JSON.stringify(myResult);
 				<key>IsActive</key>
 				<false/>
 				<key>ModificationDate</key>
-				<real>785885932.71776903</real>
+				<real>785983675.06243896</real>
 				<key>Name</key>
 				<string>Website Quote Extractor</string>
 				<key>Triggers</key>
