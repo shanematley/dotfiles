@@ -22,14 +22,14 @@
 				<array>
 					<dict>
 						<key>ActionUID</key>
-						<integer>16459302</integer>
+						<integer>16459240</integer>
 						<key>MacroActionType</key>
 						<string>ExecuteSubroutine</string>
 						<key>MacroUID</key>
 						<string>98121C9E-87EC-47A5-8262-39217CCB2F46</string>
 						<key>Parameters</key>
 						<array>
-							<string>htmlLink</string>
+							<string>htmlQuote</string>
 							<string>1</string>
 						</array>
 						<key>ResultVariable</key>
@@ -39,28 +39,18 @@
 					</dict>
 				</array>
 				<key>CreationDate</key>
-				<real>785885758.62661505</real>
+				<real>785831853.69927299</real>
 				<key>ModificationDate</key>
-				<real>785885898.67566895</real>
+				<real>785831927.24769402</real>
 				<key>Name</key>
-				<string>Copy HTML Link</string>
+				<string>Copy HTML Quote</string>
 				<key>Triggers</key>
 				<array>
 					<dict>
 						<key>FireType</key>
 						<string>Pressed</string>
 						<key>KeyCode</key>
-						<integer>8</integer>
-						<key>MacroTriggerType</key>
-						<string>HotKey</string>
-						<key>Modifiers</key>
-						<integer>2048</integer>
-					</dict>
-					<dict>
-						<key>FireType</key>
-						<string>Pressed</string>
-						<key>KeyCode</key>
-						<integer>46</integer>
+						<integer>12</integer>
 						<key>MacroTriggerType</key>
 						<string>HotKey</string>
 						<key>Modifiers</key>
@@ -68,7 +58,7 @@
 					</dict>
 				</array>
 				<key>UID</key>
-				<string>B7E41F45-DC14-4780-9C58-5FDAE4FC56FE</string>
+				<string>53BA010B-4FD7-4737-B4BE-EA1B8F532CF0</string>
 			</dict>
 		</array>
 		<key>Modifiers</key>
@@ -126,14 +116,108 @@
 				<array>
 					<dict>
 						<key>ActionUID</key>
-						<integer>16459240</integer>
+						<integer>16459700</integer>
 						<key>MacroActionType</key>
 						<string>ExecuteSubroutine</string>
 						<key>MacroUID</key>
 						<string>98121C9E-87EC-47A5-8262-39217CCB2F46</string>
 						<key>Parameters</key>
 						<array>
-							<string>htmlQuote</string>
+							<string>id</string>
+							<string>0</string>
+						</array>
+						<key>ResultVariable</key>
+						<string></string>
+						<key>TimeOutAbortsMacro</key>
+						<true/>
+					</dict>
+				</array>
+				<key>CreationDate</key>
+				<real>785983686.05982995</real>
+				<key>ModificationDate</key>
+				<real>785983692.02273905</real>
+				<key>Name</key>
+				<string>Copy ID</string>
+				<key>Triggers</key>
+				<array>
+					<dict>
+						<key>FireType</key>
+						<string>Pressed</string>
+						<key>KeyCode</key>
+						<integer>34</integer>
+						<key>MacroTriggerType</key>
+						<string>HotKey</string>
+						<key>Modifiers</key>
+						<integer>0</integer>
+					</dict>
+				</array>
+				<key>UID</key>
+				<string>5D392208-C913-4637-8EFC-067616A0AE02</string>
+			</dict>
+		</array>
+		<key>Modifiers</key>
+		<integer>2816</integer>
+		<key>Name</key>
+		<string>Browser URL to Clipboard</string>
+		<key>PaletteUnderMouse</key>
+		<true/>
+		<key>Targeting</key>
+		<dict>
+			<key>Targeting</key>
+			<string>Included</string>
+			<key>TargetingApps</key>
+			<array>
+				<dict>
+					<key>BundleIdentifier</key>
+					<string>com.google.Chrome</string>
+					<key>Name</key>
+					<string>Google Chrome</string>
+					<key>NewFile</key>
+					<string>/Applications/Google Chrome.app</string>
+				</dict>
+				<dict>
+					<key>BundleIdentifier</key>
+					<string>com.apple.Safari</string>
+					<key>Name</key>
+					<string>Safari</string>
+					<key>NewFile</key>
+					<string>/System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app</string>
+				</dict>
+			</array>
+		</dict>
+		<key>ToggleMacroUID</key>
+		<string>C3BDE31D-CB60-4633-9C40-1EAB8D5E90F8</string>
+		<key>UID</key>
+		<string>4D097845-3115-46E2-9F0A-F289635C5CEA</string>
+	</dict>
+	<dict>
+		<key>Activate</key>
+		<string>OnceWithPalette</string>
+		<key>AddToMacroPalette</key>
+		<false/>
+		<key>AddToStatusMenu</key>
+		<false/>
+		<key>CreationDate</key>
+		<real>784957469.74467802</real>
+		<key>DisplayToggle</key>
+		<false/>
+		<key>KeyCode</key>
+		<integer>8</integer>
+		<key>Macros</key>
+		<array>
+			<dict>
+				<key>Actions</key>
+				<array>
+					<dict>
+						<key>ActionUID</key>
+						<integer>16459302</integer>
+						<key>MacroActionType</key>
+						<string>ExecuteSubroutine</string>
+						<key>MacroUID</key>
+						<string>98121C9E-87EC-47A5-8262-39217CCB2F46</string>
+						<key>Parameters</key>
+						<array>
+							<string>htmlLink</string>
 							<string>1</string>
 						</array>
 						<key>ResultVariable</key>
@@ -143,18 +227,28 @@
 					</dict>
 				</array>
 				<key>CreationDate</key>
-				<real>785831853.69927299</real>
+				<real>785885758.62661505</real>
 				<key>ModificationDate</key>
-				<real>785831927.24769402</real>
+				<real>785885898.67566895</real>
 				<key>Name</key>
-				<string>Copy HTML Quote</string>
+				<string>Copy HTML Link</string>
 				<key>Triggers</key>
 				<array>
 					<dict>
 						<key>FireType</key>
 						<string>Pressed</string>
 						<key>KeyCode</key>
-						<integer>12</integer>
+						<integer>8</integer>
+						<key>MacroTriggerType</key>
+						<string>HotKey</string>
+						<key>Modifiers</key>
+						<integer>2048</integer>
+					</dict>
+					<dict>
+						<key>FireType</key>
+						<string>Pressed</string>
+						<key>KeyCode</key>
+						<integer>46</integer>
 						<key>MacroTriggerType</key>
 						<string>HotKey</string>
 						<key>Modifiers</key>
@@ -162,7 +256,7 @@
 					</dict>
 				</array>
 				<key>UID</key>
-				<string>53BA010B-4FD7-4737-B4BE-EA1B8F532CF0</string>
+				<string>B7E41F45-DC14-4780-9C58-5FDAE4FC56FE</string>
 			</dict>
 		</array>
 		<key>Modifiers</key>
@@ -314,14 +408,14 @@
 				<array>
 					<dict>
 						<key>ActionUID</key>
-						<integer>15812968</integer>
+						<integer>15812906</integer>
 						<key>MacroActionType</key>
 						<string>ExecuteSubroutine</string>
 						<key>MacroUID</key>
 						<string>98121C9E-87EC-47A5-8262-39217CCB2F46</string>
 						<key>Parameters</key>
 						<array>
-							<string>titleAndUrl</string>
+							<string>markdownLink</string>
 							<string>0</string>
 						</array>
 						<key>ResultVariable</key>
@@ -331,18 +425,28 @@
 					</dict>
 				</array>
 				<key>CreationDate</key>
-				<real>785061705.52444506</real>
+				<real>784984066.08895099</real>
 				<key>ModificationDate</key>
-				<real>785831929.67415702</real>
+				<real>785831923.55149806</real>
 				<key>Name</key>
-				<string>Copy Title and URL</string>
+				<string>Copy Markdown Link</string>
 				<key>Triggers</key>
 				<array>
 					<dict>
 						<key>FireType</key>
 						<string>Pressed</string>
 						<key>KeyCode</key>
-						<integer>17</integer>
+						<integer>46</integer>
+						<key>MacroTriggerType</key>
+						<string>HotKey</string>
+						<key>Modifiers</key>
+						<integer>0</integer>
+					</dict>
+					<dict>
+						<key>FireType</key>
+						<string>Pressed</string>
+						<key>KeyCode</key>
+						<integer>8</integer>
 						<key>MacroTriggerType</key>
 						<string>HotKey</string>
 						<key>Modifiers</key>
@@ -350,7 +454,7 @@
 					</dict>
 				</array>
 				<key>UID</key>
-				<string>08673699-A6A8-4F76-958F-E4AD3B0221FA</string>
+				<string>CA456990-CE32-4BDE-81DD-9916984C2EBF</string>
 			</dict>
 		</array>
 		<key>Modifiers</key>
@@ -408,14 +512,14 @@
 				<array>
 					<dict>
 						<key>ActionUID</key>
-						<integer>15812906</integer>
+						<integer>15812968</integer>
 						<key>MacroActionType</key>
 						<string>ExecuteSubroutine</string>
 						<key>MacroUID</key>
 						<string>98121C9E-87EC-47A5-8262-39217CCB2F46</string>
 						<key>Parameters</key>
 						<array>
-							<string>markdownLink</string>
+							<string>titleAndUrl</string>
 							<string>0</string>
 						</array>
 						<key>ResultVariable</key>
@@ -425,28 +529,18 @@
 					</dict>
 				</array>
 				<key>CreationDate</key>
-				<real>784984066.08895099</real>
+				<real>785061705.52444506</real>
 				<key>ModificationDate</key>
-				<real>785831923.55149806</real>
+				<real>785831929.67415702</real>
 				<key>Name</key>
-				<string>Copy Markdown Link</string>
+				<string>Copy Title and URL</string>
 				<key>Triggers</key>
 				<array>
 					<dict>
 						<key>FireType</key>
 						<string>Pressed</string>
 						<key>KeyCode</key>
-						<integer>46</integer>
-						<key>MacroTriggerType</key>
-						<string>HotKey</string>
-						<key>Modifiers</key>
-						<integer>0</integer>
-					</dict>
-					<dict>
-						<key>FireType</key>
-						<string>Pressed</string>
-						<key>KeyCode</key>
-						<integer>8</integer>
+						<integer>17</integer>
 						<key>MacroTriggerType</key>
 						<string>HotKey</string>
 						<key>Modifiers</key>
@@ -454,7 +548,7 @@
 					</dict>
 				</array>
 				<key>UID</key>
-				<string>CA456990-CE32-4BDE-81DD-9916984C2EBF</string>
+				<string>08673699-A6A8-4F76-958F-E4AD3B0221FA</string>
 			</dict>
 		</array>
 		<key>Modifiers</key>
