@@ -72,17 +72,13 @@ brew "fasd"
 brew "fd"
 brew "git"
 brew "git-lfs"
+cask "ghostty"
 brew "gron"
 brew "htop"
-#brew install gs
-#brew install imagemagick --with-webp
 brew "jq"
 brew "mdless"
 brew "mtr"
 brew "node"
-#brew lua
-#brew lynx
-#brew p7zip
 brew "nvm"
 brew "pv"
 brew "pyenv"
@@ -91,7 +87,6 @@ brew "rename"
 brew "rg"
 brew "rlwrap"
 brew "shellcheck"
-#brew ssh-copy-id
 brew "tree"
 brew "vbindiff"
 brew "zopfli"
