@@ -268,7 +268,7 @@ WebsiteQuoteExtractors.register({
   name: "Default",
   matches: () =&gt; true,
   extract: () =&gt; ({
-    content: "",
+    content: (window.getSelection() || "").toString().trim(),
     title: document.title,
     url: location.href,
   }),
@@ -493,7 +493,7 @@ return JSON.stringify(myResult);
 				<key>IsActive</key>
 				<false/>
 				<key>ModificationDate</key>
-				<real>785983675.06243896</real>
+				<real>786257168.30595899</real>
 				<key>Name</key>
 				<string>Website Quote Extractor</string>
 				<key>Triggers</key>
