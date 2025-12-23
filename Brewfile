@@ -19,6 +19,7 @@ brew "wget"
 # Install more recent versions of some macOS tools.
 brew "vim"
 brew "nvim"
+cask "macvim-app"
 
 # Install some CTF tools; see https://github.com/ctfs/write-ups.
 # WiFi security
@@ -66,9 +67,7 @@ brew "socat"
 #brew install xz
 
 # Install other useful binaries.
-cask "alacritty"
 brew "bat"
-brew "fasd"
 brew "fd"
 brew "git"
 brew "git-lfs"
@@ -89,11 +88,11 @@ brew "rlwrap"
 brew "shellcheck"
 brew "tree"
 brew "vbindiff"
-brew "zopfli"
 brew "tokei"
 brew "highlight"
 brew "pbzip2"
 brew "extract_url"
+brew "zoxide"
 
 # Hammerspoon for great keyboard shortcuts as inspired by https://github.com/jasonrudolph/keyboard
 cask "hammerspoon"

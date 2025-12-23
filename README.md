@@ -7,16 +7,6 @@ These are my dotfiles. Currently this includes:
  * Tmux Configuration
  * inputrc
 
-Prerequisites
-=============
-
-
-* fasd for zgen. To install on Mac OS: `brew install fasd`. To install on Ubuntu:
-
-    sudo add-apt-repository ppa:aacebedo/fasd
-    sudo apt-get update
-    sudo apt-get install fasd
-
 Installation
 ============
 
