@@ -17,4 +17,6 @@ tmux/plugins/tmux-open
 tmux/plugins/tmux-continuum
 tmux/plugins/tmux-resurrect
 tmux/plugins/tmux-urlview
+# Catppuccin for Tmux
+tmux/plugins/tmux
 karabiner/automatic_backups
