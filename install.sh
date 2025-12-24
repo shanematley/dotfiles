@@ -23,7 +23,7 @@ FILES=("vimrc"
     "ideavimrc"
     "powerline:$HOME/.config/powerline"
     "hammerspoon:$HOME/.hammerspoon"
-    "nvim_init.vim:$HOME/.config/nvim/init.vim"
+    "nvim_init.lua:$HOME/.config/nvim/init.lua"
     "my-sfx:$XDG_CONFIG_HOME/my-sfx"
     )
 
