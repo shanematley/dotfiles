@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+# [Scripts I wrote that I use all the time](https://evanhahn.com/scripts-i-wrote-that-i-use-all-the-time/?utm_source=tldrnewsletter&__readwiseLocation=):
+# 
+# mksh makes it quick to create shell scripts. mksh foo.sh creates foo.sh, makes it executable with chmod u+x, adds
+# some nice Bash prefixes, and opens it with my editor (Vim in my case). I use this every few days. Many of the
+# scripts in this post were made with this helper!
+
+set -e
+set -u
+set -o pipefail
+
+if [ ! $# -eq 1 ]; then
+  echo 'mksh takes one argument' 1>&2
+  exit 1
+elif [ -e "$1" ]; then
+  echo "$1 already exists" 1>&2
+  exit 1
+fi
+
+echo '#!/usr/bin/env bash
+set -e
+set -u
+set -o pipefail
+
+' > "$1"
+
+chmod u+x "$1"
+
+"$EDITOR" "$1"

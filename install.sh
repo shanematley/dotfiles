@@ -10,6 +10,7 @@ SCRIPTPATH=$(cd "$(dirname "$0")" || exit; pwd;)
 KONSOLE_THEMES=~/.local/share/konsole
 
 resolved_xdg_data_home="${XDG_DATA_HOME:-$HOME/.local/share}"
+XDG_CONFIG_HOME=${XDG_CONFIG_HOME:-$HOME/.config}
 
 FILES=("vimrc"
     "vim"
@@ -23,6 +24,7 @@ FILES=("vimrc"
     "powerline:$HOME/.config/powerline"
     "hammerspoon:$HOME/.hammerspoon"
     "nvim_init.vim:$HOME/.config/nvim/init.vim"
+    "my-sfx:$XDG_CONFIG_HOME/my-sfx"
     )
 
 source "${SCRIPTPATH}/shrc.d/10osis.sh"
