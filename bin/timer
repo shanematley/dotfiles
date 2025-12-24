@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+set -e
+set -u
+set -o pipefail
+
+sleep "$1"
+sfx ringaling
+notify 'timer complete' "$1"

@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+set -e
+set -u
+set -o pipefail
+
+# uses yt-dlp to download songs, often from YouTube or SoundCloud, in the highest available quality
+
+exec yt-dlp -f bestaudio -o '%(title)s.%(ext)s' "$@"
+
+
