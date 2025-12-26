@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+# A playground for jq from https://jvns.ca/til/fzf-preview-git-commits
+# Shows a json file, and allows playing with the jq expression to filter the output
+
+set -e
+set -u
+set -o pipefail
+
+printf '' | fzf --print-query \
+  --query '.' \
+  --height=75% \
+  --preview "jq -C {q} '$1' 2>&1" \
+  --preview-window=up:80%
+
