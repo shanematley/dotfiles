@@ -105,3 +105,7 @@ brew "kubernetes-cli"
 brew "kubectx"
 brew "k9s"
 
+# https://www.thoughtasylum.com/2025/08/25/text-to-speech-on-macos-with-piper
+tap "sylumer/tap"
+brew "sylumer/tap/pan"
+
