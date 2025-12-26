@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+# Show the contents of a git commit using fzf to browse the files changed
+set -e
+set -u
+set -o pipefail
+
+commit=${1:-HEAD}
+git show --stat=120 --format="" "$commit" | \
+           grep '|' | \
+           fzf --ansi \
+               --disabled \
+               --height=75% \
+               --bind 'j:down,k:up,q:abort' \
+               --preview="echo {} | sed 's/ *|.*//' | xargs -I% git show --color=always $commit -- %" \
+               --preview-window=right:60%
+
