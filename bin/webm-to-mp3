@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+set -e
+set -u
+set -o pipefail
+
+for f; do
+    ffmpeg -i "$f" -vn -c:a libmp3lame -q:a 2 "${f%.webm}.mp3"
+done
