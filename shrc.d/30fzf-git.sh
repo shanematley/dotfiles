@@ -11,10 +11,39 @@ fzf-down() {
 
 _gf() {
   is_in_git_repo || return
-  git -c color.status=always status --short |
-  fzf-down -m --ansi --nth 2..,.. \
-    --preview '(git diff --color=always -- {-1} | sed 1,4d; cat {-1})' |
-  cut -c4- | sed 's/.* -> //'
+
+  local modified_files result key selected_files
+  modified_files=$(git status --short --porcelain | cut -c4- | sed 's/^"//; s/"$//')
+
+  result=$(
+    (
+      # Modified/staged/untracked files first with [MODIFIED] marker
+      echo "$modified_files" | sed 's/$/ [MODIFIED]/'
+      # All other tracked files (excluding already shown modified ones)
+      comm -23 \
+        <(git ls-files | sort) \
+        <(echo "$modified_files" | sort)
+    ) | fzf-down -m --ansi --expect=alt-enter \
+      --preview 'file=$(echo {} | sed "s/ \[MODIFIED\]$//");
+                  (git diff --color=always -- "$file" 2>/dev/null | sed 1,4d;
+                   bat --color=always "$file" 2>/dev/null || cat "$file")'
+  )
+
+  key=$(head -1 <<< "$result")
+  selected_files=$(tail -n +2 <<< "$result" | sed 's/ \[MODIFIED\]$//')
+
+  if [[ -z "$selected_files" ]]; then
+    return
+  fi
+
+  if [[ "$key" == "alt-enter" ]]; then
+    # Output vim and files on separate lines so join-lines quotes each correctly
+    echo "vim"
+    echo "$selected_files"
+  else
+    # Return files for command line insertion (one per line for join-lines)
+    echo "$selected_files"
+  fi
 }
 
 _gb() {
