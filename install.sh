@@ -620,3 +620,20 @@ update_fzf_and_check_bindings_linux() {
 osis Darwin && check_fzf_bindings_mac
 osis Linux && update_fzf_and_check_bindings_linux
 
+section "Zoxide (smart directory jumping)"
+
+if installed zoxide; then
+    info "Zoxide already installed"
+else
+    if yesno "Would you like to install zoxide (smart directory jumping with frecency)?"; then
+        info "Installing zoxide..."
+        if curl -sSfL https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | sh; then
+            success "Zoxide installed successfully. Restart your shell to use it."
+        else
+            softfail "Failed to install zoxide. You can try manually: curl -sSfL https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | sh"
+        fi
+    else
+        info "Skipping zoxide installation"
+    fi
+fi
+
