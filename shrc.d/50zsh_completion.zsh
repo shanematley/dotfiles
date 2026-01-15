@@ -19,9 +19,19 @@ setopt pushd_ignore_dups
 setopt pushd_silent
 
 
-autoload -U compinit
-# Initialise completions. -i ignores insecure directories. (Using -u would use insecure directories)
-compinit -i
+autoload -Uz compinit
+
+zcompdump="${XDG_CACHE_HOME:-$HOME/.cache}/zsh/zcompdump-${ZSH_VERSION}"
+mkdir -p "${zcompdump:h}"
+
+# First run (or missing dump): build it
+# If having troubles with completion, delete the zcompdump file
+if [[ ! -f "$zcompdump" ]]; then
+  compinit -i -d "$zcompdump"
+else
+  # Reuse cache (avoids most of the expensive work)
+  compinit -C -i -d "$zcompdump"
+fi
 
 # The zsh/complist module offers three extensions to completion listings: the
 # ability to highlight matches in such a list, the ability to scroll through
