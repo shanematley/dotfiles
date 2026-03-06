@@ -1,0 +1,2 @@
+[delta]
+    hyperlinks-file-link-format = "vscode://file/{path}:{line}"

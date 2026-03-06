@@ -299,10 +299,28 @@ section "Adding git common commands"
 
 # Setup git
 if git config --get-all include.path|grep -q "$HOME/.gitconfig.common"; then
-    info "Skipping: Git already set up"
+    info "Skipping: Git common config already set up"
 else
     git config --global --add include.path "$HOME/.gitconfig.common"
     success "Added ~/.gitconfig.common to git global include path"
+fi
+
+if installed delta; then
+    if git config --get-all include.path|grep -q "$SCRIPTPATH/gitconfig.delta"; then
+        info "Skipping: Git delta config already set up"
+    else
+        git config --global --add include.path "$SCRIPTPATH/gitconfig.delta"
+        success "Added gitconfig.delta to git global include path"
+    fi
+    os_delta_config="$SCRIPTPATH/gitconfig.delta.$(uname -s | tr '[:upper:]' '[:lower:]')"
+    if [[ -f "$os_delta_config" ]]; then
+        if git config --get-all include.path|grep -q "$os_delta_config"; then
+            info "Skipping: Git delta OS config already set up"
+        else
+            git config --global --add include.path "$os_delta_config"
+            success "Added $(basename "$os_delta_config") to git global include path"
+        fi
+    fi
 fi
 
 section "Linking bin files"
