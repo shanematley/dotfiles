@@ -68,10 +68,15 @@ brew "socat"
 
 # Install other useful binaries.
 brew "bat"
+# Disk usage CLI
+brew "dust"
+# Better find
 brew "fd"
 brew "git"
 brew "git-lfs"
 cask "ghostty"
+# Markdown CLI viewer and TUI
+brew "glow"
 brew "gron"
 brew "htop"
 brew "jq"
@@ -93,6 +98,8 @@ brew "tokei"
 brew "highlight"
 brew "pbzip2"
 brew "extract_url"
+# A better/faster httpie
+brew "xh"
 brew "zoxide"
 
 # Hammerspoon for great keyboard shortcuts as inspired by https://github.com/jasonrudolph/keyboard
