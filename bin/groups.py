@@ -480,15 +480,13 @@ class LDAPProvider(GroupProvider):
             if not member_dns:
                 return members
 
-            # Fetch all members in a single query using OR filter
-            # Build filter: (&(objectClass=person)(|(distinguishedName=dn1)(distinguishedName=dn2)...))
+            # Fetch person members
             # Note: ldap3 doesn't have built-in DN escaping, but DNs from LDAP searches are trusted
-            # If this becomes a concern, consider querying members individually
             dn_filters = "".join(f"(distinguishedName={dn})" for dn in member_dns)
-            member_filter = f"(&(objectClass=person)(|{dn_filters}))"
+            person_filter = f"(&(objectClass=person)(|{dn_filters}))"
 
             member_entries = self._search_ldap(
-                member_filter,
+                person_filter,
                 [
                     "distinguishedName",
                     "cn",
@@ -508,7 +506,7 @@ class LDAPProvider(GroupProvider):
                 ],
             )
 
-            # Process all member entries
+            # Process person entries
             for _dn, member_attrs in member_entries.items():
                 # Convert datetime objects to strings
                 when_created = member_attrs.get("whenCreated", "")
@@ -521,6 +519,7 @@ class LDAPProvider(GroupProvider):
 
                 members.append(
                     {
+                        "type": "user",
                         "cn": member_attrs.get("cn", ""),
                         "sn": member_attrs.get("sn", ""),
                         "givenName": member_attrs.get("givenName", ""),
@@ -545,6 +544,43 @@ class LDAPProvider(GroupProvider):
                         "description": member_attrs.get("description", ""),
                         "whenCreated": when_created,
                         "whenChanged": when_changed,
+                    }
+                )
+
+            # Fetch group members (groups that are members of this group)
+            group_filter = f"(&(objectClass=group)(|{dn_filters}))"
+            group_entries = self._search_ldap(
+                group_filter,
+                [
+                    "distinguishedName",
+                    "cn",
+                    "description",
+                    "displayName",
+                    "mail",
+                    "member",
+                    "managedBy",
+                ],
+            )
+
+            for dn, group_attrs in group_entries.items():
+                member_count = (
+                    len(group_attrs.get("member", []))
+                    if isinstance(group_attrs.get("member"), list)
+                    else (1 if group_attrs.get("member") else 0)
+                )
+                members.append(
+                    {
+                        "type": "group",
+                        "cn": group_attrs.get("cn", ""),
+                        "displayName": group_attrs.get(
+                            "displayName",
+                            group_attrs.get("cn", ""),
+                        ),
+                        "accountId": dn,
+                        "mail": group_attrs.get("mail", ""),
+                        "description": group_attrs.get("description", ""),
+                        "member_count": member_count,
+                        "managedBy": group_attrs.get("managedBy", ""),
                     }
                 )
 
@@ -917,24 +953,46 @@ class OutputFormatter:
                 writer.writerows(rows)
         elif self.format_type == "table" and self.is_tty:
             table = Table(title=f"Members of {group_name}")
+            has_types = any("type" in m for m in members)
+            if has_types:
+                table.add_column("Type", style="bold")
             table.add_column("Display Name", style="cyan")
             table.add_column("Account ID", style="")
             table.add_column("Email", style="dim")
 
             for member in members:
-                table.add_row(
-                    member.get("displayName", ""),
+                member_type = member.get("type", "user")
+                if member_type == "group":
+                    type_label = "[yellow]group[/yellow]"
+                    member_count = member.get("member_count", "")
+                    display_name = member.get("displayName", "")
+                    if member_count:
+                        display_name = f"{display_name} ({member_count} members)"
+                else:
+                    type_label = "user"
+                    display_name = member.get("displayName", "")
+
+                row = [
+                    display_name,
                     member.get("accountId", ""),
                     member.get("mail", ""),
-                )
+                ]
+                if has_types:
+                    row.insert(0, type_label)
+                table.add_row(*row)
 
             self.console.print(table)
         else:  # plain
             for member in members:
-                print(
-                    f"{member.get('displayName', '')} ({member.get('accountId', '')})",
-                    file=output,
-                )
+                member_type = member.get("type", "user")
+                display_name = member.get("displayName", "")
+                account_id = member.get("accountId", "")
+                if member_type == "group":
+                    member_count = member.get("member_count", "")
+                    suffix = f" [{member_count} members]" if member_count else ""
+                    print(f"[group] {display_name} ({account_id}){suffix}", file=output)
+                else:
+                    print(f"{display_name} ({account_id})", file=output)
 
     def format_cache_info(self, stats: dict):
         """Format cache statistics"""
