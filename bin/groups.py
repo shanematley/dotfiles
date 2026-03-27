@@ -467,13 +467,14 @@ class LDAPProvider(GroupProvider):
         if cached is not None:
             return cached
 
-        # Get group to find members
+        # Get group to find members (including managedBy for owner detection)
         ldap_filter = f"(&(objectClass=group)(distinguishedName={group_id}))"
-        entries = self._search_ldap(ldap_filter, ["member"])
+        entries = self._search_ldap(ldap_filter, ["member", "managedBy"])
 
         members = []
         if entries:
             group_entry = list(entries.values())[0]
+            managed_by_dn = group_entry.get("managedBy", "")
             member_dns = group_entry.get("member", [])
             if isinstance(member_dns, str):
                 member_dns = [member_dns]
@@ -509,6 +510,7 @@ class LDAPProvider(GroupProvider):
 
             # Process person entries
             for _dn, member_attrs in member_entries.items():
+                is_owner = bool(managed_by_dn and _dn == managed_by_dn)
                 # Convert datetime objects to strings
                 when_created = member_attrs.get("whenCreated", "")
                 if when_created and hasattr(when_created, "isoformat"):
@@ -518,35 +520,36 @@ class LDAPProvider(GroupProvider):
                 if when_changed and hasattr(when_changed, "isoformat"):
                     when_changed = when_changed.isoformat()
 
-                members.append(
-                    {
-                        "type": "user",
-                        "cn": member_attrs.get("cn", ""),
-                        "sn": member_attrs.get("sn", ""),
-                        "givenName": member_attrs.get("givenName", ""),
-                        "displayName": member_attrs.get("displayName", ""),
-                        "sAMAccountName": member_attrs.get("sAMAccountName", ""),
-                        "accountId": member_attrs.get(
-                            "sAMAccountName", ""
-                        ),  # Alias for compatibility
-                        "mail": member_attrs.get("mail", ""),
-                        "mailNickname": member_attrs.get("mailNickname", ""),
-                        "telephoneNumber": member_attrs.get("telephoneNumber", ""),
-                        "ipPhone": member_attrs.get("ipPhone", ""),
-                        "l": member_attrs.get("l", ""),
-                        "location": member_attrs.get(
-                            "l", ""
-                        ),  # Alias for compatibility
-                        "co": member_attrs.get("co", ""),
-                        "country": member_attrs.get(
-                            "co", ""
-                        ),  # Alias for compatibility
-                        "company": member_attrs.get("company", ""),
-                        "description": member_attrs.get("description", ""),
-                        "whenCreated": when_created,
-                        "whenChanged": when_changed,
-                    }
-                )
+                member_dict = {
+                    "type": "user",
+                    "cn": member_attrs.get("cn", ""),
+                    "sn": member_attrs.get("sn", ""),
+                    "givenName": member_attrs.get("givenName", ""),
+                    "displayName": member_attrs.get("displayName", ""),
+                    "sAMAccountName": member_attrs.get("sAMAccountName", ""),
+                    "accountId": member_attrs.get(
+                        "sAMAccountName", ""
+                    ),  # Alias for compatibility
+                    "mail": member_attrs.get("mail", ""),
+                    "mailNickname": member_attrs.get("mailNickname", ""),
+                    "telephoneNumber": member_attrs.get("telephoneNumber", ""),
+                    "ipPhone": member_attrs.get("ipPhone", ""),
+                    "l": member_attrs.get("l", ""),
+                    "location": member_attrs.get(
+                        "l", ""
+                    ),  # Alias for compatibility
+                    "co": member_attrs.get("co", ""),
+                    "country": member_attrs.get(
+                        "co", ""
+                    ),  # Alias for compatibility
+                    "company": member_attrs.get("company", ""),
+                    "description": member_attrs.get("description", ""),
+                    "whenCreated": when_created,
+                    "whenChanged": when_changed,
+                }
+                if is_owner:
+                    member_dict["is_owner"] = True
+                members.append(member_dict)
 
             # Fetch group members (groups that are members of this group)
             group_filter = f"(&(objectClass=group)(|{dn_filters}))"
@@ -975,6 +978,9 @@ class OutputFormatter:
                     type_label = "user"
                     display_name = member.get("displayName", "")
 
+                if member.get("is_owner"):
+                    display_name = f"{display_name} [bold magenta](owner)[/bold magenta]"
+
                 row = [
                     display_name,
                     member.get("accountId", ""),
@@ -995,7 +1001,8 @@ class OutputFormatter:
                     suffix = f" [{member_count} members]" if member_count else ""
                     print(f"[group] {display_name} ({account_id}){suffix}", file=output)
                 else:
-                    print(f"{display_name} ({account_id})", file=output)
+                    owner_suffix = " (owner)" if member.get("is_owner") else ""
+                    print(f"{display_name} ({account_id}){owner_suffix}", file=output)
 
     def format_cache_info(self, stats: dict):
         """Format cache statistics"""
@@ -1039,7 +1046,8 @@ class OutputFormatter:
                 member = child["member"]
                 name = member.get("displayName", member.get("cn", ""))
                 account = member.get("sAMAccountName", member.get("accountId", ""))
-                label = f"[cyan]{name}[/cyan] [dim]({account})[/dim]"
+                owner_tag = " [bold magenta](owner)[/bold magenta]" if member.get("is_owner") else ""
+                label = f"[cyan]{name}[/cyan] [dim]({account})[/dim]{owner_tag}"
                 parent.add(label)
             elif "group" in child:
                 group = child["group"]
@@ -1069,7 +1077,8 @@ class OutputFormatter:
                 member = child["member"]
                 name = member.get("displayName", member.get("cn", ""))
                 account = member.get("sAMAccountName", member.get("accountId", ""))
-                print(f"{prefix}{connector}{name} ({account})", file=output)
+                owner_suffix = " (owner)" if member.get("is_owner") else ""
+                print(f"{prefix}{connector}{name} ({account}){owner_suffix}", file=output)
             elif "group" in child:
                 group = child["group"]
                 name = group.get("name", "")
