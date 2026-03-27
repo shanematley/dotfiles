@@ -28,6 +28,7 @@ import requests
 from rich.console import Console
 from rich.progress import Progress, SpinnerColumn, TextColumn
 from rich.table import Table
+from rich.tree import Tree
 
 
 # ============================================================================
@@ -1008,6 +1009,72 @@ class OutputFormatter:
                     f"  {provider}: {pstats['count']} entries ({pstats['size']} bytes)"
                 )
 
+    def format_tree(self, tree_data: dict):
+        """Format a recursive group tree for display"""
+        output = self._get_output_handle()
+
+        if self.format_type == "json":
+            print(json.dumps(tree_data, indent=2), file=output)
+            return
+
+        if self.format_type == "table" and self.is_tty:
+            root_name = tree_data["group"].get("name", "Unknown")
+            rich_tree = Tree(f"[bold]{root_name}[/bold]")
+            self._build_rich_tree(rich_tree, tree_data)
+            self.console.print(rich_tree)
+        else:
+            root_name = tree_data["group"].get("name", "Unknown")
+            print(root_name, file=output)
+            self._build_plain_tree(tree_data, output, prefix="")
+
+    def _build_rich_tree(self, parent: Tree, node: dict):
+        """Recursively build a Rich Tree from tree data"""
+        for child in node.get("children", []):
+            if "member" in child:
+                member = child["member"]
+                name = member.get("displayName", member.get("cn", ""))
+                account = member.get("sAMAccountName", member.get("accountId", ""))
+                label = f"[cyan]{name}[/cyan] [dim]({account})[/dim]"
+                parent.add(label)
+            elif "group" in child:
+                group = child["group"]
+                name = group.get("name", "")
+                if child.get("already_seen"):
+                    parent.add(f"[dim italic]{name} (already shown above)[/dim italic]")
+                elif child.get("truncated"):
+                    parent.add(f"[yellow]{name}[/yellow] [dim](max depth reached)[/dim]")
+                else:
+                    count = group.get("member_count", "")
+                    suffix = f" ({count} direct)" if count else ""
+                    branch = parent.add(f"[yellow bold]{name}[/yellow bold]{suffix}")
+                    self._build_rich_tree(branch, child)
+
+    def _build_plain_tree(self, node: dict, output: TextIO, prefix: str):
+        """Recursively build a plain-text tree"""
+        children = node.get("children", [])
+        for i, child in enumerate(children):
+            is_last = i == len(children) - 1
+            connector = "└── " if is_last else "├── "
+            extension = "    " if is_last else "│   "
+
+            if "member" in child:
+                member = child["member"]
+                name = member.get("displayName", member.get("cn", ""))
+                account = member.get("sAMAccountName", member.get("accountId", ""))
+                print(f"{prefix}{connector}{name} ({account})", file=output)
+            elif "group" in child:
+                group = child["group"]
+                name = group.get("name", "")
+                if child.get("already_seen"):
+                    print(f"{prefix}{connector}{name} (already shown above)", file=output)
+                elif child.get("truncated"):
+                    print(f"{prefix}{connector}{name} (max depth reached)", file=output)
+                else:
+                    count = group.get("member_count", "")
+                    suffix = f" ({count} direct)" if count else ""
+                    print(f"{prefix}{connector}{name}{suffix}", file=output)
+                    self._build_plain_tree(child, output, prefix=prefix + extension)
+
 
 # ============================================================================
 # Helper Functions
@@ -1080,6 +1147,68 @@ def resolve_group(
             sys.exit(1)
 
 
+def resolve_tree(
+    provider: GroupProvider,
+    group_id: str,
+    group_info: dict,
+    visited: set[str] | None = None,
+    max_depth: int = 10,
+    depth: int = 0,
+) -> dict:
+    """
+    Recursively expand a group into a tree structure.
+
+    Uses a shared visited set so each group is only expanded once;
+    subsequent encounters are marked with a reference to where it was
+    first seen.
+
+    :param provider: Provider instance to fetch members from
+    :param group_id: DN or ID of the group to expand
+    :param group_info: Dict with at least 'name' for the root group
+    :param visited: Shared set of already-expanded group IDs
+    :param max_depth: Maximum recursion depth
+    :param depth: Current recursion depth
+    :return: Nested dict representing the tree
+    """
+    if visited is None:
+        visited = set()
+
+    node: dict[str, Any] = {"group": group_info, "children": []}
+
+    if group_id in visited:
+        node["already_seen"] = True
+        del node["children"]
+        return node
+
+    if depth >= max_depth:
+        node["truncated"] = True
+        del node["children"]
+        return node
+
+    visited.add(group_id)
+    members = provider.get_members(group_id)
+
+    for member in members:
+        if member.get("type") == "group":
+            child_id = member.get("accountId", "")
+            child_info = {
+                "name": member.get("displayName", member.get("cn", "")),
+                "id": child_id,
+                "member_count": member.get("member_count", 0),
+            }
+            child_node = resolve_tree(
+                provider, child_id, child_info,
+                visited=visited,
+                max_depth=max_depth,
+                depth=depth + 1,
+            )
+            node["children"].append(child_node)
+        else:
+            node["children"].append({"member": member})
+
+    return node
+
+
 # ============================================================================
 # Main CLI
 # ============================================================================
@@ -1122,6 +1251,24 @@ def main():
     )
     members_parser.add_argument(
         "--output", "-o", help="Output file path (use '-' for stdout)"
+    )
+
+    # tree subcommand
+    tree_parser = subparsers.add_parser(
+        "tree", help="Show recursive group membership as a tree"
+    )
+    tree_parser.add_argument(
+        "group", help="Group ID (prefix with 'id:') or group name"
+    )
+    tree_parser.add_argument("--sources", help="Comma-separated list of sources")
+    tree_parser.add_argument(
+        "--exact-match", action="store_true", help="Only match exact group names"
+    )
+    tree_parser.add_argument(
+        "--max-depth",
+        type=int,
+        default=10,
+        help="Maximum depth of tree expansion (default: 10)",
     )
 
     # sources subcommand
@@ -1287,6 +1434,40 @@ def main():
                     print(f"Error querying {name}: {e}", file=sys.stderr)
         finally:
             formatter.close()
+
+    # Handle tree command
+    elif args.command == "tree":
+        for name, provider in selected_providers.items():
+            try:
+                groups = resolve_group(
+                    provider, args.group, args.exact_match, allow_interactive=is_tty
+                )
+
+                for group in groups:
+                    if is_tty:
+                        with Progress(
+                            SpinnerColumn(),
+                            TextColumn("[progress.description]{task.description}"),
+                            console=formatter.console,
+                        ) as progress:
+                            progress.add_task("Expanding group tree...", total=None)
+                            tree_data = resolve_tree(
+                                provider,
+                                group["id"],
+                                group,
+                                max_depth=args.max_depth,
+                            )
+                    else:
+                        tree_data = resolve_tree(
+                            provider,
+                            group["id"],
+                            group,
+                            max_depth=args.max_depth,
+                        )
+
+                    formatter.format_tree(tree_data)
+            except Exception as e:
+                print(f"Error querying {name}: {e}", file=sys.stderr)
 
 
 if __name__ == "__main__":
