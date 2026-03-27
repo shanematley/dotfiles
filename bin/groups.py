@@ -800,6 +800,7 @@ class OutputFormatter:
 
     def format_groups(self, groups: list[dict], source: str):
         """Format group search results"""
+        groups = sorted(groups, key=lambda g: g.get("name", "").lower())
         output = self._get_output_handle()
 
         if self.format_type == "json":
@@ -885,6 +886,7 @@ class OutputFormatter:
         group_id: str | None = None,
     ):
         """Format group member results"""
+        members = sorted(members, key=lambda m: m.get("displayName", "").lower())
         output = self._get_output_handle()
 
         if self.format_type == "json":
@@ -1029,7 +1031,10 @@ class OutputFormatter:
 
     def _build_rich_tree(self, parent: Tree, node: dict):
         """Recursively build a Rich Tree from tree data"""
-        for child in node.get("children", []):
+        for child in sorted(node.get("children", []), key=lambda c: (
+            0 if "group" in c else 1,
+            (c.get("group", {}).get("name", "") or c.get("member", {}).get("displayName", c.get("member", {}).get("cn", ""))).lower(),
+        )):
             if "member" in child:
                 member = child["member"]
                 name = member.get("displayName", member.get("cn", ""))
@@ -1051,7 +1056,10 @@ class OutputFormatter:
 
     def _build_plain_tree(self, node: dict, output: TextIO, prefix: str):
         """Recursively build a plain-text tree"""
-        children = node.get("children", [])
+        children = sorted(node.get("children", []), key=lambda c: (
+            0 if "group" in c else 1,
+            (c.get("group", {}).get("name", "") or c.get("member", {}).get("displayName", c.get("member", {}).get("cn", ""))).lower(),
+        ))
         for i, child in enumerate(children):
             is_last = i == len(children) - 1
             connector = "└── " if is_last else "├── "
