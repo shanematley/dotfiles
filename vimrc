@@ -103,6 +103,7 @@ Plug 'vim-scripts/a.vim' " Switch header/source with :A and <leader>-s/S
 Plug 'vim-scripts/genutils'
 Plug 'vim-scripts/vim-indent-object' " ai, ii, aI, iI (an/inner indentation level and line above/below)
 Plug 'junegunn/gv.vim'
+Plug 'junegunn/vim-easy-align'
 Plug 'luochen1990/rainbow'
 Plug 'will133/vim-dirdiff'
 
@@ -113,6 +114,10 @@ endfor
 
 call plug#end()
 "}}}
+
+" EasyAlign: visual select then ga, or gaip for a paragraph
+xmap ga <Plug>(EasyAlign)
+nmap ga <Plug>(EasyAlign)
 
 if ! has('nvim')
     nnoremap <leader>b :Buffers<cr>
