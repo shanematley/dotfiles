@@ -50,6 +50,21 @@ vim.keymap.set('n', '<leader>f', function()
 end, { desc = 'Format with LSP' })
 
 
+require('telescope').setup{
+  defaults = {
+    mappings = {
+      i = {
+        ["<C-o>"] = function(prompt_bufnr)
+          local action_state = require('telescope.actions.state')
+          local entry = action_state.get_selected_entry()
+          require('telescope.actions').close(prompt_bufnr)
+          vim.fn.jobstart({'open', entry.path}, {detach = true})
+        end,
+      },
+    },
+  },
+}
+
 local builtin = require('telescope.builtin')
 vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = 'Telescope find files' })
 vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = 'Telescope live grep' })
