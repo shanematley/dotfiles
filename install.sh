@@ -24,6 +24,7 @@ FILES=("vimrc"
     "hammerspoon:$HOME/.hammerspoon"
     "nvim_init.lua:$HOME/.config/nvim/init.lua"
     "my-sfx:$XDG_CONFIG_HOME/my-sfx"
+    "karabiner-complex_modifications:$HOME/.config/karabiner/assets/complex_modifications"
     )
 
 source "${SCRIPTPATH}/shrc.d/10osis.sh"
@@ -278,6 +279,7 @@ check_shrc bashrc
 section "Linking dotfiles"
 
 create_dir "$HOME/.config/nvim"
+create_dir "$HOME/.config/karabiner/assets"
 
 for f in "${FILES[@]}"; do
     [[ $f =~ ([^:]+):?(.*)? ]] || fail "Bad file specified in FILES. Adjust script. File: '$f'"

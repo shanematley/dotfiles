@@ -1,0 +1,74 @@
+
+{
+    "title": "Shane's Remaps",
+    "rules": [
+        {
+            "manipulators": [
+                {
+                    "description": "Change right option to Hyper (i.e., command+control+option+shift)",
+                    "from": {
+                        "key_code": "right_option",
+                        "modifiers": { "optional": ["any"] }
+                    },
+                    "to": [
+                        {
+                            "key_code": "left_shift",
+                            "modifiers": ["left_control", "left_option", "left_command"]
+                        }
+                    ],
+                    "type": "basic"
+                }
+            ]
+        },
+        {
+            "description": "Change caps_lock to control",
+            "manipulators": [
+                {
+                    "from": {
+                        "key_code": "caps_lock",
+                        "modifiers": { "optional": ["any"] }
+                    },
+                    "to": [{ "key_code": "left_control" }],
+                    "type": "basic"
+                }
+            ]
+        },
+        {
+            "description": "Change caps_lock to control if pressed with other keys, to escape if pressed alone.",
+            "enabled": false,
+            "manipulators": [
+                {
+                    "from": {
+                        "key_code": "caps_lock",
+                        "modifiers": { "optional": ["any"] }
+                    },
+                    "to": [{ "key_code": "left_control" }],
+                    "to_if_alone": [{ "key_code": "escape" }],
+                    "type": "basic"
+                }
+            ]
+        },
+        {
+            "description": "Make left Option key ALT in Xpra",
+            "enabled": false,
+            "manipulators": [
+                {
+                    "conditions": [
+                        {
+                            "bundle_identifiers": [
+                                "^org.xpra.xpra$"
+                            ],
+                            "type": "frontmost_application_if"
+                        }
+                    ],
+                    "from": {
+                        "key_code": "left_option",
+                        "modifiers": { "optional": ["any"] }
+                    },
+                    "to": [{ "key_code": "left_command" }],
+                    "type": "basic"
+                }
+            ]
+        }
+    ]
+}
