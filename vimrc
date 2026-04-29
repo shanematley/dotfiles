@@ -116,6 +116,7 @@ call plug#end()
 "}}}
 
 " EasyAlign: visual select then ga, or gaip for a paragraph
+" Markdown table: visual select rows, then ga*|
 xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
 
