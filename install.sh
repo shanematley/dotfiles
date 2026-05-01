@@ -22,7 +22,7 @@ FILES=("vimrc"
     "ideavimrc"
     "powerline:$HOME/.config/powerline"
     "hammerspoon:$HOME/.hammerspoon"
-    "nvim_init.lua:$HOME/.config/nvim/init.lua"
+    "nvim/shared_nvim_config.lua:$HOME/.config/nvim/lua/shared_nvim_config.lua"
     "my-sfx:$XDG_CONFIG_HOME/my-sfx"
     "karabiner-complex_modifications:$HOME/.config/karabiner/assets/complex_modifications"
     )
@@ -278,8 +278,25 @@ check_shrc bashrc
 
 section "Linking dotfiles"
 
-create_dir "$HOME/.config/nvim"
 create_dir "$HOME/.config/karabiner/assets"
+create_dir "$HOME/.config/nvim/lua"
+
+# Migrate from old single-file setup: if init.lua was the previous symlink
+# into the dotfiles repo, remove it so we can drop in a per-machine starter.
+init_lua="$HOME/.config/nvim/init.lua"
+if [[ -L "$init_lua" ]]; then
+    rm "$init_lua" && success "Removed legacy init.lua symlink"
+fi
+if [[ ! -f "$init_lua" ]]; then
+    cat > "$init_lua" <<'EOF'
+-- Per-machine Neovim entrypoint (NOT checked into dotfiles).
+-- Set machine-specific overrides above the require, e.g.:
+--   vim.g.jdtls_java_home = "/opt/openjdk-21.0.4"
+
+require("shared_nvim_config")
+EOF
+    success "Seeded $init_lua"
+fi
 
 for f in "${FILES[@]}"; do
     [[ $f =~ ([^:]+):?(.*)? ]] || fail "Bad file specified in FILES. Adjust script. File: '$f'"
