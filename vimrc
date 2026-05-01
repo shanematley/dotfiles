@@ -388,6 +388,14 @@ nnoremap k gk
 noremap <Space>n :cnext<C-m>
 noremap <Space>p :cprev<C-m>
 
+" Navigate the quickfix stack (older/newer lists, history)
+nnoremap <leader>[q :colder<CR>
+nnoremap <leader>]q :cnewer<CR>
+nnoremap <leader>qh :chistory<CR>
+
+" Rename the current quickfix list's title
+command! -nargs=1 QfTitle call setqflist([], 'r', {'title': <q-args>})
+
 " Strip all training whitespace in the current file. the let part of the
 " command seems to empty the last search register
 nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
