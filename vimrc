@@ -546,6 +546,17 @@ endif
 
 
 set termguicolors
+" Vim 8 derives t_8f/t_8b from the Tc terminfo cap; vim 9.1+ also
+" handles setrgbf/setrgbb (the RGB cap). Some installed terminfo
+" entries -- e.g. tmux-256color from ncurses 6.2 -- advertise neither,
+" leaving t_8f empty so termguicolors silently produces no colour.
+" Fall back to the standard SGR 38;2/48;2 sequences when vim hasn't
+" populated t_8f itself; the gate self-disables once terminfo is fixed
+" or vim's auto-detection covers the case.
+if !has('nvim') && empty(&t_8f)
+    let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+    let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+endif
 
 let g:lightline = {
       \ 'active': {
