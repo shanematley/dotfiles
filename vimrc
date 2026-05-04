@@ -549,7 +549,7 @@ set termguicolors
 
 let g:lightline = {
       \ 'active': {
-      \   'left': [ [ 'fugitive', 'filename', 'buffernumber'], [ 'mode', 'paste' ], [ 'readonly' ] ],
+      \   'left': [ [ 'fugitive', 'filename', 'buffernumber'], [ 'mode', 'paste' ], [ 'lspstatus', 'readonly' ] ],
       \   'right': [ ['lineinfo'], ['percent'], [ 'fileformat', 'fileencoding', 'filetype' ] ]
       \ },
       \ 'inactive': {
@@ -568,6 +568,7 @@ let g:lightline = {
       \   'filename': 'StatusFileName',
       \   'gitbranch': 'FugitiveHead',
       \   'mode': 'StatusFileMode',
+      \   'lspstatus': 'LspStatus',
       \ },
       \ 'component': {
       \   'buffernumber': '%n'
