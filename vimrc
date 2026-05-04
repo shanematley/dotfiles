@@ -584,16 +584,6 @@ function MySetColourScheme(colorscheme)
     execute 'colorscheme ' . l:colorscheme
 endfunction
 
-if has('nvim')
-    colorscheme catppuccin-latte
-else
-    colorscheme catppuccin_latte
-endif
-call lightline#update()
-
-" This ensures lightline updates to match the colorscheme
-autocmd ColorScheme * call s:UpdateLightlineColorScheme()
-
 function s:UpdateLightlineColorScheme()
     let l:colorscheme = expand('<amatch>')
     if StartsWith(l:colorscheme, 'catppuccin') && has('nvim')
@@ -604,6 +594,15 @@ function s:UpdateLightlineColorScheme()
     call lightline#disable()
     call lightline#enable()
 endfunction
+
+" Must be registered before the initial :colorscheme so it fires on startup
+autocmd ColorScheme * call s:UpdateLightlineColorScheme()
+
+if has('nvim')
+    colorscheme catppuccin-latte
+else
+    colorscheme catppuccin_latte
+endif
 
 highlight Comment cterm=italic gui=italic
 
