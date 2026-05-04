@@ -43,7 +43,7 @@ if has('nvim')
     Plug 'nvim-tree/nvim-tree.lua'
     Plug 'neovim/nvim-lspconfig'
     Plug 'nvim-lua/plenary.nvim'
-    Plug 'nvim-telescope/telescope.nvim', { 'tag': 'v0.2.0' }
+    Plug 'nvim-telescope/telescope.nvim'
     Plug 'mason-org/mason.nvim'
     Plug 'mason-org/mason-lspconfig.nvim'
     "Plug 'ibhagwan/fzf-lua', {'branch': 'main'}
