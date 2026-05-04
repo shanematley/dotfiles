@@ -222,6 +222,14 @@ vim.keymap.set('n', '<leader>co', builtin.lsp_outgoing_calls, { desc = 'Telescop
 vim.keymap.set('n', '<leader>qq', builtin.quickfix,        { desc = 'Telescope quickfix entries' })
 vim.keymap.set('n', '<leader>qs', builtin.quickfixhistory, { desc = 'Telescope quickfix stack' })
 
+vim.api.nvim_create_autocmd({ "LspProgress", "LspAttach", "LspDetach" }, {
+    callback = function()
+        if vim.fn.exists("*lightline#update") == 1 then
+            vim.fn["lightline#update"]()
+        end
+    end,
+})
+
 vim.api.nvim_set_hl(0, "LspReferenceText",  { bg = "#ffff00", fg = "#000000", bold = true, underline = true })
 vim.api.nvim_set_hl(0, "LspReferenceRead",  { bg = "#ffff00", fg = "#000000", underline = true })
 vim.api.nvim_set_hl(0, "LspReferenceWrite", { bg = "#ffff00", fg = "#000000", underline = true })

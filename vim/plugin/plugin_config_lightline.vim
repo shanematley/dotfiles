@@ -36,3 +36,12 @@ function! StatusFileMode()
         \ fname =~ 'NERD_tree' ? 'NERDTree' : lightline#mode()
 endfunction
 
+function! LspStatus()
+  if !has('nvim') | return '' | endif
+  let l:progress = luaeval('vim.lsp.status()')
+  if !empty(l:progress) | return l:progress | endif
+  let l:clients = luaeval('vim.tbl_map(function(c) return c.name end, vim.lsp.get_clients({bufnr = 0}))')
+  if empty(l:clients) | return '' | endif
+  return '['.join(l:clients, ',').' ✓]'
+endfunction
+
