@@ -127,6 +127,63 @@ else
   )
 end
 
+local function detect_pyright_path()
+    if vim.g.pyright_path and vim.g.pyright_path ~= "" then return vim.g.pyright_path end
+    local from_env = os.getenv("PYRIGHT_PATH")
+    if from_env and from_env ~= "" then return from_env end
+    local on_path = vim.fn.exepath("pyright-langserver")
+    if on_path ~= "" then return on_path end
+    return nil
+end
+local pyright_path = detect_pyright_path()
+if pyright_path then
+  vim.lsp.config('pyright', {
+    cmd = { pyright_path, '--stdio' },
+    root_markers = { 'pyproject.toml', 'setup.py', 'setup.cfg', 'requirements.txt', 'Pipfile', 'pyrightconfig.json', '.git' },
+    settings = {
+      python = {
+        analysis = {
+          autoSearchPaths = true,
+          useLibraryCodeForTypes = true,
+          diagnosticMode = 'openFilesOnly',
+        },
+      },
+    },
+  })
+  vim.lsp.enable('pyright')
+else
+  vim.notify(
+    "pyright disabled: set vim.g.pyright_path, PYRIGHT_PATH, or put pyright-langserver on PATH.",
+    vim.log.levels.WARN
+  )
+end
+
+local function detect_ruff_path()
+    if vim.g.ruff_path and vim.g.ruff_path ~= "" then return vim.g.ruff_path end
+    local from_env = os.getenv("RUFF_PATH")
+    if from_env and from_env ~= "" then return from_env end
+    local on_path = vim.fn.exepath("ruff")
+    if on_path ~= "" then return on_path end
+    return nil
+end
+local ruff_path = detect_ruff_path()
+if ruff_path then
+  vim.lsp.config('ruff', {
+    cmd = { ruff_path, 'server' },
+    root_markers = { 'pyproject.toml', 'ruff.toml', '.ruff.toml', '.git' },
+    -- Defer hover to pyright when both are attached
+    on_attach = function(client)
+      client.server_capabilities.hoverProvider = false
+    end,
+  })
+  vim.lsp.enable('ruff')
+else
+  vim.notify(
+    "ruff disabled: set vim.g.ruff_path, RUFF_PATH, or put ruff on PATH.",
+    vim.log.levels.WARN
+  )
+end
+
 require("mason-lspconfig").setup()
 
 vim.keymap.set('n', '<leader>f', function()
