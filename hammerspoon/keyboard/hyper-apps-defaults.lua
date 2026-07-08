@@ -15,10 +15,26 @@ function hyper_debug_logs_disable()
     hyper_log.setLogLevel('info')
 end
 
+-- Find the main zoom.us application, skipping helper renderer processes such as
+-- "zoom.us Sidebar Web Content". All Zoom processes share the "us.zoom.xos"
+-- bundle ID, but only the main GUI process (kind == 1, i.e. has a Dock icon and
+-- owns the menu bar) can answer findMenuItem; the helpers are renderer children.
+function find_zoom()
+    local zooms = hs.application.applicationsForBundleID("us.zoom.xos")
+    for _, app in ipairs(zooms) do
+        if app:kind() == 1 then
+            return app
+        end
+    end
+    -- Fall back to whatever we found, or the old name-based lookup.
+    return zooms[1] or hs.appfinder.appFromName("zoom.us")
+end
+
 function find_menu(zoom, menu_paths)
     hyper_log.df("Looking for menu item in the following menu paths %s", hs.inspect(menu_paths));
     for _, menu_path in ipairs(menu_paths) do
         local m = zoom:findMenuItem(menu_path)
+        hyper_log.df('Looking for %s, found %s (zoom: %s)', hs.inspect(menu_path), hs.inspect(m), hs.inspect(zoom));
         if m then
             hyper_log.d('Found menu item ' .. hs.inspect(menu_path));
             -- Append path to the existing enabled and ticked entries
@@ -32,7 +48,7 @@ end
 
 function toggle_zoom(toggle1, toggle2)
     return function()
-        local zoom = hs.appfinder.appFromName("zoom.us")
+        local zoom = find_zoom()
         if (not zoom) then
             hyper_log.e('Failed to find zoom.us');
             return
@@ -53,7 +69,7 @@ end
 
 function toggle_zoom_combined(toggle_off1, toggle_off2, toggle_on1, toggle_on2)
     return function()
-        local zoom = hs.appfinder.appFromName("zoom.us")
+        local zoom = find_zoom()
         if (not zoom) then
             hyper_log.e('Failed to find zoom.us');
             return
@@ -92,6 +108,21 @@ function make_send_key_to_application(app_name, modifier_key, key)
     end
 end
 
+-- Like make_send_key_to_application, but resolves the main Zoom GUI process via
+-- find_zoom() so keystrokes aren't sent to a helper renderer process.
+function make_send_key_to_zoom(modifier_key, key)
+    return function()
+        local zoom = find_zoom()
+        if not zoom then
+            hyper_log.e('Failed to find zoom.us');
+            return
+        end
+
+        hyper_log.df('Sending key stroke %s-%s to zoom.us', hs.inspect(modifier_key), key);
+        hs.eventtap.keyStroke(modifier_key, key, nil, zoom)
+    end
+end
+
 local zoom_mute =               {{'Meeting', 'Mute Audio'},   {'Meeting', 'Mute audio'}}
 local zoom_unmute =             {{'Meeting', 'Unmute Audio'}, {'Meeting', 'Unmute audio'}}
 local zoom_stop_video =         {{'Meeting', 'Stop Video'}, {'Meeting', 'Stop video'}}
@@ -111,7 +142,7 @@ return {
   { 'n', 'Notes' },
   { 'o', 'Omnifocus' },
   { 'r', 'Reminders' },
-  { 'p', make_send_key_to_application('zoom.us', {'alt'}, 'y') },
+  { 'p', make_send_key_to_zoom({'alt'}, 'y') },
   { 'v', 'Messages' },
   { '4', 'Banktivity' },
   { '\\', toggle_zoom(zoom_mute, zoom_unmute) },
