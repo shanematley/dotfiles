@@ -128,7 +128,7 @@ local zoom_unmute =             {{'Meeting', 'Unmute Audio'}, {'Meeting', 'Unmut
 local zoom_stop_video =         {{'Meeting', 'Stop Video'}, {'Meeting', 'Stop video'}}
 local zoom_start_video =        {{'Meeting', 'Start Video'}, {'Meeting', 'Start video'}}
 local zoom_stop_share =         {{'Meeting', 'Stop Share'}, {'Meeting', 'Stop share'}}
-local zoom_start_share =        {{'Meeting', 'Start Share'}, {'Meeting', 'Start share'}}
+local zoom_start_share =        {{'Meeting', 'Start Share'}, {'Meeting', 'Start share'}, {"Zoom Workplace", "Screen share..."}}
 local zoom_exit_minimal_view =  {{'Meeting', 'Exit Minimal View'}, {'Meeting', 'Exit minimal view'}}
 local zoom_enter_minimal_view = {{'Meeting', 'Enter Minimal View'}, {'Meeting', 'Enter minimal view'}}
 
