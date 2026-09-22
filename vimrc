@@ -489,6 +489,15 @@ map <Leader>vz :VimuxZoomRunner<CR>
 
 
 "{{{ Diff options
+
+function! DiffVisibleBuffers()
+    diffoff!
+    windo if &buftype != 'nofile' | diffthis | endif
+endfunction
+
+nnoremap <leader>dt :call DiffVisibleBuffers()<CR>
+nnoremap <leader>do :diffoff!<CR>
+
 " Some interesting discussion on diffing algorithms
 " https://stackoverflow.com/questions/32365271/whats-the-difference-between-git-diff-patience-and-git-diff-histogram/32367597#32367597
 " The initial branch for mac is due to https://github.com/agude/dotfiles/issues/2

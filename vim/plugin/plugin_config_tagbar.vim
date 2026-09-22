@@ -20,4 +20,7 @@ function! TagbarStatusFunc(current, sort, fname, ...) abort
   return lightline#statusline(0)
 endfunction
 
+if has('nvim')
+else
 nnoremap <silent> <leader>d :TagbarOpenAutoClose<CR>
+endif

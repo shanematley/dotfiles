@@ -16,7 +16,7 @@ vim.g.loaded_netrwPlugin = 1
 vim.opt.termguicolors = true
 
 vim.keymap.set('n', 'K', vim.lsp.buf.hover, { desc = 'LSP Hover' })
-vim.keymap.set("n", "<leader>d", function()
+vim.keymap.set("n", "<leader>dl", function()
     vim.diagnostic.setloclist()
     vim.cmd("lopen")
 end, { desc = "Show diagnostics for current file" })
@@ -247,6 +247,16 @@ vim.keymap.set('n', '<leader>gh', builtin.git_bcommits, { desc = 'Telescope buff
 -- vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = 'Telescope live grep' })
 vim.keymap.set("n", "<leader>fg", function()
     require("telescope.builtin").live_grep({
+        mappings = {
+            i = {
+                ["<C-Space>"] = require("telescope.actions").to_fuzzy_refine,
+            },
+        },
+    })
+end, { desc = "Live grep then fuzzy refine" })
+vim.keymap.set("n", "<leader>fG", function()
+    require("telescope.builtin").live_grep({
+        additional_args = { "--hidden", "--no-ignore" },
         mappings = {
             i = {
                 ["<C-Space>"] = require("telescope.actions").to_fuzzy_refine,
